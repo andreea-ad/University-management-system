@@ -5,13 +5,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class LoginGUI extends JFrame {
+public class LoginGUI extends JFrame{
     JLabel lUser, lPass;
     JTextField username;
     JPasswordField password;
     JButton login;
-    String inputUser;
-    String inputPass;
+    public String inputUser;
+    public String inputPass;
     public LoginGUI(){
         JFrame frame = new JFrame("Conectare platformă");
         //creating input elements
@@ -90,8 +90,8 @@ public class LoginGUI extends JFrame {
         login.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                inputUser.setInputUser(username.getText());
-                inputPass.setInputPass(new String(password.getPassword()));
+                setInputUser(username.getText());
+                setInputPass(new String(password.getPassword()));
             }
         });
         frame.add(lUser);
