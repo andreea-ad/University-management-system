@@ -1,9 +1,9 @@
 public class Department {
-    int id;
-    String title;
-    Faculty faculty;
-    Degree degree;
-    public Department(int id, String title, Faculty faculty, Degree degree){
+    private int id;
+    private String title;
+    private String faculty;
+    private Degree degree;
+    public Department(int id, String title, String faculty, Degree degree){
         setID(id);
         setTitle(title);
         setFaculty(faculty);
@@ -23,11 +23,11 @@ public class Department {
         this.title = title;
     }
 
-    public Faculty getFaculty() {
+    public String getFaculty() {
         return faculty;
     }
 
-    public void setFaculty(Faculty faculty) {
+    public void setFaculty(String faculty) {
         this.faculty = faculty;
     }
 
@@ -39,6 +39,6 @@ public class Department {
         this.degree = degree;
     }
     public String toString(){
-        return "Cod: " + id + " Denumire: " + title + " Facultate: " + faculty.getTitle() + " Ciclu universitar: " + degree;
+        return "Cod: " + id + " Denumire: " + title + " Facultate: " + faculty + " Ciclu universitar: " + degree;
     }
 }

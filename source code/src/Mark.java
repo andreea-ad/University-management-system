@@ -1,67 +1,72 @@
 import java.util.*;
 public class Mark {
-    int id;
-    Student student;
-    int mark;
-    Subject subject;
-    Professor professor;
-    Date dateAdded;
-    public Mark(int id, Student student, int mark, Subject subject, Professor professor, Date date){
+    private int id;
+    private String studentFirstName;
+    private String studentLastName;
+    private int mark;
+    private String subject;
+    private String teacherFirstName;
+    private String teacherLastName;
+    private Date dateAdded;
+    public Mark(int id, String studentFirstName, String studentLastName, int mark, String subject, String teacherFirstName, String teacherLastName, Date date){
         setID(id);
-        setStudent(student);
+        setStudentFirstName(studentFirstName);
+        setStudentLastName(studentLastName);
         setMark(mark);
         setSubject(subject);
-        setProfessor(professor);
+        setTeacherFirstName(teacherFirstName);
+        setTeacherLastName(teacherLastName);
         setDateAdded(date);
     }
-
     public int getID(){
         return id;
     }
-
     public void setID(int id){
         this.id = id;
     }
-    public Student getStudent() {
-        return student;
+
+    public String getStudentFirstName() {
+        return studentFirstName;
+    }
+    public void setStudentFirstName(String studentFirstName) {
+        this.studentFirstName = studentFirstName;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
-    }
+    public String getStudentLastName(){ return studentLastName;}
+    public void setStudentLastName(String studentLastName){ this.studentLastName = studentLastName; }
 
     public int getMark() {
         return mark;
     }
-
     public void setMark(int mark) {
         this.mark = mark;
     }
 
-    public Subject getSubject() {
+    public String getSubject() {
         return subject;
     }
-
-    public void setSubject(Subject subject) {
+    public void setSubject(String subject) {
         this.subject = subject;
     }
 
-    public Professor getProfessor() {
-        return professor;
+    public String getTeacherFirstName(){ return teacherFirstName; }
+    public void setTeacherFirstName(String teacherFirstName){
+        this.teacherFirstName=teacherFirstName;
     }
 
-    public void setProfessor(Professor professor) {
-        this.professor = professor;
+    public String getTeacherLastName(){
+        return teacherLastName;
     }
+    public void setTeacherLastName(String teacherLastName){ this.teacherLastName=teacherLastName; }
 
     public Date getDateAdded() {
         return dateAdded;
     }
-
     public void setDateAdded(Date dateAdded) {
         this.dateAdded = dateAdded;
     }
+
     public String toString(){
-        return "Cod: " + id + " Nume student: " + student.getLastName() + " " + student.getFirstName() + " Nota: " + mark + " Materie " + subject.getTitle() + " Nume profesor: " + professor.getLastName() + " " + professor.getFirstName() + " Data adaugarii: " + dateAdded;
+        return "Cod: " + id + " Nume student: " + studentLastName + " " + studentFirstName + " Nota: " + mark + " Materie " + subject + " Nume profesor: " + teacherLastName + " " + teacherFirstName + " Data adaugarii: " + dateAdded;
     }
 }

@@ -1,18 +1,18 @@
 import java.util.*;
 public class Student {
-    int id;
-    String firstName;
-    String lastName;
-    String cnp;
-    Date dob;
-    String phoneNumber;
-    String address;
-    String emailAddress;
-    String faculty;
-    String department;
-    Degree degree;
-    int year;
-    int numberOfCredits;
+    private int id;
+    private String firstName;
+    private String lastName;
+    private String cnp;
+    private Date dob;
+    private String phoneNumber;
+    private String address;
+    private String emailAddress;
+    private String faculty;
+    private String department;
+    private Degree degree;
+    private int year;
+    private int numberOfCredits;
     public Student(int id, String first, String last, String cnp, Date dob, String number, String address, String email, String faculty, String dept, Degree degree, int year, int credits){
         setID(id);
         setFirstName(first);

@@ -1,13 +1,14 @@
 public class Subject {
-    int id;
-    String title;
-    Faculty faculty;
-    Department department;
-    Degree degree;
-    int semester;
-    int numberOfCredits;
-    Professor professor;
-    public Subject(int id, String title, Faculty faculty, Department department, Degree degree, int semester, int credits, Professor professor){
+    private int id;
+    private String title;
+    private String faculty;
+    private String department;
+    private Degree degree;
+    private int semester;
+    private int numberOfCredits;
+    private String teacherFirstName;
+    private String teacherLastName;
+    public Subject(int id, String title, String faculty, String department, Degree degree, int semester, int credits, String teacherFirstName, String teacherLastName){
         setID(id);
         setTitle(title);
         setFaculty(faculty);
@@ -15,12 +16,14 @@ public class Subject {
         setDegree(degree);
         setSemester(semester);
         setNumberOfCredits(credits);
-        setProfessor(professor);
+        setTeacherFirstName(teacherFirstName);
+        setTeacherLastName(teacherLastName);
     }
+
+
     public int getID(){
         return id;
     }
-
     public void setID(int id){
         this.id=id;
     }
@@ -28,31 +31,27 @@ public class Subject {
     public String getTitle() {
         return title;
     }
-
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public Faculty getFaculty() {
+    public String getFaculty() {
         return faculty;
     }
-
-    public void setFaculty(Faculty faculty) {
+    public void setFaculty(String faculty) {
         this.faculty = faculty;
     }
 
-    public Department getDepartment() {
+    public String getDepartment() {
         return department;
     }
-
-    public void setDepartment(Department department) {
+    public void setDepartment(String department) {
         this.department = department;
     }
 
     public Degree getDegree() {
         return degree;
     }
-
     public void setDegree(Degree degree) {
         this.degree = degree;
     }
@@ -60,7 +59,6 @@ public class Subject {
     public int getSemester() {
         return semester;
     }
-
     public void setSemester(int semester) {
         this.semester = semester;
     }
@@ -68,20 +66,24 @@ public class Subject {
     public int getNumberOfCredits() {
         return numberOfCredits;
     }
-
     public void setNumberOfCredits(int numberOfCredits) {
         this.numberOfCredits = numberOfCredits;
     }
 
-    public Professor getProfessor(){
-        return professor;
+    public String getTeacherFirstName(){ return teacherFirstName; }
+    public void setTeacherFirstName(String teacherFirstName){
+        this.teacherFirstName=teacherFirstName;
     }
 
-    public void setProfessor(Professor professor){
-        this.professor=professor;
+    public String getTeacherLastName(){
+        return teacherLastName;
     }
+    public void setTeacherLastName(String teacherLastName){
+        this.teacherLastName=teacherLastName;
+    }
+
     public String toString(){
-        return "Cod: " + id + " Denumire: " + title + " Facultate: " + faculty + " Specializare: " + department.getTitle() + " Ciclu universitar: " + degree + " Semestru: " + semester
-                + " Numar de credite: " + numberOfCredits + " Nume profesor: " + professor.getLastName() + " " + professor.getFirstName();
+        return "Cod: " + id + " Denumire: " + title + " Facultate: " + faculty + " Specializare: " + department + " Ciclu universitar: " + degree + " Semestru: " + semester
+                + " Numar de credite: " + numberOfCredits + " Nume profesor: " + teacherLastName + " " + teacherLastName;
     }
 }
