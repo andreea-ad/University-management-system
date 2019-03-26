@@ -143,7 +143,6 @@ public class LoginGUI extends JFrame{
     /**
      * set and get operations for input
      */
-    /
     public void setInputUser(String user){
         this.inputUser = user;
     }
@@ -159,7 +158,6 @@ public class LoginGUI extends JFrame{
     /**
      * connect to DB and search for the data taken from the input into DB
      */
-    /
     public static void main(String[] args){
         LoginGUI login = new LoginGUI();
         user = login.getInputUser();
