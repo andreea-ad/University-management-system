@@ -3,12 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="c5a3249f-e99c-4599-8e81-3f07cf876a07" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../Proiect colectiv - planificare task-uri.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Proiect colectiv - planificare task-uri.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminMenuGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminMenuGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Proiect/LoginGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/LoginGUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Proiect/LoginGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/LoginGUI$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Proiect/LoginGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/LoginGUI$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Proiect/LoginGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/LoginGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ProfessorMenuGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ProfessorMenuGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Proiect/SecretaryMenuGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/SecretaryMenuGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Proiect/StudentMenuGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/StudentMenuGUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LoginGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoginGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ProfessorMenuGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProfessorMenuGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SecretaryMenuGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SecretaryMenuGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StudentMenuGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentMenuGUI.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,11 +24,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AdminMenuGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+            <state relative-caret-position="20">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/LoginGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="180" column="42" selection-start-line="180" selection-start-column="42" selection-end-line="180" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="class#1565:2217" />
+                <element signature="class#2258:2910" />
+                <element signature="e#2958#2959#0" expanded="true" />
+                <element signature="e#3012#3013#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ManagerGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="23" column="68" selection-start-line="21" selection-start-column="12" selection-end-line="23" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -36,8 +69,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -62,10 +95,11 @@
         <option value="$PROJECT_DIR$/src/Subject.java" />
         <option value="$PROJECT_DIR$/src/ManagerGUI.java" />
         <option value="$PROJECT_DIR$/src/StudentMenuGUI.java" />
-        <option value="$PROJECT_DIR$/src/LoginGUI.java" />
         <option value="$PROJECT_DIR$/src/ProfessorMenuGUI.java" />
         <option value="$PROJECT_DIR$/src/SecretaryMenuGUI.java" />
         <option value="$PROJECT_DIR$/src/AdminMenuGUI.java" />
+        <option value="$PROJECT_DIR$/src/Form.form" />
+        <option value="$PROJECT_DIR$/src/LoginGUI.java" />
       </list>
     </option>
   </component>
@@ -83,8 +117,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -106,15 +138,17 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553506492391" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553671413964" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -175,8 +209,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17718121" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18255034" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -185,7 +220,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" weight="0.32577905" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.32577905" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -209,7 +244,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/LoginGUI.java</url>
-          <line>87</line>
+          <line>84</line>
           <properties method="mouseReleased">
             <option name="EMULATED" value="true" />
           </properties>
@@ -217,11 +252,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/LoginGUI.java</url>
-          <line>57</line>
+          <line>54</line>
           <properties method="mouseReleased">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LoginGUI.java</url>
+          <line>68</line>
+          <properties />
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -308,26 +349,6 @@
         <state relative-caret-position="-2313" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/LoginGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2959">
-          <caret line="159" column="7" selection-start-line="159" selection-start-column="7" selection-end-line="159" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ManagerGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="37" lean-forward="true" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ProfessorMenuGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
@@ -361,10 +382,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AdminMenuGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        <state relative-caret-position="20">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ManagerGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="23" column="68" selection-start-line="21" selection-start-column="12" selection-end-line="23" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LoginGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="180" column="42" selection-start-line="180" selection-start-column="42" selection-end-line="180" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="class#1565:2217" />
+            <element signature="class#2258:2910" />
+            <element signature="e#2958#2959#0" expanded="true" />
+            <element signature="e#3012#3013#0" expanded="true" />
           </folding>
         </state>
       </provider>

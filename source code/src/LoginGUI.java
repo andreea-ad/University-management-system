@@ -13,10 +13,7 @@ public class LoginGUI extends JFrame{
     JTextField username;
     JPasswordField password;
     JButton login;
-    public String inputUser;
-    public String inputPass;
     static Connection conn = null;
-    static String user, pass;
     public LoginGUI(){
         frame = new JFrame("Conectare platformă");
         //create input elements
@@ -99,16 +96,14 @@ public class LoginGUI extends JFrame{
 
             }
         });
+
         login.addActionListener(new ActionListener() {
             @Override
-            /**
-             * take input data from textfields after login button pressed
-             */
             public void actionPerformed(ActionEvent e) {
-                setInputUser(username.getText());
-                setInputPass(new String(password.getPassword()));
+                loginActionPerformed();
             }
         });
+
         //add the elements to the frame
         frame.add(lUser);
         frame.add(username);
@@ -129,73 +124,73 @@ public class LoginGUI extends JFrame{
         frame.setVisible(true);
     }
 
-    /**
-     * show error message when the input data was not found in DB
-     */
-    public static void showErrorMessage(){
-        JOptionPane error = new JOptionPane();
-        Object[] options = { "Reincearca", "Anuleaza"};
-        int input = error.showOptionDialog(frame, "Autentificare esuata. Datele introduse sunt gresite.", "Eroare", JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE, null, options, options[0]);
-        if(input == JOptionPane.YES_OPTION){
-            new LoginGUI();
+    public void loginActionPerformed(){
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
+            String sqlAdmin = "select email_address, pass from useradmin where email_address=? and pass=?";
+            String sqlSecretary = "select email_address, pass from usersecretariat where email_address=? and pass=?";
+            String sqlProfessor = "select email_address, pass from userprofesor where email_address=? and pass=?";
+            String sqlStudent = "select email_address, pass from userstudent where email_address=? and pass=?";
+
+            PreparedStatement ps1 = conn.prepareStatement(sqlAdmin);
+            ps1.setString(1, username.getText());
+            ps1.setString(2, password.getText());
+            ResultSet rs1 = ps1.executeQuery();
+
+            PreparedStatement ps2 = conn.prepareStatement(sqlSecretary);
+            ps2.setString(1,username.getText());
+            ps2.setString(2,password.getText());
+            ResultSet rs2 = ps2.executeQuery();
+
+            PreparedStatement ps3 = conn.prepareStatement(sqlProfessor);
+            ps3.setString(1,username.getText());
+            ps3.setString(2,password.getText());
+            ResultSet rs3 = ps3.executeQuery();
+
+            PreparedStatement ps4 = conn.prepareStatement(sqlStudent);
+            ps4.setString(1,username.getText());
+            ps4.setString(2,password.getText());
+            ResultSet rs4 = ps4.executeQuery();
+            if(username.getText().isEmpty() && password.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null,"Introduceti o adresa de email si o parola.","Campuri necompletate",JOptionPane.WARNING_MESSAGE);
+            }else if(username.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null,"Introduceti o adresa de email.","Campuri necompletate",JOptionPane.WARNING_MESSAGE);
+            }else if(password.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null,"Introduceti o parola.","Campuri necompletate",JOptionPane.WARNING_MESSAGE);
+            }else{
+                if(rs1.next()){
+                    JOptionPane.showMessageDialog(null,"Admin matched");
+                    username.setText("");
+                    password.setText("");
+                    //display admin menu
+                }else if(rs2.next()){
+                    JOptionPane.showMessageDialog(null,"Secretary matched");
+                    username.setText("");
+                    password.setText("");
+                    //display secretary menu
+                }else if(rs3.next()) {
+                    JOptionPane.showMessageDialog(null, "Professor matched");
+                    username.setText("");
+                    password.setText("");
+                    //display professor menu
+                }else if(rs4.next()) {
+                    JOptionPane.showMessageDialog(null, "Student matched");
+                    username.setText("");
+                    password.setText("");
+                    //display student menu
+                }else{
+                    JOptionPane.showMessageDialog(null,"Datele introduse nu sunt valide!","Eroare",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            conn.close();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
         }
     }
-    /**
-     * set and get operations for input
-     */
-    public void setInputUser(String user){
-        this.inputUser = user;
-    }
-    public void setInputPass(String pass){
-        this.inputPass = pass;
-    }
-    public String getInputUser(){
-        return inputUser;
-    }
-    public String getInputPass(){
-        return inputPass;
-    }
-    /**
-     * connect to DB and search for the data taken from the input into DB
-     */
+
     public static void main(String[] args){
         LoginGUI login = new LoginGUI();
-        user = login.getInputUser();
-        pass = login.getInputPass();
-        try{
-            ManagerGUI.getInstance().connectToDB();
-            Statement stm = conn.createStatement();
-            ResultSet rSet1 = stm.executeQuery("select email_address, pass from useradmin");
-            ResultSet rSet2 = stm.executeQuery("select email_address, pass from usersecretariat");
-            ResultSet rSet3 = stm.executeQuery("select email_address, pass from userprofesor");
-            ResultSet rSet4 = stm.executeQuery("select email_address, pass from userstudent");
-            rSet1.beforeFirst();
-            rSet1.next();
-            rSet2.beforeFirst();
-            rSet2.next();
-            rSet3.beforeFirst();
-            rSet3.next();
-            rSet4.beforeFirst();
-            rSet4.next();
-            while(rSet1.next()&&rSet2.next()&&rSet3.next()&&rSet4.next()){
-                if(user.equals(rSet1.getString("email_address"))&&pass.equals(rSet1.getString("pass"))){
-                    //afiseaza meniu admin
-                    break;
-                }else if(user.equals(rSet2.getString("email_address"))&&pass.equals(rSet2.getString("pass"))){
-                    //afiseaza meniu secretariat
-                    break;
-                }else if(user.equals(rSet3.getString("email_address"))&&pass.equals(rSet3.getString("pass"))) {
-                    //afiseaza meniu profesor
-                    break;
-                }else if(user.equals(rSet4.getString("email_address"))&&pass.equals(rSet4.getString("pass"))){
-                    //afiseaza meniu student
-                    break;
-                }else
-                    showErrorMessage();
-            }
-        }catch(Exception e){
-            e.printStackTrace();
-        }
 
     }
 }
