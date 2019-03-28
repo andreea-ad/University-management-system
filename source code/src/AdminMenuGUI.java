@@ -70,7 +70,6 @@ public class AdminMenuGUI extends JFrame{
         popupMenu1.add(menu3);
         popupMenu1.add(menu4);
 
-        button1.add(popupMenu1);
         button1.setAlignmentX(RIGHT_ALIGNMENT);
         button1.addMouseListener(new MouseAdapter() {
             @Override
@@ -93,7 +92,6 @@ public class AdminMenuGUI extends JFrame{
         popupMenu2.add(item14);
         popupMenu2.add(item15);
 
-        button2.add(popupMenu2);
         button2.setAlignmentX(RIGHT_ALIGNMENT);
         button2.addMouseListener(new MouseAdapter() {
             @Override
@@ -137,7 +135,6 @@ public class AdminMenuGUI extends JFrame{
         popupMenu3.add(menu7);
         popupMenu3.add(menu8);
 
-        button3.add(popupMenu3);
         button3.setAlignmentX(RIGHT_ALIGNMENT);
         button3.addMouseListener(new MouseAdapter() {
             @Override

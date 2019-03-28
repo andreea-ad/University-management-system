@@ -160,32 +160,40 @@ public class LoginGUI extends JFrame{
                 JOptionPane.showMessageDialog(null,"Introduceti o parola.","Campuri necompletate",JOptionPane.WARNING_MESSAGE);
             }else{
                 if(rs1.next()){
-                    JOptionPane.showMessageDialog(null,"Admin matched");
+                    AdminMenuGUI adminMenu = new AdminMenuGUI();
+                    frame.setVisible(false);
                     username.setText("");
                     password.setText("");
                     //display admin menu
                 }else if(rs2.next()){
-                    JOptionPane.showMessageDialog(null,"Secretary matched");
+                    SecretaryMenuGUI secretaryMenu = new SecretaryMenuGUI();
+                    frame.setVisible(false);
                     username.setText("");
                     password.setText("");
                     //display secretary menu
                 }else if(rs3.next()) {
-                    JOptionPane.showMessageDialog(null, "Professor matched");
+                    ProfessorMenuGUI professorMenu = new ProfessorMenuGUI();
+                    frame.setVisible(false);
                     username.setText("");
                     password.setText("");
                     //display professor menu
                 }else if(rs4.next()) {
-                    JOptionPane.showMessageDialog(null, "Student matched");
+                    StudentMenuGUI studentMenu = new StudentMenuGUI();
+                    frame.setVisible(false);
                     username.setText("");
                     password.setText("");
                     //display student menu
                 }else{
                     JOptionPane.showMessageDialog(null,"Datele introduse nu sunt valide!","Eroare",JOptionPane.ERROR_MESSAGE);
+                    username.setText("");
+                    password.setText("");
                 }
             }
             conn.close();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
+            username.setText("");
+            password.setText("");
         }
     }
 
