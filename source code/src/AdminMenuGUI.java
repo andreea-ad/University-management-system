@@ -11,18 +11,7 @@ public class AdminMenuGUI extends JFrame{
 
         label = new JLabel("Bun venit!");
         label.setBounds(213, 30, 200, 30);
-        Font labelFont = label.getFont();
-        String labelText = label.getText();
-        int stringWidth = label.getFontMetrics(labelFont).stringWidth(labelText);
-        int componentWidth = label.getWidth();
-        // find out how much the font can grow in width.
-        double widthRatio = (double) componentWidth / (double) stringWidth;
-        int newFontSize = (int) (labelFont.getSize() * widthRatio);
-        int componentHeight = label.getHeight();
-        // pick a new font size so it will not be larger than the height of label.
-        int fontSizeToUse = Math.min(newFontSize, componentHeight);
-        // set the label's font size to the newly determined size.
-        label.setFont(new Font(labelFont.getName(), Font.PLAIN, fontSizeToUse));
+        label.setFont(new Font(String.valueOf(label.getFont().getName()),Font.PLAIN,20));
 
         button1 = new JButton("Facultati");
         button2 = new JButton("Profesori");

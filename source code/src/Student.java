@@ -132,6 +132,12 @@ public class Student {
     public void setNumberOfCredits(int numberOfCredits) {
         this.numberOfCredits = numberOfCredits;
     }
+    /*public void increaseYear(){
+        this.year++;
+    }
+    public void increaseCredits(){
+        this.numberOfCredits++;
+    }*/
     public String toString(){
         return "Numar matricol: " + id + " Nume: " + lastName + " Prenume: " + firstName + " CNP: " + cnp + " Data nasterii: " + dob + " Numar de telefon: "
                 + " Adresa: " + address + " Adresa de email: " + emailAddress + " Facultate: " + faculty + " Specializare: " + department + " Ciclu universitar: "

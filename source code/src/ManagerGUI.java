@@ -76,7 +76,9 @@ public class ManagerGUI {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-
+    public static List<Student> getListaStudenti(){
+        return studenti;
+    }
     public static void main(String[] args){
 
     }
