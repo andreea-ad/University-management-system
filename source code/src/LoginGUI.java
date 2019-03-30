@@ -172,13 +172,13 @@ public class LoginGUI extends JFrame{
                     password.setText("");
                     //display secretary menu
                 }else if(rs3.next()) {
-                    ProfessorMenuGUI professorMenu = new ProfessorMenuGUI();
+                    ProfessorMenuGUI professorMenu = new ProfessorMenuGUI(username.getText());
                     frame.setVisible(false);
                     username.setText("");
                     password.setText("");
                     //display professor menu
                 }else if(rs4.next()) {
-                    StudentMenuGUI studentMenu = new StudentMenuGUI();
+                    StudentMenuGUI studentMenu = new StudentMenuGUI(username.getText());
                     frame.setVisible(false);
                     username.setText("");
                     password.setText("");

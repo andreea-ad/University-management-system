@@ -1,19 +1,15 @@
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
-import java.sql.*;
-import java.util.*;
+import java.util.HashSet;
 import java.util.List;
 
-public class VizualizareDatePersonaleGUI extends JFrame {
-    List<Student> stud;
-    String email;
-    JFrame frame;
-    JPanel panel1, panel2;
-    JLabel welcome, labelNrMatricol, labelNume, labelPrenume, labelCnp, labelDataNasterii, labelNrTelefon, labelAdresa, labelAdresaEmail, labelFacultate, labelSpecializare, labelCicluUniversitar, labelAn, labelNrCredite;
-    JTextField nrMatricol, nume, prenume, cnp, dataNasterii, nrTelefon, adresa, adresaEmail, facultate, specializare, cicluUniversitar, an, nrCredite;
-    public VizualizareDatePersonaleGUI(String email){
-        frame = new JFrame("Vizualizare date persoane");
+public class PDViewStudentGUI{
+    private HashSet<Student> stud;
+    private JFrame frame;
+    private JLabel welcome, labelNrMatricol, labelNume, labelPrenume, labelCnp, labelDataNasterii, labelNrTelefon, labelAdresa, labelAdresaEmail, labelFacultate, labelSpecializare, labelCicluUniversitar, labelAn, labelNrCredite;
+    private JTextField nrMatricol, nume, prenume, cnp, dataNasterii, nrTelefon, adresa, adresaEmail, facultate, specializare, cicluUniversitar, an, nrCredite;
+    public PDViewStudentGUI(String email){
+        frame = new JFrame("Vizualizare date personale");
 
         labelNrMatricol = new JLabel("Număr matricol: ");
         labelNume = new JLabel("Nume: ");
@@ -30,7 +26,7 @@ public class VizualizareDatePersonaleGUI extends JFrame {
         labelNrCredite = new JLabel("Număr de credite: ");
 
         ManagerGUI mng = new ManagerGUI();
-        stud = mng.getInstance().getListaStudenti();
+        stud = mng.getInstance().getSetStudenti();
         String welcomeName;
         for(Student s:stud){
             if(s.getEmailAddress().equals(email)) {
@@ -166,7 +162,5 @@ public class VizualizareDatePersonaleGUI extends JFrame {
         frame.setVisible(true);
 
     }
-    public static void main(String[] args){
-        VizualizareDatePersonaleGUI a = new VizualizareDatePersonaleGUI("irina.damian@gmail.com");
-    }
+
 }

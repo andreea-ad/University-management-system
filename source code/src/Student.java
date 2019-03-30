@@ -132,15 +132,23 @@ public class Student {
     public void setNumberOfCredits(int numberOfCredits) {
         this.numberOfCredits = numberOfCredits;
     }
-    /*public void increaseYear(){
-        this.year++;
-    }
-    public void increaseCredits(){
-        this.numberOfCredits++;
-    }*/
+
     public String toString(){
         return "Numar matricol: " + id + " Nume: " + lastName + " Prenume: " + firstName + " CNP: " + cnp + " Data nasterii: " + dob + " Numar de telefon: "
                 + " Adresa: " + address + " Adresa de email: " + emailAddress + " Facultate: " + faculty + " Specializare: " + department + " Ciclu universitar: "
                 + degree + " An de studiu: " + year + " Numar de credite: " + numberOfCredits;
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if (o instanceof Student) {
+            Student other = (Student) o;
+            return cnp.equals(((Student) o).getCnp());
+        }
+        return false;
+    }
+    @Override
+    public int hashCode(){
+        return cnp.hashCode();
     }
 }

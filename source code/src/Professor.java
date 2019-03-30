@@ -112,4 +112,16 @@ public class Professor {
     public String toString(){
         return "Nume: " + lastName + " Prenume: " + firstName + " CNP: " + cnp + " Data nasterii: " + dob + " Numar de telefon: " + phoneNumber + " Adresa: " + address + " Adresa de email: " + emailAddress + " Facultate: " + faculty + " Materie predata: " + teachingSubject + " Data angajarii: " + hireDate + " Salariu: " + salary;
     }
+    @Override
+    public boolean equals(Object o){
+        if (o instanceof Professor) {
+            Professor other = (Professor) o;
+            return cnp.equals(((Professor) o).getCnp());
+        }
+        return false;
+    }
+    @Override
+    public int hashCode(){
+        return cnp.hashCode();
+    }
 }

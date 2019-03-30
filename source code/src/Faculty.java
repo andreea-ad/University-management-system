@@ -20,4 +20,16 @@ public class Faculty {
     public String toString(){
         return " Denumire: " + title;
     }
+    @Override
+    public boolean equals(Object o){
+        if (o instanceof Faculty) {
+            Faculty other = (Faculty) o;
+            return title.equals(((Faculty) o).getTitle());
+        }
+        return false;
+    }
+    @Override
+    public int hashCode(){
+        return title.hashCode();
+    }
 }

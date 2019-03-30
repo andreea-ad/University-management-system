@@ -3,14 +3,14 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class AdminMenuGUI extends JFrame{
-    JFrame frame;
-    JButton button1, button2, button3;
-    JLabel label;
+    private JFrame frame;
+    private JButton button1, button2, button3;
+    private JLabel label;
     public AdminMenuGUI(){
         frame = new JFrame("Administrator");
 
         label = new JLabel("Bun venit!");
-        label.setBounds(213, 30, 200, 30);
+        label.setBounds(230, 30, 200, 30);
         label.setFont(new Font(String.valueOf(label.getFont().getName()),Font.PLAIN,20));
 
         button1 = new JButton("Facultati");
@@ -137,6 +137,7 @@ public class AdminMenuGUI extends JFrame{
         frame.add(button1);
         frame.add(button2);
         frame.add(button3);
+
         frame.setPreferredSize(new Dimension(600, 300));
         frame.setLayout(null);
         frame.pack();
@@ -149,5 +150,6 @@ public class AdminMenuGUI extends JFrame{
         //make visible frame
         frame.setVisible(true);
     }
+
 }
 

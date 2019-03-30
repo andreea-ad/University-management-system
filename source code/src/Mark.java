@@ -69,4 +69,16 @@ public class Mark {
     public String toString(){
         return "Cod: " + id + " Nume student: " + studentLastName + " " + studentFirstName + " Nota: " + mark + " Materie " + subject + " Nume profesor: " + teacherLastName + " " + teacherFirstName + " Data adaugarii: " + dateAdded;
     }
+    @Override
+    public boolean equals(Object o){
+        if (o instanceof Mark) {
+            Mark other = (Mark) o;
+            return subject.equals(((Mark) o).getSubject())&&studentFirstName.equals(((Mark)o).getStudentFirstName())&&studentLastName.equals(((Mark)o).getStudentLastName());
+        }
+        return false;
+    }
+    @Override
+    public int hashCode(){
+        return studentFirstName.hashCode();
+    }
 }

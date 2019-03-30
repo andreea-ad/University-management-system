@@ -1,17 +1,19 @@
 import javax.swing.*;
 import java.sql.*;
+import java.sql.Date;
 import java.util.*;
 
 public class ManagerGUI {
-    static List<Faculty>facultati = new ArrayList<>();
-    static List<Department>specializari = new ArrayList<>();
-    static List<Mark>note = new ArrayList<>();
-    static List<Professor>profesori = new ArrayList<>();
-    static List<Student>studenti = new ArrayList<>();
-    static List<Subject>materii = new ArrayList<>();
-    static Connection conn;
+    private static HashSet<Faculty> facultati = new HashSet<>();
+    private static HashSet<Department> specializari = new HashSet<>();
+    private static HashSet<Mark> note = new HashSet<>();
+    private static HashSet<Professor> profesori = new HashSet<>();
+    private static HashSet<Student> studenti = new HashSet<>();
+    private static HashSet<Subject> materii = new HashSet<>();
+    private static HashSet<MarkByEmail> noteDupaEmail = new HashSet<>();
+    private static Connection conn;
 
-    public static ManagerGUI instance = null;
+    private static ManagerGUI instance = null;
     public static ManagerGUI getInstance(){
         if(instance == null)
             instance = new ManagerGUI();
@@ -29,6 +31,10 @@ public class ManagerGUI {
             String professors = "select * from professors";
             String students = "select * from students";
             String marks = "select * from marks";
+
+            String marksByEmail = "select * from marks, students, subjects where marks.student_first_name=students.first_name and marks.student_last_name=students.last_name and marks.subject=subjects.title";
+
+
 
             PreparedStatement ps = conn.prepareStatement(faculties);
             ResultSet rs = ps.executeQuery();
@@ -72,14 +78,48 @@ public class ManagerGUI {
                 note.add(mark);
             }
 
+            ps = conn.prepareStatement(marksByEmail);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                MarkByEmail mark = new MarkByEmail(rs.getInt("marks.mark"),rs.getString("marks.student_first_name"),rs.getString("marks.student_last_name"),rs.getString("students.email_address"),rs.getString("marks.subject"),rs.getString("marks.teacher_last_name")+" "+rs.getString("marks.teacher_first_name"),rs.getDate("marks.date_added"),rs.getInt("subjects.number_of_credits"));
+                noteDupaEmail.add(mark);
+            }
+
+
+            conn.close();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    public static List<Student> getListaStudenti(){
-        return studenti;
-    }
-    public static void main(String[] args){
 
+    public void addMarkInDB(String prenume, String nume, int nota, String materie, String prenumeProfesor, String numeProfesor, Date dataAdaugarii){
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
+            String insertQuery = "insert into marks(`student_first_name`,`student_last_name`,`mark`,`subject`,`teacher_first_name`,`teacher_last_name`,`date_added`) VALUES (?,?,?,?,?,?,?)";
+            PreparedStatement ps = conn.prepareStatement(insertQuery);
+            ps.setString(1,prenume);
+            ps.setString(2,nume);
+            ps.setInt(3,nota);
+            ps.setString(4,materie);
+            ps.setString(5,prenumeProfesor);
+            ps.setString(6,numeProfesor);
+            ps.setDate(7,dataAdaugarii);
+
+            ps.execute();
+
+            conn.close();
+            System.exit(0);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
+
+    public static HashSet<Student> getSetStudenti(){ return studenti; }
+    public static HashSet<Faculty> getSetFacultati(){ return facultati;}
+    public static HashSet<Professor> getSetProfesori(){ return profesori; }
+    public static HashSet<Mark> getListaNote(){ return note; }
+    public static HashSet<MarkByEmail> getSetNoteDupaEmail(){ return noteDupaEmail; }
+    public static HashSet<Subject> getSetMaterii(){ return materii; }
+
 }

@@ -4,14 +4,14 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class SecretaryMenuGUI extends JFrame{
-	JFrame  frame;
-    JButton button1, button2;
-    JLabel label;
+	private JFrame  frame;
+    private JButton button1, button2;
+    private JLabel label;
     public SecretaryMenuGUI() {
         frame = new JFrame("Secretariat");
 
         label = new JLabel("Bun venit!");
-        label.setBounds(213, 30, 200, 30);
+        label.setBounds(235, 35, 200, 30);
         label.setFont(new Font(String.valueOf(label.getFont().getName()),Font.PLAIN,20));
 
         button1 = new JButton("Studenti");
@@ -58,6 +58,7 @@ public class SecretaryMenuGUI extends JFrame{
         frame.add(label);
         frame.add(button1);
         frame.add(button2);
+
         frame.setPreferredSize(new Dimension(600, 300));
         frame.setLayout(null);
         frame.pack();
@@ -69,5 +70,8 @@ public class SecretaryMenuGUI extends JFrame{
         frame.setResizable(false);
         //make visible frame
         frame.setVisible(true);
+    }
+    public static void main(String[] args){
+        SecretaryMenuGUI window = new SecretaryMenuGUI();
     }
 }

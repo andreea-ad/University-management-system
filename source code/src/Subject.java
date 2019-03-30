@@ -86,4 +86,16 @@ public class Subject {
         return "Cod: " + id + " Denumire: " + title + " Facultate: " + faculty + " Specializare: " + department + " Ciclu universitar: " + degree + " Semestru: " + semester
                 + " Numar de credite: " + numberOfCredits + " Nume profesor: " + teacherLastName + " " + teacherLastName;
     }
+    @Override
+    public boolean equals(Object o){
+        if (o instanceof Subject) {
+            Subject other = (Subject) o;
+            return title.equals(((Subject) o).getTitle());
+        }
+        return false;
+    }
+    @Override
+    public int hashCode(){
+        return title.hashCode();
+    }
 }
