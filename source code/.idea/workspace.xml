@@ -2,37 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5a3249f-e99c-4599-8e81-3f07cf876a07" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/AddMarkProfessorGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MarkByEmail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MarkTableModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PDViewProfessorGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/StudentMarksGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EditMarkProfessorGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ViewMarksProfessorGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/Faculty.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/Faculty.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/LoginGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/LoginGUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Proiect/ManagerGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ManagerGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/Mark.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/Mark.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/Professor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/Professor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Proiect/ProfessorMenuGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ProfessorMenuGUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ProfessorMenuGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ProfessorMenuGUI$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ProfessorMenuGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ProfessorMenuGUI$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Proiect/ProfessorMenuGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ProfessorMenuGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/SecretaryMenuGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/SecretaryMenuGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/Student.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/StudentMenuGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/StudentMenuGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/Subject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/Subject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/VizualizareDatePersonaleGUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminMenuGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminMenuGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Faculty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Faculty.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LoginGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoginGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Proiect/StudentMarksGUI$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Proiect/StudentMarksGUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Proiect/StudentMenuGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/StudentMenuGUI$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AddMarkProfessorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddMarkProfessorGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ManagerGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ManagerGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mark.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mark.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Professor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Professor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ProfessorMenuGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProfessorMenuGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SecretaryMenuGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SecretaryMenuGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StudentMarksGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewMarksStudentGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/StudentMenuGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentMenuGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Subject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Subject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/VizualizareDatePersonaleGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PDViewStudentGUI.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,48 +29,46 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/LoginGUI.java">
+        <entry file="file://$PROJECT_DIR$/src/ManagerGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3320">
-              <caret line="175" column="44" selection-start-line="175" selection-start-column="44" selection-end-line="175" selection-end-column="44" />
+            <state relative-caret-position="1988">
+              <caret line="122" column="40" selection-start-line="122" selection-start-column="40" selection-end-line="122" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AdminMenuGUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3000">
-              <caret line="152" selection-start-line="152" selection-end-line="152" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SecretaryMenuGUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="13" column="31" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2653#2654#0" expanded="true" />
-                <element signature="e#2717#2718#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ViewMarksProfessorGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="498">
+              <caret line="68" selection-start-line="68" selection-end-line="68" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MarkTableModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ProfessorMenuGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
-              <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
+            <state relative-caret-position="348">
+              <caret line="65" column="11" lean-forward="true" selection-start-line="65" selection-start-column="11" selection-end-line="65" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -94,22 +77,36 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/PDViewProfessorGUI.java">
+        <entry file="file://$PROJECT_DIR$/src/MarkByEmail.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+            <state relative-caret-position="857">
+              <caret line="53" column="4" selection-start-line="53" selection-start-column="4" selection-end-line="56" selection-end-column="5" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#985#986#0" expanded="true" />
+                <element signature="e#1015#1016#0" expanded="true" />
+                <element signature="e#1049#1050#0" expanded="true" />
+                <element signature="e#1081#1082#0" expanded="true" />
+                <element signature="e#1192#1193#0" expanded="true" />
+                <element signature="e#1222#1223#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ManagerGUI.java">
+        <entry file="file://$PROJECT_DIR$/src/EditMarkProfessorGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2020">
-              <caret line="104" column="44" selection-start-line="104" selection-start-column="44" selection-end-line="104" selection-end-column="44" />
+            <state relative-caret-position="2331">
+              <caret line="138" column="29" selection-start-line="138" selection-start-column="29" selection-end-line="138" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ViewMarksStudentGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="560">
+              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -148,7 +145,6 @@
         <option value="$PROJECT_DIR$/src/ModelTabelNote.java" />
         <option value="$PROJECT_DIR$/src/MarksByEmail.java" />
         <option value="$PROJECT_DIR$/src/MarkByEmail.java" />
-        <option value="$PROJECT_DIR$/src/MarkTableModel.java" />
         <option value="$PROJECT_DIR$/src/VizualizareNoteStudentGUI.java" />
         <option value="$PROJECT_DIR$/src/StudentMenuGUI.java" />
         <option value="$PROJECT_DIR$/src/SubjectByTeacher.java" />
@@ -160,11 +156,15 @@
         <option value="$PROJECT_DIR$/src/StudentMarksGUI.java" />
         <option value="$PROJECT_DIR$/src/PDViewProfessorGUI.java" />
         <option value="$PROJECT_DIR$/src/PDViewStudentGUI.java" />
-        <option value="$PROJECT_DIR$/src/ManagerGUI.java" />
-        <option value="$PROJECT_DIR$/src/ProfessorMenuGUI.java" />
-        <option value="$PROJECT_DIR$/src/AddMarkProfessorGUI.java" />
         <option value="$PROJECT_DIR$/src/AdminMenuGUI.java" />
         <option value="$PROJECT_DIR$/src/SecretaryMenuGUI.java" />
+        <option value="$PROJECT_DIR$/src/AddMarkProfessorGUI.java" />
+        <option value="$PROJECT_DIR$/src/ManagerGUI.java" />
+        <option value="$PROJECT_DIR$/src/EditMarkProfessorGUI.java" />
+        <option value="$PROJECT_DIR$/src/MarkTableModel.java" />
+        <option value="$PROJECT_DIR$/src/ViewMarksStudentGUI.java" />
+        <option value="$PROJECT_DIR$/src/ProfessorMenuGUI.java" />
+        <option value="$PROJECT_DIR$/src/ViewMarksProfessorGUI.java" />
       </list>
     </option>
   </component>
@@ -203,12 +203,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553946388730" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553970634176" />
     <property name="last_opened_file_path" value="D:/Java WS/myproj" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -216,6 +216,9 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Java WS\Proiect" />
       <recent name="D:\Java WS\Proiect\src" />
@@ -233,7 +236,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.SecretaryMenuGUI">
+  <component name="RunManager" selected="Application.ViewMarksProfessorGUI">
     <configuration name="ManagerGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ManagerGUI" />
       <module name="Proiect" />
@@ -241,8 +244,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SecretaryMenuGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="SecretaryMenuGUI" />
+    <configuration name="ViewMarksProfessorGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="LoginGUI" />
       <module name="Proiect" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -250,11 +253,11 @@
     </configuration>
     <list>
       <item itemvalue="Application.ManagerGUI" />
-      <item itemvalue="Application.SecretaryMenuGUI" />
+      <item itemvalue="Application.ViewMarksProfessorGUI" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.SecretaryMenuGUI" />
+        <item itemvalue="Application.ViewMarksProfessorGUI" />
         <item itemvalue="Application.ManagerGUI" />
       </list>
     </recent_temporary>
@@ -275,7 +278,7 @@
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20402685" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20671141" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -377,16 +380,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MarkTableModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8">
-          <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SubjectByTeacher.java" />
     <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.desktop/java/awt/Container.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -394,21 +387,6 @@
           <caret line="1028" selection-start-line="1028" selection-end-line="1028" />
           <folding>
             <element signature="e#39608#39609#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MarkByEmail.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="53" column="4" selection-start-line="53" selection-start-column="4" selection-end-line="56" selection-end-column="5" />
-          <folding>
-            <element signature="e#985#986#0" expanded="true" />
-            <element signature="e#1015#1016#0" expanded="true" />
-            <element signature="e#1049#1050#0" expanded="true" />
-            <element signature="e#1081#1082#0" expanded="true" />
-            <element signature="e#1192#1193#0" expanded="true" />
-            <element signature="e#1222#1223#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -488,48 +466,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/StudentMarksGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-292">
-          <caret line="26" column="13" lean-forward="true" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AddMarkProfessorGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="99" column="43" selection-start-line="99" selection-start-column="43" selection-end-line="99" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3010#3816#0" expanded="true" />
-            <element signature="e#3815#3816#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LoginGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3320">
-          <caret line="175" column="44" selection-start-line="175" selection-start-column="44" selection-end-line="175" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AdminMenuGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3000">
-          <caret line="152" selection-start-line="152" selection-end-line="152" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SecretaryMenuGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -552,10 +488,82 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/AddMarkProfessorGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-89">
+          <caret line="65" column="8" lean-forward="true" selection-start-line="65" selection-start-column="8" selection-end-line="66" selection-end-column="95" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LoginGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2840">
+          <caret line="144" lean-forward="true" selection-start-line="144" selection-end-line="144" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MarkTableModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MarkByEmail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="857">
+          <caret line="53" column="4" selection-start-line="53" selection-start-column="4" selection-end-line="56" selection-end-column="5" />
+          <folding>
+            <element signature="e#985#986#0" expanded="true" />
+            <element signature="e#1015#1016#0" expanded="true" />
+            <element signature="e#1049#1050#0" expanded="true" />
+            <element signature="e#1081#1082#0" expanded="true" />
+            <element signature="e#1192#1193#0" expanded="true" />
+            <element signature="e#1222#1223#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/EditMarkProfessorGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2331">
+          <caret line="138" column="29" selection-start-line="138" selection-start-column="29" selection-end-line="138" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ViewMarksStudentGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AdminMenuGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="152" selection-start-line="152" selection-end-line="152" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ManagerGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2020">
-          <caret line="104" column="44" selection-start-line="104" selection-start-column="44" selection-end-line="104" selection-end-column="44" />
+        <state relative-caret-position="1988">
+          <caret line="122" column="40" selection-start-line="122" selection-start-column="40" selection-end-line="122" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -564,8 +572,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ProfessorMenuGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
+        <state relative-caret-position="348">
+          <caret line="65" column="11" lean-forward="true" selection-start-line="65" selection-start-column="11" selection-end-line="65" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ViewMarksProfessorGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="498">
+          <caret line="68" selection-start-line="68" selection-end-line="68" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

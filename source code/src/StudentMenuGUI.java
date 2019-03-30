@@ -31,7 +31,7 @@ public class StudentMenuGUI{
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                StudentMarksGUI window = new StudentMarksGUI(email);
+                ViewMarksStudentGUI window = new ViewMarksStudentGUI(email);
                 frame.setVisible(false);
             }
         });

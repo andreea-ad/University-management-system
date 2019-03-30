@@ -23,12 +23,13 @@ public class ProfessorMenuGUI extends JFrame {
 
         final JPopupMenu popupMenu = new JPopupMenu();
         JMenuItem item1 = new JMenuItem("Vizualizare");
-        JMenuItem item2 = new JMenuItem("Adaugare");
+        JMenuItem item2 = new JMenuItem("Adăugare");
         JMenuItem item3 = new JMenuItem("Editare");
         popupMenu.add(item1);
         popupMenu.add(item2);
         popupMenu.add(item3);
 
+        //open view personal data window when clicked
         button1.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -39,6 +40,7 @@ public class ProfessorMenuGUI extends JFrame {
         });
 
         button2.setAlignmentX(RIGHT_ALIGNMENT);
+        //open popup menu when clicked
         button2.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -46,13 +48,29 @@ public class ProfessorMenuGUI extends JFrame {
                 popupMenu.show(e.getComponent(),e.getX(),e.getY());
             }
         });
+
+        item1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ViewMarksProfessorGUI window = new ViewMarksProfessorGUI(email);
+                frame.setVisible(false);
+            }
+        });
+        //open add mark window when clicked
         item2.addActionListener(new ActionListener() {
-                                    @Override
-                                    public void actionPerformed(ActionEvent e) {
-                                        AddMarkProfessorGUI window = new AddMarkProfessorGUI(email);
-                                        frame.setVisible(false);
-                                    }
-                                });
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AddMarkProfessorGUI window = new AddMarkProfessorGUI(email);
+                frame.setVisible(false);
+            }
+        });
+        //open edit mark window when clicked
+        item3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                EditMarkProfessorGUI window = new EditMarkProfessorGUI(email);
+            }
+        });
         frame.add(label);
         frame.add(button1);
         frame.add(button2);

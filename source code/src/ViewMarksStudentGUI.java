@@ -4,24 +4,22 @@ import java.awt.*;
 import java.util.*;
 import java.util.List;
 
-public class StudentMarksGUI {
+public class ViewMarksStudentGUI {
     private HashSet<MarkByEmail> note1;
     private JFrame frame;
     private JTable tabelNote = new JTable();
     private MarkTableModel dataModel = new MarkTableModel();
     private JScrollPane scrollPane = new JScrollPane(tabelNote);
-    StudentMarksGUI(String email) {
+    ViewMarksStudentGUI(String email) {
         frame = new JFrame("Vizualizare note");
 
         ManagerGUI mng = new ManagerGUI();
         note1 = mng.getInstance().getSetNoteDupaEmail();
 
-        HashSet<MarkByEmail> note2 = new HashSet<>();
-        note2.addAll(note1);
 
         int nrNote=0;
 
-        for(MarkByEmail m:note2){
+        for(MarkByEmail m:note1){
             if(m.getEmail().equals(email)){
                 nrNote++;
             }
@@ -29,7 +27,7 @@ public class StudentMarksGUI {
 
         int i=0;
 
-        for(MarkByEmail m:note2){
+        for(MarkByEmail m:note1){
             if(m.getEmail().equals(email)){
                 dataModel.setValueAt(m.getMark(),i,0);
                 dataModel.setValueAt(m.getSubject(),i,1);
@@ -40,7 +38,7 @@ public class StudentMarksGUI {
             }
         }
 
-        String[] coloane = {"NOTĂ","MATERIE","NUMĂR DE CREDITE","PROFESOR","DATA ADĂUGĂRII"};
+        String[] coloane = {"NOTĂ","MATERIE","NUMĂR DE CREDITE","PROFESOR","DATA ULTIMEI MODIFICĂRI"};
         TableModel model = new DefaultTableModel(dataModel.getNote(), coloane)
         {
             public boolean isCellEditable(int row, int column)
@@ -51,13 +49,13 @@ public class StudentMarksGUI {
         tabelNote.setModel(model);
         scrollPane.setViewportView(tabelNote);
         scrollPane = new JScrollPane(tabelNote);
-        scrollPane.setBounds(42,100,700,183);
+        scrollPane.setBounds(42,100,830,183);
 
         frame.add(scrollPane);
 
         frame.setLayout(null);
         //set frame size
-        frame.setPreferredSize(new Dimension(800,620));
+        frame.setPreferredSize(new Dimension(930,620));
         frame.pack();
         //set window in the middle of the screen
         frame.setLocationRelativeTo(null);

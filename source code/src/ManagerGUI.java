@@ -35,7 +35,6 @@ public class ManagerGUI {
             String marksByEmail = "select * from marks, students, subjects where marks.student_first_name=students.first_name and marks.student_last_name=students.last_name and marks.subject=subjects.title";
 
 
-
             PreparedStatement ps = conn.prepareStatement(faculties);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -114,11 +113,30 @@ public class ManagerGUI {
             e.printStackTrace();
         }
     }
+    public void updateMarkFromDB(String prenume, String nume, int nota, String materie, Date dataEditarii) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
+            String updateQuery = "update marks set mark=?, date_added=? where student_first_name=? and student_last_name=? and subject=?";
+            PreparedStatement ps = conn.prepareStatement(updateQuery);
+            ps.setInt(1, nota);
+            ps.setDate(2, dataEditarii);
+            ps.setString(3, prenume);
+            ps.setString(4, nume);
+            ps.setString(5, materie);
+            ps.executeUpdate();
+            ps.close();
+            System.exit(0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 
     public static HashSet<Student> getSetStudenti(){ return studenti; }
     public static HashSet<Faculty> getSetFacultati(){ return facultati;}
     public static HashSet<Professor> getSetProfesori(){ return profesori; }
-    public static HashSet<Mark> getListaNote(){ return note; }
+    public static HashSet<Mark> getSetNote(){ return note; }
     public static HashSet<MarkByEmail> getSetNoteDupaEmail(){ return noteDupaEmail; }
     public static HashSet<Subject> getSetMaterii(){ return materii; }
 

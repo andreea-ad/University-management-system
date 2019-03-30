@@ -1,34 +1,33 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.time.format.DateTimeFormatter;
-import java.util.*;
-import java.time.*;
-import java.text.*;
 import java.sql.Date;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
 
-public class AddMarkProfessorGUI {
+public class EditMarkProfessorGUI {
     private JFrame frame;
     private JLabel labelStudent, labelNota, labelMaterie, labelDataAdaugarii;
     private JTextField dataAdaugarii, materie;
     private SpinnerModel spinnerModel;
     private JSpinner spinner;
     private JComboBox <String> studenti;
-    private JButton adaugare;
+    private JButton editare;
     private HashSet<Student> studentiFacultate;
     private HashSet<Professor> profesori;
-    private String prenumeProfesor="";
-    private String numeProfesor="";
+    private HashSet<Mark> note;
     private LocalDate date;
-    public AddMarkProfessorGUI(String email){
-        frame = new JFrame("Adăugare note");
+    public EditMarkProfessorGUI(String email){
+        frame = new JFrame("Modificare notă");
 
         labelStudent = new JLabel("Student: ");
         labelNota = new JLabel("Notă: ");
         labelMaterie = new JLabel("Materie: ");
-        labelDataAdaugarii = new JLabel("Data adăugării: ");
+        labelDataAdaugarii = new JLabel("Ultima modificare: ");
 
         ManagerGUI mng = new ManagerGUI();
 
@@ -44,8 +43,6 @@ public class AddMarkProfessorGUI {
         for(Professor p:profesori){
             if(p.getEmailAddress().equals(email)){
                 facultateProfesor+=p.getFaculty();
-                prenumeProfesor+=p.getFirstName();
-                numeProfesor+=p.getLastName();
                 materie = new JTextField(p.getTeachingSubject());
                 break;
             }
@@ -61,16 +58,41 @@ public class AddMarkProfessorGUI {
         //create spinner for mark
         spinnerModel = new SpinnerNumberModel(1,1,10,1);
         spinner = new JSpinner(spinnerModel);
+        note = mng.getInstance().getSetNote();
 
-        //set current date for dateAdded
+        //show data on select from combobox
+        studenti.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String studentSelectat = String.valueOf(studenti.getSelectedItem());
+                for(Mark m:note) {
+                    String s = m.getStudentLastName() + " " + m.getStudentFirstName();
+                    if (studentSelectat.equals(s)) {
+                        spinner.setValue(m.getMark());
+                        dataAdaugarii = new JTextField(String.valueOf(m.getDateAdded()));
+                    }
+                }
+            }
+        });
+
+        //default values
+        String studentSelectat = String.valueOf(studenti.getSelectedItem());
+        for(Mark m:note){
+            String s = m.getStudentLastName() + " " + m.getStudentFirstName();
+            if (studentSelectat.equals(s)) {
+                spinner.setValue(m.getMark());
+                dataAdaugarii = new JTextField(String.valueOf(m.getDateAdded()));
+            }
+        }
+
         date = LocalDate.now();
         dataAdaugarii = new JTextField(DateTimeFormatter.ofPattern("yyyy-MM-dd").format(date));
         dataAdaugarii.setEditable(false);
 
-        adaugare = new JButton("Adăugare notă");
+        editare = new JButton("Editare notă");
 
-        //insert mark into DB
-        adaugare.addMouseListener(new MouseAdapter() {
+        //update mark into DB
+        editare.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
@@ -79,9 +101,9 @@ public class AddMarkProfessorGUI {
                 String numeStudent = student[0];
                 int notaStudent = (Integer)spinner.getValue();
                 String materieNota = materie.getText();
-                Date dataAdaugarii = Date.valueOf(date);
-                mng.getInstance().addMarkInDB(prenumeStudent,numeStudent,notaStudent,materieNota,prenumeProfesor,numeProfesor,dataAdaugarii);
-                JOptionPane.showMessageDialog(null,"Nota a fost introdusă în baza de date!");
+                Date dataEditarii = Date.valueOf(date);
+                mng.getInstance().updateMarkFromDB(prenumeStudent,numeStudent,notaStudent,materieNota,dataEditarii);
+                JOptionPane.showMessageDialog(null,"Nota a fost modificată în baza de date!");
                 frame.setVisible(false);
             }
         });
@@ -97,7 +119,7 @@ public class AddMarkProfessorGUI {
         spinner.setBounds(280,140,120,35);
         labelDataAdaugarii.setBounds(150,180,120,35);
         dataAdaugarii.setBounds(280,180,120,35);
-        adaugare.setBounds(215,250,120,30);
+        editare.setBounds(215,250,120,30);
 
         frame.add(labelMaterie);
         frame.add(materie);
@@ -107,7 +129,7 @@ public class AddMarkProfessorGUI {
         frame.add(spinner);
         frame.add(labelDataAdaugarii);
         frame.add(dataAdaugarii);
-        frame.add(adaugare);
+        frame.add(editare);
 
         frame.setLayout(null);
         //set frame size
@@ -121,8 +143,5 @@ public class AddMarkProfessorGUI {
         frame.setResizable(false);
         //make visible frame
         frame.setVisible(true);
-    }
-    public static void main(String[] args){
-        AddMarkProfessorGUI window = new AddMarkProfessorGUI("alexandru.rusu@gmail.com");
     }
 }
