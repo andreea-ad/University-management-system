@@ -10,7 +10,7 @@ public class ViewMarksProfessorGUI {
     private HashSet<MarkByEmail> note;
     private String numeProfesor="";
     private JTable tabelNote = new JTable();
-    private MarkTableModel dataModel = new MarkTableModel();
+    private MarkTableModel dataModel = new MarkTableModel(5);
     private JScrollPane scrollPane = new JScrollPane(tabelNote);
     public ViewMarksProfessorGUI(String email){
         frame = new JFrame("Vizualizare note");
@@ -22,6 +22,7 @@ public class ViewMarksProfessorGUI {
         for(Professor p:profesori){
             if(p.getEmailAddress().equals(email)){
                 numeProfesor+=p.getLastName()+" "+p.getFirstName();
+                break;
             }
         }
 
@@ -48,7 +49,6 @@ public class ViewMarksProfessorGUI {
 
         tabelNote.setModel(model);
         scrollPane.setViewportView(tabelNote);
-        scrollPane = new JScrollPane(tabelNote);
         scrollPane.setBounds(42,100,830,183);
 
         frame.add(scrollPane);

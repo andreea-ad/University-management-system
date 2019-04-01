@@ -18,7 +18,7 @@ public class Faculty {
         this.title = title;
     }
     public String toString(){
-        return " Denumire: " + title;
+        return title;
     }
     @Override
     public boolean equals(Object o){

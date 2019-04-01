@@ -11,6 +11,7 @@ public class ManagerGUI {
     private static HashSet<Student> studenti = new HashSet<>();
     private static HashSet<Subject> materii = new HashSet<>();
     private static HashSet<MarkByEmail> noteDupaEmail = new HashSet<>();
+    private static HashSet<MarkByFaculty> noteDupaFacultate = new HashSet<>();
     private static Connection conn;
 
     private static ManagerGUI instance = null;
@@ -33,7 +34,7 @@ public class ManagerGUI {
             String marks = "select * from marks";
 
             String marksByEmail = "select * from marks, students, subjects where marks.student_first_name=students.first_name and marks.student_last_name=students.last_name and marks.subject=subjects.title";
-
+            String marksByFaculty ="select * from marks, students, subjects where marks.student_first_name=students.first_name and marks.student_last_name=students.last_name";
 
             PreparedStatement ps = conn.prepareStatement(faculties);
             ResultSet rs = ps.executeQuery();
@@ -84,6 +85,12 @@ public class ManagerGUI {
                 noteDupaEmail.add(mark);
             }
 
+            ps = conn.prepareStatement(marksByFaculty);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                MarkByFaculty mark = new MarkByFaculty(rs.getInt("marks.mark"),rs.getString("marks.student_first_name"),rs.getString("marks.student_last_name"),rs.getString("marks.subject"),rs.getString("marks.teacher_last_name")+" "+rs.getString("marks.teacher_first_name"),rs.getString("students.faculty"),rs.getDate("marks.date_added"),rs.getInt("subjects.number_of_credits"));
+                noteDupaFacultate.add(mark);
+            }
 
             conn.close();
         }catch(Exception e){
@@ -139,5 +146,6 @@ public class ManagerGUI {
     public static HashSet<Mark> getSetNote(){ return note; }
     public static HashSet<MarkByEmail> getSetNoteDupaEmail(){ return noteDupaEmail; }
     public static HashSet<Subject> getSetMaterii(){ return materii; }
+    public static HashSet<MarkByFaculty> getSetNoteDupaFacultate(){ return noteDupaFacultate;}
 
 }

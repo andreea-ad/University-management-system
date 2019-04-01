@@ -8,7 +8,7 @@ public class ViewMarksStudentGUI {
     private HashSet<MarkByEmail> note1;
     private JFrame frame;
     private JTable tabelNote = new JTable();
-    private MarkTableModel dataModel = new MarkTableModel();
+    private MarkTableModel dataModel = new MarkTableModel(7);
     private JScrollPane scrollPane = new JScrollPane(tabelNote);
     ViewMarksStudentGUI(String email) {
         frame = new JFrame("Vizualizare note");
