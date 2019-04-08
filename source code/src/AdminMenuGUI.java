@@ -90,7 +90,34 @@ public class AdminMenuGUI extends JFrame{
             }
         });
 
-
+        item12.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ViewTeachersAdminGUI window = new ViewTeachersAdminGUI();
+                frame.setVisible(false);
+            }
+        });
+        item13.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AddTeacherAdminGUI window = new AddTeacherAdminGUI();
+                frame.setVisible(false);
+            }
+        });
+        item14.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                EditTeacherAdminGUI window = new EditTeacherAdminGUI();
+                frame.setVisible(false);
+            }
+        });
+        item15.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                RemoveTeacherAdminGUI window = new RemoveTeacherAdminGUI();
+                frame.setVisible(false);
+            }
+        });
 
         //3rd button
         final JPopupMenu popupMenu3 = new JPopupMenu();

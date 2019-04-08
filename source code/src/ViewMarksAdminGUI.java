@@ -89,8 +89,5 @@ public class ViewMarksAdminGUI {
         //make visible frame
         frame.setVisible(true);
     }
-    public static void main(String[] args){
-        ViewMarksAdminGUI window = new ViewMarksAdminGUI();
-    }
 }
 

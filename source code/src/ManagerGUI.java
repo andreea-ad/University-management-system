@@ -137,7 +137,50 @@ public class ManagerGUI {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    public void addTeacherInDB(String prenume, String nume, String cnp, Date dataNasterii, String numarTelefon, String adresa, String adresaEmail, String facultate, String materiePredata, Date dataAngajarii, int salariu){
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
+            String insertQuery = "insert into professors(`first_name`,`last_name`,`cnp`,`dob`,`phone_number`,`address`,`email_address`,`faculty`,`teaching_subject`, `hire_date`,`salary`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+            PreparedStatement ps = conn.prepareStatement(insertQuery);
+            ps.setString(1,prenume);
+            ps.setString(2,nume);
+            ps.setString(3,cnp);
+            ps.setDate(4,dataNasterii);
+            ps.setString(5,numarTelefon);
+            ps.setString(6,adresa);
+            ps.setString(7,adresaEmail);
+            ps.setString(8,facultate);
+            ps.setString(9,materiePredata);
+            ps.setDate(10,dataAngajarii);
+            ps.setInt(11,salariu);
 
+            ps.execute();
+
+            conn.close();
+            System.exit(0);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    public void removeTeacherFromDB(String prenume, String nume, String email){
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
+            String deleteQuery = "delete from professors where `first_name`=? and `last_name`=?";
+            String deleteUserQuery = "delete from userprofesor where `email_address`=?";
+            PreparedStatement ps1 = conn.prepareStatement(deleteQuery);
+            ps1.setString(1,prenume);
+            ps1.setString(2,nume);
+            ps1.execute();
+            PreparedStatement ps2 = conn.prepareStatement(deleteUserQuery);
+            ps2.setString(1,email);
+            ps2.execute();
+            conn.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     public static HashSet<Student> getSetStudenti(){ return studenti; }
