@@ -160,6 +160,63 @@ public class AdminMenuGUI extends JFrame{
             }
         });
 
+        item16.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ViewStudentsAdminGUI window = new ViewStudentsAdminGUI();
+                frame.setVisible(false);
+            }
+        });
+        item17.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ViewMarksAdminGUI window = new ViewMarksAdminGUI();
+                frame.setVisible(false);
+            }
+        });
+        item18.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AddStudentAdminGUI window = new AddStudentAdminGUI();
+                frame.setVisible(false);
+            }
+        });
+        item19.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AddMarkAdminGUI window = new AddMarkAdminGUI();
+                frame.setVisible(false);
+            }
+        });
+        item20.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                EditStudentAdminGUI window = new EditStudentAdminGUI();
+                frame.setVisible(false);
+            }
+        });
+        item21.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                EditMarkAdminGUI window = new EditMarkAdminGUI();
+                frame.setVisible(false);
+            }
+        });
+        item22.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                RemoveStudentAdminGUI window = new RemoveStudentAdminGUI();
+                frame.setVisible(false);
+            }
+        });
+        item23.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                RemoveMarkAdminGUI window = new RemoveMarkAdminGUI();
+                frame.setVisible(false);
+            }
+        });
+
         frame.add(label);
         frame.add(button1);
         frame.add(button2);

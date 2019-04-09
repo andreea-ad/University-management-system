@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.sql.*;
 import java.sql.Date;
 import java.util.*;
-
+import java.util.concurrent.ThreadLocalRandom;
 public class ManagerGUI {
     private static HashSet<Faculty> facultati = new HashSet<>();
     private static HashSet<Department> specializari = new HashSet<>();
@@ -120,6 +120,23 @@ public class ManagerGUI {
             e.printStackTrace();
         }
     }
+    public void removeMarkFromDB(String prenume, String nume, String materie){
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
+            String deleteQuery = "delete from marks where `student_first_name`=? and `student_last_name`=? and `subject`=?";
+            PreparedStatement ps = conn.prepareStatement(deleteQuery);
+            ps.setString(1,prenume);
+            ps.setString(2,nume);
+            ps.setString(3,materie);
+            ps.execute();
+            conn.close();
+
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
     public void updateMarkFromDB(String prenume, String nume, int nota, String materie, Date dataEditarii) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -142,7 +159,8 @@ public class ManagerGUI {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
-            String insertQuery = "insert into professors(`first_name`,`last_name`,`cnp`,`dob`,`phone_number`,`address`,`email_address`,`faculty`,`teaching_subject`, `hire_date`,`salary`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+            String insertQuery = "insert into professors(`first_name`,`last_name`,`cnp`,`dob`,`phone_number`,`address`,`email_address`,`faculty`,`teaching_subject`, `hire_date`,`salary`) values (?,?,?,?,?,?,?,?,?,?,?)";
+            String insertUserQuery = "insert into userprofesor(`email_address`,`pass`) values (?,?)";
             PreparedStatement ps = conn.prepareStatement(insertQuery);
             ps.setString(1,prenume);
             ps.setString(2,nume);
@@ -155,7 +173,11 @@ public class ManagerGUI {
             ps.setString(9,materiePredata);
             ps.setDate(10,dataAngajarii);
             ps.setInt(11,salariu);
+            ps.execute();
 
+            ps = conn.prepareStatement(insertUserQuery);
+            ps.setString(1,adresaEmail);
+            ps.setString(2,facultate+""+ThreadLocalRandom.current().nextInt(10, 500));
             ps.execute();
 
             conn.close();
@@ -170,25 +192,81 @@ public class ManagerGUI {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
             String deleteQuery = "delete from professors where `first_name`=? and `last_name`=?";
             String deleteUserQuery = "delete from userprofesor where `email_address`=?";
-            PreparedStatement ps1 = conn.prepareStatement(deleteQuery);
-            ps1.setString(1,prenume);
-            ps1.setString(2,nume);
-            ps1.execute();
-            PreparedStatement ps2 = conn.prepareStatement(deleteUserQuery);
-            ps2.setString(1,email);
-            ps2.execute();
+            PreparedStatement ps = conn.prepareStatement(deleteQuery);
+            ps.setString(1,prenume);
+            ps.setString(2,nume);
+            ps.execute();
+            ps = conn.prepareStatement(deleteUserQuery);
+            ps.setString(1,email);
+            ps.execute();
+
             conn.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    public void addStudentInDB(String prenume, String nume, String cnp, Date dataNasterii, String nrTelefon, String adresa, String adresaEmail, String facultate, String specializare, String cicluUniversitar, int anUniversitar, int nrCredite){
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
+            String insertQuery = "insert into students(`first_name`,`last_name`,`cnp`,`dob`,`phone_number`,`address`,`email_address`,`faculty`,`department`, `degree`,`year`,`number_of_credits) values (?,?,?,?,?,?,?,?,?,?,?,?)";
+            String insertUserQuery = "insert into userstudent(`email_address`,`pass`) values (?,?)";
+            PreparedStatement ps = conn.prepareStatement(insertQuery);
+            ps.setString(1,prenume);
+            ps.setString(2,nume);
+            ps.setString(3,cnp);
+            ps.setDate(4,dataNasterii);
+            ps.setString(5,nrTelefon);
+            ps.setString(6,adresa);
+            ps.setString(7,adresaEmail);
+            ps.setString(8,facultate);
+            ps.setString(9,specializare);
+            ps.setString(10,cicluUniversitar);
+            ps.setInt(11,anUniversitar);
+            ps.setInt(12,nrCredite);
+            ps.execute();
+
+            ps = conn.prepareStatement(insertUserQuery);
+            ps.setString(1,adresaEmail);
+            ps.setString(2,facultate+""+ThreadLocalRandom.current().nextInt(10, 500));
+            ps.execute();
+
+            conn.close();
+            System.exit(0);
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void removeStudentFromDB(String nume, String prenume, String email){
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
+            String deleteQuery = "delete from students where `first_name`=? and `last_name`=?";
+            String deleteUserQuery = "delete from userprofesor where `email_address`=?";
+            PreparedStatement ps = conn.prepareStatement(deleteQuery);
+            ps.setString(1,prenume);
+            ps.setString(2,nume);
+            ps.execute();
+            ps = conn.prepareStatement(deleteUserQuery);
+            ps.setString(1,email);
+            ps.execute();
+
+            conn.close();
+            System.exit(0);
         }catch(Exception e){
             e.printStackTrace();
         }
     }
 
     public static HashSet<Student> getSetStudenti(){ return studenti; }
-    public static HashSet<Faculty> getSetFacultati(){ return facultati;}
+    public static HashSet<Faculty> getSetFacultati(){ return facultati; }
     public static HashSet<Professor> getSetProfesori(){ return profesori; }
     public static HashSet<Mark> getSetNote(){ return note; }
     public static HashSet<MarkByEmail> getSetNoteDupaEmail(){ return noteDupaEmail; }
     public static HashSet<Subject> getSetMaterii(){ return materii; }
-    public static HashSet<MarkByFaculty> getSetNoteDupaFacultate(){ return noteDupaFacultate;}
+    public static HashSet<MarkByFaculty> getSetNoteDupaFacultate(){ return noteDupaFacultate; }
+    public static HashSet<Department> getSetSpecializari(){ return specializari; }
 
 }

@@ -80,7 +80,7 @@ public class AddTeacherAdminGUI {
             anNastere.addItem(i);
         }
 
-        for(int i=1950;i<=Calendar.getInstance().get(Calendar.YEAR);i++){
+        for(int i=1980;i<=Calendar.getInstance().get(Calendar.YEAR);i++){
             anAngajare.addItem(i);
         }
 
@@ -144,11 +144,11 @@ public class AddTeacherAdminGUI {
                 adresaEmail.setText("");
                 facultate.setSelectedItem("Facultatea de Chimie și Biologie");
                 materie.setSelectedItem("Biologie moleculară");
-                anAngajare.setSelectedItem(1950);
+                anAngajare.setSelectedItem(1980);
                 lunaAngajare.setSelectedItem("IANUARIE");
                 ziAngajare.removeAllItems();
                 for(int i=1;i<=31;i++){
-                    ziNastere.addItem(i);
+                    ziAngajare.addItem(i);
                 }
                 salariu.setText("");
             }

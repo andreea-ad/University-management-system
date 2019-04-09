@@ -118,8 +118,4 @@ public class RemoveTeacherAdminGUI {
         //make visible frame
         frame.setVisible(true);
     }
-    public static void main(String[] args){
-        RemoveTeacherAdminGUI window = new RemoveTeacherAdminGUI();
-
-    }
 }
