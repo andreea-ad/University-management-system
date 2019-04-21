@@ -99,8 +99,9 @@ public class RemoveTeacherAdminGUI {
         tabelProfesori.setModel(model);
         scrollPane.setViewportView(tabelProfesori);
         scrollPane.setBounds(42, 100, 830, 183);
-        faculties.setBounds(100, 60, 300, 30);
+        faculties.setBounds(100, 60, 300, 25);
         elimina.setBounds(380,320,150,25);
+
         frame.add(scrollPane);
         frame.add(faculties);
         frame.add(elimina);

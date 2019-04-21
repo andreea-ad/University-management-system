@@ -6,24 +6,24 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.HashSet;
 
-public class AddStudentAdminGUI {
+public class AddStudentSecretaryGUI {
     private JFrame frame;
-    private JLabel labelNume, labelPrenume, labelCnp, labelDataNasterii, labelNrTelefon, labelAdresa, labelAdresaEmail, labelFacultate, labelSpecializare, labelCicluUniversitar, labelAn, labelNrCredite;
-    private JTextField nume, prenume, cnp, nrTelefon, adresa, adresaEmail, nrCredite;
-    private JComboBox<String> facultate, specializare, cicluUniversitar, lunaNastere;
+    private String facultateSecretariat = "";
+    private JLabel labelNume, labelPrenume, labelCnp, labelDataNasterii, labelNrTelefon, labelAdresa, labelEmail, labelFacultate, labelSpecializare, labelCicluUniversitar, labelAn, labelNrCredite;
+    private JTextField nume, prenume, cnp, nrTelefon, adresa, adresaEmail, facultate, nrCredite;
+    private JComboBox<String>specializare, cicluUniversitar, lunaNastere;
     private JComboBox<Integer> ziNastere, anNastere;
     private SpinnerModel spinnerModelAn;
     private JSpinner anUniversitar;
     private JButton adaugare, anulare;
-    private HashSet<Faculty> facultati;
     private HashSet<Department> specializari;
     private String[] lunileAnului = {"IANUARIE", "FEBRUARIE", "MARTIE", "APRILIE", "MAI", "IUNIE", "IULIE", "AUGUST", "SEPTEMBRIE", "OCTOMBRIE", "NOIEMBRIE", "DECEMBRIE"};
     private String numeIntrodus, prenumeIntrodus, cnpIntrodus, nrTelefonIntrodus, adresaIntrodusa, emailIntrodus, facultateSelectata, specializareSelectata, cicluUniversitarSelectat, lunaNastereIntrodusa;
     private int ziNastereIntrodusa, anNastereIntrodus, anUniversitarIntrodus, nrCrediteIntroduse;
     private java.sql.Date dataNasteriiSelectata;
-    public AddStudentAdminGUI(){
+    public AddStudentSecretaryGUI(String email){
         frame = new JFrame("Adăugare student");
 
         labelNume = new JLabel("Nume student: ");
@@ -32,7 +32,7 @@ public class AddStudentAdminGUI {
         labelDataNasterii = new JLabel("Data nașterii: ");
         labelNrTelefon = new JLabel("Număr de telefon: ");
         labelAdresa = new JLabel("Adresă: ");
-        labelAdresaEmail = new JLabel("Adresă de email: ");
+        labelEmail = new JLabel("Adresă de email: ");
         labelFacultate = new JLabel("Facultate: ");
         labelSpecializare = new JLabel("Specializare: ");
         labelCicluUniversitar = new JLabel("Ciclu universitar: ");
@@ -45,9 +45,9 @@ public class AddStudentAdminGUI {
         nrTelefon = new JTextField();
         adresa = new JTextField();
         adresaEmail = new JTextField();
-        nrCredite = new JTextField(0);
+        facultate = new JTextField();
+        nrCredite = new JTextField();
 
-        facultate = new JComboBox<>();
         specializare = new JComboBox<>();
         cicluUniversitar = new JComboBox<>();
         anNastere = new JComboBox<>();
@@ -61,20 +61,19 @@ public class AddStudentAdminGUI {
         anulare = new JButton("Anulare");
 
         ManagerGUI mng = new ManagerGUI();
-        facultati = mng.getInstance().getSetFacultati();
+        facultateSecretariat += mng.getFacultateDupaEmail(email);
         specializari = mng.getInstance().getSetSpecializari();
 
-        for(Faculty f:facultati){
-            facultate.addItem(f.toString());
-        }
+        facultate.setText(facultateSecretariat);
+        facultate.setEditable(false);
+        nrCredite.setText("0");
+        nrCredite.setEditable(false);
 
         for(Department d:specializari){
-            if(d.getFaculty().equals("Facultatea de Chimie și Biologie")){
+            if(d.getFaculty().equals(facultateSecretariat)){
                 specializare.addItem(d.getTitle());
-                break;
             }
         }
-
         cicluUniversitar.addItem("LICENȚĂ");
         cicluUniversitar.addItem("MASTER");
         cicluUniversitar.addItem("DOCTORAT");
@@ -90,9 +89,6 @@ public class AddStudentAdminGUI {
         for(int i=1;i<=31;i++){
             ziNastere.addItem(i);
         }
-
-        nrCredite.setEditable(false);
-
         adaugare.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -109,7 +105,7 @@ public class AddStudentAdminGUI {
                 nrTelefonIntrodus = nrTelefon.getText();
                 adresaIntrodusa = adresa.getText();
                 emailIntrodus = adresaEmail.getText();
-                facultateSelectata = String.valueOf(facultate.getSelectedItem());
+                facultateSelectata = facultateSecretariat;
                 specializareSelectata = String.valueOf(specializare.getSelectedItem());
                 cicluUniversitarSelectat = String.valueOf(cicluUniversitar.getSelectedItem());
                 anUniversitarIntrodus = (int)anUniversitar.getValue();
@@ -134,23 +130,10 @@ public class AddStudentAdminGUI {
                 nrTelefon.setText("");
                 adresa.setText("");
                 adresaEmail.setText("");
-                facultate.setSelectedItem("Facultatea de Chimie și Biologie");
-                specializare.setSelectedItem("Biologie");
+                specializare.setSelectedItem("");
                 cicluUniversitar.setSelectedItem("LICENȚĂ");
                 anUniversitar.setValue(1);
                 nrCredite.setText("0");
-            }
-        });
-        facultate.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                facultateSelectata = String.valueOf(facultate.getSelectedItem());
-                specializare.removeAllItems();
-                for(Department d:specializari){
-                    if(d.getFaculty().equals(facultateSelectata)){
-                        specializare.addItem(d.getTitle());
-                    }
-                }
             }
         });
         lunaNastere.addActionListener(new ActionListener() {
@@ -191,6 +174,7 @@ public class AddStudentAdminGUI {
             }
         });
 
+
         labelNume.setBounds(150,50,120,25);
         nume.setBounds(270,50,250,25);
         labelPrenume.setBounds(150,80,120,25);
@@ -205,7 +189,7 @@ public class AddStudentAdminGUI {
         nrTelefon.setBounds(270,170,250,25);
         labelAdresa.setBounds(150,200,120,25);
         adresa.setBounds(270,200,250,25);
-        labelAdresaEmail.setBounds(150,230,120,25);
+        labelEmail.setBounds(150,230,120,25);
         adresaEmail.setBounds(270,230,250,25);
         labelFacultate.setBounds(150,260,120,25);
         facultate.setBounds(270,260,250,25);
@@ -234,7 +218,7 @@ public class AddStudentAdminGUI {
         frame.add(nrTelefon);
         frame.add(labelAdresa);
         frame.add(adresa);
-        frame.add(labelAdresaEmail);
+        frame.add(labelEmail);
         frame.add(adresaEmail);
         frame.add(labelFacultate);
         frame.add(facultate);

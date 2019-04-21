@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Department {
     private int id;
     private String title;
@@ -38,7 +40,21 @@ public class Department {
     public void setDegree(Degree degree) {
         this.degree = degree;
     }
-    public String toString(){
-        return "Cod: " + id + " Denumire: " + title + " Facultate: " + faculty + " Ciclu universitar: " + degree;
+    public String toString(){ return title; }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Department that = (Department) o;
+        return id == that.id &&
+                Objects.equals(title, that.title) &&
+                Objects.equals(faculty, that.faculty) &&
+                degree == that.degree;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, faculty, degree);
     }
 }

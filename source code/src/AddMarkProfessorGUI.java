@@ -89,15 +89,15 @@ public class AddMarkProfessorGUI {
 
         materie.setEditable(false);
 
-        labelMaterie.setBounds(150,40,120,35);
-        materie.setBounds(280,40,120,35);
-        labelStudent.setBounds(150,90,120,35);
-        studenti.setBounds(280,90,120,35);
-        labelNota.setBounds(150,140,120,35);
-        spinner.setBounds(280,140,120,35);
-        labelDataAdaugarii.setBounds(150,180,120,35);
-        dataAdaugarii.setBounds(280,180,120,35);
-        adaugare.setBounds(215,250,120,30);
+        labelMaterie.setBounds(150,40,120,25);
+        materie.setBounds(280,40,120,25);
+        labelStudent.setBounds(150,70,120,25);
+        studenti.setBounds(280,70,120,25);
+        labelNota.setBounds(150,100,120,25);
+        spinner.setBounds(280,100,120,25);
+        labelDataAdaugarii.setBounds(150,130,120,25);
+        dataAdaugarii.setBounds(280,130,120,25);
+        adaugare.setBounds(215,170,120,25);
 
         frame.add(labelMaterie);
         frame.add(materie);
@@ -111,7 +111,7 @@ public class AddMarkProfessorGUI {
 
         frame.setLayout(null);
         //set frame size
-        frame.setPreferredSize(new Dimension(570,380));
+        frame.setPreferredSize(new Dimension(570,300));
         frame.pack();
         //set window in the middle of the screen
         frame.setLocationRelativeTo(null);

@@ -209,7 +209,7 @@ public class ManagerGUI {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
-            String insertQuery = "insert into students(`first_name`,`last_name`,`cnp`,`dob`,`phone_number`,`address`,`email_address`,`faculty`,`department`, `degree`,`year`,`number_of_credits) values (?,?,?,?,?,?,?,?,?,?,?,?)";
+            String insertQuery = "insert into students(`first_name`,`last_name`,`cnp`,`dob`,`phone_number`,`address`,`email_address`,`faculty`,`department`, `degree`,`year`,`number_of_credits`)values(?,?,?,?,?,?,?,?,?,?,?,?)";
             String insertUserQuery = "insert into userstudent(`email_address`,`pass`) values (?,?)";
             PreparedStatement ps = conn.prepareStatement(insertQuery);
             ps.setString(1,prenume);
@@ -254,10 +254,30 @@ public class ManagerGUI {
             ps.execute();
 
             conn.close();
-            System.exit(0);
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+    public String getFacultateDupaEmail(String email){
+        String facultate = "";
+        String emailDB = "";
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
+            String selectQuery = "select * from usersecretariat";
+            PreparedStatement ps = conn.prepareStatement(selectQuery);
+            ResultSet rs = ps.executeQuery(selectQuery);
+            while(rs.next()){
+                emailDB += rs.getString("email_address");
+                if(email.equals(emailDB)) {
+                    facultate += rs.getString("faculty");
+                    break;
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return facultate;
     }
 
     public static HashSet<Student> getSetStudenti(){ return studenti; }

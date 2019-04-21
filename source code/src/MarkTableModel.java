@@ -33,4 +33,9 @@ public class MarkTableModel extends AbstractTableModel {
         fireTableCellUpdated(row, col);
     }
 
+    public void removeTable(){
+        this.note = new Object[NR_NOTE_IMPLICIT][20];
+    }
+
+
 }

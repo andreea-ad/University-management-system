@@ -32,11 +32,28 @@ public class RemoveMarkAdminGUI {
 
         note = mng.getInstance().getSetNoteDupaFacultate();
 
+        int i=0;
+        for(MarkByFaculty m:note){
+            if(m.getFaculty().equals(faculties.getSelectedItem().toString())){
+                dataModel.setValueAt(m.getStudentLastName()+" "+m.getStudentFirstName(), i, 0);
+                dataModel.setValueAt(m.getMark(),i,1);
+                dataModel.setValueAt(m.getSubject(), i, 2);
+                dataModel.setValueAt(m.getCredits(), i, 3);
+                dataModel.setValueAt(m.getProfessor(),i,4);
+                dataModel.setValueAt(m.getFaculty(),i,5);
+                dataModel.setValueAt(m.getDateAdded(), i, 6);
+                i++;
+                if(i>dataModel.getNrNote()){
+                    dataModel.setNrNote(i);
+                }
+            }
+        }
 
         faculties.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int i=0;
+                dataModel.removeTable();
                 if (e.getSource() == faculties) {
                     for(MarkByFaculty m:note){
                         if(m.getFaculty().equals(faculties.getSelectedItem().toString())){
@@ -89,7 +106,7 @@ public class RemoveMarkAdminGUI {
         tabelNote.setModel(model);
         scrollPane.setViewportView(tabelNote);
         scrollPane.setBounds(42,100,830,183);
-        faculties.setBounds(100,60,300,30);
+        faculties.setBounds(100,60,300,25);
 
         eliminare.setBounds(290,320,300,25);
 
