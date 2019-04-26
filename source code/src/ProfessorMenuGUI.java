@@ -10,6 +10,7 @@ public class ProfessorMenuGUI extends JFrame {
     private JLabel label;
     public ProfessorMenuGUI(String email){
         frame = new JFrame("Profesor");
+        frame.getContentPane().setBackground(Color.WHITE);
 
         label = new JLabel("Bun venit!");
         label.setBounds(235, 35, 200, 30);
@@ -19,7 +20,6 @@ public class ProfessorMenuGUI extends JFrame {
         button2 = new JButton("Note");
         button1.setBounds(180,90,200,30);
         button2.setBounds(180,130,200,30);
-
 
         final JPopupMenu popupMenu = new JPopupMenu();
         JMenuItem item1 = new JMenuItem("Vizualizare");

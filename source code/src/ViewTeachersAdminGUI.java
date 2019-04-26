@@ -15,9 +15,9 @@ public class ViewTeachersAdminGUI {
     private TeacherTableModel dataModel = new TeacherTableModel();
     private JTable tabelProfesori = new JTable();
     private JScrollPane scrollPane = new JScrollPane(tabelProfesori);
-
     public ViewTeachersAdminGUI() {
         frame = new JFrame("Vizualizare profesori");
+        frame.getContentPane().setBackground(Color.WHITE);
 
         ManagerGUI mng = new ManagerGUI();
         facultati = mng.getInstance().getSetFacultati();

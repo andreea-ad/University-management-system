@@ -1,5 +1,4 @@
 import javax.swing.table.AbstractTableModel;
-import javax.swing.*;
 
 public class TeacherTableModel extends AbstractTableModel {
     private Object[][] profesori;

@@ -9,6 +9,7 @@ public class StudentMenuGUI{
     JFrame frame;
     public StudentMenuGUI(String email){
         frame = new JFrame("Student");
+        frame.getContentPane().setBackground(Color.WHITE);
 
         label = new JLabel("Bun venit!");
         label.setBounds(235, 35, 200, 30);

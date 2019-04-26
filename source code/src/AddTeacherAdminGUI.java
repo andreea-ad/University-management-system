@@ -19,7 +19,7 @@ public class AddTeacherAdminGUI {
     private JTextField nume, prenume, cnp, nrTelefon, adresa, adresaEmail, salariu;
     private JComboBox<String> facultate, materie, lunaNastere, lunaAngajare;
     private JComboBox<Integer> ziNastere, ziAngajare, anNastere, anAngajare;
-    private JButton adaugare, anulare;
+    private JButton adaugare, anulare, inapoi;
     private HashSet<Faculty> facultati;
     private HashSet<Subject> materii;
     private String[] lunileAnului = {"IANUARIE", "FEBRUARIE", "MARTIE", "APRILIE", "MAI", "IUNIE", "IULIE", "AUGUST", "SEPTEMBRIE", "OCTOMBRIE", "NOIEMBRIE", "DECEMBRIE"};
@@ -29,6 +29,7 @@ public class AddTeacherAdminGUI {
     private int salariuIntrodus;
     public AddTeacherAdminGUI(){
         frame = new JFrame("Adăugare profesor");
+        frame.getContentPane().setBackground(Color.WHITE);
 
         labelNume = new JLabel("Nume profesor: ");
         labelPrenume = new JLabel("Prenume profesor: ");
@@ -63,7 +64,6 @@ public class AddTeacherAdminGUI {
         facultati = mng.getInstance().getSetFacultati();
         materii = mng.getInstance().getSetMaterii();
 
-
         for(Faculty f:facultati){
             facultate.addItem(f.getTitle());
         }
@@ -96,6 +96,7 @@ public class AddTeacherAdminGUI {
 
         adaugare = new JButton("Adăugare profesor");
         anulare = new JButton("Anulare");
+        inapoi = new JButton("Înapoi");
 
         labelNume.setBounds(150,50,120,25);
         nume.setBounds(270,50,250,25);
@@ -123,8 +124,9 @@ public class AddTeacherAdminGUI {
         ziAngajare.setBounds(445,320,40,25);
         labelSalariu.setBounds(150,350,120,25);
         salariu.setBounds(270,350,250,25);
-        adaugare.setBounds(150,410,180,25);
-        anulare.setBounds(340,410,180,25);
+        adaugare.setBounds(110,410,145,25);
+        anulare.setBounds(265,410,145,25);
+        inapoi.setBounds(420,410,145,25);
 
         anulare.addMouseListener(new MouseAdapter() {
             @Override
@@ -181,6 +183,14 @@ public class AddTeacherAdminGUI {
                 salariuIntrodus = Integer.valueOf(salariu.getText());
                 mng.getInstance().addTeacherInDB(prenumeIntrodus,numeIntrodus,cnpIntrodus, dataNasteriiSelectata, nrTelefonIntrodus,adresaIntrodusa,emailIntrodus,facultateSelectata,materieSelectata,dataAngajariiSelectata,salariuIntrodus);
 
+            }
+        });
+        inapoi.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                frame.setVisible(false);
+                AdminMenuGUI window = new AdminMenuGUI();
             }
         });
 
@@ -299,6 +309,7 @@ public class AddTeacherAdminGUI {
         frame.add(salariu);
         frame.add(adaugare);
         frame.add(anulare);
+        frame.add(inapoi);
 
         frame.setLayout(null);
         //set frame size

@@ -2,7 +2,6 @@ import javax.swing.*;
 import javax.swing.table.*;
 import java.awt.*;
 import java.util.*;
-import java.util.List;
 
 public class ViewMarksStudentGUI {
     private HashSet<MarkByEmail> note1;
@@ -12,6 +11,7 @@ public class ViewMarksStudentGUI {
     private JScrollPane scrollPane = new JScrollPane(tabelNote);
     ViewMarksStudentGUI(String email) {
         frame = new JFrame("Vizualizare note");
+        frame.getContentPane().setBackground(Color.WHITE);
 
         ManagerGUI mng = new ManagerGUI();
         note1 = mng.getInstance().getSetNoteDupaEmail();

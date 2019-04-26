@@ -18,6 +18,7 @@ public class RemoveStudentSecretaryGUI {
     private JScrollPane scrollPane = new JScrollPane(tabelStudenti);
     public RemoveStudentSecretaryGUI(String email){
         frame = new JFrame("Eliminare student");
+        frame.getContentPane().setBackground(Color.WHITE);
 
         searchBox = new JTextField();
         cautare = new JButton("Caută student");
@@ -103,9 +104,9 @@ public class RemoveStudentSecretaryGUI {
         tabelStudenti.setModel(model);
         scrollPane.setViewportView(tabelStudenti);
         scrollPane.setBounds(42,100,830,183);
-        searchBox.setBounds(42,70,100,25);
-        cautare.setBounds(145,70,50,25);
-        eliminare.setBounds(230,500,100,25);
+        searchBox.setBounds(42,70,200,25);
+        cautare.setBounds(255,70,150,25);
+        eliminare.setBounds(230,300,100,25);
         frame.add(scrollPane);
         frame.add(searchBox);
         frame.add(cautare);
@@ -113,7 +114,7 @@ public class RemoveStudentSecretaryGUI {
 
         frame.setLayout(null);
         //set frame size
-        frame.setPreferredSize(new Dimension(930,700));
+        frame.setPreferredSize(new Dimension(930,500));
         frame.pack();
         //set window in the middle of the screen
         frame.setLocationRelativeTo(null);

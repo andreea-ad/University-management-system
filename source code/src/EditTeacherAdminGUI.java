@@ -1,7 +1,7 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.*;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
@@ -19,7 +19,7 @@ public class EditTeacherAdminGUI {
     private HashSet<Professor> profesori;
     public EditTeacherAdminGUI(){
         frame = new JFrame("Modificare date profesor");
-
+        frame.getContentPane().setBackground(Color.WHITE);
 
         labelNume = new JLabel("Nume profesor: ");
         labelPrenume = new JLabel("Prenume profesor: ");
@@ -53,11 +53,6 @@ public class EditTeacherAdminGUI {
             faculties.addItem(f);
         }
 
-        /*for(Subject s:materii){
-            if(s.getFaculty().equals("Facultatea de Chimie si Biologie")){
-                subjects.addItem(s.getTitle());
-            }
-        }*/
         for(Professor p:profesori){
             if(p.getFaculty().equals("Facultatea de Chimie si Biologie")){
                 professors.addItem(p.getLastName()+" "+p.getFirstName());
@@ -89,9 +84,6 @@ public class EditTeacherAdminGUI {
                 }
             }
         });
-
-
-
     }
     private String getMonthByNumber(int month){
         switch(month){

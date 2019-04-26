@@ -25,6 +25,7 @@ public class AddStudentAdminGUI {
     private java.sql.Date dataNasteriiSelectata;
     public AddStudentAdminGUI(){
         frame = new JFrame("Adăugare student");
+        frame.getContentPane().setBackground(Color.WHITE);
 
         labelNume = new JLabel("Nume student: ");
         labelPrenume = new JLabel("Prenume student: ");

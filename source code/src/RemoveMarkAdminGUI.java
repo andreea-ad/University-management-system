@@ -20,6 +20,7 @@ public class RemoveMarkAdminGUI {
     private String[] numeStudent;
     public RemoveMarkAdminGUI(){
         frame = new JFrame("Eliminare note");
+        frame.getContentPane().setBackground(Color.WHITE);
 
         ManagerGUI mng = new ManagerGUI();
         facultati = mng.getInstance().getSetFacultati();

@@ -20,6 +20,7 @@ public class RemoveStudentAdminGUI {
     private JScrollPane scrollPane = new JScrollPane(tabelStudenti);
     public RemoveStudentAdminGUI(){
         frame = new JFrame("Eliminare student");
+        frame.getContentPane().setBackground(Color.WHITE);
 
         facultate = new JComboBox<>();
         eliminare = new JButton("Eliminare student");

@@ -8,6 +8,7 @@ public class AdminMenuGUI extends JFrame{
     private JLabel label;
     public AdminMenuGUI(){
         frame = new JFrame("Administrator");
+        frame.getContentPane().setBackground(Color.WHITE);
 
         label = new JLabel("Bun venit!");
         label.setBounds(230, 30, 200, 30);

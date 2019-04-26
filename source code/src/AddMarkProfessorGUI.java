@@ -22,6 +22,7 @@ public class AddMarkProfessorGUI {
     private LocalDate date;
     public AddMarkProfessorGUI(String email){
         frame = new JFrame("Adăugare note");
+        frame.getContentPane().setBackground(Color.WHITE);
 
         labelStudent = new JLabel("Student: ");
         labelNota = new JLabel("Notă: ");

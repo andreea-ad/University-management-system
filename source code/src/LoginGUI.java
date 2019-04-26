@@ -16,6 +16,7 @@ public class LoginGUI extends JFrame{
     static Connection conn = null;
     public LoginGUI(){
         frame = new JFrame("Conectare platformă");
+        frame.getContentPane().setBackground(Color.WHITE);
         //create input elements
         lUser = new JLabel("Utilizator:");
         lPass = new JLabel("Parolă:");

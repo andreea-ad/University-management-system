@@ -26,6 +26,7 @@ public class AddMarkAdminGUI {
 
     public AddMarkAdminGUI(){
         frame = new JFrame("Adăugare notă");
+        frame.getContentPane().setBackground(Color.WHITE);
 
         labelStudent = new JLabel("Student: ");
         labelNota = new JLabel("Notă: ");

@@ -16,6 +16,7 @@ public class ViewMarksAdminGUI {
     private JScrollPane scrollPane = new JScrollPane(tabelNote);
     public ViewMarksAdminGUI(){
         frame = new JFrame("Vizualizare note");
+        frame.getContentPane().setBackground(Color.WHITE);
 
         ManagerGUI mng = new ManagerGUI();
         facultati = mng.getInstance().getSetFacultati();

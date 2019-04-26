@@ -14,6 +14,7 @@ public class ViewMarksProfessorGUI {
     private JScrollPane scrollPane = new JScrollPane(tabelNote);
     public ViewMarksProfessorGUI(String email){
         frame = new JFrame("Vizualizare note");
+        frame.getContentPane().setBackground(Color.WHITE);
 
         ManagerGUI mng = new ManagerGUI();
         profesori = mng.getInstance().getSetProfesori();

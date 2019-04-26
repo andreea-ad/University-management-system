@@ -16,6 +16,7 @@ public class ViewStudentsAdminGUI {
     private JScrollPane scrollPane = new JScrollPane(tabelStudenti);
     public ViewStudentsAdminGUI(){
         frame = new JFrame("Vizualizare studenti");
+        frame.getContentPane().setBackground(Color.WHITE);
 
         ManagerGUI mng = new ManagerGUI();
         facultati = mng.getInstance().getSetFacultati();

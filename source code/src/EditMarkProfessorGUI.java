@@ -16,13 +16,14 @@ public class EditMarkProfessorGUI {
     private SpinnerModel spinnerModel;
     private JSpinner spinner;
     private JComboBox <String> studenti;
-    private JButton editare;
+    private JButton editare, inapoi;
     private HashSet<Student> studentiFacultate;
     private HashSet<Professor> profesori;
     private HashSet<Mark> note;
     private LocalDate date;
     public EditMarkProfessorGUI(String email){
         frame = new JFrame("Modificare notă");
+        frame.getContentPane().setBackground(Color.WHITE);
 
         labelStudent = new JLabel("Student: ");
         labelNota = new JLabel("Notă: ");
@@ -35,7 +36,6 @@ public class EditMarkProfessorGUI {
 
         studentiFacultate = mng.getInstance().getSetStudenti();  //all students
         profesori = mng.getInstance().getSetProfesori();   //all teachers
-
 
         String facultateProfesor="";
 
@@ -90,6 +90,7 @@ public class EditMarkProfessorGUI {
         dataAdaugarii.setEditable(false);
 
         editare = new JButton("Editare notă");
+        inapoi = new JButton("Înapoi");
 
         //update mark into DB
         editare.addMouseListener(new MouseAdapter() {
@@ -107,7 +108,14 @@ public class EditMarkProfessorGUI {
                 frame.setVisible(false);
             }
         });
-
+        inapoi.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                frame.setVisible(false);
+                ProfessorMenuGUI window = new ProfessorMenuGUI(email);
+            }
+        });
 
         materie.setEditable(false);
 
@@ -119,7 +127,8 @@ public class EditMarkProfessorGUI {
         spinner.setBounds(280,100,120,25);
         labelDataAdaugarii.setBounds(150,130,120,25);
         dataAdaugarii.setBounds(280,130,120,25);
-        editare.setBounds(215,170,120,30);
+        editare.setBounds(125,180,145,25);
+        inapoi.setBounds(280,180,145,25);
 
         frame.add(labelMaterie);
         frame.add(materie);
@@ -130,6 +139,7 @@ public class EditMarkProfessorGUI {
         frame.add(labelDataAdaugarii);
         frame.add(dataAdaugarii);
         frame.add(editare);
+        frame.add(inapoi);
 
         frame.setLayout(null);
         //set frame size

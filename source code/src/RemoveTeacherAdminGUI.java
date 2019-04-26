@@ -20,6 +20,7 @@ public class RemoveTeacherAdminGUI {
     private TeacherTableModel dataModel = new TeacherTableModel();
     public RemoveTeacherAdminGUI(){
         frame = new JFrame("Eliminare profesor");
+        frame.getContentPane().setBackground(Color.WHITE);
 
         faculties = new JComboBox<>();
         elimina = new JButton("Elimină profesor");

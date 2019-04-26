@@ -17,6 +17,7 @@ public class ViewStudentsSecretaryGUI {
     private JScrollPane scrollPane = new JScrollPane(tabelStudenti);
     public ViewStudentsSecretaryGUI(String email){
         frame = new JFrame("Vizualizare studenți");
+        frame.getContentPane().setBackground(Color.WHITE);
 
         ManagerGUI mng = new ManagerGUI();
         studenti = mng.getInstance().getSetStudenti();

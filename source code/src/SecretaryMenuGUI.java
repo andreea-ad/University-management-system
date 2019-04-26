@@ -11,6 +11,7 @@ public class SecretaryMenuGUI extends JFrame{
     private JLabel label;
     public SecretaryMenuGUI(String email) {
         frame = new JFrame("Secretariat");
+        frame.getContentPane().setBackground(Color.WHITE);
 
         label = new JLabel("Bun venit!");
         label.setBounds(235, 35, 200, 30);
