@@ -111,7 +111,6 @@ public class RemoveStudentAdminGUI {
                 super.mouseClicked(e);
                 DefaultTableModel model = (DefaultTableModel)tabelStudenti.getModel();
                 int indexRandSelectat = tabelStudenti.getSelectedRow();
-
                 mng.getInstance().removeStudentFromDB(model.getValueAt(indexRandSelectat,0).toString(), model.getValueAt(indexRandSelectat,1).toString(), model.getValueAt(indexRandSelectat,6).toString());
                 model.removeRow(indexRandSelectat);
             }

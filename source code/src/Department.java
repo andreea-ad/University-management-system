@@ -5,6 +5,11 @@ public class Department {
     private String title;
     private String faculty;
     private Degree degree;
+    public Department(String title){
+        setTitle(title);
+        setFaculty(null);
+        setDegree(null);
+    }
     public Department(int id, String title, String faculty, Degree degree){
         setID(id);
         setTitle(title);

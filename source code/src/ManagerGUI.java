@@ -244,7 +244,7 @@ public class ManagerGUI {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
             String deleteQuery = "delete from students where `first_name`=? and `last_name`=?";
-            String deleteUserQuery = "delete from userprofesor where `email_address`=?";
+            String deleteUserQuery = "delete from userstudent where `email_address`=?";
             PreparedStatement ps = conn.prepareStatement(deleteQuery);
             ps.setString(1,prenume);
             ps.setString(2,nume);

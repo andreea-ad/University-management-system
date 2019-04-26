@@ -17,7 +17,7 @@ public class AddStudentSecretaryGUI {
     private JComboBox<Integer> ziNastere, anNastere;
     private SpinnerModel spinnerModelAn;
     private JSpinner anUniversitar;
-    private JButton adaugare, anulare;
+    private JButton adaugare, anulare, inapoi;
     private HashSet<Department> specializari;
     private String[] lunileAnului = {"IANUARIE", "FEBRUARIE", "MARTIE", "APRILIE", "MAI", "IUNIE", "IULIE", "AUGUST", "SEPTEMBRIE", "OCTOMBRIE", "NOIEMBRIE", "DECEMBRIE"};
     private String numeIntrodus, prenumeIntrodus, cnpIntrodus, nrTelefonIntrodus, adresaIntrodusa, emailIntrodus, facultateSelectata, specializareSelectata, cicluUniversitarSelectat, lunaNastereIntrodusa;
@@ -59,6 +59,7 @@ public class AddStudentSecretaryGUI {
 
         adaugare = new JButton("Adăugare student");
         anulare = new JButton("Anulare");
+        inapoi = new JButton("Înapoi");
 
         ManagerGUI mng = new ManagerGUI();
         facultateSecretariat += mng.getFacultateDupaEmail(email);
@@ -134,6 +135,14 @@ public class AddStudentSecretaryGUI {
                 cicluUniversitar.setSelectedItem("LICENȚĂ");
                 anUniversitar.setValue(1);
                 nrCredite.setText("0");
+            }
+        });
+        inapoi.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                frame.setVisible(false);
+                SecretaryMenuGUI window = new SecretaryMenuGUI(email);
             }
         });
         lunaNastere.addActionListener(new ActionListener() {

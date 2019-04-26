@@ -1,6 +1,9 @@
 public class Faculty {
     int id;
     String title;
+    public Faculty(String title){
+        setTitle(title);
+    }
     public Faculty(int id, String title){
         setID(id);
         setTitle(title);

@@ -5,9 +5,7 @@ import java.awt.event.MouseEvent;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.time.*;
-import java.text.*;
 import java.sql.Date;
-import java.util.List;
 
 public class AddMarkProfessorGUI {
     private JFrame frame;
@@ -16,11 +14,11 @@ public class AddMarkProfessorGUI {
     private SpinnerModel spinnerModel;
     private JSpinner spinner;
     private JComboBox <String> studenti;
-    private JButton adaugare;
+    private JButton adaugare, inapoi;
     private HashSet<Student> studentiFacultate;
     private HashSet<Professor> profesori;
-    private String prenumeProfesor="";
-    private String numeProfesor="";
+    private String prenumeProfesor = "";
+    private String numeProfesor = "";
     private LocalDate date;
     public AddMarkProfessorGUI(String email){
         frame = new JFrame("Adăugare note");
@@ -43,9 +41,9 @@ public class AddMarkProfessorGUI {
         //get faculty, first name, last name and set subject of current teacher
         for(Professor p:profesori){
             if(p.getEmailAddress().equals(email)){
-                facultateProfesor+=p.getFaculty();
-                prenumeProfesor+=p.getFirstName();
-                numeProfesor+=p.getLastName();
+                facultateProfesor += p.getFaculty();
+                prenumeProfesor += p.getFirstName();
+                numeProfesor += p.getLastName();
                 materie = new JTextField(p.getTeachingSubject());
                 break;
             }
@@ -68,6 +66,7 @@ public class AddMarkProfessorGUI {
         dataAdaugarii.setEditable(false);
 
         adaugare = new JButton("Adăugare notă");
+        inapoi = new JButton("Înapoi");
 
         //insert mark into DB
         adaugare.addMouseListener(new MouseAdapter() {
@@ -85,19 +84,28 @@ public class AddMarkProfessorGUI {
                 frame.setVisible(false);
             }
         });
-
+        //go back to user menu
+        inapoi.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                frame.setVisible(false);
+                ProfessorMenuGUI window = new ProfessorMenuGUI(email);
+            }
+        });
 
         materie.setEditable(false);
 
-        labelMaterie.setBounds(150,40,120,25);
-        materie.setBounds(280,40,120,25);
-        labelStudent.setBounds(150,70,120,25);
-        studenti.setBounds(280,70,120,25);
-        labelNota.setBounds(150,100,120,25);
-        spinner.setBounds(280,100,120,25);
-        labelDataAdaugarii.setBounds(150,130,120,25);
-        dataAdaugarii.setBounds(280,130,120,25);
-        adaugare.setBounds(215,170,120,25);
+        labelMaterie.setBounds(150,50,120,25);
+        materie.setBounds(280,50,120,25);
+        labelStudent.setBounds(150,80,120,25);
+        studenti.setBounds(280,80,120,25);
+        labelNota.setBounds(150,110,120,25);
+        spinner.setBounds(280,110,120,25);
+        labelDataAdaugarii.setBounds(150,140,120,25);
+        dataAdaugarii.setBounds(280,140,120,25);
+        adaugare.setBounds(150,190,120,25);
+        inapoi.setBounds(280,190,120,25);
 
         frame.add(labelMaterie);
         frame.add(materie);
@@ -108,6 +116,7 @@ public class AddMarkProfessorGUI {
         frame.add(labelDataAdaugarii);
         frame.add(dataAdaugarii);
         frame.add(adaugare);
+        frame.add(inapoi);
 
         frame.setLayout(null);
         //set frame size

@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -7,7 +9,7 @@ public class SecretaryMenuGUI extends JFrame{
 	private JFrame  frame;
     private JButton button1, button2;
     private JLabel label;
-    public SecretaryMenuGUI() {
+    public SecretaryMenuGUI(String email) {
         frame = new JFrame("Secretariat");
 
         label = new JLabel("Bun venit!");
@@ -52,6 +54,62 @@ public class SecretaryMenuGUI extends JFrame{
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 popupMenu2.show(e.getComponent(), e.getX(), e.getY());
+            }
+        });
+        item1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ViewStudentsSecretaryGUI window = new ViewStudentsSecretaryGUI(email);
+                frame.setVisible(false);
+            }
+        });
+        item2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AddStudentSecretaryGUI window = new AddStudentSecretaryGUI(email);
+                frame.setVisible(false);
+            }
+        });
+        item3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                EditStudentSecretaryGUI window = new EditStudentSecretaryGUI(email);
+                frame.setVisible(false);
+            }
+        });
+        item4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                RemoveStudentSecretaryGUI window = new RemoveStudentSecretaryGUI(email);
+                frame.setVisible(false);
+            }
+        });
+        item5.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ViewMarksSecretaryGUI window = new ViewMarksSecretaryGUI(email);
+                frame.setVisible(false);
+            }
+        });
+        item6.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AddMarkSecretaryGUI window = new AddMarkSecretaryGUI(email);
+                frame.setVisible(false);
+            }
+        });
+        item7.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                EditMarkSecretaryGUI window = new EditMarkSecretaryGUI(email);
+                frame.setVisible(false);
+            }
+        });
+        item8.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                RemoveMarkSecretaryGUI window = new RemoveMarkSecretaryGUI(email);
+                frame.setVisible(false);
             }
         });
 

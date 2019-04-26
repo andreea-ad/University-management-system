@@ -21,16 +21,15 @@ public class ViewStudentsAdminGUI {
         facultati = mng.getInstance().getSetFacultati();
 
         faculties = new JComboBox<>();
-
+        faculties.addItem(new Faculty("Toate facultățile"));
         for(Faculty f:facultati){
             faculties.addItem(f);
         }
 
         studenti = mng.getInstance().getSetStudenti();
 
-        int i=0;
+        int i = 0;
         for(Student s:studenti){
-            if(s.getFaculty().equals(faculties.getSelectedItem().toString())){
                 dataModel.setValueAt(s.getLastName(),i,0);
                 dataModel.setValueAt(s.getFirstName(),i,1);
                 dataModel.setValueAt(s.getCnp(),i,2);
@@ -44,15 +43,30 @@ public class ViewStudentsAdminGUI {
                 dataModel.setValueAt(s.getYear(),i,10);
                 dataModel.setValueAt(s.getNumberOfCredits(),i,11);
                 i++;
-            }
         }
         faculties.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int i=0;
-                if(e.getSource()==faculties){
+                int i = 0;
+                dataModel.removeTable();
+                if(e.getSource() == faculties){
                     for(Student s:studenti){
-                        if(s.getFaculty().equals(faculties.getSelectedItem().toString())){
+                        String fac = faculties.getSelectedItem().toString();
+                        if(fac.equals("Toate facultățile")){
+                            dataModel.setValueAt(s.getLastName(),i,0);
+                            dataModel.setValueAt(s.getFirstName(),i,1);
+                            dataModel.setValueAt(s.getCnp(),i,2);
+                            dataModel.setValueAt(s.getDob(),i,3);
+                            dataModel.setValueAt(s.getPhoneNumber(),i,4);
+                            dataModel.setValueAt(s.getAddress(),i,5);
+                            dataModel.setValueAt(s.getEmailAddress(),i,6);
+                            dataModel.setValueAt(s.getFaculty(),i,7);
+                            dataModel.setValueAt(s.getDepartment(),i,8);
+                            dataModel.setValueAt(s.getDegree(),i,9);
+                            dataModel.setValueAt(s.getYear(),i,10);
+                            dataModel.setValueAt(s.getNumberOfCredits(),i,11);
+                            i++;
+                        }else if(s.getFaculty().equals(fac)){
                             dataModel.setValueAt(s.getLastName(),i,0);
                             dataModel.setValueAt(s.getFirstName(),i,1);
                             dataModel.setValueAt(s.getCnp(),i,2);
@@ -93,16 +107,16 @@ public class ViewStudentsAdminGUI {
 
         tabelStudenti.setModel(model);
         scrollPane.setViewportView(tabelStudenti);
-        scrollPane.setBounds(42,100,830,183);
+        scrollPane.setBounds(42,100,1200,294);
 
-        faculties.setBounds(100,60,300,25);
+        faculties.setBounds(42,60,300,25);
 
         frame.add(scrollPane);
         frame.add(faculties);
 
         frame.setLayout(null);
         //set frame size
-        frame.setPreferredSize(new Dimension(930,520));
+        frame.setPreferredSize(new Dimension(1300,512));
         frame.pack();
         //set window in the middle of the screen
         frame.setLocationRelativeTo(null);

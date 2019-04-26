@@ -11,7 +11,6 @@ public class ViewStudentsSecretaryGUI {
     private String facultate = "";
     private HashSet<Department> specializari;
     private HashSet<Student> studenti;
-    private HashSet<Department> specializariFacultate;
     private JComboBox<Department> departments;
     private StudentTableModel dataModel = new StudentTableModel();
     private JTable tabelStudenti = new JTable();
@@ -26,18 +25,15 @@ public class ViewStudentsSecretaryGUI {
         facultate += mng.getFacultateDupaEmail(email);
 
         departments = new JComboBox<>();
-        specializariFacultate = new HashSet<>();
-
+        departments.addItem(new Department("Toate specializările"));
         for(Department d:specializari){
             if(d.getFaculty().equals(facultate)){
                 departments.addItem(d);
             }
         }
-
-
         int i = 0;
         for(Student s:studenti) {
-            if (s.getDepartment().equals(departments.getSelectedItem())) {
+            if(s.getFaculty().equals(facultate)) {
                 dataModel.setValueAt(s.getLastName(), i, 0);
                 dataModel.setValueAt(s.getFirstName(), i, 1);
                 dataModel.setValueAt(s.getCnp(), i, 2);
@@ -57,23 +53,42 @@ public class ViewStudentsSecretaryGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int i = 0;
-                    for(Student s:studenti){
-                        if(s.getDepartment().equals(departments.getSelectedItem().toString())){
-                            dataModel.setValueAt(s.getLastName(),i,0);
-                            dataModel.setValueAt(s.getFirstName(),i,1);
-                            dataModel.setValueAt(s.getCnp(),i,2);
-                            dataModel.setValueAt(s.getDob(),i,3);
-                            dataModel.setValueAt(s.getPhoneNumber(),i,4);
-                            dataModel.setValueAt(s.getAddress(),i,5);
-                            dataModel.setValueAt(s.getEmailAddress(),i,6);
-                            dataModel.setValueAt(s.getFaculty(),i,7);
-                            dataModel.setValueAt(s.getDepartment(),i,8);
-                            dataModel.setValueAt(s.getDegree(),i,9);
-                            dataModel.setValueAt(s.getYear(),i,10);
-                            dataModel.setValueAt(s.getNumberOfCredits(),i,11);
+                dataModel.removeTable();
+                if (e.getSource() == departments) {
+                    for (Student s : studenti) {
+                        String spec = departments.getSelectedItem().toString();
+                        if(spec.equals("Toate specializările") && s.getFaculty().equals(facultate)) {
+                            dataModel.setValueAt(s.getLastName(), i, 0);
+                            dataModel.setValueAt(s.getFirstName(), i, 1);
+                            dataModel.setValueAt(s.getCnp(), i, 2);
+                            dataModel.setValueAt(s.getDob(), i, 3);
+                            dataModel.setValueAt(s.getPhoneNumber(), i, 4);
+                            dataModel.setValueAt(s.getAddress(), i, 5);
+                            dataModel.setValueAt(s.getEmailAddress(), i, 6);
+                            dataModel.setValueAt(s.getFaculty(), i, 7);
+                            dataModel.setValueAt(s.getDepartment(), i, 8);
+                            dataModel.setValueAt(s.getDegree(), i, 9);
+                            dataModel.setValueAt(s.getYear(), i, 10);
+                            dataModel.setValueAt(s.getNumberOfCredits(), i, 11);
+                            i++;
+                        }else if (s.getDepartment().equals(spec)) {
+                            dataModel.setValueAt(s.getLastName(), i, 0);
+                            dataModel.setValueAt(s.getFirstName(), i, 1);
+                            dataModel.setValueAt(s.getCnp(), i, 2);
+                            dataModel.setValueAt(s.getDob(), i, 3);
+                            dataModel.setValueAt(s.getPhoneNumber(), i, 4);
+                            dataModel.setValueAt(s.getAddress(), i, 5);
+                            dataModel.setValueAt(s.getEmailAddress(), i, 6);
+                            dataModel.setValueAt(s.getFaculty(), i, 7);
+                            dataModel.setValueAt(s.getDepartment(), i, 8);
+                            dataModel.setValueAt(s.getDegree(), i, 9);
+                            dataModel.setValueAt(s.getYear(), i, 10);
+                            dataModel.setValueAt(s.getNumberOfCredits(), i, 11);
                             i++;
                         }
+                    }
                 }
+
                 String[] coloane = {"NUME","PRENUME","CNP","DATA NAȘTERII","NUMĂR DE TELEFON","ADRESĂ","ADRESĂ DE EMAIL","FACULTATE","SPECIALIZARE","CICLU UNIVERSITAR","AN UNIVERSITAR","NUMĂR DE CREDITE"};
                 TableModel model = new DefaultTableModel(dataModel.getStudenti(), coloane)
                 {
@@ -98,14 +113,16 @@ public class ViewStudentsSecretaryGUI {
 
         tabelStudenti.setModel(model);
         scrollPane.setViewportView(tabelStudenti);
-        scrollPane.setBounds(42,100,830,183);
-        departments.setBounds(42,60,200,25);
+        scrollPane.setBounds(42,100,1200,294);
+
+        departments.setBounds(42,60,300,25);
+
         frame.add(scrollPane);
         frame.add(departments);
 
         frame.setLayout(null);
         //set frame size
-        frame.setPreferredSize(new Dimension(930,520));
+        frame.setPreferredSize(new Dimension(1300,512));
         frame.pack();
         //set window in the middle of the screen
         frame.setLocationRelativeTo(null);
@@ -115,8 +132,5 @@ public class ViewStudentsSecretaryGUI {
         frame.setResizable(false);
         //make visible frame
         frame.setVisible(true);
-    }
-    public static void main(String[] args){
-        ViewStudentsSecretaryGUI window = new ViewStudentsSecretaryGUI("litere@gmail.com");
     }
 }

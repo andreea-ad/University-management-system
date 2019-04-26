@@ -16,7 +16,7 @@ public class AddStudentAdminGUI {
     private JComboBox<Integer> ziNastere, anNastere;
     private SpinnerModel spinnerModelAn;
     private JSpinner anUniversitar;
-    private JButton adaugare, anulare;
+    private JButton adaugare, anulare, inapoi;
     private HashSet<Faculty> facultati;
     private HashSet<Department> specializari;
     private String[] lunileAnului = {"IANUARIE", "FEBRUARIE", "MARTIE", "APRILIE", "MAI", "IUNIE", "IULIE", "AUGUST", "SEPTEMBRIE", "OCTOMBRIE", "NOIEMBRIE", "DECEMBRIE"};
@@ -59,6 +59,7 @@ public class AddStudentAdminGUI {
 
         adaugare = new JButton("Adăugare student");
         anulare = new JButton("Anulare");
+        inapoi = new JButton("Înapoi");
 
         ManagerGUI mng = new ManagerGUI();
         facultati = mng.getInstance().getSetFacultati();
@@ -141,6 +142,14 @@ public class AddStudentAdminGUI {
                 nrCredite.setText("0");
             }
         });
+        inapoi.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                frame.setVisible(false);
+                AdminMenuGUI window = new AdminMenuGUI();
+            }
+        });
         facultate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -217,8 +226,9 @@ public class AddStudentAdminGUI {
         anUniversitar.setBounds(270,350,250,25);
         labelNrCredite.setBounds(150,380,120,25);
         nrCredite.setBounds(270,380,250,25);
-        adaugare.setBounds(150,450,180,25);
-        anulare.setBounds(340,450,180,25);
+        adaugare.setBounds(110,450,145,25);
+        anulare.setBounds(260,450,145,25);
+        inapoi.setBounds(410,450,145,25);
 
         frame.add(labelNume);
         frame.add(nume);
@@ -248,6 +258,7 @@ public class AddStudentAdminGUI {
         frame.add(nrCredite);
         frame.add(adaugare);
         frame.add(anulare);
+        frame.add(inapoi);
 
         frame.setLayout(null);
         //set frame size

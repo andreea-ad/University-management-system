@@ -3,7 +3,7 @@ import javax.swing.table.AbstractTableModel;
 public class StudentTableModel extends AbstractTableModel {
     private Object[][] studenti;
     private int nrStudenti;
-    private final int NR_STUDENTI_IMPLICIT = 20;
+    private final int NR_STUDENTI_IMPLICIT = 50;
     public StudentTableModel(){
         if(nrStudenti==0)
             studenti = new Object[NR_STUDENTI_IMPLICIT][12];

@@ -15,7 +15,7 @@ public class AddMarkAdminGUI {
     private JTextField numeStudent, prenumeStudent, numeProfesor, prenumeProfesor;
     private JComboBox<Faculty> facultate;
     private JComboBox<String> student, materie;
-    private JButton adaugare, anulare;
+    private JButton adaugare, anulare, inapoi;
     private JSpinner spinner;
     private SpinnerModel spinnerModel;
     private String numeStudentSelectat, prenumeStudentSelectat, materieSelectata, numeProfesorSelectat, prenumeProfesorSelectat, facultateSelectata;
@@ -42,6 +42,7 @@ public class AddMarkAdminGUI {
 
         adaugare = new JButton("Adăugare notă");
         anulare = new JButton("Anulare");
+        inapoi = new JButton("Înapoi");
 
         numeStudent = new JTextField();
         prenumeStudent = new JTextField();
@@ -141,6 +142,14 @@ public class AddMarkAdminGUI {
                 student.removeAllItems();
             }
         });
+        inapoi.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                frame.setVisible(false);
+                AdminMenuGUI window = new AdminMenuGUI();
+            }
+        });
 
         labelFacultate.setBounds(150,60,120,25);
         facultate.setBounds(220,60,310,25);
@@ -155,8 +164,9 @@ public class AddMarkAdminGUI {
         labelProfesor.setBounds(150,210,120,25);
         numeProfesor.setBounds(220,210,150,25);
         prenumeProfesor.setBounds(380,210,150,25);
-        adaugare.setBounds(175,250,150,25);
-        anulare.setBounds(360,250,150,25);
+        adaugare.setBounds(130,265,130,25);
+        anulare.setBounds(275,265,130,25);
+        inapoi.setBounds(420,265,130,25);
 
         frame.add(labelFacultate);
         frame.add(facultate);
@@ -173,6 +183,7 @@ public class AddMarkAdminGUI {
         frame.add(prenumeProfesor);
         frame.add(adaugare);
         frame.add(anulare);
+        frame.add(inapoi);
 
 
         frame.setLayout(null);
@@ -187,7 +198,6 @@ public class AddMarkAdminGUI {
         frame.setResizable(false);
         //make visible frame
         frame.setVisible(true);
-
 
     }
 }

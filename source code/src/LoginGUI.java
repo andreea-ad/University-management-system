@@ -153,11 +153,11 @@ public class LoginGUI extends JFrame{
             ps4.setString(2,password.getText());
             ResultSet rs4 = ps4.executeQuery();
             if(username.getText().isEmpty() && password.getText().isEmpty()){
-                JOptionPane.showMessageDialog(null,"Introduceti o adresa de email si o parola.","Campuri necompletate",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Introduceți o adresă de email și o parolă","Câmpuri incomplete",JOptionPane.WARNING_MESSAGE);
             }else if(username.getText().isEmpty()){
-                JOptionPane.showMessageDialog(null,"Introduceti o adresa de email.","Campuri necompletate",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Introduceți o adresă de email","Câmpuri incomplete",JOptionPane.WARNING_MESSAGE);
             }else if(password.getText().isEmpty()){
-                JOptionPane.showMessageDialog(null,"Introduceti o parola.","Campuri necompletate",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Introduceți o parolă","Câmpuri incomplete",JOptionPane.WARNING_MESSAGE);
             }else{
                 if(rs1.next()){
                     AdminMenuGUI adminMenu = new AdminMenuGUI();
@@ -166,7 +166,7 @@ public class LoginGUI extends JFrame{
                     password.setText("");
                     //display admin menu
                 }else if(rs2.next()){
-                    SecretaryMenuGUI secretaryMenu = new SecretaryMenuGUI();
+                    SecretaryMenuGUI secretaryMenu = new SecretaryMenuGUI(username.getText());
                     frame.setVisible(false);
                     username.setText("");
                     password.setText("");
