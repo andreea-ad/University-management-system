@@ -4,42 +4,30 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class StudentMenuGUI{
-    JButton button1, button2;
-    JLabel label;
-    JFrame frame;
+    private JFrame frame;
+    private JButton date, note, inapoi;
+    private JLabel label;
     public StudentMenuGUI(String email){
+        /*
+        ====================
+        initialize variables
+        ====================
+        */
         frame = new JFrame("Student");
-        frame.getContentPane().setBackground(Color.WHITE);
-
         label = new JLabel("Bun venit!");
-        label.setBounds(235, 35, 200, 30);
-        label.setFont(new Font(String.valueOf(label.getFont().getName()),Font.PLAIN,20));
-
-        button1 = new JButton("Vizualizare date personale");
-        button2 = new JButton("Vizualizare note");
-        button1.setBounds(180,90,200,30);
-        button2.setBounds(180,130,200,30);
-
-        button1.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                PDViewStudentGUI window = new PDViewStudentGUI(email);
-                frame.setVisible(false);
-            }
-        });
-        button2.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                ViewMarksStudentGUI window = new ViewMarksStudentGUI(email);
-                frame.setVisible(false);
-            }
-        });
-
+        date = new JButton("Vizualizare date personale");
+        note = new JButton("Vizualizare note");
+        inapoi = new JButton("Înapoi");
         frame.add(label);
-        frame.add(button1);
-        frame.add(button2);
+        frame.add(date);
+        frame.add(note);
+        frame.add(inapoi);
+        frame.getContentPane().setBackground(Color.WHITE);
+        label.setFont(new Font(String.valueOf(label.getFont().getName()),Font.PLAIN,20));
+        label.setBounds(235, 35, 200, 30);
+        date.setBounds(180,90,200,30);
+        note.setBounds(180,130,200,30);
+        inapoi.setBounds(180,170,200,30);
         frame.setPreferredSize(new Dimension(600,300));
         frame.setLayout(null);
         frame.pack();
@@ -49,7 +37,35 @@ public class StudentMenuGUI{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //block resize operation
         frame.setResizable(false);
-        //make visible frame
+        //set frame visible
         frame.setVisible(true);
+        /*
+        ==============
+        define actions
+        ==============
+        */
+        date.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                PDViewStudentGUI window = new PDViewStudentGUI(email);
+                frame.setVisible(false);
+            }
+        });
+        note.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                ViewMarksStudentGUI window = new ViewMarksStudentGUI(email);
+                frame.setVisible(false);
+            }
+        });
+        inapoi.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                LoginGUI window = new LoginGUI();
+            }
+        });
     }
 }

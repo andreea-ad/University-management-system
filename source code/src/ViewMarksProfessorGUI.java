@@ -2,6 +2,8 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.HashSet;
 
 public class ViewMarksProfessorGUI {
@@ -12,22 +14,28 @@ public class ViewMarksProfessorGUI {
     private JTable tabelNote = new JTable();
     private MarkTableModel dataModel = new MarkTableModel(5);
     private JScrollPane scrollPane = new JScrollPane(tabelNote);
+    private JButton inapoi;
     public ViewMarksProfessorGUI(String email){
+        /*
+        ====================
+        initialize variables
+        ====================
+        */
         frame = new JFrame("Vizualizare note");
-        frame.getContentPane().setBackground(Color.WHITE);
+        inapoi = new JButton("Înapoi");
 
         ManagerGUI mng = new ManagerGUI();
         profesori = mng.getInstance().getSetProfesori();
         note = mng.getInstance().getSetNoteDupaEmail();
-
+        int i = 0;
+        //get teacher's full name
         for(Professor p:profesori){
             if(p.getEmailAddress().equals(email)){
                 numeProfesor+=p.getLastName()+" "+p.getFirstName();
                 break;
             }
         }
-
-        int i=0;
+        //add marks given by the logged teacher into table
         for(MarkByEmail m:note){
             if(m.getProfessor().equals(numeProfesor)) {
                 dataModel.setValueAt(m.getStudentLastName() + " " + m.getStudentFirstName(), i, 0);
@@ -38,25 +46,23 @@ public class ViewMarksProfessorGUI {
                 i++;
             }
         }
-
-        String[] coloane ={"STUDENT", "MATERIE", "NUMĂR DE CREDITE", "NOTĂ", "DATA ULTIMEI MODIFICĂRI"};
-        TableModel model = new DefaultTableModel(dataModel.getNote(), coloane)
-        {
-            public boolean isCellEditable(int row, int column)
-            {
-                return false;//This causes all cells to be not editable
+        String[] coloane = {"STUDENT", "MATERIE", "NUMĂR DE CREDITE", "NOTĂ", "DATA ULTIMEI MODIFICĂRI"};
+        TableModel model = new DefaultTableModel(dataModel.getNote(), coloane) {
+            public boolean isCellEditable(int row, int column){
+                //set cells uneditable
+                return false;
             }
         };
-
+        frame.add(scrollPane);
+        frame.add(inapoi);
+        frame.getContentPane().setBackground(Color.WHITE);
         tabelNote.setModel(model);
         scrollPane.setViewportView(tabelNote);
-        scrollPane.setBounds(42,100,830,183);
-
-        frame.add(scrollPane);
-
+        scrollPane.setBounds(42,110,1100,183);
+        inapoi.setBounds(510,320,145,25);
         frame.setLayout(null);
         //set frame size
-        frame.setPreferredSize(new Dimension(930,620));
+        frame.setPreferredSize(new Dimension(1200,450));
         frame.pack();
         //set window in the middle of the screen
         frame.setLocationRelativeTo(null);
@@ -64,8 +70,21 @@ public class ViewMarksProfessorGUI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //block resize operation
         frame.setResizable(false);
-        //make visible frame
+        //set frame visible
         frame.setVisible(true);
+        /*
+        ==============
+        define actions
+        ==============
+        */
+        //go back to user menu
+        inapoi.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                frame.setVisible(false);
+                ProfessorMenuGUI window = new ProfessorMenuGUI(email);
+            }
+        });
     }
-
 }

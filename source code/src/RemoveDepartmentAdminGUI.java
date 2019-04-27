@@ -1,0 +1,2 @@
+public class RemoveDepartmentAdminGUI {
+}

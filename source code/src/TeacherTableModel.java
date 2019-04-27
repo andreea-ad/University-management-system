@@ -3,7 +3,7 @@ import javax.swing.table.AbstractTableModel;
 public class TeacherTableModel extends AbstractTableModel {
     private Object[][] profesori;
     private int nrProfesori;
-    private final int NR_PROFESORI_IMPLICIT = 10;
+    private final int NR_PROFESORI_IMPLICIT = 50;
     public TeacherTableModel(){
         if(nrProfesori==0)
             profesori = new Object[NR_PROFESORI_IMPLICIT][11];
@@ -31,5 +31,7 @@ public class TeacherTableModel extends AbstractTableModel {
         profesori[row][col] = value;
         fireTableCellUpdated(row, col);
     }
-
+    public void removeTable(){
+        this.profesori = new Object[NR_PROFESORI_IMPLICIT][11];
+    }
 }

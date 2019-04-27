@@ -8,6 +8,9 @@ public class Subject {
     private int numberOfCredits;
     private String teacherFirstName;
     private String teacherLastName;
+    public Subject(String title){
+        setTitle(title);
+    }
     public Subject(int id, String title, String faculty, String department, Degree degree, int semester, int credits, String teacherFirstName, String teacherLastName){
         setID(id);
         setTitle(title);
@@ -83,8 +86,7 @@ public class Subject {
     }
 
     public String toString(){
-        return "Cod: " + id + " Denumire: " + title + " Facultate: " + faculty + " Specializare: " + department + " Ciclu universitar: " + degree + " Semestru: " + semester
-                + " Numar de credite: " + numberOfCredits + " Nume profesor: " + teacherLastName + " " + teacherLastName;
+        return title;
     }
     @Override
     public boolean equals(Object o){

@@ -7,11 +7,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.*;
-import java.sql.*;
 
 public class RemoveTeacherAdminGUI {
     private JFrame frame;
-    private JButton elimina;
+    private JButton elimina, inapoi;
     private HashSet<Faculty> facultati;
     private HashSet<Professor> profesori;
     private JComboBox<Faculty> faculties;
@@ -74,7 +73,8 @@ public class RemoveTeacherAdminGUI {
                 String[] coloane = {"NUME", "PRENUME", "CNP", "DATA NAȘTERII", "NUMĂR DE TELEFON", "ADRESĂ", "ADRESĂ DE EMAIL", "FACULTATE", "MATERIE PREDATĂ", "DATA ANGAJĂRII", "SALARIU"};
                 TableModel model = new DefaultTableModel(dataModel.getProfesori(), coloane) {
                     public boolean isCellEditable(int row, int column) {
-                        return false;//This causes all cells to be not editable
+                        //set cells uneditable
+                        return false;
                     }
                 };
                 tabelProfesori.setModel(model);
@@ -83,7 +83,8 @@ public class RemoveTeacherAdminGUI {
         String[] coloane = {"NUME", "PRENUME", "CNP", "DATA NAȘTERII", "NUMĂR DE TELEFON", "ADRESĂ", "ADRESĂ DE EMAIL", "FACULTATE", "MATERIE PREDATĂ", "DATA ANGAJĂRII", "SALARIU"};
         TableModel model = new DefaultTableModel(dataModel.getProfesori(), coloane) {
             public boolean isCellEditable(int row, int column) {
-                return false;//This causes all cells to be not editable
+                //set cells uneditable
+                return false;
             }
         };
 

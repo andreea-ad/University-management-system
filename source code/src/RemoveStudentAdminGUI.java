@@ -11,10 +11,9 @@ import java.util.*;
 public class RemoveStudentAdminGUI {
     private JFrame frame;
     private JComboBox<String> facultate;
-    private JButton eliminare;
+    private JButton eliminare, inapoi;
     private HashSet<Faculty> facultati;
     private HashSet<Student> studenti;
-    private String facultateSelectata;
     private StudentTableModel dataModel = new StudentTableModel();
     private JTable tabelStudenti = new JTable();
     private JScrollPane scrollPane = new JScrollPane(tabelStudenti);
@@ -24,6 +23,7 @@ public class RemoveStudentAdminGUI {
 
         facultate = new JComboBox<>();
         eliminare = new JButton("Eliminare student");
+        inapoi = new JButton("Înapoi");
 
         ManagerGUI mng = new ManagerGUI();
         facultati = mng.getInstance().getSetFacultati();
@@ -33,11 +33,9 @@ public class RemoveStudentAdminGUI {
             facultate.addItem(f.toString());
         }
 
-        facultateSelectata = String.valueOf(facultate.getSelectedItem());
-
-        int i=0;
+        int i = 0;
         for(Student s:studenti){
-            if(s.getFaculty().equals(facultateSelectata)){
+            if(s.getFaculty().equals(facultate.getSelectedItem())){
                 dataModel.setValueAt(s.getLastName(), i, 0);
                 dataModel.setValueAt(s.getFirstName(), i, 1);
                 dataModel.setValueAt(s.getCnp(), i, 2);
@@ -57,11 +55,11 @@ public class RemoveStudentAdminGUI {
         facultate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int i=0;
+                int i = 0;
                 dataModel.removeTable();
                 if (e.getSource() == facultate) {
                     for(Student s:studenti) {
-                        if (s.getFaculty().equals(facultateSelectata)) {
+                        if (s.getFaculty().equals(facultate.getSelectedItem())) {
                             dataModel.setValueAt(s.getLastName(), i, 0);
                             dataModel.setValueAt(s.getFirstName(), i, 1);
                             dataModel.setValueAt(s.getCnp(), i, 2);
@@ -79,11 +77,10 @@ public class RemoveStudentAdminGUI {
                     }
                 }
                 String[] coloane ={"NUME", "PRENUME", "CNP", "DATA NAȘTERII", "NUMĂR DE TELEFON", "ADRESĂ", "ADRESĂ DE EMAIL", "FACULTATE", "SPECIALIZARE", "CICLU UNIVERSITAR", "AN", "NUMĂR DE CREDITE"};
-                TableModel model = new DefaultTableModel(dataModel.getStudenti(), coloane)
-                {
-                    public boolean isCellEditable(int row, int column)
-                    {
-                        return false;//This causes all cells to be not editable
+                TableModel model = new DefaultTableModel(dataModel.getStudenti(), coloane) {
+                    public boolean isCellEditable(int row, int column) {
+                        //set cells uneditable
+                        return false;
                     }
                 };
                 tabelStudenti.setModel(model);
@@ -91,20 +88,19 @@ public class RemoveStudentAdminGUI {
         });
 
         String[] coloane ={"NUME", "PRENUME", "CNP", "DATA NAȘTERII", "NUMĂR DE TELEFON", "ADRESĂ", "ADRESĂ DE EMAIL", "FACULTATE", "SPECIALIZARE", "CICLU UNIVERSITAR", "AN", "NUMĂR DE CREDITE"};
-        TableModel model = new DefaultTableModel(dataModel.getStudenti(), coloane)
-        {
-            public boolean isCellEditable(int row, int column)
-            {
-                return false;//This causes all cells to be not editable
+        TableModel model = new DefaultTableModel(dataModel.getStudenti(), coloane) {
+            public boolean isCellEditable(int row, int column) {
+                //set cells uneditable
+                return false;
             }
         };
 
         tabelStudenti.setModel(model);
         scrollPane.setViewportView(tabelStudenti);
-        scrollPane.setBounds(42,100,830,183);
+        scrollPane.setBounds(42,120,830,183);
         facultate.setBounds(100,60,300,25);
-
-        eliminare.setBounds(290,320,300,25);
+        eliminare.setBounds(280,335,145,25);
+        inapoi.setBounds(450,335,145,25);
 
         eliminare.addMouseListener(new MouseAdapter() {
             @Override
@@ -113,13 +109,24 @@ public class RemoveStudentAdminGUI {
                 DefaultTableModel model = (DefaultTableModel)tabelStudenti.getModel();
                 int indexRandSelectat = tabelStudenti.getSelectedRow();
                 mng.getInstance().removeStudentFromDB(model.getValueAt(indexRandSelectat,0).toString(), model.getValueAt(indexRandSelectat,1).toString(), model.getValueAt(indexRandSelectat,6).toString());
+                mng.getInstance().removeMarkFromDB(model.getValueAt(indexRandSelectat,0).toString(), model.getValueAt(indexRandSelectat,1).toString());
                 model.removeRow(indexRandSelectat);
+            }
+        });
+
+        inapoi.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                frame.setVisible(false);
+                AdminMenuGUI window = new AdminMenuGUI();
             }
         });
 
         frame.add(facultate);
         frame.add(scrollPane);
         frame.add(eliminare);
+        frame.add(inapoi);
 
         frame.setLayout(null);
         //set frame size

@@ -3,7 +3,7 @@ import java.util.*;
 public class MarkTableModel extends AbstractTableModel {
     private Object[][] note;
     private int nrNote;
-    private final int NR_NOTE_IMPLICIT = 20;
+    private final int NR_NOTE_IMPLICIT = 100;
     public MarkTableModel(int nrColoane){
         if(nrNote==0)
             note = new Object[NR_NOTE_IMPLICIT][nrColoane];

@@ -16,7 +16,7 @@ public class RemoveMarkAdminGUI {
     private MarkTableModel dataModel = new MarkTableModel(7);
     private JTable tabelNote = new JTable();
     private JScrollPane scrollPane = new JScrollPane(tabelNote);
-    private JButton eliminare;
+    private JButton eliminare, inapoi;
     private String[] numeStudent;
     public RemoveMarkAdminGUI(){
         frame = new JFrame("Eliminare note");
@@ -26,16 +26,19 @@ public class RemoveMarkAdminGUI {
         facultati = mng.getInstance().getSetFacultati();
 
         eliminare = new JButton("Eliminare notă");
+        inapoi = new JButton("Înapoi");
+
         faculties = new JComboBox<>();
+
         for(Faculty f:facultati){
             faculties.addItem(f);
         }
 
         note = mng.getInstance().getSetNoteDupaFacultate();
 
-        int i=0;
+        int i = 0;
         for(MarkByFaculty m:note){
-            if(m.getFaculty().equals(faculties.getSelectedItem().toString())){
+            if(m.getFaculty().equals(faculties.getSelectedItem())){
                 dataModel.setValueAt(m.getStudentLastName()+" "+m.getStudentFirstName(), i, 0);
                 dataModel.setValueAt(m.getMark(),i,1);
                 dataModel.setValueAt(m.getSubject(), i, 2);
@@ -53,12 +56,12 @@ public class RemoveMarkAdminGUI {
         faculties.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int i=0;
+                int i = 0;
                 dataModel.removeTable();
                 if (e.getSource() == faculties) {
                     for(MarkByFaculty m:note){
                         if(m.getFaculty().equals(faculties.getSelectedItem().toString())){
-                            dataModel.setValueAt(m.getStudentLastName()+" "+m.getStudentFirstName(), i, 0);
+                            dataModel.setValueAt(m.getStudentLastName() + " " + m.getStudentFirstName(), i, 0);
                             dataModel.setValueAt(m.getMark(),i,1);
                             dataModel.setValueAt(m.getSubject(), i, 2);
                             dataModel.setValueAt(m.getCredits(), i, 3);
@@ -66,18 +69,17 @@ public class RemoveMarkAdminGUI {
                             dataModel.setValueAt(m.getFaculty(),i,5);
                             dataModel.setValueAt(m.getDateAdded(), i, 6);
                             i++;
-                            if(i>dataModel.getNrNote()){
+                            if(i > dataModel.getNrNote()){
                                 dataModel.setNrNote(i);
                             }
                         }
                     }
                 }
                 String[] coloane ={"STUDENT", "NOTĂ","MATERIE","NUMĂR DE CREDITE", "PROFESOR", "FACULTATE", "DATA ULTIMEI MODIFICĂRI"};
-                TableModel model = new DefaultTableModel(dataModel.getNote(), coloane)
-                {
-                    public boolean isCellEditable(int row, int column)
-                    {
-                        return false;//This causes all cells to be not editable
+                TableModel model = new DefaultTableModel(dataModel.getNote(), coloane) {
+                    public boolean isCellEditable(int row, int column) {
+                        //set cells uneditable
+                        return false;
                     }
                 };
                 tabelNote.setModel(model);
@@ -85,11 +87,10 @@ public class RemoveMarkAdminGUI {
         });
 
         String[] coloane ={"STUDENT", "NOTĂ","MATERIE","NUMĂR DE CREDITE", "PROFESOR", "FACULTATE", "DATA ULTIMEI MODIFICĂRI"};
-        TableModel model = new DefaultTableModel(dataModel.getNote(), coloane)
-        {
-            public boolean isCellEditable(int row, int column)
-            {
-                return false;//This causes all cells to be not editable
+        TableModel model = new DefaultTableModel(dataModel.getNote(), coloane) {
+            public boolean isCellEditable(int row, int column) {
+                //set cells uneditable
+                return false;
             }
         };
 
@@ -104,16 +105,27 @@ public class RemoveMarkAdminGUI {
                 model.removeRow(indexRandSelectat);
             }
         });
+        inapoi.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                frame.setVisible(false);
+                AdminMenuGUI window = new AdminMenuGUI();
+            }
+        });
+
+
         tabelNote.setModel(model);
         scrollPane.setViewportView(tabelNote);
-        scrollPane.setBounds(42,100,830,183);
+        scrollPane.setBounds(42,120,830,183);
         faculties.setBounds(100,60,300,25);
-
-        eliminare.setBounds(290,320,300,25);
+        eliminare.setBounds(280,335,145,25);
+        inapoi.setBounds(450,335,145,25);
 
         frame.add(scrollPane);
         frame.add(faculties);
         frame.add(eliminare);
+        frame.add(inapoi);
 
         frame.setLayout(null);
         //set frame size

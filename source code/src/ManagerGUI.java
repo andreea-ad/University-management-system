@@ -12,6 +12,7 @@ public class ManagerGUI {
     private static HashSet<Subject> materii = new HashSet<>();
     private static HashSet<MarkByEmail> noteDupaEmail = new HashSet<>();
     private static HashSet<MarkByFaculty> noteDupaFacultate = new HashSet<>();
+    private static HashSet<MarkByDepartment> noteDupaSpecializare = new HashSet<>();
     private static Connection conn;
 
     private static ManagerGUI instance = null;
@@ -34,7 +35,8 @@ public class ManagerGUI {
             String marks = "select * from marks";
 
             String marksByEmail = "select * from marks, students, subjects where marks.student_first_name=students.first_name and marks.student_last_name=students.last_name and marks.subject=subjects.title";
-            String marksByFaculty ="select * from marks, students, subjects where marks.student_first_name=students.first_name and marks.student_last_name=students.last_name";
+            String marksByFaculty = "select * from marks, students, subjects where marks.student_first_name=students.first_name and marks.student_last_name=students.last_name";
+            String marksByDepartment = "select * from marks, students, subjects where marks.student_first_name=students.first_name and marks.student_last_name=students.last_name and marks.subject=subjects.title";
 
             PreparedStatement ps = conn.prepareStatement(faculties);
             ResultSet rs = ps.executeQuery();
@@ -92,6 +94,13 @@ public class ManagerGUI {
                 noteDupaFacultate.add(mark);
             }
 
+            ps = conn.prepareStatement(marksByDepartment);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                MarkByDepartment mark = new MarkByDepartment(rs.getInt("marks.mark"),rs.getString("marks.student_first_name"),rs.getString("marks.student_last_name"),rs.getString("marks.subject"),rs.getString("marks.teacher_last_name")+" "+rs.getString("marks.teacher_first_name"),rs.getString("students.faculty"),rs.getString("subjects.department"),rs.getDate("marks.date_added"),rs.getInt("subjects.number_of_credits"));
+                noteDupaSpecializare.add(mark);
+            }
+
             conn.close();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
@@ -111,9 +120,7 @@ public class ManagerGUI {
             ps.setString(5,prenumeProfesor);
             ps.setString(6,numeProfesor);
             ps.setDate(7,dataAdaugarii);
-
             ps.execute();
-
             conn.close();
             System.exit(0);
         }catch(Exception e){
@@ -131,8 +138,20 @@ public class ManagerGUI {
             ps.setString(3,materie);
             ps.execute();
             conn.close();
-
-
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    public void removeMarkFromDB(String nume, String prenume){
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
+            String deleteQuery = "delete from marks where `student_first_name`=? and `student_last_name`=?";
+            PreparedStatement ps = conn.prepareStatement(deleteQuery);
+            ps.setString(1,prenume);
+            ps.setString(2,nume);
+            ps.execute();
+            conn.close();
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -174,12 +193,10 @@ public class ManagerGUI {
             ps.setDate(10,dataAngajarii);
             ps.setInt(11,salariu);
             ps.execute();
-
             ps = conn.prepareStatement(insertUserQuery);
             ps.setString(1,adresaEmail);
             ps.setString(2,facultate+""+ThreadLocalRandom.current().nextInt(10, 500));
             ps.execute();
-
             conn.close();
             System.exit(0);
         }catch(Exception e){
@@ -199,7 +216,6 @@ public class ManagerGUI {
             ps = conn.prepareStatement(deleteUserQuery);
             ps.setString(1,email);
             ps.execute();
-
             conn.close();
         }catch(Exception e){
             e.printStackTrace();
@@ -225,20 +241,16 @@ public class ManagerGUI {
             ps.setInt(11,anUniversitar);
             ps.setInt(12,nrCredite);
             ps.execute();
-
             ps = conn.prepareStatement(insertUserQuery);
             ps.setString(1,adresaEmail);
             ps.setString(2,facultate+""+ThreadLocalRandom.current().nextInt(10, 500));
             ps.execute();
-
             conn.close();
             System.exit(0);
-
         }catch(Exception e){
             e.printStackTrace();
         }
     }
-
     public void removeStudentFromDB(String nume, String prenume, String email){
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -252,15 +264,13 @@ public class ManagerGUI {
             ps = conn.prepareStatement(deleteUserQuery);
             ps.setString(1,email);
             ps.execute();
-
             conn.close();
         }catch(Exception e){
             e.printStackTrace();
         }
     }
     public String getFacultateDupaEmail(String email){
-        String facultate = "";
-        String emailDB = "";
+        String facultate = "", emailDB;
         try {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
@@ -268,7 +278,7 @@ public class ManagerGUI {
             PreparedStatement ps = conn.prepareStatement(selectQuery);
             ResultSet rs = ps.executeQuery(selectQuery);
             while(rs.next()){
-                emailDB += rs.getString("email_address");
+                emailDB = rs.getString("email_address");
                 if(email.equals(emailDB)) {
                     facultate += rs.getString("faculty");
                     break;
@@ -279,7 +289,6 @@ public class ManagerGUI {
         }
         return facultate;
     }
-
     public static HashSet<Student> getSetStudenti(){ return studenti; }
     public static HashSet<Faculty> getSetFacultati(){ return facultati; }
     public static HashSet<Professor> getSetProfesori(){ return profesori; }
@@ -288,5 +297,5 @@ public class ManagerGUI {
     public static HashSet<Subject> getSetMaterii(){ return materii; }
     public static HashSet<MarkByFaculty> getSetNoteDupaFacultate(){ return noteDupaFacultate; }
     public static HashSet<Department> getSetSpecializari(){ return specializari; }
-
+    public static HashSet<MarkByDepartment> getSetNoteDupaSpecializare(){ return noteDupaSpecializare; }
 }

@@ -8,7 +8,6 @@ import java.sql.Date;
 import java.util.*;
 import java.time.*;
 
-
 public class AddMarkAdminGUI {
     private JFrame frame;
     private JLabel labelStudent, labelNota, labelMaterie, labelProfesor, labelFacultate;
@@ -23,8 +22,8 @@ public class AddMarkAdminGUI {
     private HashSet<Faculty> facultati;
     private HashSet<Subject> materii;
     private HashSet<Student> studenti;
-
     public AddMarkAdminGUI(){
+        //initialize variables
         frame = new JFrame("Adăugare notă");
         frame.getContentPane().setBackground(Color.WHITE);
 
