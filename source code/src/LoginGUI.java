@@ -7,12 +7,12 @@ import java.awt.event.MouseListener;
 import org.jdesktop.swingx.prompt.*;
 import java.sql.*;
 
-public class LoginGUI extends JFrame{
-    static JFrame frame;
-    JLabel lUser, lPass;
-    JTextField username;
-    JPasswordField password;
-    JButton login;
+public class LoginGUI{
+    private JFrame frame;
+    private JLabel lUser, lPass;
+    private JTextField username;
+    private JPasswordField password;
+    private JButton login;
     static Connection conn = null;
     public LoginGUI(){
         frame = new JFrame("Conectare platformă");
@@ -41,7 +41,7 @@ public class LoginGUI extends JFrame{
             boolean enabled = true;
             @Override
             public void mouseClicked(MouseEvent e) {
-                if(enabled == false)
+                if(!enabled)
                     return;
                 username.setText("");
                 enabled = false;
@@ -71,7 +71,7 @@ public class LoginGUI extends JFrame{
             boolean enabled = true;
             @Override
             public void mouseClicked(MouseEvent e) {
-                if(enabled == false)
+                if(!enabled)
                     return;
                 password.setText("");
                 enabled = false;
@@ -97,14 +97,12 @@ public class LoginGUI extends JFrame{
 
             }
         });
-
         login.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 loginActionPerformed();
             }
         });
-
         //add the elements to the frame
         frame.add(lUser);
         frame.add(username);
@@ -129,6 +127,7 @@ public class LoginGUI extends JFrame{
         try{
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
+
             String sqlAdmin = "select email_address, pass from useradmin where email_address=? and pass=?";
             String sqlSecretary = "select email_address, pass from usersecretariat where email_address=? and pass=?";
             String sqlProfessor = "select email_address, pass from userprofesor where email_address=? and pass=?";
@@ -197,9 +196,7 @@ public class LoginGUI extends JFrame{
             password.setText("");
         }
     }
-
     public static void main(String[] args){
         LoginGUI login = new LoginGUI();
-
     }
 }

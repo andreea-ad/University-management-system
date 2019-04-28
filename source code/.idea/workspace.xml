@@ -2,157 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5a3249f-e99c-4599-8e81-3f07cf876a07" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/AddDepartmentAdminGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AddFacultyAdminGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AddSubjectAdminGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EditDepartmentAdminGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EditFacultyAdminGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EditSubjectAdminGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MarkByDepartment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/RemoveDepartmentAdminGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/RemoveFacultyAdminGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/RemoveSubjectAdminGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ViewFacultiesAndDepartmentsAdminGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ViewSubjectsAdminGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AddMarkAdminGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AddMarkAdminGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AddMarkProfessorGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AddMarkProfessorGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AddMarkProfessorGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AddMarkProfessorGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AddMarkProfessorGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AddMarkProfessorGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AddStudentAdminGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AddStudentAdminGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AddStudentAdminGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AddStudentAdminGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AddStudentAdminGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AddStudentAdminGUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AddStudentAdminGUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AddStudentAdminGUI$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AddStudentAdminGUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AddStudentAdminGUI$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AddStudentAdminGUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AddStudentAdminGUI$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AddStudentAdminGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AddStudentAdminGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AddStudentSecretaryGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AddStudentSecretaryGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AddStudentSecretaryGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AddStudentSecretaryGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AddStudentSecretaryGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AddStudentSecretaryGUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AddStudentSecretaryGUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AddStudentSecretaryGUI$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AddStudentSecretaryGUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AddStudentSecretaryGUI$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AddStudentSecretaryGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AddStudentSecretaryGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AddTeacherAdminGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AddTeacherAdminGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AddTeacherAdminGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AddTeacherAdminGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AddTeacherAdminGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AddTeacherAdminGUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AddTeacherAdminGUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AddTeacherAdminGUI$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AddTeacherAdminGUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AddTeacherAdminGUI$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AddTeacherAdminGUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AddTeacherAdminGUI$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AddTeacherAdminGUI$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AddTeacherAdminGUI$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AddTeacherAdminGUI$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AddTeacherAdminGUI$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AddTeacherAdminGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AddTeacherAdminGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$10.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$11.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$12.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$13.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$14.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$15.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/AdminMenuGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/EditMarkProfessorGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/EditMarkProfessorGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/EditMarkProfessorGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/EditMarkProfessorGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/EditMarkProfessorGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/EditMarkProfessorGUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/EditMarkProfessorGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/EditMarkProfessorGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/EditTeacherAdminGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/EditTeacherAdminGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/EditTeacherAdminGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/EditTeacherAdminGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/LoginGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/LoginGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/LoginGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/LoginGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/LoginGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/LoginGUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/LoginGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/LoginGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ManagerGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ManagerGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/MarkTableModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/MarkTableModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/PDViewProfessorGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/PDViewProfessorGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/PDViewStudentGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/PDViewStudentGUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Proiect/ProfessorMenuGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ProfessorMenuGUI$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Proiect/ProfessorMenuGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ProfessorMenuGUI$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Proiect/ProfessorMenuGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ProfessorMenuGUI$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Proiect/ProfessorMenuGUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ProfessorMenuGUI$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Proiect/ProfessorMenuGUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ProfessorMenuGUI$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ProfessorMenuGUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ProfessorMenuGUI$6.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Proiect/ProfessorMenuGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ProfessorMenuGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveMarkAdminGUI$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveMarkAdminGUI$1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveMarkAdminGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveMarkAdminGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveMarkAdminGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveMarkAdminGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveMarkAdminGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveMarkAdminGUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveMarkAdminGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveMarkAdminGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentAdminGUI$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentAdminGUI$1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentAdminGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentAdminGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentAdminGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentAdminGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentAdminGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentAdminGUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentAdminGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentAdminGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentSecretaryGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentSecretaryGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentSecretaryGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentSecretaryGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentSecretaryGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentSecretaryGUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentSecretaryGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentSecretaryGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveTeacherAdminGUI$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveTeacherAdminGUI$1$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveTeacherAdminGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveTeacherAdminGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveTeacherAdminGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveTeacherAdminGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveTeacherAdminGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveTeacherAdminGUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveTeacherAdminGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveTeacherAdminGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/SecretaryMenuGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/SecretaryMenuGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/SecretaryMenuGUI$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/SecretaryMenuGUI$10.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/SecretaryMenuGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/SecretaryMenuGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/SecretaryMenuGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/SecretaryMenuGUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/SecretaryMenuGUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/SecretaryMenuGUI$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/SecretaryMenuGUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/SecretaryMenuGUI$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/SecretaryMenuGUI$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/SecretaryMenuGUI$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/SecretaryMenuGUI$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/SecretaryMenuGUI$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/SecretaryMenuGUI$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/SecretaryMenuGUI$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/SecretaryMenuGUI$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/SecretaryMenuGUI$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/SecretaryMenuGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/SecretaryMenuGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/StudentMenuGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/StudentMenuGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/StudentMenuGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/StudentMenuGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/StudentMenuGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/StudentMenuGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/Subject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/Subject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/TeacherTableModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/TeacherTableModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksAdminGUI$1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksAdminGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksAdminGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksAdminGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksAdminGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksAdminGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksAdminGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksProfessorGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksProfessorGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksProfessorGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksProfessorGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksSecretaryGUI$2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksSecretaryGUI$2$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksSecretaryGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksSecretaryGUI$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksSecretaryGUI$3$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksSecretaryGUI$3$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksSecretaryGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksSecretaryGUI$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksSecretaryGUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksSecretaryGUI$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksSecretaryGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksSecretaryGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksStudentGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksStudentGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksStudentGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksStudentGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsAdminGUI$1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsAdminGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsAdminGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsAdminGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsAdminGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsAdminGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsAdminGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsSecretaryGUI$1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsSecretaryGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsSecretaryGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsSecretaryGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsSecretaryGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsSecretaryGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsSecretaryGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewTeachersAdminGUI$1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewTeachersAdminGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewTeachersAdminGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewTeachersAdminGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewTeachersAdminGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewTeachersAdminGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewTeachersAdminGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AddMarkAdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddMarkAdminGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AdminMenuGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminMenuGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ManagerGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ManagerGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MarkTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MarkTableModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LoginGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoginGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PDViewStudentGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PDViewStudentGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ProfessorMenuGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProfessorMenuGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RemoveMarkAdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RemoveMarkAdminGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RemoveStudentAdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RemoveStudentAdminGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RemoveStudentSecretaryGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RemoveStudentSecretaryGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RemoveTeacherAdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RemoveTeacherAdminGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SecretaryMenuGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SecretaryMenuGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/StudentMenuGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentMenuGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Subject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Subject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TeacherTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TeacherTableModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ViewMarksAdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewMarksAdminGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ViewMarksProfessorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewMarksProfessorGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ViewMarksSecretaryGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewMarksSecretaryGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ViewMarksStudentGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewMarksStudentGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ViewStudentsAdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewStudentsAdminGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ViewStudentsSecretaryGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewStudentsSecretaryGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ViewTeachersAdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewTeachersAdminGUI.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -162,7 +31,47 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/AdminMenuGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3622">
+              <caret line="210" column="40" selection-start-line="210" selection-start-column="40" selection-end-line="210" selection-end-column="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#11950#11951#0" expanded="true" />
+                <element signature="e#12005#12006#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SecretaryMenuGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2691">
+              <caret line="201" column="5" selection-start-line="201" selection-start-column="5" selection-end-line="201" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ViewTeachersAdminGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="120" column="8" selection-start-line="120" selection-start-column="8" selection-end-line="120" selection-end-column="30" />
+              <folding>
+                <element signature="e#5512#5769#0" expanded="true" />
+                <element signature="e#5768#5769#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -204,8 +113,6 @@
         <option value="$PROJECT_DIR$/src/AddTeacherAdminGUI.java" />
         <option value="$PROJECT_DIR$/src/EditMarkProfessorGUI.java" />
         <option value="$PROJECT_DIR$/src/EditTeacherAdminGUI.java" />
-        <option value="$PROJECT_DIR$/src/LoginGUI.java" />
-        <option value="$PROJECT_DIR$/src/PDViewStudentGUI.java" />
         <option value="$PROJECT_DIR$/src/RemoveStudentSecretaryGUI.java" />
         <option value="$PROJECT_DIR$/src/RemoveTeacherAdminGUI.java" />
         <option value="$PROJECT_DIR$/src/AddMarkAdminGUI.java" />
@@ -218,10 +125,6 @@
         <option value="$PROJECT_DIR$/src/ViewMarksProfessorGUI.java" />
         <option value="$PROJECT_DIR$/src/ViewStudentsAdminGUI.java" />
         <option value="$PROJECT_DIR$/src/EditSubjectAdminGUI.java" />
-        <option value="$PROJECT_DIR$/src/AdminMenuGUI.java" />
-        <option value="$PROJECT_DIR$/src/SecretaryMenuGUI.java" />
-        <option value="$PROJECT_DIR$/src/ProfessorMenuGUI.java" />
-        <option value="$PROJECT_DIR$/src/StudentMenuGUI.java" />
         <option value="$PROJECT_DIR$/src/Subject.java" />
         <option value="$PROJECT_DIR$/src/ViewMarksAdminGUI.java" />
         <option value="$PROJECT_DIR$/src/MarkTableModel.java" />
@@ -229,6 +132,12 @@
         <option value="$PROJECT_DIR$/src/MarkByFaculty.java" />
         <option value="$PROJECT_DIR$/src/MarkByDepartment.java" />
         <option value="$PROJECT_DIR$/src/ViewMarksSecretaryGUI.java" />
+        <option value="$PROJECT_DIR$/src/PDViewStudentGUI.java" />
+        <option value="$PROJECT_DIR$/src/LoginGUI.java" />
+        <option value="$PROJECT_DIR$/src/ProfessorMenuGUI.java" />
+        <option value="$PROJECT_DIR$/src/SecretaryMenuGUI.java" />
+        <option value="$PROJECT_DIR$/src/StudentMenuGUI.java" />
+        <option value="$PROJECT_DIR$/src/AdminMenuGUI.java" />
       </list>
     </option>
   </component>
@@ -267,7 +176,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556400388323" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556485009889" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -295,29 +204,56 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ViewMarksSecretaryGUI">
-    <configuration name="ManagerGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ManagerGUI" />
+  <component name="RunManager" selected="Application.AdminMenuGUI">
+    <configuration name="AdminMenuGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="AdminMenuGUI" />
       <module name="Proiect" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ViewMarksSecretaryGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ViewMarksSecretaryGUI" />
+    <configuration name="LoginGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="LoginGUI" />
+      <module name="Proiect" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProfessorMenuGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ProfessorMenuGUI" />
+      <module name="Proiect" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SecretaryMenuGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="SecretaryMenuGUI" />
+      <module name="Proiect" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StudentMenuGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="StudentMenuGUI" />
       <module name="Proiect" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.ViewMarksSecretaryGUI" />
-      <item itemvalue="Application.ManagerGUI" />
+      <item itemvalue="Application.AdminMenuGUI" />
+      <item itemvalue="Application.ProfessorMenuGUI" />
+      <item itemvalue="Application.SecretaryMenuGUI" />
+      <item itemvalue="Application.StudentMenuGUI" />
+      <item itemvalue="Application.LoginGUI" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ViewMarksSecretaryGUI" />
-        <item itemvalue="Application.ManagerGUI" />
+        <item itemvalue="Application.AdminMenuGUI" />
+        <item itemvalue="Application.StudentMenuGUI" />
+        <item itemvalue="Application.SecretaryMenuGUI" />
+        <item itemvalue="Application.ProfessorMenuGUI" />
+        <item itemvalue="Application.LoginGUI" />
       </list>
     </recent_temporary>
   </component>
@@ -346,7 +282,7 @@
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20939597" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2147651" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -401,34 +337,6 @@
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout-to-restore>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/LoginGUI.java</url>
-          <line>85</line>
-          <properties method="mouseReleased">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/LoginGUI.java</url>
-          <line>55</line>
-          <properties method="mouseReleased">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/LoginGUI.java</url>
-          <line>69</line>
-          <properties />
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/AddStudentAdminGUI.java">
@@ -489,30 +397,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/LoginGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="18" column="58" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/PDViewProfessorGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="14" column="57" selection-start-line="14" selection-start-column="57" selection-end-line="14" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PDViewStudentGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2940">
-          <caret line="150" column="5" selection-start-line="150" selection-start-column="5" selection-end-line="150" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -576,13 +464,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ViewTeachersAdminGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="734">
-          <caret line="85" column="8" lean-forward="true" selection-start-line="85" selection-start-column="8" selection-end-line="85" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -658,13 +539,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ViewSubjectsAdminGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="32" selection-start-column="32" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AddFacultyAdminGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -720,16 +594,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AdminMenuGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="111" column="39" selection-start-line="111" selection-start-column="39" selection-end-line="111" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ViewStudentsAdminGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="980">
@@ -767,40 +631,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ProfessorMenuGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1880">
-          <caret line="102" column="49" selection-start-line="102" selection-start-column="49" selection-end-line="102" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/StudentMenuGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="66" column="49" selection-start-line="66" selection-start-column="49" selection-end-line="66" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1880#2156#0" expanded="true" />
-            <element signature="e#2155#2156#0" expanded="true" />
-            <element signature="e#2191#2366#0" expanded="true" />
-            <element signature="e#2365#2366#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SecretaryMenuGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2800">
-          <caret line="148" column="49" selection-start-line="148" selection-start-column="49" selection-end-line="148" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Department.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -808,13 +638,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DepartmentByFaculty.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="32" selection-start-column="32" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DepartmentByFaculty.java" />
     <entry file="file://$PROJECT_DIR$/src/Subject.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
@@ -891,6 +715,90 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="2" column="36" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ViewSubjectsAdminGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="32" selection-start-column="32" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ViewTeachersAdminGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="120" column="8" selection-start-line="120" selection-start-column="8" selection-end-line="120" selection-end-column="30" />
+          <folding>
+            <element signature="e#5512#5769#0" expanded="true" />
+            <element signature="e#5768#5769#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LoginGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2540">
+          <caret line="129" column="12" selection-start-line="129" selection-start-column="12" selection-end-line="129" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#7551#7552#0" expanded="true" />
+            <element signature="e#7598#7599#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PDViewStudentGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="140" selection-start-line="140" selection-end-line="140" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6770#6771#0" expanded="true" />
+            <element signature="e#6801#6802#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/StudentMenuGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-892">
+          <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ProfessorMenuGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-189">
+          <caret line="39" column="27" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SecretaryMenuGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2691">
+          <caret line="201" column="5" selection-start-line="201" selection-start-column="5" selection-end-line="201" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AdminMenuGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3622">
+          <caret line="210" column="40" selection-start-line="210" selection-start-column="40" selection-end-line="210" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#11950#11951#0" expanded="true" />
+            <element signature="e#12005#12006#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

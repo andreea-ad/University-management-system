@@ -1,9 +1,9 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashSet;
-import java.util.List;
 
 public class PDViewStudentGUI{
     private HashSet<Student> studenti;
@@ -11,9 +11,14 @@ public class PDViewStudentGUI{
     private JLabel welcome, labelNrMatricol, labelNume, labelPrenume, labelCnp, labelDataNasterii, labelNrTelefon, labelAdresa, labelAdresaEmail, labelFacultate, labelSpecializare, labelCicluUniversitar, labelAn, labelNrCredite;
     private JTextField nrMatricol, nume, prenume, cnp, dataNasterii, nrTelefon, adresa, adresaEmail, facultate, specializare, cicluUniversitar, an, nrCredite;
     private JButton inapoi;
+    private String welcomeName = "";
     public PDViewStudentGUI(String email){
+        /*
+        ====================
+        initialize variables
+        ====================
+        */
         frame = new JFrame("Vizualizare date personale");
-        frame.getContentPane().setBackground(Color.WHITE);
         labelNrMatricol = new JLabel("Număr matricol: ");
         labelNume = new JLabel("Nume: ");
         labelPrenume = new JLabel("Prenume: ");
@@ -27,15 +32,13 @@ public class PDViewStudentGUI{
         labelCicluUniversitar = new JLabel("Ciclu universitar: ");
         labelAn = new JLabel("An universitar: ");
         labelNrCredite = new JLabel("Număr de credite: ");
-
-        inapoi = new JButton("Înapoi");
+        inapoi = new JButton("");
 
         ManagerGUI mng = new ManagerGUI();
         studenti = mng.getInstance().getSetStudenti();
-        String welcomeName;
         for(Student s:studenti){
             if(s.getEmailAddress().equals(email)) {
-                welcomeName = s.getLastName() + " " + s.getFirstName();
+                welcomeName += s.getLastName() + " " + s.getFirstName();
                 nrMatricol = new JTextField(String.valueOf(s.getID()));
                 nume = new JTextField(s.getLastName());
                 prenume = new JTextField(s.getFirstName());
@@ -50,22 +53,10 @@ public class PDViewStudentGUI{
                 an = new JTextField(String.valueOf(s.getYear()));
                 nrCredite = new JTextField(String.valueOf(s.getNumberOfCredits()));
                 welcome = new JLabel("Bun venit, " + welcomeName + "!");
+                break;
             }
         }
-        //set fields not editable so the user cannot modify any data
-        nrMatricol.setEditable(false);
-        nume.setEditable(false);
-        prenume.setEditable(false);
-        cnp.setEditable(false);
-        dataNasterii.setEditable(false);
-        nrTelefon.setEditable(false);
-        adresa.setEditable(false);
-        adresaEmail.setEditable(false);
-        facultate.setEditable(false);
-        specializare.setEditable(false);
-        cicluUniversitar.setEditable(false);
-        an.setEditable(false);
-        nrCredite.setEditable(false);
+
 
         inapoi.addMouseListener(new MouseAdapter() {
             @Override
@@ -105,8 +96,7 @@ public class PDViewStudentGUI{
         an.setBounds(270,430,270,25);
         labelNrCredite.setBounds(150,460,120,25);
         nrCredite.setBounds(270,460,270,25);
-        inapoi.setBounds(270,510,145,25);
-
+        inapoi.setBounds(270,500,160,35);
         frame.add(welcome);
         frame.add(labelNrMatricol);
         frame.add(nrMatricol);
@@ -148,5 +138,10 @@ public class PDViewStudentGUI{
         frame.setResizable(false);
         //make visible frame
         frame.setVisible(true);
+
+        frame.getContentPane().setBackground(Color.WHITE);
+    }
+    public static void main(String[] args){
+        PDViewStudentGUI window = new PDViewStudentGUI("ramona.sima@gmail.com");
     }
 }
