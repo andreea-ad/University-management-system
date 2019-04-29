@@ -1,7 +1,9 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 public class StudentMenuGUI{
     private JFrame frame;
@@ -42,6 +44,12 @@ public class StudentMenuGUI{
         inapoi.setBorderPainted(false);
         inapoi.setBackground(new Color(233,233,233));
         inapoi.setForeground(new Color(100,100,100));
+        //set frame icon
+        try {
+            frame.setIconImage(ImageIO.read(getClass().getResource("resources/1.png")));
+        }catch(IOException ie){
+            ie.printStackTrace();
+        }
         //set frame size
         frame.setPreferredSize(new Dimension(600,300));
         frame.setLayout(null);
@@ -77,7 +85,7 @@ public class StudentMenuGUI{
                 frame.setVisible(false);
             }
         });
-        //go back to user menu
+        //go back to login form
         inapoi.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

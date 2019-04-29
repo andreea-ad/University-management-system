@@ -1,3 +1,4 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -5,6 +6,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import org.jdesktop.swingx.prompt.*;
+
+import java.io.File;
+import java.io.IOException;
 import java.sql.*;
 
 public class LoginGUI{
@@ -16,6 +20,7 @@ public class LoginGUI{
     static Connection conn = null;
     public LoginGUI(){
         frame = new JFrame("Conectare platformă");
+        //set background white
         frame.getContentPane().setBackground(Color.WHITE);
         //create input elements
         lUser = new JLabel("Utilizator:");
@@ -26,16 +31,23 @@ public class LoginGUI{
         PromptSupport.setFocusBehavior(PromptSupport.FocusBehavior.HIDE_PROMPT, username);
         password = new JPasswordField(100);
         //add default text
-        PromptSupport.setPrompt("******", password);
+        PromptSupport.setPrompt("Introduceti parola dvs.", password);
         PromptSupport.setFocusBehavior(PromptSupport.FocusBehavior.HIDE_PROMPT, password);
         //login button
         login = new JButton("Autentificare");
         //set size and position for the elements
-        lUser.setBounds(80, 70, 200, 30);
-        lPass.setBounds(80, 110, 200, 30);
-        username.setBounds(300, 70, 200, 30);
-        password.setBounds(300, 110, 200, 30);
-        login.setBounds(200, 160, 150, 30);
+        lUser.setBounds(100, 70, 70, 30);
+        lPass.setBounds(100, 110, 70, 30);
+        username.setBounds(200, 70, 200, 30);
+        password.setBounds(200, 110, 200, 30);
+        login.setBounds(185, 160, 150, 30);
+        //labels design
+        lUser.setForeground(new Color(100,100,100));
+        lPass.setForeground(new Color(100,100,100));
+        //button design
+        login.setBorderPainted(false);
+        login.setBackground(new Color(233,233,233));
+        login.setForeground(new Color(100,100,100));
         //add actions
         username.addMouseListener(new MouseListener() {
             boolean enabled = true;
@@ -97,6 +109,7 @@ public class LoginGUI{
 
             }
         });
+        //match the input data with the specific window when clicked and then open that window
         login.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -109,8 +122,14 @@ public class LoginGUI{
         frame.add(lPass);
         frame.add(password);
         frame.add(login);
+        //set frame icon
+        try {
+            frame.setIconImage(ImageIO.read(getClass().getResource("resources/1.png")));
+        }catch(IOException ie){
+            ie.printStackTrace();
+        }
         //set frame size
-        frame.setPreferredSize(new Dimension(600,300));
+        frame.setPreferredSize(new Dimension(530,300));
         frame.setLayout(null);
         frame.pack();
         //set window in the middle of the screen
@@ -119,7 +138,7 @@ public class LoginGUI{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //block resize operation
         frame.setResizable(false);
-        //make visible frame
+        //set frame visible
         frame.setVisible(true);
     }
 
@@ -152,6 +171,7 @@ public class LoginGUI{
             ps4.setString(1,username.getText());
             ps4.setString(2,password.getText());
             ResultSet rs4 = ps4.executeQuery();
+            //check if the input data is correct and if there's any data at all
             if(username.getText().isEmpty() && password.getText().isEmpty()){
                 JOptionPane.showMessageDialog(null,"Introduceți o adresă de email și o parolă","Câmpuri incomplete",JOptionPane.WARNING_MESSAGE);
             }else if(username.getText().isEmpty()){

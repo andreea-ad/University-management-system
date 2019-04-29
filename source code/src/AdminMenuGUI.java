@@ -1,6 +1,8 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 
 public class AdminMenuGUI extends JFrame{
     private JFrame frame;
@@ -214,8 +216,14 @@ public class AdminMenuGUI extends JFrame{
         facultati.setAlignmentX(RIGHT_ALIGNMENT);
         profesori.setAlignmentX(RIGHT_ALIGNMENT);
         studenti.setAlignmentX(RIGHT_ALIGNMENT);
+        //set frame icon
+        try {
+            frame.setIconImage(ImageIO.read(getClass().getResource("resources/1.png")));
+        }catch(IOException ie){
+            ie.printStackTrace();
+        }
         //set frame size
-        frame.setPreferredSize(new Dimension(600, 350));
+        frame.setPreferredSize(new Dimension(570, 350));
         frame.setLayout(null);
         frame.pack();
         //set window in the middle of the screen
@@ -239,6 +247,7 @@ public class AdminMenuGUI extends JFrame{
                 popupMenu1.show(e.getComponent(),e.getX(),e.getY());
             }
         });
+        //open view faculties and departments window when clicked
         item1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -246,6 +255,7 @@ public class AdminMenuGUI extends JFrame{
                 frame.setVisible(false);
             }
         });
+        //open view subjects window when clicked
         item2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -253,6 +263,7 @@ public class AdminMenuGUI extends JFrame{
                 frame.setVisible(false);
             }
         });
+        //open add faculty window when clicked
         item3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -260,6 +271,7 @@ public class AdminMenuGUI extends JFrame{
                 frame.setVisible(false);
             }
         });
+        //open add department window when clicked
         item4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -267,6 +279,7 @@ public class AdminMenuGUI extends JFrame{
                 frame.setVisible(false);
             }
         });
+        //open add subject window when clicked
         item5.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -274,6 +287,7 @@ public class AdminMenuGUI extends JFrame{
                 frame.setVisible(false);
             }
         });
+        //open edit faculty window when clicked
         item6.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -281,6 +295,7 @@ public class AdminMenuGUI extends JFrame{
                 frame.setVisible(false);
             }
         });
+        //open edit department window when clicked
         item7.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -288,6 +303,7 @@ public class AdminMenuGUI extends JFrame{
                 frame.setVisible(false);
             }
         });
+        //open edit subject window when clicked
         item8.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -295,6 +311,7 @@ public class AdminMenuGUI extends JFrame{
                 frame.setVisible(false);
             }
         });
+        //open remove faculty window when clicked
         item9.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -302,6 +319,7 @@ public class AdminMenuGUI extends JFrame{
                 frame.setVisible(false);
             }
         });
+        //open remove department window when clicked
         item10.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -309,6 +327,7 @@ public class AdminMenuGUI extends JFrame{
                 frame.setVisible(false);
             }
         });
+        //open remove subject window when clicked
         item11.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -316,6 +335,7 @@ public class AdminMenuGUI extends JFrame{
                 frame.setVisible(false);
             }
         });
+        //open submenu for professor-based operations
         profesori.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -323,6 +343,7 @@ public class AdminMenuGUI extends JFrame{
                 popupMenu2.show(e.getComponent(),e.getX(),e.getY());
             }
         });
+        //open view teachers window when clicked
         item12.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -330,6 +351,7 @@ public class AdminMenuGUI extends JFrame{
                 frame.setVisible(false);
             }
         });
+        //open add teacher window when clicked
         item13.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -337,6 +359,7 @@ public class AdminMenuGUI extends JFrame{
                 frame.setVisible(false);
             }
         });
+        //open edit teacher window when clicked
         item14.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -344,6 +367,7 @@ public class AdminMenuGUI extends JFrame{
                 frame.setVisible(false);
             }
         });
+        //open remove teacher window when clicked
         item15.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -351,6 +375,7 @@ public class AdminMenuGUI extends JFrame{
                 frame.setVisible(false);
             }
         });
+        //open submenu for student-based operations
         studenti.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -358,6 +383,7 @@ public class AdminMenuGUI extends JFrame{
                 popupMenu3.show(e.getComponent(),e.getX(),e.getY());
             }
         });
+        //open view students window when clicked
         item16.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -365,6 +391,7 @@ public class AdminMenuGUI extends JFrame{
                 frame.setVisible(false);
             }
         });
+        //open view marks window when clicked
         item17.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -372,6 +399,7 @@ public class AdminMenuGUI extends JFrame{
                 frame.setVisible(false);
             }
         });
+        //open add student window when clicked
         item18.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -379,6 +407,7 @@ public class AdminMenuGUI extends JFrame{
                 frame.setVisible(false);
             }
         });
+        //open add mark window when clicked
         item19.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -386,6 +415,7 @@ public class AdminMenuGUI extends JFrame{
                 frame.setVisible(false);
             }
         });
+        //open edit student window when clicked
         item20.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -393,6 +423,7 @@ public class AdminMenuGUI extends JFrame{
                 frame.setVisible(false);
             }
         });
+        //open edit mark window when clicked
         item21.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -400,6 +431,7 @@ public class AdminMenuGUI extends JFrame{
                 frame.setVisible(false);
             }
         });
+        //open remove student window when clicked
         item22.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -407,6 +439,7 @@ public class AdminMenuGUI extends JFrame{
                 frame.setVisible(false);
             }
         });
+        //open remove mark window when clicked
         item23.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -414,6 +447,7 @@ public class AdminMenuGUI extends JFrame{
                 frame.setVisible(false);
             }
         });
+        //go back to login form
         inapoi.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -422,9 +456,6 @@ public class AdminMenuGUI extends JFrame{
                 LoginGUI window = new LoginGUI();
             }
         });
-    }
-    public static void main(String[] args){
-        AdminMenuGUI window = new AdminMenuGUI();
     }
 }
 

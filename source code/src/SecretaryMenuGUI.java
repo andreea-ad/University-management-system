@@ -1,9 +1,11 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 public class SecretaryMenuGUI extends JFrame{
 	private JFrame  frame;
@@ -93,6 +95,12 @@ public class SecretaryMenuGUI extends JFrame{
         //set alignment for submenu
         studenti.setAlignmentX(RIGHT_ALIGNMENT);
         note.setAlignmentX(RIGHT_ALIGNMENT);
+        //set frame icon
+        try {
+            frame.setIconImage(ImageIO.read(getClass().getResource("resources/1.png")));
+        }catch(IOException ie){
+            ie.printStackTrace();
+        }
         //set frame size
         frame.setPreferredSize(new Dimension(600, 300));
         frame.setLayout(null);
@@ -190,7 +198,7 @@ public class SecretaryMenuGUI extends JFrame{
                 frame.setVisible(false);
             }
         });
-        //go back to user menu
+        //go back to login form
         inapoi.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
