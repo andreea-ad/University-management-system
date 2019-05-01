@@ -14,7 +14,7 @@ public class ViewMarksProfessorGUI {
     private HashSet<MarkByEmail> note;
     private String numeProfesor="";
     private JTable tabelNote = new JTable();
-    private MarkTableModel dataModel = new MarkTableModel(5);
+    private MarkTableModel dataModel;
     private JScrollPane scrollPane = new JScrollPane(tabelNote);
     private JButton inapoi;
     public ViewMarksProfessorGUI(String email){
@@ -29,11 +29,13 @@ public class ViewMarksProfessorGUI {
         ManagerGUI mng = new ManagerGUI();
         profesori = mng.getInstance().getSetProfesori();
         note = mng.getInstance().getSetNoteDupaEmail();
+        int n = note.size();
+        dataModel = new MarkTableModel(n,5);
         int i = 0;
         //get teacher's full name
         for(Professor p:profesori){
             if(p.getEmailAddress().equals(email)){
-                numeProfesor+=p.getLastName()+" "+p.getFirstName();
+                numeProfesor += p.getLastName() + " " + p.getFirstName();
                 break;
             }
         }
@@ -62,6 +64,8 @@ public class ViewMarksProfessorGUI {
         frame.getContentPane().setBackground(Color.WHITE);
         tabelNote.setModel(model);
         scrollPane.setViewportView(tabelNote);
+        //set table sorter
+        tabelNote.setAutoCreateRowSorter(true);
         //set bounds for selements
         scrollPane.setBounds(42,110,1100,183);
         inapoi.setBounds(510,320,145,25);
@@ -101,5 +105,8 @@ public class ViewMarksProfessorGUI {
                 ProfessorMenuGUI window = new ProfessorMenuGUI(email);
             }
         });
+    }
+    public static void main(String[] args){
+        ViewMarksProfessorGUI window = new ViewMarksProfessorGUI("maria.ionescu@gmail.com");
     }
 }

@@ -134,9 +134,7 @@ public class Student {
     }
 
     public String toString(){
-        return "Numar matricol: " + id + " Nume: " + lastName + " Prenume: " + firstName + " CNP: " + cnp + " Data nasterii: " + dob + " Numar de telefon: "
-                + " Adresa: " + address + " Adresa de email: " + emailAddress + " Facultate: " + faculty + " Specializare: " + department + " Ciclu universitar: "
-                + degree + " An de studiu: " + year + " Numar de credite: " + numberOfCredits;
+        return lastName + " " + firstName;
     }
 
     @Override

@@ -1,30 +1,22 @@
 import javax.swing.table.AbstractTableModel;
-import java.util.*;
 public class MarkTableModel extends AbstractTableModel {
     private Object[][] note;
     private int nrNote;
-    private final int NR_NOTE_IMPLICIT = 100;
-    public MarkTableModel(int nrColoane){
-        if(nrNote==0)
-            note = new Object[NR_NOTE_IMPLICIT][nrColoane];
-        else
-            note = new Object[nrNote][nrColoane];
+    private int nrCol;
+    public MarkTableModel(int nr, int col){
+        setNrNote(nr);
+        setNrCol(col);
+        note = new Object[nr][col];
     }
-
     public Object[][] getNote() {
         return note;
     }
-    public int getNrNote(){ return nrNote; }
+    public int getRowCount(){ return nrNote; }
     public void setNrNote(int nrNote){
         this.nrNote=nrNote;
     }
-    public int getRowCount(){
-        return nrNote;
-    }
-    public int getColumnCount(){
-        return 5;
-    }
-
+    public void setNrCol(int nrCol){ this.nrCol = nrCol; }
+    public int getColumnCount(){ return nrCol; }
     public Object getValueAt(int row, int col){
         return note[row][col];
     }
@@ -32,10 +24,7 @@ public class MarkTableModel extends AbstractTableModel {
         note[row][col] = value;
         fireTableCellUpdated(row, col);
     }
-
     public void removeTable(){
-        this.note = new Object[NR_NOTE_IMPLICIT][20];
+        this.note = new Object[nrNote][nrCol];
     }
-
-
 }

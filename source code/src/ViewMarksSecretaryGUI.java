@@ -19,7 +19,7 @@ public class ViewMarksSecretaryGUI {
     private HashSet<MarkByDepartment> note;
     private String facultate;
     private JButton inapoi;
-    private MarkTableModel dataModel = new MarkTableModel(7);
+    private MarkTableModel dataModel;
     private JTable tabelNote = new JTable();
     private JScrollPane scrollPane = new JScrollPane(tabelNote);
     public ViewMarksSecretaryGUI(String email){
@@ -38,10 +38,11 @@ public class ViewMarksSecretaryGUI {
         specializari = mng.getInstance().getSetSpecializari();
         materii = mng.getInstance().getSetMaterii();
         note = mng.getInstance().getSetNoteDupaSpecializare();
+        int n = note.size();
+        dataModel = new MarkTableModel(n,7);
         int i = 0;
 
         department.addItem(new Department("Toate specializările"));
-
         for(Department d:specializari){
             if(d.getFaculty().equals(facultate)){
                 department.addItem(d);
@@ -74,6 +75,8 @@ public class ViewMarksSecretaryGUI {
         frame.getContentPane().setBackground(Color.WHITE);
         tabelNote.setModel(model);
         scrollPane.setViewportView(tabelNote);
+        //set table sorter
+        tabelNote.setAutoCreateRowSorter(true);
         //set bounds for elements
         scrollPane.setBounds(42,110,1100,183);
         department.setBounds(42,60,300,25);
@@ -201,5 +204,8 @@ public class ViewMarksSecretaryGUI {
                 SecretaryMenuGUI window = new SecretaryMenuGUI(email);
             }
         });
+    }
+    public static void main(String[] args){
+        ViewMarksSecretaryGUI window = new ViewMarksSecretaryGUI("litere@gmail.com");
     }
 }

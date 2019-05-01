@@ -16,7 +16,7 @@ public class ViewStudentsSecretaryGUI {
     private HashSet<Department> specializari;
     private HashSet<Student> studenti;
     private JComboBox<Department> departments;
-    private StudentTableModel dataModel = new StudentTableModel();
+    private StudentTableModel dataModel;
     private JTable tabelStudenti = new JTable();
     private JScrollPane scrollPane = new JScrollPane(tabelStudenti);
     private JButton inapoi;
@@ -34,6 +34,13 @@ public class ViewStudentsSecretaryGUI {
         studenti = mng.getInstance().getSetStudenti();
         specializari = mng.getInstance().getSetSpecializari();
         facultate = mng.getFacultateDupaEmail(email);
+        int n = 0;
+        for(Student s:studenti){
+            if(s.getFaculty().equals(facultate)){
+                n++;
+            }
+        }
+        dataModel = new StudentTableModel(n);
         int i = 0;
         //add departments in combobox
         departments.addItem(new Department("Toate specializările"));
@@ -75,6 +82,8 @@ public class ViewStudentsSecretaryGUI {
         frame.getContentPane().setBackground(Color.WHITE);
         tabelStudenti.setModel(model);
         scrollPane.setViewportView(tabelStudenti);
+        //set table sorter
+        tabelStudenti.setAutoCreateRowSorter(true);
         //set bounds for elements
         scrollPane.setBounds(42,110,1100,183);
         departments.setBounds(42,60,300,25);
@@ -110,10 +119,21 @@ public class ViewStudentsSecretaryGUI {
         departments.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int i = 0;
-                dataModel.removeTable();
+                int i = 0, q1 = 0, q2 = 0;
+                for(Student s:studenti){
+                    if(departments.getSelectedItem().toString().equals("Toate specializările") && s.getFaculty().equals(facultate)){
+                        q1++;
+                    }else if(s.getDepartment().equals(departments.getSelectedItem().toString())){
+                        q2++;
+                    }
+                }
+                if(departments.getSelectedItem().toString().equals("Toate specializările")){
+                    dataModel = new StudentTableModel(q1);
+                }else{
+                    dataModel = new StudentTableModel(q2);
+                }
                 if (e.getSource() == departments) {
-                    for (Student s : studenti) {
+                    for (Student s:studenti) {
                         if(departments.getSelectedItem().toString().equals("Toate specializările") && s.getFaculty().equals(facultate)) {
                             dataModel.setValueAt(s.getLastName(), i, 0);
                             dataModel.setValueAt(s.getFirstName(), i, 1);
@@ -164,5 +184,8 @@ public class ViewStudentsSecretaryGUI {
                 SecretaryMenuGUI window = new SecretaryMenuGUI(email);
             }
         });
+    }
+    public static void main(String[] args){
+        ViewStudentsSecretaryGUI window = new ViewStudentsSecretaryGUI("fizica@gmail.com");
     }
 }

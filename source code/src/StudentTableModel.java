@@ -3,19 +3,15 @@ import javax.swing.table.AbstractTableModel;
 public class StudentTableModel extends AbstractTableModel {
     private Object[][] studenti;
     private int nrStudenti;
-    private final int NR_STUDENTI_IMPLICIT = 50;
-    public StudentTableModel(){
-        if(nrStudenti==0)
-            studenti = new Object[NR_STUDENTI_IMPLICIT][12];
-        else
-            studenti = new Object[nrStudenti][12];
+    public StudentTableModel(int nr){
+        setNrStudenti(nr);
+        studenti = new Object[nr][12];
     }
-
     public Object[][] getStudenti() {
         return studenti;
     }
     public void setNrStudenti(int nrStudenti){
-        this.nrStudenti=nrStudenti;
+        this.nrStudenti = nrStudenti;
     }
     public int getRowCount(){
         return nrStudenti;
@@ -23,7 +19,6 @@ public class StudentTableModel extends AbstractTableModel {
     public int getColumnCount(){
         return 12;
     }
-
     public Object getValueAt(int row, int col){
         return studenti[row][col];
     }
@@ -32,7 +27,6 @@ public class StudentTableModel extends AbstractTableModel {
         fireTableCellUpdated(row, col);
     }
     public void removeTable(){
-        this.studenti = new Object[NR_STUDENTI_IMPLICIT][20];
+        this.studenti = new Object[nrStudenti][20];
     }
-
 }

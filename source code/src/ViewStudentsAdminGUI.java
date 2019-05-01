@@ -15,7 +15,7 @@ public class ViewStudentsAdminGUI {
     private JComboBox<Faculty> faculties;
     private HashSet<Faculty> facultati;
     private HashSet<Student> studenti;
-    private StudentTableModel dataModel = new StudentTableModel();
+    private StudentTableModel dataModel;
     private JTable tabelStudenti = new JTable();
     private JScrollPane scrollPane = new JScrollPane(tabelStudenti);
     private JButton inapoi;
@@ -32,6 +32,8 @@ public class ViewStudentsAdminGUI {
         ManagerGUI mng = new ManagerGUI();
         facultati = mng.getInstance().getSetFacultati();
         studenti = mng.getInstance().getSetStudenti();
+        int n = studenti.size();
+        dataModel = new StudentTableModel(n);
         int i = 0;
         //add faculties in combobox
         faculties.addItem(new Faculty("Toate facultățile"));
@@ -69,6 +71,8 @@ public class ViewStudentsAdminGUI {
         frame.getContentPane().setBackground(Color.WHITE);
         tabelStudenti.setModel(model);
         scrollPane.setViewportView(tabelStudenti);
+        //set table sorter
+        tabelStudenti.setAutoCreateRowSorter(true);
         //set bounds for elements
         scrollPane.setBounds(42,110,1100,183);
         faculties.setBounds(42,60,300,25);
@@ -104,8 +108,16 @@ public class ViewStudentsAdminGUI {
         faculties.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int i = 0;
-                dataModel.removeTable();
+                int i = 0, q = 0;
+                for(Student s:studenti){
+                    if(faculties.getSelectedItem().toString().equals("Toate facultățile")){
+                        q = studenti.size();
+                        break;
+                    }else if(s.getFaculty().equals(faculties.getSelectedItem().toString())){
+                        q++;
+                    }
+                }
+                dataModel = new StudentTableModel(q);
                 if(e.getSource() == faculties){
                     for(Student s:studenti){
                         if(faculties.getSelectedItem().toString().equals("Toate facultățile")){
@@ -158,5 +170,8 @@ public class ViewStudentsAdminGUI {
                 AdminMenuGUI window = new AdminMenuGUI();
             }
         });
+    }
+    public static void main(String[] args){
+        ViewStudentsAdminGUI window = new ViewStudentsAdminGUI();
     }
 }

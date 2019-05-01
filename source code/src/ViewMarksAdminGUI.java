@@ -19,7 +19,7 @@ public class ViewMarksAdminGUI {
     private HashSet<MarkByDepartment> note;
     private HashSet<Subject> materii;
     private HashSet<Department> specializari;
-    private MarkTableModel dataModel = new MarkTableModel(7);
+    private MarkTableModel dataModel;
     private JTable tabelNote = new JTable();
     private JScrollPane scrollPane = new JScrollPane(tabelNote);
     private JButton inapoi;
@@ -40,6 +40,8 @@ public class ViewMarksAdminGUI {
         specializari = mng.getInstance().getSetSpecializari();
         materii = mng.getInstance().getSetMaterii();
         note = mng.getInstance().getSetNoteDupaSpecializare();
+        int n = note.size();
+        dataModel = new MarkTableModel(n,7);
         int i = 0;
         //add all faculties in combobox
         faculties.addItem(new Faculty("Toate facultățile"));
@@ -72,6 +74,8 @@ public class ViewMarksAdminGUI {
         frame.getContentPane().setBackground(Color.WHITE);
         tabelNote.setModel(model);
         scrollPane.setViewportView(tabelNote);
+        //set table sorter
+        tabelNote.setAutoCreateRowSorter(true);
         //set bounds for elements
         scrollPane.setBounds(42,110,1100,183);
         faculties.setBounds(42,60,300,25);
@@ -108,8 +112,16 @@ public class ViewMarksAdminGUI {
         faculties.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int i = 0;
-                dataModel.removeTable();
+                int i = 0, q = 0;
+                for(MarkByDepartment m:note){
+                    if(faculties.getSelectedItem().toString().equals("Toate facultățile")){
+                        q = note.size();
+                        break;
+                    }else if(m.getFaculty().equals(faculties.getSelectedItem().toString())){
+                        q++;
+                    }
+                }
+                dataModel = new MarkTableModel(q,7);
                 departments.removeAllItems();
                 if (e.getSource() == faculties) {
                     for(MarkByDepartment m:note){
@@ -154,6 +166,7 @@ public class ViewMarksAdminGUI {
                 departments.setBounds(350,60,300,25);
             }
         });
+        //add marks into table when selecting a department
         departments.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -204,6 +217,7 @@ public class ViewMarksAdminGUI {
                 }
             }
         });
+        //add marks into table when selecting a subject
         subjects.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -251,6 +265,9 @@ public class ViewMarksAdminGUI {
                 AdminMenuGUI window = new AdminMenuGUI();
             }
         });
+    }
+    public static void main(String[] args){
+        ViewMarksAdminGUI window = new ViewMarksAdminGUI();
     }
 }
 

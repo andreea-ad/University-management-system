@@ -15,7 +15,7 @@ public class ViewTeachersAdminGUI {
     private JComboBox<Faculty> faculties;
     private HashSet<Faculty> facultati;
     private HashSet<Professor> profesori;
-    private TeacherTableModel dataModel = new TeacherTableModel();
+    private TeacherTableModel dataModel;
     private JTable tabelProfesori = new JTable();
     private JScrollPane scrollPane = new JScrollPane(tabelProfesori);
     private JButton inapoi;
@@ -32,6 +32,8 @@ public class ViewTeachersAdminGUI {
         ManagerGUI mng = new ManagerGUI();
         facultati = mng.getInstance().getSetFacultati();
         profesori = mng.getInstance().getSetProfesori();
+        int n = profesori.size();
+        dataModel = new TeacherTableModel(n);
         String[] coloane = {"NUME", "PRENUME", "CNP", "DATA NAȘTERII", "NUMĂR DE TELEFON", "ADRESĂ", "ADRESĂ DE EMAIL", "FACULTATE", "MATERIE PREDATĂ", "DATA ANGAJĂRII", "SALARIU"};
         int i = 0;
         //add faculties in combobox
@@ -68,6 +70,8 @@ public class ViewTeachersAdminGUI {
         frame.getContentPane().setBackground(Color.WHITE);
         tabelProfesori.setModel(model);
         scrollPane.setViewportView(tabelProfesori);
+        //set table sorter
+        tabelProfesori.setAutoCreateRowSorter(true);
         //set bounds for elements
         scrollPane.setBounds(42, 110, 1100, 183);
         faculties.setBounds(42, 60, 300, 25);
@@ -103,11 +107,32 @@ public class ViewTeachersAdminGUI {
         faculties.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    int i = 0;
-                    dataModel.removeTable();
+                    int i = 0, q = 0;
+                    for(Professor p:profesori){
+                        if(faculties.getSelectedItem().toString().equals("Toate facultățile")){
+                            q = profesori.size();
+                            break;
+                        }else if(p.getFaculty().equals(faculties.getSelectedItem().toString())){
+                            q++;
+                        }
+                    }
+                    dataModel = new TeacherTableModel(q);
                     if (e.getSource() == faculties) {
-                        for (Professor p : profesori) {
-                            if (p.getFaculty().equals(faculties.getSelectedItem().toString())) {
+                        for(Professor p:profesori) {
+                            if(faculties.getSelectedItem().toString().equals("Toate facultățile")){
+                                dataModel.setValueAt(p.getLastName(), i, 0);
+                                dataModel.setValueAt(p.getFirstName(), i, 1);
+                                dataModel.setValueAt(p.getCnp(), i, 2);
+                                dataModel.setValueAt(p.getDob(), i, 3);
+                                dataModel.setValueAt(p.getPhoneNumber(), i, 4);
+                                dataModel.setValueAt(p.getAddress(), i, 5);
+                                dataModel.setValueAt(p.getEmailAddress(), i, 6);
+                                dataModel.setValueAt(p.getFaculty(), i, 7);
+                                dataModel.setValueAt(p.getTeachingSubject(), i, 8);
+                                dataModel.setValueAt(p.getHireDate(), i, 9);
+                                dataModel.setValueAt(p.getSalary(), i, 10);
+                                i++;
+                            }else if (p.getFaculty().equals(faculties.getSelectedItem().toString())) {
                                 dataModel.setValueAt(p.getLastName(), i, 0);
                                 dataModel.setValueAt(p.getFirstName(), i, 1);
                                 dataModel.setValueAt(p.getCnp(), i, 2);
@@ -142,6 +167,9 @@ public class ViewTeachersAdminGUI {
                 AdminMenuGUI window = new AdminMenuGUI();
             }
         });
+    }
+    public static void main(String[] args){
+        ViewTeachersAdminGUI window = new ViewTeachersAdminGUI();
     }
 }
 

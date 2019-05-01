@@ -1,88 +1,152 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.time.*;
-import java.sql.Date;
 
 public class AddMarkProfessorGUI {
     private JFrame frame;
+    private String[] profesor;
+    private String facultate = "", specializare = "";
     private JLabel labelStudent, labelNota, labelMaterie, labelDataAdaugarii;
     private JTextField dataAdaugarii, materie;
-    private SpinnerModel spinnerModel;
-    private JSpinner spinner;
-    private JComboBox <String> studenti;
+    private SpinnerModel spinnerModelNota;
+    private JSpinner nota;
+    private JComboBox<Student> students;
     private JButton adaugare, inapoi;
-    private HashSet<Student> studentiFacultate;
+    private HashSet<Student> studenti;
+    private HashSet<Subject> materii;
     private HashSet<Professor> profesori;
-    private String prenumeProfesor = "";
-    private String numeProfesor = "";
-    private LocalDate date;
+    private HashSet<Mark> note;
     public AddMarkProfessorGUI(String email){
+        /*
+        ====================
+        initialize variables
+        ====================
+        */
         frame = new JFrame("Adăugare note");
-        frame.getContentPane().setBackground(Color.WHITE);
-
         labelStudent = new JLabel("Student: ");
         labelNota = new JLabel("Notă: ");
         labelMaterie = new JLabel("Materie: ");
         labelDataAdaugarii = new JLabel("Data adăugării: ");
-
+        //set current date for dateAdded
+        dataAdaugarii = new JTextField(DateTimeFormatter.ofPattern("yyyy-MM-dd").format(LocalDate.now()));
+        materie = new JTextField();
+        //create spinner for mark
+        spinnerModelNota = new SpinnerNumberModel(1,1,10,1);
+        nota = new JSpinner(spinnerModelNota);
+        students = new JComboBox<>();
+        adaugare = new JButton("Adaugă notă");
+        inapoi = new JButton("Înapoi");
         ManagerGUI mng = new ManagerGUI();
-
-        studenti = new JComboBox<>();
-
-        studentiFacultate = mng.getInstance().getSetStudenti();  //all students
-        profesori = mng.getInstance().getSetProfesori();   //all teachers
-
-
-        String facultateProfesor="";
-
-        //get faculty, first name, last name and set subject of current teacher
-        for(Professor p:profesori){
-            if(p.getEmailAddress().equals(email)){
-                facultateProfesor += p.getFaculty();
-                prenumeProfesor += p.getFirstName();
-                numeProfesor += p.getLastName();
-                materie = new JTextField(p.getTeachingSubject());
+        profesor = mng.getProfesorDupaEmail(email);
+        studenti = mng.getInstance().getSetStudenti();
+        profesori = mng.getInstance().getSetProfesori();
+        materii = mng.getInstance().getSetMaterii();
+        note = mng.getInstance().getSetNote();
+        //set teacher's subject and get department
+        for(Subject s:materii){
+            if(s.getTeacherFirstName().equals(profesor[0]) && s.getTeacherLastName().equals(profesor[1])){
+                materie.setText(s.getTitle());
+                specializare += s.getDepartment();
                 break;
             }
         }
-
-        //create combobox with students which study at the same faculty as the current teacher
-        for(Student s:studentiFacultate){
-            if(s.getFaculty().equals(facultateProfesor)){
-                studenti.addItem(s.getLastName() + " " + s.getFirstName());
+        //get teacher's faculty
+        for(Professor p:profesori){
+            if(p.getFirstName().equals(profesor[0]) && p.getLastName().equals(profesor[1])){
+                facultate += p.getFaculty();
             }
         }
-
-        //create spinner for mark
-        spinnerModel = new SpinnerNumberModel(1,1,10,1);
-        spinner = new JSpinner(spinnerModel);
-
-        //set current date for dateAdded
-        date = LocalDate.now();
-        dataAdaugarii = new JTextField(DateTimeFormatter.ofPattern("yyyy-MM-dd").format(date));
+        //create combobox with students which study at the same faculty as the current teacher
+        for(Student s:studenti){
+            if(s.getFaculty().equals(facultate) && s.getDepartment().equals(specializare)){
+                students.addItem(s);
+            }
+        }
+        //add elements to the frame
+        frame.add(labelMaterie);
+        frame.add(materie);
+        frame.add(labelStudent);
+        frame.add(students);
+        frame.add(labelNota);
+        frame.add(nota);
+        frame.add(labelDataAdaugarii);
+        frame.add(dataAdaugarii);
+        frame.add(adaugare);
+        frame.add(inapoi);
+        //set white background
+        frame.getContentPane().setBackground(Color.WHITE);
+        //set textfields not editable
         dataAdaugarii.setEditable(false);
-
-        adaugare = new JButton("Adăugare notă");
-        inapoi = new JButton("Înapoi");
-
+        materie.setEditable(false);
+        //set bounds for elements
+        labelMaterie.setBounds(150,50,120,25);
+        materie.setBounds(280,50,120,25);
+        labelStudent.setBounds(150,80,120,25);
+        students.setBounds(280,80,120,25);
+        labelNota.setBounds(150,110,120,25);
+        nota.setBounds(280,110,120,25);
+        labelDataAdaugarii.setBounds(150,140,120,25);
+        dataAdaugarii.setBounds(280,140,120,25);
+        adaugare.setBounds(125,190,150,25);
+        inapoi.setBounds(285,190,150,25);
+        //buttons design
+        adaugare.setBorderPainted(false);
+        adaugare.setBackground(new Color(233,233,233));
+        adaugare.setForeground(new Color(100,100,100));
+        inapoi.setBorderPainted(false);
+        inapoi.setBackground(new Color(233,233,233));
+        inapoi.setForeground(new Color(100,100,100));
+        //labels design
+        labelStudent.setForeground(new Color(100,100,100));
+        labelMaterie.setForeground(new Color(100,100,100));
+        labelNota.setForeground(new Color(100,100,100));
+        labelDataAdaugarii.setForeground(new Color(100,100,100));
+        //set frame icon
+        try {
+            frame.setIconImage(ImageIO.read(getClass().getResource("resources/1.png")));
+        }catch(IOException ie){
+            ie.printStackTrace();
+        }
+        //set frame size
+        frame.setPreferredSize(new Dimension(570,300));
+        frame.setLayout(null);
+        frame.pack();
+        //set window in the middle of the screen
+        frame.setLocationRelativeTo(null);
+        //set the default close button
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //block resize operation
+        frame.setResizable(false);
+        //set frame visible
+        frame.setVisible(true);
+        /*
+        ==============
+        define actions
+        ==============
+        */
         //insert mark into DB
         adaugare.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                String[] student = String.valueOf(studenti.getSelectedItem()).split("\\s+");
-                String prenumeStudent = student[1];
-                String numeStudent = student[0];
-                int notaStudent = (Integer)spinner.getValue();
-                String materieNota = materie.getText();
-                Date dataAdaugarii = Date.valueOf(date);
-                mng.getInstance().addMarkInDB(prenumeStudent,numeStudent,notaStudent,materieNota,prenumeProfesor,numeProfesor,dataAdaugarii);
-                JOptionPane.showMessageDialog(null,"Nota a fost introdusă în baza de date!");
-                frame.setVisible(false);
+                String[] student = String.valueOf(students.getSelectedItem().toString()).split("\\s+");
+                for(Mark m:note){
+                    //check if the mark doesn't exist already
+                    if(m.getStudentFirstName().equals(student[1]) && m.getStudentLastName().equals(student[0]) && m.getSubject().equals(materie.getText())){
+                        JOptionPane.showMessageDialog(null,"Studentul are notă!","Operație refuzată",JOptionPane.WARNING_MESSAGE);
+                        break;
+                    }else{
+                        mng.getInstance().addMarkInDB(student[1], student[0], (int)nota.getValue(), materie.getText(), profesor[0], profesor[1],java.sql.Date.valueOf(dataAdaugarii.getText()));
+                        JOptionPane.showMessageDialog(null,"Nota a fost introdusă în baza de date!");
+                        break;
+                    }
+                }
             }
         });
         //go back to user menu
@@ -94,42 +158,8 @@ public class AddMarkProfessorGUI {
                 ProfessorMenuGUI window = new ProfessorMenuGUI(email);
             }
         });
-
-        materie.setEditable(false);
-
-        labelMaterie.setBounds(150,50,120,25);
-        materie.setBounds(280,50,120,25);
-        labelStudent.setBounds(150,80,120,25);
-        studenti.setBounds(280,80,120,25);
-        labelNota.setBounds(150,110,120,25);
-        spinner.setBounds(280,110,120,25);
-        labelDataAdaugarii.setBounds(150,140,120,25);
-        dataAdaugarii.setBounds(280,140,120,25);
-        adaugare.setBounds(150,190,120,25);
-        inapoi.setBounds(280,190,120,25);
-
-        frame.add(labelMaterie);
-        frame.add(materie);
-        frame.add(labelStudent);
-        frame.add(studenti);
-        frame.add(labelNota);
-        frame.add(spinner);
-        frame.add(labelDataAdaugarii);
-        frame.add(dataAdaugarii);
-        frame.add(adaugare);
-        frame.add(inapoi);
-
-        frame.setLayout(null);
-        //set frame size
-        frame.setPreferredSize(new Dimension(570,300));
-        frame.pack();
-        //set window in the middle of the screen
-        frame.setLocationRelativeTo(null);
-        //set the default close button
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //block resize operation
-        frame.setResizable(false);
-        //make visible frame
-        frame.setVisible(true);
+    }
+    public static void main(String[] args){
+        AddMarkProfessorGUI window = new AddMarkProfessorGUI("maria.ionescu@gmail.com");
     }
 }

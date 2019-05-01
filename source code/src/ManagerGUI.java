@@ -168,8 +168,7 @@ public class ManagerGUI {
             ps.setString(4, nume);
             ps.setString(5, materie);
             ps.executeUpdate();
-            ps.close();
-            System.exit(0);
+            conn.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -198,7 +197,6 @@ public class ManagerGUI {
             ps.setString(2,facultate+""+ThreadLocalRandom.current().nextInt(10, 500));
             ps.execute();
             conn.close();
-            System.exit(0);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -218,6 +216,30 @@ public class ManagerGUI {
             ps.execute();
             conn.close();
         }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    public void updateTeacherFromDB(String cnp1, String prenume, String nume, String cnp, Date dataNasterii, String nrTelefon, String adresa, String email, String facultate, String materie, Date dataAngajarii, int salariu){
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
+            String updateQuery = "update professors set first_name=?, last_name=?, cnp=?, dob=?, phone_number=?, address=?, email_address=?, faculty=?, teaching_subject=?, hire_date=?, salary=? where cnp=?";
+            PreparedStatement ps = conn.prepareStatement(updateQuery);
+            ps.setString(1,prenume);
+            ps.setString(2,nume);
+            ps.setString(3,cnp);
+            ps.setDate(4,dataNasterii);
+            ps.setString(5,nrTelefon);
+            ps.setString(6,adresa);
+            ps.setString(7,email);
+            ps.setString(8,facultate);
+            ps.setString(9,materie);
+            ps.setDate(10,dataAngajarii);
+            ps.setInt(11,salariu);
+            ps.setString(12,cnp1);
+            ps.executeUpdate();
+            conn.close();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -243,10 +265,9 @@ public class ManagerGUI {
             ps.execute();
             ps = conn.prepareStatement(insertUserQuery);
             ps.setString(1,adresaEmail);
-            ps.setString(2,facultate+""+ThreadLocalRandom.current().nextInt(10, 500));
+            ps.setString(2,facultate + "" + ThreadLocalRandom.current().nextInt(10, 500));
             ps.execute();
             conn.close();
-            System.exit(0);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -269,6 +290,31 @@ public class ManagerGUI {
             e.printStackTrace();
         }
     }
+    public void updateStudentFromDB(String cnp1, String prenume, String nume, String cnp, Date dataNasterii, String nrTelefon, String adresa, String email, String facultate, String specializare, String cicluUniversitar, int an, int nrCredite){
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
+            String updateQuery = "update students set first_name=?, last_name=?, cnp=?, dob=?, phone_number=?, address=?, email_address=?, faculty=?, department=?, degree=?, year=?, number_of_credits=? where cnp=?";
+            PreparedStatement ps = conn.prepareStatement(updateQuery);
+            ps.setString(1,prenume);
+            ps.setString(2,nume);
+            ps.setString(3,cnp);
+            ps.setDate(4,dataNasterii);
+            ps.setString(5,nrTelefon);
+            ps.setString(6,adresa);
+            ps.setString(7,email);
+            ps.setString(8,facultate);
+            ps.setString(9,specializare);
+            ps.setString(10,cicluUniversitar);
+            ps.setInt(11,an);
+            ps.setInt(12,nrCredite);
+            ps.setString(13,cnp1);
+            ps.executeUpdate();
+            ps.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public String getFacultateDupaEmail(String email){
         String facultate = "", emailDB;
         try {
@@ -288,6 +334,28 @@ public class ManagerGUI {
             e.printStackTrace();
         }
         return facultate;
+    }
+    public String[] getProfesorDupaEmail(String email){
+        String[] profesor = {"",""};
+        String emailDB;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
+            String selectQuery = "select * from professors";
+            PreparedStatement ps = conn.prepareStatement(selectQuery);
+            ResultSet rs = ps.executeQuery(selectQuery);
+            while(rs.next()){
+                emailDB = rs.getString("email_address");
+                if(email.equals(emailDB)) {
+                    profesor[0] += rs.getString("first_name");
+                    profesor[1] += rs.getString("last_name");
+                    break;
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return profesor;
     }
     public static HashSet<Student> getSetStudenti(){ return studenti; }
     public static HashSet<Faculty> getSetFacultati(){ return facultati; }

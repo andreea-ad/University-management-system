@@ -3,19 +3,16 @@ import javax.swing.table.AbstractTableModel;
 public class TeacherTableModel extends AbstractTableModel {
     private Object[][] profesori;
     private int nrProfesori;
-    private final int NR_PROFESORI_IMPLICIT = 50;
-    public TeacherTableModel(){
-        if(nrProfesori==0)
-            profesori = new Object[NR_PROFESORI_IMPLICIT][11];
-        else
-            profesori = new Object[nrProfesori][11];
+    public TeacherTableModel(int nr){
+        setNrProfesori(nr);
+        profesori = new Object[nr][11];
     }
 
     public Object[][] getProfesori() {
         return profesori;
     }
     public void setNrProfesori(int nrProfesori){
-        this.nrProfesori=nrProfesori;
+        this.nrProfesori = nrProfesori;
     }
     public int getRowCount(){
         return nrProfesori;
@@ -23,7 +20,6 @@ public class TeacherTableModel extends AbstractTableModel {
     public int getColumnCount(){
         return 11;
     }
-
     public Object getValueAt(int row, int col){
         return profesori[row][col];
     }
@@ -32,6 +28,6 @@ public class TeacherTableModel extends AbstractTableModel {
         fireTableCellUpdated(row, col);
     }
     public void removeTable(){
-        this.profesori = new Object[NR_PROFESORI_IMPLICIT][11];
+        this.profesori = new Object[nrProfesori][11];
     }
 }

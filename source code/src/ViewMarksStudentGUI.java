@@ -11,7 +11,7 @@ public class ViewMarksStudentGUI {
     private HashSet<MarkByEmail> note;
     private JFrame frame;
     private JTable tabelNote = new JTable();
-    private MarkTableModel dataModel = new MarkTableModel(7);
+    private MarkTableModel dataModel;
     private JScrollPane scrollPane = new JScrollPane(tabelNote);
     private JButton inapoi;
     public ViewMarksStudentGUI(String email) {
@@ -25,6 +25,8 @@ public class ViewMarksStudentGUI {
 
         ManagerGUI mng = new ManagerGUI();
         note = mng.getInstance().getSetNoteDupaEmail();
+        int n = note.size();
+        dataModel = new MarkTableModel(n,7);
         int i = 0;
         for(MarkByEmail m:note){
             if(m.getEmail().equals(email)){
@@ -50,6 +52,8 @@ public class ViewMarksStudentGUI {
         frame.getContentPane().setBackground(Color.WHITE);
         tabelNote.setModel(model);
         scrollPane.setViewportView(tabelNote);
+        //set table sorter
+        tabelNote.setAutoCreateRowSorter(true);
         //set bounds for elements
         scrollPane.setBounds(42,110,1100,183);
         inapoi.setBounds(510,320,145,25);
@@ -89,5 +93,8 @@ public class ViewMarksStudentGUI {
                 StudentMenuGUI window = new StudentMenuGUI(email);
             }
         });
+    }
+    public static void main(String[] args){
+        ViewMarksStudentGUI window = new ViewMarksStudentGUI("stefania.pop@gmail.com");
     }
 }
