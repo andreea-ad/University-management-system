@@ -20,7 +20,6 @@ public class AddMarkSecretaryGUI {
     private HashSet<Student> studenti;
     private HashSet<Department> specializari;
     private HashSet<Subject> materii;
-    private HashSet<Mark> note;
     private JComboBox<Department> departments;
     private JComboBox<Subject> subjects;
     private JComboBox<Student> students;
@@ -49,7 +48,6 @@ public class AddMarkSecretaryGUI {
         studenti = mng.getInstance().getSetStudenti();
         specializari = mng.getInstance().getSetSpecializari();
         materii = mng.getInstance().getSetMaterii();
-        note = mng.getInstance().getSetNote();
         facultate = mng.getFacultateDupaEmail(email);
         //add all departments from this faculty into combobox
         departments.addItem(new Department("Toate specializările"));
@@ -166,27 +164,20 @@ public class AddMarkSecretaryGUI {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 String[] student = String.valueOf(students.getSelectedItem().toString()).split("\\s+");
-                for(Mark m:note){
-                    //check if the mark doesn't exist already
-                    if(m.getStudentFirstName().equals(student[1]) && m.getStudentLastName().equals(student[0]) && m.getSubject().equals(subjects.getSelectedItem().toString())){
-                        JOptionPane.showMessageDialog(null,"Studentul are notă!","Operație refuzată",JOptionPane.WARNING_MESSAGE);
-                        break;
-                    }else{
-                        String[] profesor = {"",""};
-                        for(Subject s:materii){
-                            if(s.getTitle().equals(subjects.getSelectedItem().toString())){
-                                profesor[0] += s.getTeacherLastName();
-                                profesor[1] += s.getTeacherFirstName();
-                                break;
-                            }
-                        }
-                        mng.addMarkInDB(student[1],student[0],(int)spinnerModelNota.getValue(),subjects.getSelectedItem().toString(),profesor[1],profesor[0],java.sql.Date.valueOf(dataAdaugarii.getText()));
-                        JOptionPane.showMessageDialog(null, "Nota a fost adăugată în baza de date!");
+                String[] profesor = {"", ""};
+                for (Subject s : materii) {
+                    if (s.getTitle().equals(subjects.getSelectedItem().toString())) {
+                        profesor[0] += s.getTeacherLastName();
+                        profesor[1] += s.getTeacherFirstName();
                         break;
                     }
                 }
+                if(mng.addMarkInDB(student[1], student[0], (int) spinnerModelNota.getValue(), subjects.getSelectedItem().toString(), profesor[1], profesor[0], java.sql.Date.valueOf(dataAdaugarii.getText())) == 1){
+                    JOptionPane.showMessageDialog(null, "Nota a fost adăugată în baza de date!");
+                }
             }
         });
+        //go back to user menu
         inapoi.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

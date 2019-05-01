@@ -26,7 +26,7 @@ public class ManagerGUI {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
-            //retrieve data from DB to create arraylists
+            //retrieve data from DB to create hashsets
             String faculties = "select * from faculties";
             String departments = "select * from departments";
             String subjects = "select * from subjects";
@@ -107,11 +107,17 @@ public class ManagerGUI {
         }
     }
 
-    public void addMarkInDB(String prenume, String nume, int nota, String materie, String prenumeProfesor, String numeProfesor, Date dataAdaugarii){
+    public int addMarkInDB(String prenume, String nume, int nota, String materie, String prenumeProfesor, String numeProfesor, Date dataAdaugarii){
         try{
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
             String insertQuery = "insert into marks(`student_first_name`,`student_last_name`,`mark`,`subject`,`teacher_first_name`,`teacher_last_name`,`date_added`) VALUES (?,?,?,?,?,?,?)";
+            for(Mark m:getSetNote()){
+                if(m.getStudentLastName().equals(nume) && m.getStudentFirstName().equals(prenume) && m.getSubject().equals(materie)){
+                    JOptionPane.showMessageDialog(null,"Studentul are notă!","Operație refuzată",JOptionPane.WARNING_MESSAGE);
+                    return -1;
+                }
+            }
             PreparedStatement ps = conn.prepareStatement(insertQuery);
             ps.setString(1,prenume);
             ps.setString(2,nume);
@@ -122,10 +128,10 @@ public class ManagerGUI {
             ps.setDate(7,dataAdaugarii);
             ps.execute();
             conn.close();
-            System.exit(0);
         }catch(Exception e){
             e.printStackTrace();
         }
+        return 1;
     }
     public void removeMarkFromDB(String prenume, String nume, String materie){
         try {
@@ -173,12 +179,18 @@ public class ManagerGUI {
             e.printStackTrace();
         }
     }
-    public void addTeacherInDB(String prenume, String nume, String cnp, Date dataNasterii, String numarTelefon, String adresa, String adresaEmail, String facultate, String materiePredata, Date dataAngajarii, int salariu){
+    public int addTeacherInDB(String prenume, String nume, String cnp, Date dataNasterii, String numarTelefon, String adresa, String adresaEmail, String facultate, String materiePredata, Date dataAngajarii, int salariu){
         try{
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
             String insertQuery = "insert into professors(`first_name`,`last_name`,`cnp`,`dob`,`phone_number`,`address`,`email_address`,`faculty`,`teaching_subject`, `hire_date`,`salary`) values (?,?,?,?,?,?,?,?,?,?,?)";
             String insertUserQuery = "insert into userprofesor(`email_address`,`pass`) values (?,?)";
+            for(Professor p:getSetProfesori()){
+                if(p.getCnp().equals(cnp)){
+                    JOptionPane.showMessageDialog(null,"Profesorul există deja în baza de date!","Operație refuzată",JOptionPane.WARNING_MESSAGE);
+                    return -1;
+                }
+            }
             PreparedStatement ps = conn.prepareStatement(insertQuery);
             ps.setString(1,prenume);
             ps.setString(2,nume);
@@ -200,6 +212,7 @@ public class ManagerGUI {
         }catch(Exception e){
             e.printStackTrace();
         }
+        return 1;
     }
     public void removeTeacherFromDB(String prenume, String nume, String email){
         try {
@@ -243,12 +256,18 @@ public class ManagerGUI {
             e.printStackTrace();
         }
     }
-    public void addStudentInDB(String prenume, String nume, String cnp, Date dataNasterii, String nrTelefon, String adresa, String adresaEmail, String facultate, String specializare, String cicluUniversitar, int anUniversitar, int nrCredite){
+    public int addStudentInDB(String prenume, String nume, String cnp, Date dataNasterii, String nrTelefon, String adresa, String adresaEmail, String facultate, String specializare, String cicluUniversitar, int anUniversitar, int nrCredite){
         try{
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
             String insertQuery = "insert into students(`first_name`,`last_name`,`cnp`,`dob`,`phone_number`,`address`,`email_address`,`faculty`,`department`, `degree`,`year`,`number_of_credits`)values(?,?,?,?,?,?,?,?,?,?,?,?)";
             String insertUserQuery = "insert into userstudent(`email_address`,`pass`) values (?,?)";
+            for(Student s:getSetStudenti()){
+                if(s.getCnp().equals(cnp)){
+                    JOptionPane.showMessageDialog(null,"Studentul există deja în baza de date!","Operație refuzată",JOptionPane.WARNING_MESSAGE);
+                    return -1;
+                }
+            }
             PreparedStatement ps = conn.prepareStatement(insertQuery);
             ps.setString(1,prenume);
             ps.setString(2,nume);
@@ -271,6 +290,7 @@ public class ManagerGUI {
         }catch(Exception e){
             e.printStackTrace();
         }
+        return 1;
     }
     public void removeStudentFromDB(String nume, String prenume, String email){
         try {

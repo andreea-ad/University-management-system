@@ -109,7 +109,7 @@ public class EditMarkProfessorGUI {
                 frame.setVisible(false);
                 DefaultTableModel model = (DefaultTableModel)tabelNote.getModel();
                 int indexRandSelectat = tabelNote.getSelectedRow();
-                EditMarkGUI window = new EditMarkGUI(email,model.getValueAt(indexRandSelectat,0).toString(), model.getValueAt(indexRandSelectat,1).toString(), (int)model.getValueAt(indexRandSelectat,2), model.getValueAt(indexRandSelectat,3).toString(), (Date)model.getValueAt(indexRandSelectat,4));
+                EditMarkGUI window = new EditMarkGUI(1, email, model.getValueAt(indexRandSelectat,0).toString(), model.getValueAt(indexRandSelectat,1).toString(), (int)model.getValueAt(indexRandSelectat,2), model.getValueAt(indexRandSelectat,3).toString(), (Date)model.getValueAt(indexRandSelectat,4));
             }
         });
         //go back to user menu

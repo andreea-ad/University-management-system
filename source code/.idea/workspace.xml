@@ -2,109 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5a3249f-e99c-4599-8e81-3f07cf876a07" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/EditMarkGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EditStudentGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EditTeacherGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/EditMarkProfessorGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/EditMarkProfessorGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/EditStudentAdminGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/EditStudentAdminGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/EditStudentSecretaryGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/EditStudentSecretaryGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/EditTeacherAdminGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/EditTeacherAdminGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/EditTeacherAdminGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/EditTeacherAdminGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ManagerGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ManagerGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/MarkTableModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/MarkTableModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/PDViewProfessorGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/PDViewProfessorGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveMarkAdminGUI$1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveMarkAdminGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveMarkAdminGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveMarkAdminGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveMarkAdminGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveMarkAdminGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveMarkAdminGUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveMarkAdminGUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveMarkAdminGUI$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveMarkAdminGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveMarkAdminGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveMarkSecretaryGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveMarkSecretaryGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentAdminGUI$1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentAdminGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentAdminGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentAdminGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentAdminGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentAdminGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentAdminGUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentAdminGUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentAdminGUI$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentAdminGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentAdminGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentSecretaryGUI$1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentSecretaryGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentSecretaryGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentSecretaryGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentSecretaryGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentSecretaryGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentSecretaryGUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentSecretaryGUI$4$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentSecretaryGUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentSecretaryGUI$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentSecretaryGUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentSecretaryGUI$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentSecretaryGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveStudentSecretaryGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveTeacherAdminGUI$1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveTeacherAdminGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveTeacherAdminGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveTeacherAdminGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveTeacherAdminGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveTeacherAdminGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveTeacherAdminGUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/RemoveTeacherAdminGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/RemoveTeacherAdminGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/StudentTableModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/StudentTableModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/TeacherTableModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/TeacherTableModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksAdminGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksAdminGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksAdminGUI$2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksAdminGUI$2$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksAdminGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksAdminGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksAdminGUI$3$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksAdminGUI$3$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksAdminGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksAdminGUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksAdminGUI$4$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksAdminGUI$4$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksAdminGUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksAdminGUI$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksAdminGUI$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksAdminGUI$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksAdminGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksAdminGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksProfessorGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksProfessorGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksProfessorGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksProfessorGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksProfessorGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksProfessorGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksSecretaryGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksSecretaryGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksSecretaryGUI$2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksSecretaryGUI$2$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksSecretaryGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksSecretaryGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksSecretaryGUI$3$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksSecretaryGUI$3$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksSecretaryGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksSecretaryGUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksSecretaryGUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksSecretaryGUI$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksSecretaryGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksSecretaryGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksStudentGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksStudentGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksStudentGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksStudentGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewMarksStudentGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewMarksStudentGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsAdminGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsAdminGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsAdminGUI$2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsAdminGUI$2$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsAdminGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsAdminGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsAdminGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsAdminGUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsAdminGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsAdminGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsSecretaryGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsSecretaryGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsSecretaryGUI$2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsSecretaryGUI$2$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsSecretaryGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsSecretaryGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsSecretaryGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsSecretaryGUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsSecretaryGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewStudentsSecretaryGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewTeachersAdminGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewTeachersAdminGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewTeachersAdminGUI$2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewTeachersAdminGUI$2$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewTeachersAdminGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewTeachersAdminGUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewTeachersAdminGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewTeachersAdminGUI$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/ViewTeachersAdminGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/ViewTeachersAdminGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proiect/resources/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Proiect/resources/1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AddMarkAdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddMarkAdminGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AddMarkProfessorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddMarkProfessorGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AddMarkSecretaryGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddMarkSecretaryGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AddStudentAdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddStudentAdminGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AddStudentSecretaryGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddStudentSecretaryGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AddTeacherAdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AddTeacherAdminGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EditMarkAdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EditMarkAdminGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EditMarkGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EditMarkGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EditMarkProfessorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EditMarkProfessorGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EditStudentAdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EditStudentAdminGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EditStudentSecretaryGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EditStudentSecretaryGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EditTeacherAdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EditTeacherAdminGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EditMarkSecretaryGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EditMarkSecretaryGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ManagerGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ManagerGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MarkTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MarkTableModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Professor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Professor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RemoveMarkAdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RemoveMarkAdminGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RemoveMarkSecretaryGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RemoveMarkSecretaryGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RemoveStudentAdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RemoveStudentAdminGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RemoveStudentSecretaryGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RemoveStudentSecretaryGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RemoveTeacherAdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RemoveTeacherAdminGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StudentTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentTableModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TeacherTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TeacherTableModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ViewMarksAdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewMarksAdminGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ViewMarksProfessorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewMarksProfessorGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ViewMarksSecretaryGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewMarksSecretaryGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ViewMarksStudentGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewMarksStudentGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ViewStudentsAdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewStudentsAdminGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ViewStudentsSecretaryGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewStudentsSecretaryGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ViewTeachersAdminGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewTeachersAdminGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/1.png" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -115,14 +25,82 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ManagerGUI.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ViewMarksProfessorGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3686">
-              <caret line="170" column="25" selection-start-line="170" selection-start-column="25" selection-end-line="170" selection-end-column="25" />
+            <state relative-caret-position="2120">
+              <caret line="109" column="92" selection-start-line="109" selection-start-column="92" selection-end-line="109" selection-end-column="92" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ViewMarksSecretaryGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="622">
+              <caret line="204" column="13" selection-start-line="204" selection-start-column="13" selection-end-line="204" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ViewMarksStudentGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1072">
+              <caret line="28" column="42" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ViewStudentsAdminGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="174" column="65" selection-start-line="174" selection-start-column="65" selection-end-line="174" selection-end-column="65" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#7817#7818#0" expanded="true" />
+                <element signature="e#7889#7890#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ViewStudentsSecretaryGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2646">
+              <caret line="41" column="9" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ViewSubjectsAdminGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="32" selection-start-column="32" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ViewTeachersAdminGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1436">
+              <caret line="72" column="8" lean-forward="true" selection-start-line="72" selection-start-column="8" selection-end-line="73" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -143,7 +121,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/VizualizareNoteStudentGUI.java" />
         <option value="$PROJECT_DIR$/src/SubjectByTeacher.java" />
         <option value="$PROJECT_DIR$/src/Mark.java" />
         <option value="$PROJECT_DIR$/src/StudentMarksGUI.java" />
@@ -151,11 +128,6 @@
         <option value="$PROJECT_DIR$/src/Department.java" />
         <option value="$PROJECT_DIR$/src/Faculty.java" />
         <option value="$PROJECT_DIR$/src/AddMarksSecretaryGUI.java" />
-        <option value="$PROJECT_DIR$/src/EditMarkSecretaryGUI.java" />
-        <option value="$PROJECT_DIR$/src/AddStudentAdminGUI.java" />
-        <option value="$PROJECT_DIR$/src/AddStudentSecretaryGUI.java" />
-        <option value="$PROJECT_DIR$/src/AddTeacherAdminGUI.java" />
-        <option value="$PROJECT_DIR$/src/AddMarkAdminGUI.java" />
         <option value="$PROJECT_DIR$/src/EditSubjectAdminGUI.java" />
         <option value="$PROJECT_DIR$/src/Subject.java" />
         <option value="$PROJECT_DIR$/src/MarkByFaculty.java" />
@@ -176,7 +148,6 @@
         <option value="$PROJECT_DIR$/src/MarkTableModel.java" />
         <option value="$PROJECT_DIR$/src/ViewMarksStudentGUI.java" />
         <option value="$PROJECT_DIR$/src/ViewMarksProfessorGUI.java" />
-        <option value="$PROJECT_DIR$/src/ViewMarksSecretaryGUI.java" />
         <option value="$PROJECT_DIR$/src/RemoveStudentSecretaryGUI.java" />
         <option value="$PROJECT_DIR$/src/RemoveTeacherAdminGUI.java" />
         <option value="$PROJECT_DIR$/src/RemoveStudentAdminGUI.java" />
@@ -187,13 +158,20 @@
         <option value="$PROJECT_DIR$/src/EditStudentSecretaryGUI.java" />
         <option value="$PROJECT_DIR$/src/RemoveMarkAdminGUI.java" />
         <option value="$PROJECT_DIR$/src/RemoveMarkSecretaryGUI.java" />
-        <option value="$PROJECT_DIR$/src/EditMarkProfessorGUI.java" />
-        <option value="$PROJECT_DIR$/src/EditMarkGUI.java" />
         <option value="$PROJECT_DIR$/src/Student.java" />
-        <option value="$PROJECT_DIR$/src/ViewMarksAdminGUI.java" />
+        <option value="$PROJECT_DIR$/src/EditMarkProfessorGUI.java" />
+        <option value="$PROJECT_DIR$/src/EditMarkSecretaryGUI.java" />
+        <option value="$PROJECT_DIR$/src/EditMarkAdminGUI.java" />
+        <option value="$PROJECT_DIR$/src/EditMarkGUI.java" />
         <option value="$PROJECT_DIR$/src/AddMarkProfessorGUI.java" />
+        <option value="$PROJECT_DIR$/src/AddMarkAdminGUI.java" />
         <option value="$PROJECT_DIR$/src/AddMarkSecretaryGUI.java" />
         <option value="$PROJECT_DIR$/src/ManagerGUI.java" />
+        <option value="$PROJECT_DIR$/src/AddStudentSecretaryGUI.java" />
+        <option value="$PROJECT_DIR$/src/AddStudentAdminGUI.java" />
+        <option value="$PROJECT_DIR$/src/AddTeacherAdminGUI.java" />
+        <option value="$PROJECT_DIR$/src/ViewMarksAdminGUI.java" />
+        <option value="$PROJECT_DIR$/src/ViewMarksSecretaryGUI.java" />
       </list>
     </option>
   </component>
@@ -232,7 +210,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556715479561" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556738240635" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -260,56 +238,56 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.AddMarkSecretaryGUI">
-    <configuration name="AddMarkProfessorGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="AddMarkProfessorGUI" />
+  <component name="RunManager" selected="Application.LoginGUI">
+    <configuration name="AddMarkAdminGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="AddMarkAdminGUI" />
       <module name="Proiect" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AddMarkSecretaryGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="AddMarkSecretaryGUI" />
+    <configuration name="AddStudentAdminGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="AddStudentAdminGUI" />
       <module name="Proiect" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EditMarkProfessorGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="EditMarkProfessorGUI" />
+    <configuration name="AddTeacherAdminGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="AddTeacherAdminGUI" />
       <module name="Proiect" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EditStudentSecretaryGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="EditStudentSecretaryGUI" />
+    <configuration name="EditMarkAdminGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="EditMarkAdminGUI" />
       <module name="Proiect" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RemoveMarkSecretaryGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="RemoveMarkSecretaryGUI" />
+    <configuration name="LoginGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="LoginGUI" />
       <module name="Proiect" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.EditStudentSecretaryGUI" />
-      <item itemvalue="Application.RemoveMarkSecretaryGUI" />
-      <item itemvalue="Application.EditMarkProfessorGUI" />
-      <item itemvalue="Application.AddMarkProfessorGUI" />
-      <item itemvalue="Application.AddMarkSecretaryGUI" />
+      <item itemvalue="Application.EditMarkAdminGUI" />
+      <item itemvalue="Application.AddMarkAdminGUI" />
+      <item itemvalue="Application.AddStudentAdminGUI" />
+      <item itemvalue="Application.AddTeacherAdminGUI" />
+      <item itemvalue="Application.LoginGUI" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.AddMarkSecretaryGUI" />
-        <item itemvalue="Application.AddMarkProfessorGUI" />
-        <item itemvalue="Application.EditMarkProfessorGUI" />
-        <item itemvalue="Application.RemoveMarkSecretaryGUI" />
-        <item itemvalue="Application.EditStudentSecretaryGUI" />
+        <item itemvalue="Application.LoginGUI" />
+        <item itemvalue="Application.AddTeacherAdminGUI" />
+        <item itemvalue="Application.AddStudentAdminGUI" />
+        <item itemvalue="Application.AddMarkAdminGUI" />
+        <item itemvalue="Application.EditMarkAdminGUI" />
       </list>
     </recent_temporary>
   </component>
@@ -337,7 +315,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22751679" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -348,7 +325,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.32577905" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" weight="0.32577905" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -465,13 +442,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ViewSubjectsAdminGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="32" selection-start-column="32" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TeacherTableModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="131">
@@ -479,63 +449,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ViewStudentsSecretaryGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="41" column="9" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ViewStudentsAdminGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1914">
-          <caret line="174" column="65" selection-start-line="174" selection-start-column="65" selection-end-line="174" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7817#7818#0" expanded="true" />
-            <element signature="e#7852#7853#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ViewTeachersAdminGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="72" column="8" lean-forward="true" selection-start-line="72" selection-start-column="8" selection-end-line="73" selection-end-column="52" />
-          <folding>
-            <element signature="e#7869#7870#0" expanded="true" />
-            <element signature="e#7941#7942#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MarkTableModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="8" column="35" lean-forward="true" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ViewMarksStudentGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1051">
-          <caret line="28" column="42" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ViewMarksProfessorGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1208">
-          <caret line="109" column="92" selection-start-line="109" selection-start-column="92" selection-end-line="109" selection-end-column="92" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -570,23 +487,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AddMarkAdminGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AddStudentSecretaryGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MarkByDepartment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1420">
@@ -594,23 +494,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ViewMarksSecretaryGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1280">
-          <caret line="139" column="16" lean-forward="true" selection-start-line="139" selection-start-column="16" selection-end-line="154" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AddTeacherAdminGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1520">
-          <caret line="107" column="17" selection-start-line="107" selection-start-column="17" selection-end-line="107" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -661,13 +544,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AddStudentAdminGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="740">
-          <caret line="57" column="8" selection-start-line="57" selection-start-column="8" selection-end-line="58" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/EditTeacherAdminGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
@@ -679,13 +555,6 @@
             <element signature="e#8783#8784#0" expanded="true" />
             <element signature="e#8817#8818#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/EditMarkAdminGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="1" lean-forward="true" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -706,16 +575,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RemoveMarkSecretaryGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2126">
-          <caret line="124" column="26" selection-start-line="124" selection-start-column="26" selection-end-line="124" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/RemoveMarkAdminGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2568">
@@ -733,53 +592,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/EditMarkSecretaryGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="46" selection-start-line="1" selection-start-column="46" selection-end-line="1" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/EditStudentSecretaryGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3560">
-          <caret line="184" column="36" lean-forward="true" selection-start-line="184" selection-start-column="36" selection-end-line="184" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#8662#9666#0" expanded="true" />
-            <element signature="e#9665#9666#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/EditStudentGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="159" column="7" lean-forward="true" selection-start-line="159" selection-start-column="7" selection-end-line="167" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ViewMarksAdminGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-686">
-          <caret line="219" column="55" selection-start-line="219" selection-start-column="55" selection-end-line="219" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/EditStudentAdminGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="88" column="13" lean-forward="true" selection-start-line="88" selection-start-column="13" selection-end-line="88" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#9239#9240#0" expanded="true" />
-            <element signature="e#9309#9310#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -796,59 +614,225 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/EditMarkProfessorGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1592">
-          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="25" selection-end-column="10" />
+        <state relative-caret-position="174">
+          <caret line="44" column="16" selection-start-line="44" selection-start-column="16" selection-end-line="49" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RemoveMarkSecretaryGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="215" column="17" lean-forward="true" selection-start-line="177" selection-start-column="20" selection-end-line="215" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/EditStudentAdminGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1491">
+          <caret line="88" column="13" lean-forward="true" selection-start-line="88" selection-start-column="13" selection-end-line="88" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#9239#9240#0" expanded="true" />
+            <element signature="e#9309#9310#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/EditMarkAdminGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3986">
+          <caret line="35" column="38" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#11200#11896#0" expanded="true" />
+            <element signature="e#11895#11896#0" expanded="true" />
+            <element signature="e#12280#12281#0" expanded="true" />
+            <element signature="e#12344#12345#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/EditMarkGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="124" column="11" selection-start-line="124" selection-start-column="11" selection-end-line="124" selection-end-column="11" />
+        <state relative-caret-position="294">
+          <caret line="93" column="52" selection-start-line="93" selection-start-column="52" selection-end-line="93" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4754#5040#0" expanded="true" />
-            <element signature="e#5039#5040#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AddMarkSecretaryGUI.java">
+    <entry file="file://$PROJECT_DIR$/src/EditMarkSecretaryGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2700">
-          <caret line="33" column="41" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
+        <state relative-caret-position="328">
+          <caret line="229" column="11" lean-forward="true" selection-start-line="227" selection-start-column="63" selection-end-line="229" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6435#7756#0" expanded="true" />
-            <element signature="e#7755#7756#0" expanded="true" />
-            <element signature="e#8034#8209#0" expanded="true" />
-            <element signature="e#8208#8209#0" expanded="true" />
-            <element signature="e#8424#8425#0" expanded="true" />
-            <element signature="e#8493#8494#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AddMarkProfessorGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="42" column="38" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
+        <state relative-caret-position="80">
+          <caret line="45" column="54" lean-forward="true" selection-start-line="45" selection-start-column="54" selection-end-line="45" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ManagerGUI.java">
+    <entry file="file://$PROJECT_DIR$/src/EditStudentSecretaryGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3686">
-          <caret line="170" column="25" selection-start-line="170" selection-start-column="25" selection-end-line="170" selection-end-column="25" />
+        <state relative-caret-position="171">
+          <caret line="100" column="8" selection-start-line="100" selection-start-column="8" selection-end-line="105" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8662#9666#0" expanded="true" />
+            <element signature="e#9665#9666#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AddMarkSecretaryGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2686">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AddStudentSecretaryGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="181" column="9" selection-start-line="181" selection-start-column="9" selection-end-line="181" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ManagerGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5886">
+          <caret line="80" column="13" lean-forward="true" selection-start-line="80" selection-start-column="13" selection-end-line="80" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AddMarkAdminGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-260">
+          <caret line="53" column="52" selection-start-line="53" selection-start-column="52" selection-end-line="53" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AddTeacherAdminGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-146">
+          <caret line="358" column="42" selection-start-line="358" selection-start-column="42" selection-end-line="358" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#13204#15038#0" expanded="true" />
+            <element signature="e#15037#15038#0" expanded="true" />
+            <element signature="e#16196#16197#0" expanded="true" />
+            <element signature="e#16229#16230#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AddStudentAdminGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="316" column="4" selection-start-line="316" selection-start-column="4" selection-end-line="316" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ViewMarksAdminGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="241" column="71" lean-forward="true" selection-start-line="241" selection-start-column="71" selection-end-line="241" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#13339#13340#0" expanded="true" />
+            <element signature="e#13405#13406#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ViewMarksProfessorGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2120">
+          <caret line="109" column="92" selection-start-line="109" selection-start-column="92" selection-end-line="109" selection-end-column="92" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ViewMarksSecretaryGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="622">
+          <caret line="204" column="13" selection-start-line="204" selection-start-column="13" selection-end-line="204" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ViewMarksStudentGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1072">
+          <caret line="28" column="42" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ViewStudentsAdminGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="174" column="65" selection-start-line="174" selection-start-column="65" selection-end-line="174" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#7817#7818#0" expanded="true" />
+            <element signature="e#7889#7890#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ViewStudentsSecretaryGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2646">
+          <caret line="41" column="9" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ViewSubjectsAdminGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="32" selection-start-column="32" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ViewTeachersAdminGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1436">
+          <caret line="72" column="8" lean-forward="true" selection-start-line="72" selection-start-column="8" selection-end-line="73" selection-end-column="52" />
         </state>
       </provider>
     </entry>

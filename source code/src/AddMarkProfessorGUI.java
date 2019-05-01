@@ -21,7 +21,6 @@ public class AddMarkProfessorGUI {
     private HashSet<Student> studenti;
     private HashSet<Subject> materii;
     private HashSet<Professor> profesori;
-    private HashSet<Mark> note;
     public AddMarkProfessorGUI(String email){
         /*
         ====================
@@ -47,7 +46,6 @@ public class AddMarkProfessorGUI {
         studenti = mng.getInstance().getSetStudenti();
         profesori = mng.getInstance().getSetProfesori();
         materii = mng.getInstance().getSetMaterii();
-        note = mng.getInstance().getSetNote();
         //set teacher's subject and get department
         for(Subject s:materii){
             if(s.getTeacherFirstName().equals(profesor[0]) && s.getTeacherLastName().equals(profesor[1])){
@@ -136,16 +134,8 @@ public class AddMarkProfessorGUI {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 String[] student = String.valueOf(students.getSelectedItem().toString()).split("\\s+");
-                for(Mark m:note){
-                    //check if the mark doesn't exist already
-                    if(m.getStudentFirstName().equals(student[1]) && m.getStudentLastName().equals(student[0]) && m.getSubject().equals(materie.getText())){
-                        JOptionPane.showMessageDialog(null,"Studentul are notă!","Operație refuzată",JOptionPane.WARNING_MESSAGE);
-                        break;
-                    }else{
-                        mng.getInstance().addMarkInDB(student[1], student[0], (int)nota.getValue(), materie.getText(), profesor[0], profesor[1],java.sql.Date.valueOf(dataAdaugarii.getText()));
-                        JOptionPane.showMessageDialog(null,"Nota a fost introdusă în baza de date!");
-                        break;
-                    }
+                if(mng.getInstance().addMarkInDB(student[1], student[0], (int)nota.getValue(), materie.getText(), profesor[0], profesor[1],java.sql.Date.valueOf(dataAdaugarii.getText())) == 1) {
+                    JOptionPane.showMessageDialog(null, "Nota a fost introdusă în baza de date!");
                 }
             }
         });

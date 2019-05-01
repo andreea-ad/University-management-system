@@ -162,9 +162,18 @@ public class ViewMarksSecretaryGUI {
             public void actionPerformed(ActionEvent e) {
                 int i = 0;
                 dataModel.removeTable();
-                if(subject.getItemCount() > 0) {
-                    for (MarkByDepartment m:note) {
-                        if (subject.getSelectedItem().toString().equals("Toate materiile")) {
+                if (subject.getItemCount() > 0) {
+                    for (MarkByDepartment m : note) {
+                        if (subject.getSelectedItem().toString().equals("Toate materiile") && department.getSelectedItem().toString().equals("Toate specializările") && m.getFaculty().equals(facultate)) {
+                            dataModel.setValueAt(m.getStudentLastName(), i, 0);
+                            dataModel.setValueAt(m.getStudentFirstName(), i, 1);
+                            dataModel.setValueAt(m.getMark(), i, 2);
+                            dataModel.setValueAt(m.getSubject(), i, 3);
+                            dataModel.setValueAt(m.getDepartment(), i, 4);
+                            dataModel.setValueAt(m.getProfessor(), i, 5);
+                            dataModel.setValueAt(m.getDateAdded(), i, 6);
+                            i++;
+                        } else if (subject.getSelectedItem().toString().equals("Toate materiile") && m.getFaculty().equals(facultate)) {
                             dataModel.setValueAt(m.getStudentLastName(), i, 0);
                             dataModel.setValueAt(m.getStudentFirstName(), i, 1);
                             dataModel.setValueAt(m.getMark(), i, 2);

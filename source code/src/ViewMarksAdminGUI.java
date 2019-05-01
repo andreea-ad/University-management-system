@@ -225,7 +225,16 @@ public class ViewMarksAdminGUI {
                 dataModel.removeTable();
                 if(subjects.getItemCount() > 0){
                     for(MarkByDepartment m:note){
-                        if(m.getSubject().equals("Toate materiile")){
+                        if(subjects.getSelectedItem().toString().equals("Toate materiile") && departments.getSelectedItem().toString().equals("Toate specializările")){
+                            dataModel.setValueAt(m.getStudentLastName() + " " + m.getStudentFirstName(), i, 0);
+                            dataModel.setValueAt(m.getMark(),i,1);
+                            dataModel.setValueAt(m.getSubject(), i, 2);
+                            dataModel.setValueAt(m.getCredits(), i, 3);
+                            dataModel.setValueAt(m.getProfessor(),i,4);
+                            dataModel.setValueAt(m.getFaculty(),i,5);
+                            dataModel.setValueAt(m.getDateAdded(), i, 6);
+                            i++;
+                        }else if(subjects.getSelectedItem().toString().equals("Toate materiile") && m.getDepartment().equals(departments.getSelectedItem().toString())){
                             dataModel.setValueAt(m.getStudentLastName() + " " + m.getStudentFirstName(), i, 0);
                             dataModel.setValueAt(m.getMark(),i,1);
                             dataModel.setValueAt(m.getSubject(), i, 2);

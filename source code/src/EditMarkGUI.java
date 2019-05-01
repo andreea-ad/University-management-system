@@ -14,12 +14,14 @@ public class EditMarkGUI {
     private SpinnerModel spinnerModelNota;
     private JSpinner notaMaterie;
     private JButton editeaza, inapoi;
-    public EditMarkGUI(String emailProfesor,String numeStudent, String prenumeStudent, int nota, String materieNota, Date dataUltimeiModificari){
+    private int option;
+    public EditMarkGUI(int option, String email, String numeStudent, String prenumeStudent, int nota, String materieNota, Date dataUltimeiModificari){
         /*
         ====================
         initialize variables
         ====================
         */
+        this.option = option;
         frame = new JFrame("Modificare notă");
         labelNume = new JLabel("Nume student: ");
         labelPrenume = new JLabel("Prenume student: ");
@@ -89,7 +91,7 @@ public class EditMarkGUI {
             ie.printStackTrace();
         }
         //set frame size
-        frame.setPreferredSize(new Dimension(745, 360));
+        frame.setPreferredSize(new Dimension(745, 350));
         frame.setLayout(null);
         frame.pack();
         //set window in the middle of the screen
@@ -120,7 +122,13 @@ public class EditMarkGUI {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 frame.setVisible(false);
-                EditMarkProfessorGUI window = new EditMarkProfessorGUI(emailProfesor);
+                if(option == 1) {
+                    EditMarkProfessorGUI window = new EditMarkProfessorGUI(email);
+                }else if(option == 2){
+                    EditMarkSecretaryGUI window = new EditMarkSecretaryGUI(email);
+                }else{
+                    EditMarkAdminGUI window = new EditMarkAdminGUI();
+                }
             }
         });
     }
