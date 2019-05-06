@@ -110,7 +110,7 @@ public class Professor {
     }
 
     public String toString(){
-        return "Nume: " + lastName + " Prenume: " + firstName + " CNP: " + cnp + " Data nasterii: " + dob + " Numar de telefon: " + phoneNumber + " Adresa: " + address + " Adresa de email: " + emailAddress + " Facultate: " + faculty + " Materie predata: " + teachingSubject + " Data angajarii: " + hireDate + " Salariu: " + salary;
+         return lastName + " " + firstName;
     }
     @Override
     public boolean equals(Object o){

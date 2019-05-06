@@ -112,7 +112,7 @@ public class ManagerGUI {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
             String insertQuery = "insert into marks(`student_first_name`,`student_last_name`,`mark`,`subject`,`teacher_first_name`,`teacher_last_name`,`date_added`) VALUES (?,?,?,?,?,?,?)";
-            for(Mark m:getSetNote()){
+            for(Mark m:note){
                 if(m.getStudentLastName().equals(nume) && m.getStudentFirstName().equals(prenume) && m.getSubject().equals(materie)){
                     JOptionPane.showMessageDialog(null,"Studentul are notă!","Operație refuzată",JOptionPane.WARNING_MESSAGE);
                     return -1;
@@ -185,7 +185,7 @@ public class ManagerGUI {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
             String insertQuery = "insert into professors(`first_name`,`last_name`,`cnp`,`dob`,`phone_number`,`address`,`email_address`,`faculty`,`teaching_subject`, `hire_date`,`salary`) values (?,?,?,?,?,?,?,?,?,?,?)";
             String insertUserQuery = "insert into userprofesor(`email_address`,`pass`) values (?,?)";
-            for(Professor p:getSetProfesori()){
+            for(Professor p:profesori){
                 if(p.getCnp().equals(cnp)){
                     JOptionPane.showMessageDialog(null,"Profesorul există deja în baza de date!","Operație refuzată",JOptionPane.WARNING_MESSAGE);
                     return -1;
@@ -206,7 +206,7 @@ public class ManagerGUI {
             ps.execute();
             ps = conn.prepareStatement(insertUserQuery);
             ps.setString(1,adresaEmail);
-            ps.setString(2,facultate+""+ThreadLocalRandom.current().nextInt(10, 500));
+            ps.setString(2,facultate + "" + ThreadLocalRandom.current().nextInt(10, 500));
             ps.execute();
             conn.close();
         }catch(Exception e){
@@ -262,7 +262,7 @@ public class ManagerGUI {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
             String insertQuery = "insert into students(`first_name`,`last_name`,`cnp`,`dob`,`phone_number`,`address`,`email_address`,`faculty`,`department`, `degree`,`year`,`number_of_credits`)values(?,?,?,?,?,?,?,?,?,?,?,?)";
             String insertUserQuery = "insert into userstudent(`email_address`,`pass`) values (?,?)";
-            for(Student s:getSetStudenti()){
+            for(Student s:studenti){
                 if(s.getCnp().equals(cnp)){
                     JOptionPane.showMessageDialog(null,"Studentul există deja în baza de date!","Operație refuzată",JOptionPane.WARNING_MESSAGE);
                     return -1;
@@ -334,6 +334,85 @@ public class ManagerGUI {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    public int addDepartmentInDB(String titlu, String facultate, String cicluUniversitar){
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
+            String insertQuery = "insert into departments(`title`,`faculty`,`degree`)values(?,?,?)";
+            for (Department d:specializari) {
+                if (d.getTitle().equals(titlu)) {
+                    JOptionPane.showMessageDialog(null, "Specializarea există deja în baza de date!", "Operație refuzată", JOptionPane.WARNING_MESSAGE);
+                    return -1;
+                }
+            }
+            PreparedStatement ps = conn.prepareStatement(insertQuery);
+            ps.setString(1,titlu);
+            ps.setString(2,facultate);
+            ps.setString(3,cicluUniversitar);
+            ps.execute();
+            conn.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return 1;
+    }
+    public int addFacultyInDB(String titlu){
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
+            String insertQuery = "insert into faculties(`title`)values(?)";
+            String insertUserQuery = "insert into usersecretariat(`faculty`,`email_address`,`pass`)values(?,?,?)";
+            for (Faculty f:facultati) {
+                if (f.getTitle().equals(titlu)) {
+                    JOptionPane.showMessageDialog(null, "Facultatea există deja în baza de date!", "Operație refuzată", JOptionPane.WARNING_MESSAGE);
+                    return -1;
+                }
+            }
+            PreparedStatement ps = conn.prepareStatement(insertQuery);
+            ps.setString(1,titlu);
+            ps.execute();
+            ps = conn.prepareStatement(insertUserQuery);
+            ps.setString(1,titlu);
+            String[] titluSplit = titlu.split("de",2);
+            String email = titluSplit[1].replaceAll("\\s+","") + "@gmail.com";
+            String pass = titluSplit[1].replaceAll("\\s+","") + ThreadLocalRandom.current().nextInt(10, 500);
+            ps.setString(2,email);
+            ps.setString(3,pass);
+            ps.execute();
+            conn.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return 1;
+    }
+    public int addSubjectInDB(String titlu, String facultate, String specializare, String cicluUniversitar, int semestru, int nrCredite, String profesor){
+        String[] prof = {"",""};
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
+            String insertQuery = "insert into subjects(`title`,`faculty`,`department`,`degree`,`semester`,`number_of_credits`,`teacher_first_name`,`teacher_last_name`)values(?,?,?,?,?,?,?,?)";
+            for(Subject s:materii){
+                if(s.getTitle().equals(titlu) && s.getDepartment().equals(specializare)){
+                    JOptionPane.showMessageDialog(null, "Materia există deja în baza de date!", "Operație refuzată", JOptionPane.WARNING_MESSAGE);
+                    return -1;
+                }
+            }
+            prof = profesor.split(" ");
+            PreparedStatement ps = conn.prepareStatement(insertQuery);
+            ps.setString(1,titlu);
+            ps.setString(2,facultate);
+            ps.setString(3,specializare);
+            ps.setString(4,cicluUniversitar);
+            ps.setInt(5,semestru);
+            ps.setInt(6,nrCredite);
+            ps.setString(7,prof[1]);
+            ps.setString(8,prof[0]);
+            ps.execute();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return 1;
     }
     public String getFacultateDupaEmail(String email){
         String facultate = "", emailDB;
