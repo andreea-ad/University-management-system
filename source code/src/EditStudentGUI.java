@@ -48,7 +48,6 @@ public class EditStudentGUI {
         cicluUniversitar = new JTextField(degree);
         spinnerModelAn.setValue(year);
         nrCredite = new JTextField(String.valueOf(credits));
-        ManagerGUI mng = new ManagerGUI();
         //add elements to the frame
         frame.add(labelNume);
         frame.add(nume);
@@ -153,8 +152,9 @@ public class EditStudentGUI {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                mng.getInstance().updateStudentFromDB(CNP,prenume.getText(),nume.getText(),cnp.getText(), java.sql.Date.valueOf(dataNasterii.getText()),nrTelefon.getText(),adresa.getText(),adresaEmail.getText(),facultate.getText(),specializare.getText(),cicluUniversitar.getText(),(int)anUniversitar.getValue(),Integer.valueOf(nrCredite.getText()));
-                JOptionPane.showMessageDialog(null,"Datele studentului au fost modificate în baza de date!");
+                if(ManagerGUI.updateStudentFromDB(CNP,prenume.getText(),nume.getText(),cnp.getText(), java.sql.Date.valueOf(dataNasterii.getText()),nrTelefon.getText(),adresa.getText(),adresaEmail.getText(),facultate.getText(),specializare.getText(),cicluUniversitar.getText(),(int)anUniversitar.getValue(),Integer.valueOf(nrCredite.getText())) == 1){
+                    JOptionPane.showMessageDialog(null,"Datele studentului au fost modificate în baza de date!");
+                }
             }
         });
         //go back to select teacher to edit window

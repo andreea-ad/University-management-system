@@ -29,8 +29,7 @@ public class ViewMarksProfessorGUI {
         ManagerGUI mng = new ManagerGUI();
         profesori = mng.getInstance().getSetProfesori();
         note = mng.getInstance().getSetNoteDupaEmail();
-        int n = note.size();
-        dataModel = new MarkTableModel(n,5);
+        int n = 0;
         int i = 0;
         //get teacher's full name
         for(Professor p:profesori){
@@ -39,6 +38,12 @@ public class ViewMarksProfessorGUI {
                 break;
             }
         }
+        for(MarkByEmail m:note){
+            if(m.getProfessor().equals(numeProfesor)){
+                n++;
+            }
+        }
+        dataModel = new MarkTableModel(n,7);
         //add marks given by the logged teacher into table
         for(MarkByEmail m:note){
             if(m.getProfessor().equals(numeProfesor)) {
@@ -68,7 +73,7 @@ public class ViewMarksProfessorGUI {
         tabelNote.setAutoCreateRowSorter(true);
         //set bounds for selements
         scrollPane.setBounds(42,110,1100,183);
-        inapoi.setBounds(510,320,145,25);
+        inapoi.setBounds(520,320,145,25);
         //button design
         inapoi.setBorderPainted(false);
         inapoi.setBackground(new Color(233,233,233));

@@ -42,7 +42,6 @@ public class EditTeacherGUI {
         materie = new JTextField(subject);
         dataAngajarii = new JTextField(hireDate.toString());
         salariu = new JTextField(String.valueOf(salary));
-        ManagerGUI mng = new ManagerGUI();
         //add elements to the frame
         frame.add(labelNume);
         frame.add(nume);
@@ -142,8 +141,9 @@ public class EditTeacherGUI {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                mng.getInstance().updateTeacherFromDB(CNP,prenume.getText(),nume.getText(),cnp.getText(), java.sql.Date.valueOf(dataNasterii.getText()),nrTelefon.getText(),adresa.getText(),adresaEmail.getText(),facultate.getText(),materie.getText(),java.sql.Date.valueOf(dataAngajarii.getText()), Integer.valueOf(salariu.getText()));
-                JOptionPane.showMessageDialog(null,"Datele profesorului au fost modificate în baza de date!");
+                if(ManagerGUI.updateTeacherFromDB(CNP,prenume.getText(),nume.getText(),cnp.getText(), java.sql.Date.valueOf(dataNasterii.getText()),nrTelefon.getText(),adresa.getText(),adresaEmail.getText(),facultate.getText(),materie.getText(),java.sql.Date.valueOf(dataAngajarii.getText()), Integer.valueOf(salariu.getText())) == 1) {
+                    JOptionPane.showMessageDialog(null, "Datele profesorului au fost modificate în baza de date!");
+                }
             }
         });
         //go back to select teacher to edit window

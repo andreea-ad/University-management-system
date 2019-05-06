@@ -11,7 +11,6 @@ public class ManagerGUI {
     private static HashSet<Student> studenti = new HashSet<>();
     private static HashSet<Subject> materii = new HashSet<>();
     private static HashSet<MarkByEmail> noteDupaEmail = new HashSet<>();
-    private static HashSet<MarkByFaculty> noteDupaFacultate = new HashSet<>();
     private static HashSet<MarkByDepartment> noteDupaSpecializare = new HashSet<>();
     private static Connection conn;
 
@@ -35,7 +34,6 @@ public class ManagerGUI {
             String marks = "select * from marks";
 
             String marksByEmail = "select * from marks, students, subjects where marks.student_first_name=students.first_name and marks.student_last_name=students.last_name and marks.subject=subjects.title";
-            String marksByFaculty = "select * from marks, students, subjects where marks.student_first_name=students.first_name and marks.student_last_name=students.last_name";
             String marksByDepartment = "select * from marks, students, subjects where marks.student_first_name=students.first_name and marks.student_last_name=students.last_name and marks.subject=subjects.title";
 
             PreparedStatement ps = conn.prepareStatement(faculties);
@@ -87,13 +85,6 @@ public class ManagerGUI {
                 noteDupaEmail.add(mark);
             }
 
-            ps = conn.prepareStatement(marksByFaculty);
-            rs = ps.executeQuery();
-            while(rs.next()){
-                MarkByFaculty mark = new MarkByFaculty(rs.getInt("marks.mark"),rs.getString("marks.student_first_name"),rs.getString("marks.student_last_name"),rs.getString("marks.subject"),rs.getString("marks.teacher_last_name")+" "+rs.getString("marks.teacher_first_name"),rs.getString("students.faculty"),rs.getDate("marks.date_added"),rs.getInt("subjects.number_of_credits"));
-                noteDupaFacultate.add(mark);
-            }
-
             ps = conn.prepareStatement(marksByDepartment);
             rs = ps.executeQuery();
             while(rs.next()){
@@ -107,7 +98,7 @@ public class ManagerGUI {
         }
     }
 
-    public int addMarkInDB(String prenume, String nume, int nota, String materie, String prenumeProfesor, String numeProfesor, Date dataAdaugarii){
+    public static int addMarkInDB(String prenume, String nume, int nota, String materie, String prenumeProfesor, String numeProfesor, Date dataAdaugarii){
         try{
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
@@ -133,7 +124,7 @@ public class ManagerGUI {
         }
         return 1;
     }
-    public void removeMarkFromDB(String prenume, String nume, String materie){
+    public static void removeMarkFromDB(String prenume, String nume, String materie){
         try {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
@@ -148,7 +139,7 @@ public class ManagerGUI {
             e.printStackTrace();
         }
     }
-    public void removeMarkFromDB(String nume, String prenume){
+    public static void removeMarkFromDB(String nume, String prenume){
         try {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
@@ -162,11 +153,17 @@ public class ManagerGUI {
             e.printStackTrace();
         }
     }
-    public void updateMarkFromDB(String prenume, String nume, int nota, String materie, Date dataEditarii) {
+    public static int updateMarkFromDB(String prenume, String nume, int nota, String materie, Date dataEditarii) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
             String updateQuery = "update marks set mark=?, date_added=? where student_first_name=? and student_last_name=? and subject=?";
+            for(Mark m:note){
+                if(m.getStudentFirstName().equals(prenume) && m.getStudentLastName().equals(nume) && m.getSubject().equals(materie)){
+                    JOptionPane.showMessageDialog(null,"O notă există deja în baza de date pentru acest student!", "Operație refuzată", JOptionPane.WARNING_MESSAGE);
+                    return -1;
+                }
+            }
             PreparedStatement ps = conn.prepareStatement(updateQuery);
             ps.setInt(1, nota);
             ps.setDate(2, dataEditarii);
@@ -178,8 +175,9 @@ public class ManagerGUI {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return 1;
     }
-    public int addTeacherInDB(String prenume, String nume, String cnp, Date dataNasterii, String numarTelefon, String adresa, String adresaEmail, String facultate, String materiePredata, Date dataAngajarii, int salariu){
+    public static int addTeacherInDB(String prenume, String nume, String cnp, Date dataNasterii, String numarTelefon, String adresa, String adresaEmail, String facultate, String materiePredata, Date dataAngajarii, int salariu){
         try{
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
@@ -214,7 +212,7 @@ public class ManagerGUI {
         }
         return 1;
     }
-    public void removeTeacherFromDB(String prenume, String nume, String email){
+    public static void removeTeacherFromDB(String prenume, String nume, String email){
         try {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
@@ -232,11 +230,17 @@ public class ManagerGUI {
             e.printStackTrace();
         }
     }
-    public void updateTeacherFromDB(String cnp1, String prenume, String nume, String cnp, Date dataNasterii, String nrTelefon, String adresa, String email, String facultate, String materie, Date dataAngajarii, int salariu){
+    public static int updateTeacherFromDB(String cnp1, String prenume, String nume, String cnp, Date dataNasterii, String nrTelefon, String adresa, String email, String facultate, String materie, Date dataAngajarii, int salariu){
         try {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
             String updateQuery = "update professors set first_name=?, last_name=?, cnp=?, dob=?, phone_number=?, address=?, email_address=?, faculty=?, teaching_subject=?, hire_date=?, salary=? where cnp=?";
+            for(Professor p:profesori){
+                if(p.getCnp().equals(cnp)){
+                    JOptionPane.showMessageDialog(null,"Profesorul există deja în baza de date!", "Operație refuzată",JOptionPane.WARNING_MESSAGE);
+                    return -1;
+                }
+            }
             PreparedStatement ps = conn.prepareStatement(updateQuery);
             ps.setString(1,prenume);
             ps.setString(2,nume);
@@ -255,8 +259,9 @@ public class ManagerGUI {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return 1;
     }
-    public int addStudentInDB(String prenume, String nume, String cnp, Date dataNasterii, String nrTelefon, String adresa, String adresaEmail, String facultate, String specializare, String cicluUniversitar, int anUniversitar, int nrCredite){
+    public static int addStudentInDB(String prenume, String nume, String cnp, Date dataNasterii, String nrTelefon, String adresa, String adresaEmail, String facultate, String specializare, String cicluUniversitar, int anUniversitar, int nrCredite){
         try{
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
@@ -292,7 +297,7 @@ public class ManagerGUI {
         }
         return 1;
     }
-    public void removeStudentFromDB(String nume, String prenume, String email){
+    public static void removeStudentFromDB(String nume, String prenume, String email){
         try {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
@@ -310,11 +315,17 @@ public class ManagerGUI {
             e.printStackTrace();
         }
     }
-    public void updateStudentFromDB(String cnp1, String prenume, String nume, String cnp, Date dataNasterii, String nrTelefon, String adresa, String email, String facultate, String specializare, String cicluUniversitar, int an, int nrCredite){
+    public static int updateStudentFromDB(String cnp1, String prenume, String nume, String cnp, Date dataNasterii, String nrTelefon, String adresa, String email, String facultate, String specializare, String cicluUniversitar, int an, int nrCredite){
         try {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
             String updateQuery = "update students set first_name=?, last_name=?, cnp=?, dob=?, phone_number=?, address=?, email_address=?, faculty=?, department=?, degree=?, year=?, number_of_credits=? where cnp=?";
+            for(Student s:studenti){
+                if(s.getCnp().equals(cnp)){
+                    JOptionPane.showMessageDialog(null,"Studentul există deja în baza de date!", "Operație refuzată", JOptionPane.WARNING_MESSAGE);
+                    return -1;
+                }
+            }
             PreparedStatement ps = conn.prepareStatement(updateQuery);
             ps.setString(1,prenume);
             ps.setString(2,nume);
@@ -334,8 +345,9 @@ public class ManagerGUI {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return 1;
     }
-    public int addDepartmentInDB(String titlu, String facultate, String cicluUniversitar){
+    public static int addDepartmentInDB(String titlu, String facultate, String cicluUniversitar){
         try {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
@@ -357,7 +369,7 @@ public class ManagerGUI {
         }
         return 1;
     }
-    public int addFacultyInDB(String titlu){
+    public static int addFacultyInDB(String titlu){
         try {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
@@ -386,8 +398,59 @@ public class ManagerGUI {
         }
         return 1;
     }
-    public int addSubjectInDB(String titlu, String facultate, String specializare, String cicluUniversitar, int semestru, int nrCredite, String profesor){
-        String[] prof = {"",""};
+    public static int updateFacultyFromDB(String titlu1, String titlu){
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
+            String updateQuery = "update faculties set title=? where title=?";
+            String updateQuery2 = "update departments set faculty=? where faculty=?";
+            String updateQuery3 = "update professors set faculty=? where faculty=?";
+            String updateQuery4 = "update students set faculty=? where faculty=?";
+            String updateQuery5 = "update subjects set faculty=? where faculty=?";
+            String updateQuery6 = "update usersecretariat set faculty=?, email_address=?, pass=? where faculty=?";
+            for(Faculty f:facultati){
+                if(f.getTitle().equals(titlu)){
+                    JOptionPane.showMessageDialog(null,"Facultatea aceasta există deja în baza de date!","Operație refuzată",JOptionPane.WARNING_MESSAGE);
+                    return -1;
+                }
+            }
+            PreparedStatement ps = conn.prepareStatement(updateQuery);
+            ps.setString(1,titlu);
+            ps.setString(2,titlu1);
+            ps.executeUpdate();
+            ps = conn.prepareStatement(updateQuery2);
+            ps.setString(1,titlu);
+            ps.setString(2,titlu1);
+            ps.executeUpdate();
+            ps = conn.prepareStatement(updateQuery3);
+            ps.setString(1,titlu);
+            ps.setString(2,titlu1);
+            ps.executeUpdate();
+            ps = conn.prepareStatement(updateQuery4);
+            ps.setString(1,titlu);
+            ps.setString(2,titlu1);
+            ps.executeUpdate();
+            ps = conn.prepareStatement(updateQuery5);
+            ps.setString(1,titlu);
+            ps.setString(2,titlu1);
+            ps.executeUpdate();
+            ps = conn.prepareStatement(updateQuery6);
+            String[] titluSplit = titlu.split("de",2);
+            String email = titluSplit[1].replaceAll("\\s+","") + "@gmail.com";
+            String pass = titluSplit[1].replaceAll("\\s+","") + ThreadLocalRandom.current().nextInt(10, 500);
+            ps.setString(1,titlu);
+            ps.setString(2,email);
+            ps.setString(3,pass);
+            ps.setString(4,titlu1);
+            ps.executeUpdate();
+            conn.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return 1;
+    }
+    public static int addSubjectInDB(String titlu, String facultate, String specializare, String cicluUniversitar, int semestru, int nrCredite, String profesor){
+        String[] prof;
         try {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
@@ -409,12 +472,41 @@ public class ManagerGUI {
             ps.setString(7,prof[1]);
             ps.setString(8,prof[0]);
             ps.execute();
+            conn.close();
         }catch (Exception e){
             e.printStackTrace();
         }
         return 1;
     }
-    public String getFacultateDupaEmail(String email){
+    public static int updateDepartmentFromDB(String titlu1, String titlu, String facultate, String cicluUniversitar){
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
+            String updateQuery = "update departments set title=?, degree=? where title=? and faculty=?";
+            String updateQuery2 = "update students set department=? where department=?";
+            for(Department d:specializari){
+                if(titlu1.equals(titlu) == false && d.getTitle().equals(titlu) && d.getFaculty().equals(facultate)){
+                    JOptionPane.showMessageDialog(null, "Specializarea există");
+                    return -1;
+                }
+            }
+            PreparedStatement ps = conn.prepareStatement(updateQuery);
+            ps.setString(1,titlu);
+            ps.setString(2,cicluUniversitar);
+            ps.setString(3,titlu1);
+            ps.setString(4,facultate);
+            ps.executeUpdate();
+            ps = conn.prepareStatement(updateQuery2);
+            ps.setString(1,titlu);
+            ps.setString(2,titlu1);
+            ps.executeUpdate();
+            conn.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return 1;
+    }
+    public static String getFacultateDupaEmail(String email){
         String facultate = "", emailDB;
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -429,12 +521,13 @@ public class ManagerGUI {
                     break;
                 }
             }
+            conn.close();
         }catch (Exception e){
             e.printStackTrace();
         }
         return facultate;
     }
-    public String[] getProfesorDupaEmail(String email){
+    public static String[] getProfesorDupaEmail(String email){
         String[] profesor = {"",""};
         String emailDB;
         try {
@@ -451,6 +544,7 @@ public class ManagerGUI {
                     break;
                 }
             }
+            conn.close();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -462,7 +556,6 @@ public class ManagerGUI {
     public static HashSet<Mark> getSetNote(){ return note; }
     public static HashSet<MarkByEmail> getSetNoteDupaEmail(){ return noteDupaEmail; }
     public static HashSet<Subject> getSetMaterii(){ return materii; }
-    public static HashSet<MarkByFaculty> getSetNoteDupaFacultate(){ return noteDupaFacultate; }
     public static HashSet<Department> getSetSpecializari(){ return specializari; }
     public static HashSet<MarkByDepartment> getSetNoteDupaSpecializare(){ return noteDupaSpecializare; }
 }

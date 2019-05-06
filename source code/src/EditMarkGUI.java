@@ -37,7 +37,6 @@ public class EditMarkGUI {
         materie = new JTextField(materieNota);
         notaMaterie.setValue(nota);
         data = new JTextField(dataUltimeiModificari.toString());
-        ManagerGUI mng = new ManagerGUI();
         //add elements to the frame
         frame.add(labelNume);
         frame.add(nume);
@@ -112,8 +111,9 @@ public class EditMarkGUI {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                mng.getInstance().updateMarkFromDB(prenumeStudent, numeStudent, (int)notaMaterie.getValue(), materieNota, java.sql.Date.valueOf(LocalDate.now()));
-                JOptionPane.showMessageDialog(null,"Nota a fost modificată în baza de date!");
+                if (ManagerGUI.updateMarkFromDB(prenumeStudent, numeStudent, (int) notaMaterie.getValue(), materieNota, java.sql.Date.valueOf(LocalDate.now())) == 1) {
+                    JOptionPane.showMessageDialog(null, "Nota a fost modificată în baza de date!");
+                }
             }
         });
         //go back to select teacher to edit window

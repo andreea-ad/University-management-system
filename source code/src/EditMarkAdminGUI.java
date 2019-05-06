@@ -37,10 +37,10 @@ public class EditMarkAdminGUI {
         departments = new JComboBox<>();
         subjects = new JComboBox<>();
         ManagerGUI mng = new ManagerGUI();
-        facultati = mng.getInstance().getSetFacultati();
-        specializari = mng.getInstance().getSetSpecializari();
-        note = mng.getInstance().getSetNoteDupaSpecializare();
-        materii = mng.getInstance().getSetMaterii();
+        facultati = mng.getSetFacultati();
+        specializari = mng.getSetSpecializari();
+        note = mng.getSetNoteDupaSpecializare();
+        materii = mng.getSetMaterii();
         int n = note.size();
         dataModel = new MarkTableModel(n,7);
         //add all faculties into combobox
@@ -222,6 +222,7 @@ public class EditMarkAdminGUI {
                 }
             }
         });
+        //show edit menu when picking a mark
         selecteaza.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
