@@ -34,12 +34,11 @@ public class ViewMarksAdminGUI {
         faculties = new JComboBox<>();
         departments = new JComboBox<>();
         subjects = new JComboBox<>();
-
         ManagerGUI mng = new ManagerGUI();
-        facultati = mng.getInstance().getSetFacultati();
-        specializari = mng.getInstance().getSetSpecializari();
-        materii = mng.getInstance().getSetMaterii();
-        note = mng.getInstance().getSetNoteDupaSpecializare();
+        facultati = mng.getSetFacultati();
+        specializari = mng.getSetSpecializari();
+        materii = mng.getSetMaterii();
+        note = mng.getSetNoteDupaSpecializare();
         int n = note.size();
         dataModel = new MarkTableModel(n,7);
         int i = 0;

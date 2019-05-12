@@ -142,7 +142,7 @@ public class EditTeacherGUI {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 if(ManagerGUI.updateTeacherFromDB(CNP,prenume.getText(),nume.getText(),cnp.getText(), java.sql.Date.valueOf(dataNasterii.getText()),nrTelefon.getText(),adresa.getText(),adresaEmail.getText(),facultate.getText(),materie.getText(),java.sql.Date.valueOf(dataAngajarii.getText()), Integer.valueOf(salariu.getText())) == 1) {
-                    JOptionPane.showMessageDialog(null, "Datele profesorului au fost modificate în baza de date!");
+                    JOptionPane.showMessageDialog(null, "Datele profesorului au fost actualizate!");
                 }
             }
         });

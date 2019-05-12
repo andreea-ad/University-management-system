@@ -29,18 +29,17 @@ public class RemoveTeacherAdminGUI {
         faculties = new JComboBox<>();
         elimina = new JButton("Elimină profesor");
         inapoi = new JButton("Înapoi");
-
         ManagerGUI mng = new ManagerGUI();
-        facultati = mng.getInstance().getSetFacultati();
-        profesori = mng.getInstance().getSetProfesori();
+        facultati = mng.getSetFacultati();
+        profesori = mng.getSetProfesori();
         int n = profesori.size();
         dataModel = new TeacherTableModel(n);
-
+        //add faculties into combobox
         faculties.addItem(new Faculty("Toate facultățile"));
         for(Faculty f:facultati){
             faculties.addItem(f);
         }
-
+        //add all teachers into table
         int i = 0;
         for (Professor p:profesori) {
             dataModel.setValueAt(p.getLastName(), i, 0);
@@ -166,10 +165,14 @@ public class RemoveTeacherAdminGUI {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                DefaultTableModel model = (DefaultTableModel)tabelProfesori.getModel();
-                int indexRandSelectat = tabelProfesori.getSelectedRow();
-                mng.getInstance().removeTeacherFromDB(model.getValueAt(indexRandSelectat,1).toString(),model.getValueAt(indexRandSelectat,0).toString(),model.getValueAt(indexRandSelectat,6).toString());
-                model.removeRow(indexRandSelectat);
+                try {
+                    DefaultTableModel model = (DefaultTableModel) tabelProfesori.getModel();
+                    int indexRandSelectat = tabelProfesori.getSelectedRow();
+                    mng.removeTeacherFromDB(model.getValueAt(indexRandSelectat, 1).toString(), model.getValueAt(indexRandSelectat, 0).toString(), model.getValueAt(indexRandSelectat, 6).toString());
+                    model.removeRow(indexRandSelectat);
+                }catch (Exception e1){
+                    JOptionPane.showMessageDialog(null, "Selectați o înregistrare din tabel!");
+                }
             }
         });
         //go back to user menu

@@ -45,9 +45,9 @@ public class AddMarkSecretaryGUI {
         nota = new JSpinner(spinnerModelNota);
         dataAdaugarii = new JTextField(DateTimeFormatter.ofPattern("yyyy-MM-dd").format(LocalDate.now()));
         ManagerGUI mng = new ManagerGUI();
-        studenti = mng.getInstance().getSetStudenti();
-        specializari = mng.getInstance().getSetSpecializari();
-        materii = mng.getInstance().getSetMaterii();
+        studenti = mng.getSetStudenti();
+        specializari = mng.getSetSpecializari();
+        materii = mng.getSetMaterii();
         facultate = mng.getFacultateDupaEmail(email);
         //add all departments from this faculty into combobox
         departments.addItem(new Department("Toate specializările"));

@@ -7,10 +7,10 @@ import java.io.IOException;
 import java.util.HashSet;
 
 public class PDViewStudentGUI{
-    private HashSet<Student> studenti;
     private JFrame frame;
     private JLabel welcome, labelNrMatricol, labelNume, labelPrenume, labelCnp, labelDataNasterii, labelNrTelefon, labelAdresa, labelAdresaEmail, labelFacultate, labelSpecializare, labelCicluUniversitar, labelAn, labelNrCredite;
     private JTextField nrMatricol, nume, prenume, cnp, dataNasterii, nrTelefon, adresa, adresaEmail, facultate, specializare, cicluUniversitar, an, nrCredite;
+    private HashSet<Student> studenti;
     private JButton inapoi;
     public PDViewStudentGUI(String email){
         /*
@@ -34,9 +34,8 @@ public class PDViewStudentGUI{
         labelAn = new JLabel("An universitar: ");
         labelNrCredite = new JLabel("Număr de credite: ");
         inapoi = new JButton("Înapoi");
-
         ManagerGUI mng = new ManagerGUI();
-        studenti = mng.getInstance().getSetStudenti();
+        studenti = mng.getSetStudenti();
         String welcomeName = "";
         for(Student s:studenti){
             if(s.getEmailAddress().equals(email)) {
@@ -106,7 +105,7 @@ public class PDViewStudentGUI{
         an.setEditable(false);
         nrCredite.setEditable(false);
         //set bounds for elements
-        welcome.setBounds(270,13,300,100);
+        welcome.setBounds(300,13,300,100);
         labelNrMatricol.setBounds(150,100,120,25);
         nrMatricol.setBounds(270,100,270,25);
         labelNume.setBounds(150,130,120,25);
@@ -133,7 +132,7 @@ public class PDViewStudentGUI{
         an.setBounds(270,430,270,25);
         labelNrCredite.setBounds(150,460,120,25);
         nrCredite.setBounds(270,460,270,25);
-        inapoi.setBounds(270,500,160,35);
+        inapoi.setBounds(275,520,160,25);
         //labels design
         labelNrMatricol.setForeground(new Color(100,100,100));
         labelNume.setForeground(new Color(100,100,100));

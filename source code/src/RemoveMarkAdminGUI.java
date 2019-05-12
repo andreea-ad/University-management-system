@@ -31,22 +31,24 @@ public class RemoveMarkAdminGUI {
         ====================
         */
         frame = new JFrame("Eliminare note");
-        eliminare = new JButton("Eliminare notă");
+        eliminare = new JButton("Elimină notă");
         inapoi = new JButton("Înapoi");
         faculties = new JComboBox<>();
         departments = new JComboBox<>();
         subjects = new JComboBox<>();
         ManagerGUI mng = new ManagerGUI();
-        facultati = mng.getInstance().getSetFacultati();
-        note = mng.getInstance().getSetNoteDupaSpecializare();
-        specializari = mng.getInstance().getSetSpecializari();
-        materii = mng.getInstance().getSetMaterii();
+        facultati = mng.getSetFacultati();
+        note = mng.getSetNoteDupaSpecializare();
+        specializari = mng.getSetSpecializari();
+        materii = mng.getSetMaterii();
         int n = note.size();
         dataModel = new MarkTableModel(n,7);
+        //add all faculties into combobox
         faculties.addItem(new Faculty("Toate facultățile"));
         for(Faculty f:facultati){
             faculties.addItem(f);
         }
+        //add all marks into table
         int i = 0;
         for(MarkByDepartment m:note){
             dataModel.setValueAt(m.getStudentLastName()+" "+m.getStudentFirstName(), i, 0);
@@ -264,12 +266,16 @@ public class RemoveMarkAdminGUI {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                DefaultTableModel model = (DefaultTableModel)tabelNote.getModel();
-                int indexRandSelectat = tabelNote.getSelectedRow();
-                numeStudent = String.valueOf(model.getValueAt(indexRandSelectat,0)).split(" ");
-                mng.getInstance().removeMarkFromDB(numeStudent[1],numeStudent[0],model.getValueAt(indexRandSelectat,2).toString());
-                model.removeRow(indexRandSelectat);
-                JOptionPane.showMessageDialog(null,"Nota selectată a fost eliminată din baza de date!");
+                try {
+                    DefaultTableModel model = (DefaultTableModel) tabelNote.getModel();
+                    int indexRandSelectat = tabelNote.getSelectedRow();
+                    numeStudent = String.valueOf(model.getValueAt(indexRandSelectat, 0)).split(" ");
+                    mng.removeMarkFromDB(numeStudent[1], numeStudent[0], model.getValueAt(indexRandSelectat, 2).toString());
+                    model.removeRow(indexRandSelectat);
+                    JOptionPane.showMessageDialog(null, "Nota selectată a fost eliminată din baza de date!");
+                } catch (Exception e1) {
+                    JOptionPane.showMessageDialog(null, "Selectați o înregistrare din tabel!");
+                }
             }
         });
         //go back to user menu

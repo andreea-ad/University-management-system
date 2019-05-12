@@ -64,8 +64,8 @@ public class AddTeacherAdminGUI {
         anulare = new JButton("Anulare");
         inapoi = new JButton("Înapoi");
         ManagerGUI mng = new ManagerGUI();
-        facultati = mng.getInstance().getSetFacultati();
-        materii = mng.getInstance().getSetMaterii();
+        facultati = mng.getSetFacultati();
+        materii = mng.getSetMaterii();
         for(Faculty f:facultati){
             facultate.addItem(f);
         }
@@ -329,7 +329,7 @@ public class AddTeacherAdminGUI {
                 ziAngajareIntrodusa = (int) ziAngajare.getSelectedItem();
                 dataAngajariiSelectata = Date.valueOf(LocalDate.of(anAngajareIntrodus, getMonthNumber(lunaAngajareIntrodusa), ziAngajareIntrodusa));
                 salariuIntrodus = Integer.valueOf(salariu.getText());
-                if (mng.getInstance().addTeacherInDB(prenumeIntrodus, numeIntrodus, cnpIntrodus, dataNasteriiSelectata, nrTelefonIntrodus, adresaIntrodusa, emailIntrodus, facultateSelectata, materieSelectata, dataAngajariiSelectata, salariuIntrodus) == 1) {
+                if (mng.addTeacherInDB(prenumeIntrodus, numeIntrodus, cnpIntrodus, dataNasteriiSelectata, nrTelefonIntrodus, adresaIntrodusa, emailIntrodus, facultateSelectata, materieSelectata, dataAngajariiSelectata, salariuIntrodus) == 1) {
                     JOptionPane.showMessageDialog(null, "Profesorul a fost adăugat în baza de date!");
                 }
             }

@@ -31,9 +31,8 @@ public class PDViewProfessorGUI {
         labelDataAngajarii = new JLabel("Data angajării: ");
         labelSalariu = new JLabel("Salariu: ");
         inapoi = new JButton("Înapoi");
-
         ManagerGUI mng = new ManagerGUI();
-        prof = mng.getInstance().getSetProfesori();
+        prof = mng.getSetProfesori();
         String welcomeName = "";
         for(Professor p:prof){
             if(p.getEmailAddress().equals(email)) {

@@ -48,10 +48,10 @@ public class AddMarkAdminGUI {
         nota = new JSpinner(spinnerModelNota);
         dataAdaugarii = new JTextField(DateTimeFormatter.ofPattern("yyyy-MM-dd").format(LocalDate.now()));
         ManagerGUI mng = new ManagerGUI();
-        facultati = mng.getInstance().getSetFacultati();
-        studenti = mng.getInstance().getSetStudenti();
-        specializari = mng.getInstance().getSetSpecializari();
-        materii = mng.getInstance().getSetMaterii();
+        facultati = mng.getSetFacultati();
+        studenti = mng.getSetStudenti();
+        specializari = mng.getSetSpecializari();
+        materii = mng.getSetMaterii();
         //add all faculties into combobox
         for(Faculty f:facultati){
             faculties.addItem(f);

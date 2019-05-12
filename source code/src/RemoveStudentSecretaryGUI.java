@@ -12,7 +12,6 @@ import java.util.HashSet;
 
 public class RemoveStudentSecretaryGUI {
     private JFrame frame;
-    private int row;
     private String facultate = "", studentCautat;
     private HashSet<Student> studenti;
     private JTextField searchBox;
@@ -33,8 +32,8 @@ public class RemoveStudentSecretaryGUI {
         inapoi = new JButton("Înapoi");
 
         ManagerGUI mng = new ManagerGUI();
-        facultate += mng.getInstance().getFacultateDupaEmail(email);
-        studenti = mng.getInstance().getSetStudenti();
+        facultate += mng.getFacultateDupaEmail(email);
+        studenti = mng.getSetStudenti();
         int n = 0;
         for(Student s:studenti){
             if(s.getFaculty().equals(facultate)){
@@ -42,6 +41,7 @@ public class RemoveStudentSecretaryGUI {
             }
         }
         dataModel = new StudentTableModel(n);
+        //add all students into table
         int i = 0;
         for(Student s:studenti) {
             if(s.getFaculty().equals(facultate)) {
@@ -231,11 +231,15 @@ public class RemoveStudentSecretaryGUI {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                DefaultTableModel model = (DefaultTableModel)tabelStudenti.getModel();
-                int indexRandSelectat = tabelStudenti.getSelectedRow();
-                mng.getInstance().removeStudentFromDB(model.getValueAt(indexRandSelectat,0).toString(), model.getValueAt(indexRandSelectat,1).toString(), model.getValueAt(indexRandSelectat,6).toString());
-                mng.getInstance().removeMarkFromDB(model.getValueAt(indexRandSelectat,0).toString(),model.getValueAt(indexRandSelectat,1).toString());
-                model.removeRow(indexRandSelectat);
+                try {
+                    DefaultTableModel model = (DefaultTableModel) tabelStudenti.getModel();
+                    int indexRandSelectat = tabelStudenti.getSelectedRow();
+                    mng.removeStudentFromDB(model.getValueAt(indexRandSelectat, 0).toString(), model.getValueAt(indexRandSelectat, 1).toString(), model.getValueAt(indexRandSelectat, 6).toString());
+                    mng.removeMarkFromDB(model.getValueAt(indexRandSelectat, 0).toString(), model.getValueAt(indexRandSelectat, 1).toString());
+                    model.removeRow(indexRandSelectat);
+                }catch (Exception e1){
+                    JOptionPane.showMessageDialog(null, "Selectați o înregistrare din tabel!");
+                }
             }
         });
         //go back to user menu

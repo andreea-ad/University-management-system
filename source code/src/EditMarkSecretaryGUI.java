@@ -35,9 +35,9 @@ public class EditMarkSecretaryGUI {
         departments = new JComboBox<>();
         subjects = new JComboBox<>();
         ManagerGUI mng = new ManagerGUI();
-        specializari = mng.getInstance().getSetSpecializari();
-        note = mng.getInstance().getSetNoteDupaSpecializare();
-        materii = mng.getInstance().getSetMaterii();
+        specializari = mng.getSetSpecializari();
+        note = mng.getSetNoteDupaSpecializare();
+        materii = mng.getSetMaterii();
         facultate = mng.getFacultateDupaEmail(email);
         int n = 0;
         for(MarkByDepartment m:note){
@@ -221,11 +221,15 @@ public class EditMarkSecretaryGUI {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                frame.setVisible(false);
-                DefaultTableModel model = (DefaultTableModel)tabelNote.getModel();
-                int indexRandSelectat = tabelNote.getSelectedRow();
-                String[] student = String.valueOf(model.getValueAt(indexRandSelectat,0).toString()).split("\\s+");
-                EditMarkGUI window = new EditMarkGUI(2, email, student[0], student[1], (int)model.getValueAt(indexRandSelectat,1), model.getValueAt(indexRandSelectat,2).toString(), (Date)model.getValueAt(indexRandSelectat,6));
+                try {
+                    frame.setVisible(false);
+                    DefaultTableModel model = (DefaultTableModel) tabelNote.getModel();
+                    int indexRandSelectat = tabelNote.getSelectedRow();
+                    String[] student = String.valueOf(model.getValueAt(indexRandSelectat, 0).toString()).split("\\s+");
+                    EditMarkGUI window = new EditMarkGUI(2, email, student[0], student[1], (int) model.getValueAt(indexRandSelectat, 1), model.getValueAt(indexRandSelectat, 2).toString(), (Date) model.getValueAt(indexRandSelectat, 6));
+                }catch (Exception e1){
+                    JOptionPane.showMessageDialog(null,"Selectați o înregistrare din tabel!");
+                }
             }
         });
         //go back tu user menu

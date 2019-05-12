@@ -30,8 +30,8 @@ public class ViewTeachersAdminGUI {
         inapoi = new JButton("Înapoi");
 
         ManagerGUI mng = new ManagerGUI();
-        facultati = mng.getInstance().getSetFacultati();
-        profesori = mng.getInstance().getSetProfesori();
+        facultati = mng.getSetFacultati();
+        profesori = mng.getSetProfesori();
         int n = profesori.size();
         dataModel = new TeacherTableModel(n);
         String[] coloane = {"NUME", "PRENUME", "CNP", "DATA NAȘTERII", "NUMĂR DE TELEFON", "ADRESĂ", "ADRESĂ DE EMAIL", "FACULTATE", "MATERIE PREDATĂ", "DATA ANGAJĂRII", "SALARIU"};

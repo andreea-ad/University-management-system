@@ -43,9 +43,9 @@ public class AddMarkProfessorGUI {
         inapoi = new JButton("Înapoi");
         ManagerGUI mng = new ManagerGUI();
         profesor = mng.getProfesorDupaEmail(email);
-        studenti = mng.getInstance().getSetStudenti();
-        profesori = mng.getInstance().getSetProfesori();
-        materii = mng.getInstance().getSetMaterii();
+        studenti = mng.getSetStudenti();
+        profesori = mng.getSetProfesori();
+        materii = mng.getSetMaterii();
         //set teacher's subject and get department
         for(Subject s:materii){
             if(s.getTeacherFirstName().equals(profesor[0]) && s.getTeacherLastName().equals(profesor[1])){
@@ -134,7 +134,7 @@ public class AddMarkProfessorGUI {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 String[] student = String.valueOf(students.getSelectedItem().toString()).split("\\s+");
-                if(mng.getInstance().addMarkInDB(student[1], student[0], (int)nota.getValue(), materie.getText(), profesor[0], profesor[1],java.sql.Date.valueOf(dataAdaugarii.getText())) == 1) {
+                if(mng.addMarkInDB(student[1], student[0], (int)nota.getValue(), materie.getText(), profesor[0], profesor[1],java.sql.Date.valueOf(dataAdaugarii.getText())) == 1) {
                     JOptionPane.showMessageDialog(null, "Nota a fost introdusă în baza de date!");
                 }
             }

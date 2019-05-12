@@ -227,11 +227,15 @@ public class EditMarkAdminGUI {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                frame.setVisible(false);
-                DefaultTableModel model = (DefaultTableModel)tabelNote.getModel();
-                int indexRandSelectat = tabelNote.getSelectedRow();
-                String[] student = String.valueOf(model.getValueAt(indexRandSelectat,0).toString()).split("\\s+");
-                EditMarkGUI window = new EditMarkGUI(3,"",student[0], student[1], (int)model.getValueAt(indexRandSelectat,1), model.getValueAt(indexRandSelectat,2).toString(), (Date)model.getValueAt(indexRandSelectat,6));
+                try {
+                    frame.setVisible(false);
+                    DefaultTableModel model = (DefaultTableModel) tabelNote.getModel();
+                    int indexRandSelectat = tabelNote.getSelectedRow();
+                    String[] student = String.valueOf(model.getValueAt(indexRandSelectat, 0).toString()).split("\\s+");
+                    EditMarkGUI window = new EditMarkGUI(3, "", student[0], student[1], (int) model.getValueAt(indexRandSelectat, 1), model.getValueAt(indexRandSelectat, 2).toString(), (Date) model.getValueAt(indexRandSelectat, 6));
+                }catch (Exception e1){
+                    JOptionPane.showMessageDialog(null,"Selectați o înregistrare din tabel!");
+                }
             }
         });
         //go back to user menu

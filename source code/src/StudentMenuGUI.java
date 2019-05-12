@@ -4,9 +4,12 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.util.HashSet;
 
 public class StudentMenuGUI{
     private JFrame frame;
+    private String cicluUniversitar = "";
+    private HashSet<Student> studenti;
     private JButton date, note, inapoi;
     private JLabel label;
     public StudentMenuGUI(String email){
@@ -20,6 +23,14 @@ public class StudentMenuGUI{
         date = new JButton("Vizualizare date personale");
         note = new JButton("Vizualizare note");
         inapoi = new JButton("Înapoi");
+        ManagerGUI mng = new ManagerGUI();
+        studenti = mng.getSetStudenti();
+        for(Student s:studenti){
+            if(s.getEmailAddress().equals(email)){
+                cicluUniversitar += s.getDegree().toString();
+                break;
+            }
+        }
         //add elements in frame
         frame.add(label);
         frame.add(date);
@@ -81,7 +92,11 @@ public class StudentMenuGUI{
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                ViewMarksStudentGUI window = new ViewMarksStudentGUI(email);
+                if(cicluUniversitar.equals("LICENTA")) {
+                    ViewMarksStudentGUI window = new ViewMarksStudentGUI(email);
+                }else if(cicluUniversitar.equals("MASTER")){
+                    ViewMarksStudentGUI2 window = new ViewMarksStudentGUI2(email);
+                }
                 frame.setVisible(false);
             }
         });

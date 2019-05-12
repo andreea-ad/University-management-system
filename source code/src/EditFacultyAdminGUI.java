@@ -90,10 +90,14 @@ public class EditFacultyAdminGUI {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                frame.setVisible(false);
-                DefaultTableModel model = (DefaultTableModel)tabelFacultati.getModel();
-                int indexRandSelectat = tabelFacultati.getSelectedRow();
-                EditFacultyGUI window = new EditFacultyGUI(model.getValueAt(indexRandSelectat,0).toString());
+                try {
+                    frame.setVisible(false);
+                    DefaultTableModel model = (DefaultTableModel) tabelFacultati.getModel();
+                    int indexRandSelectat = tabelFacultati.getSelectedRow();
+                    EditFacultyGUI window = new EditFacultyGUI(model.getValueAt(indexRandSelectat, 0).toString());
+                }catch (Exception e1){
+                    JOptionPane.showMessageDialog(null,"Selectați o înregistrare din tabel!");
+                }
             }
         });
         //go back to user menu

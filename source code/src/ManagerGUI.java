@@ -14,27 +14,20 @@ public class ManagerGUI {
     private static HashSet<MarkByDepartment> noteDupaSpecializare = new HashSet<>();
     private static Connection conn;
 
-    private static ManagerGUI instance = null;
-    public static ManagerGUI getInstance(){
-        if(instance == null)
-            instance = new ManagerGUI();
-        return instance;
-    }
-
     public ManagerGUI() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate1", "root", "");
             //retrieve data from DB to create hashsets
-            String faculties = "select * from faculties";
-            String departments = "select * from departments";
-            String subjects = "select * from subjects";
-            String professors = "select * from professors";
-            String students = "select * from students";
-            String marks = "select * from marks";
+            String faculties = "select * from faculties where flag=1";
+            String departments = "select * from departments where flag=1";
+            String subjects = "select * from subjects where flag=1";
+            String professors = "select * from professors where flag=1";
+            String students = "select * from students where flag=1";
+            String marks = "select * from marks where flag=1";
 
-            String marksByEmail = "select * from marks, students, subjects where marks.student_first_name=students.first_name and marks.student_last_name=students.last_name and marks.subject=subjects.title";
-            String marksByDepartment = "select * from marks, students, subjects where marks.student_first_name=students.first_name and marks.student_last_name=students.last_name and marks.subject=subjects.title";
+            String marksByEmail = "select * from marks, students, subjects where marks.student_first_name=students.first_name and marks.student_last_name=students.last_name and marks.subject=subjects.title and subjects.department=students.department and marks.flag=1 and subjects.flag=1 and students.flag=1";
+            String marksByDepartment = "select * from marks, students, subjects where marks.student_first_name=students.first_name and marks.student_last_name=students.last_name and marks.subject=subjects.title and marks.flag=1 and subjects.flag=1 and students.flag=1";
 
             PreparedStatement ps = conn.prepareStatement(faculties);
             ResultSet rs = ps.executeQuery();
@@ -81,7 +74,7 @@ public class ManagerGUI {
             ps = conn.prepareStatement(marksByEmail);
             rs = ps.executeQuery();
             while(rs.next()){
-                MarkByEmail mark = new MarkByEmail(rs.getInt("marks.mark"),rs.getString("marks.student_first_name"),rs.getString("marks.student_last_name"),rs.getString("students.email_address"),rs.getString("marks.subject"),rs.getString("marks.teacher_last_name")+" "+rs.getString("marks.teacher_first_name"),rs.getDate("marks.date_added"),rs.getInt("subjects.number_of_credits"));
+                MarkByEmail mark = new MarkByEmail(rs.getInt("marks.mark"),rs.getString("marks.student_first_name"),rs.getString("marks.student_last_name"),rs.getString("students.email_address"),rs.getString("marks.subject"),rs.getInt("subjects.semester"),rs.getString("marks.teacher_last_name")+" "+rs.getString("marks.teacher_first_name"),rs.getDate("marks.date_added"),rs.getInt("subjects.number_of_credits"));
                 noteDupaEmail.add(mark);
             }
 
@@ -101,8 +94,8 @@ public class ManagerGUI {
     public static int addMarkInDB(String prenume, String nume, int nota, String materie, String prenumeProfesor, String numeProfesor, Date dataAdaugarii){
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
-            String insertQuery = "insert into marks(`student_first_name`,`student_last_name`,`mark`,`subject`,`teacher_first_name`,`teacher_last_name`,`date_added`) VALUES (?,?,?,?,?,?,?)";
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate1", "root", "");
+            String insertQuery = "insert into marks(`student_first_name`,`student_last_name`,`mark`,`subject`,`teacher_first_name`,`teacher_last_name`,`date_added`,`flag`) VALUES (?,?,?,?,?,?,?,1)";
             for(Mark m:note){
                 if(m.getStudentLastName().equals(nume) && m.getStudentFirstName().equals(prenume) && m.getSubject().equals(materie)){
                     JOptionPane.showMessageDialog(null,"Studentul are notă!","Operație refuzată",JOptionPane.WARNING_MESSAGE);
@@ -127,8 +120,8 @@ public class ManagerGUI {
     public static void removeMarkFromDB(String prenume, String nume, String materie){
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
-            String deleteQuery = "delete from marks where `student_first_name`=? and `student_last_name`=? and `subject`=?";
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate1", "root", "");
+            String deleteQuery = "update marks set flag=0 where `student_first_name`=? and `student_last_name`=? and `subject`=?";
             PreparedStatement ps = conn.prepareStatement(deleteQuery);
             ps.setString(1,prenume);
             ps.setString(2,nume);
@@ -142,8 +135,8 @@ public class ManagerGUI {
     public static void removeMarkFromDB(String nume, String prenume){
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
-            String deleteQuery = "delete from marks where `student_first_name`=? and `student_last_name`=?";
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate1", "root", "");
+            String deleteQuery = "update marks set flag=0 where `student_first_name`=? and `student_last_name`=?";
             PreparedStatement ps = conn.prepareStatement(deleteQuery);
             ps.setString(1,prenume);
             ps.setString(2,nume);
@@ -156,7 +149,7 @@ public class ManagerGUI {
     public static int updateMarkFromDB(String prenume, String nume, int nota, String materie, Date dataEditarii) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate1", "root", "");
             String updateQuery = "update marks set mark=?, date_added=? where student_first_name=? and student_last_name=? and subject=?";
             for(Mark m:note){
                 if(m.getStudentFirstName().equals(prenume) && m.getStudentLastName().equals(nume) && m.getSubject().equals(materie)){
@@ -180,9 +173,9 @@ public class ManagerGUI {
     public static int addTeacherInDB(String prenume, String nume, String cnp, Date dataNasterii, String numarTelefon, String adresa, String adresaEmail, String facultate, String materiePredata, Date dataAngajarii, int salariu){
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
-            String insertQuery = "insert into professors(`first_name`,`last_name`,`cnp`,`dob`,`phone_number`,`address`,`email_address`,`faculty`,`teaching_subject`, `hire_date`,`salary`) values (?,?,?,?,?,?,?,?,?,?,?)";
-            String insertUserQuery = "insert into userprofesor(`email_address`,`pass`) values (?,?)";
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate1", "root", "");
+            String insertQuery = "insert into professors(`first_name`,`last_name`,`cnp`,`dob`,`phone_number`,`address`,`email_address`,`faculty`,`teaching_subject`, `hire_date`,`salary`,`flag`) values (?,?,?,?,?,?,?,?,?,?,?,1)";
+            String insertUserQuery = "insert into userprofesor(`email_address`,`pass`,`flag`) values (?,?,1)";
             for(Professor p:profesori){
                 if(p.getCnp().equals(cnp)){
                     JOptionPane.showMessageDialog(null,"Profesorul există deja în baza de date!","Operație refuzată",JOptionPane.WARNING_MESSAGE);
@@ -215,9 +208,9 @@ public class ManagerGUI {
     public static void removeTeacherFromDB(String prenume, String nume, String email){
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
-            String deleteQuery = "delete from professors where `first_name`=? and `last_name`=?";
-            String deleteUserQuery = "delete from userprofesor where `email_address`=?";
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate1", "root", "");
+            String deleteQuery = "update professors set flag=0 where `first_name`=? and `last_name`=?";
+            String deleteUserQuery = "update userprofesor set flag=0 where `email_address`=?";
             PreparedStatement ps = conn.prepareStatement(deleteQuery);
             ps.setString(1,prenume);
             ps.setString(2,nume);
@@ -233,7 +226,7 @@ public class ManagerGUI {
     public static int updateTeacherFromDB(String cnp1, String prenume, String nume, String cnp, Date dataNasterii, String nrTelefon, String adresa, String email, String facultate, String materie, Date dataAngajarii, int salariu){
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate1", "root", "");
             String updateQuery = "update professors set first_name=?, last_name=?, cnp=?, dob=?, phone_number=?, address=?, email_address=?, faculty=?, teaching_subject=?, hire_date=?, salary=? where cnp=?";
             for(Professor p:profesori){
                 if(p.getCnp().equals(cnp)){
@@ -264,9 +257,9 @@ public class ManagerGUI {
     public static int addStudentInDB(String prenume, String nume, String cnp, Date dataNasterii, String nrTelefon, String adresa, String adresaEmail, String facultate, String specializare, String cicluUniversitar, int anUniversitar, int nrCredite){
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
-            String insertQuery = "insert into students(`first_name`,`last_name`,`cnp`,`dob`,`phone_number`,`address`,`email_address`,`faculty`,`department`, `degree`,`year`,`number_of_credits`)values(?,?,?,?,?,?,?,?,?,?,?,?)";
-            String insertUserQuery = "insert into userstudent(`email_address`,`pass`) values (?,?)";
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate1", "root", "");
+            String insertQuery = "insert into students(`first_name`,`last_name`,`cnp`,`dob`,`phone_number`,`address`,`email_address`,`faculty`,`department`, `degree`,`year`,`number_of_credits`,`flag`)values(?,?,?,?,?,?,?,?,?,?,?,?,1)";
+            String insertUserQuery = "insert into userstudent(`email_address`,`pass`,`flag`) values (?,?,1)";
             for(Student s:studenti){
                 if(s.getCnp().equals(cnp)){
                     JOptionPane.showMessageDialog(null,"Studentul există deja în baza de date!","Operație refuzată",JOptionPane.WARNING_MESSAGE);
@@ -300,9 +293,9 @@ public class ManagerGUI {
     public static void removeStudentFromDB(String nume, String prenume, String email){
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
-            String deleteQuery = "delete from students where `first_name`=? and `last_name`=?";
-            String deleteUserQuery = "delete from userstudent where `email_address`=?";
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate1", "root", "");
+            String deleteQuery = "update students set flag=0 where `first_name`=? and `last_name`=?";
+            String deleteUserQuery = "update userstudent set flag=0 where `email_address`=?";
             PreparedStatement ps = conn.prepareStatement(deleteQuery);
             ps.setString(1,prenume);
             ps.setString(2,nume);
@@ -318,7 +311,7 @@ public class ManagerGUI {
     public static int updateStudentFromDB(String cnp1, String prenume, String nume, String cnp, Date dataNasterii, String nrTelefon, String adresa, String email, String facultate, String specializare, String cicluUniversitar, int an, int nrCredite){
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate1", "root", "");
             String updateQuery = "update students set first_name=?, last_name=?, cnp=?, dob=?, phone_number=?, address=?, email_address=?, faculty=?, department=?, degree=?, year=?, number_of_credits=? where cnp=?";
             for(Student s:studenti){
                 if(s.getCnp().equals(cnp)){
@@ -350,8 +343,8 @@ public class ManagerGUI {
     public static int addDepartmentInDB(String titlu, String facultate, String cicluUniversitar){
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
-            String insertQuery = "insert into departments(`title`,`faculty`,`degree`)values(?,?,?)";
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate1", "root", "");
+            String insertQuery = "insert into departments(`title`,`faculty`,`degree`,`flag`)values(?,?,?,1)";
             for (Department d:specializari) {
                 if (d.getTitle().equals(titlu)) {
                     JOptionPane.showMessageDialog(null, "Specializarea există deja în baza de date!", "Operație refuzată", JOptionPane.WARNING_MESSAGE);
@@ -372,9 +365,9 @@ public class ManagerGUI {
     public static int addFacultyInDB(String titlu){
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
-            String insertQuery = "insert into faculties(`title`)values(?)";
-            String insertUserQuery = "insert into usersecretariat(`faculty`,`email_address`,`pass`)values(?,?,?)";
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate1", "root", "");
+            String insertQuery = "insert into faculties(`title`,`flag`)values(?,1)";
+            String insertUserQuery = "insert into usersecretariat(`faculty`,`email_address`,`pass`,`flag`)values(?,?,?,1)";
             for (Faculty f:facultati) {
                 if (f.getTitle().equals(titlu)) {
                     JOptionPane.showMessageDialog(null, "Facultatea există deja în baza de date!", "Operație refuzată", JOptionPane.WARNING_MESSAGE);
@@ -401,7 +394,7 @@ public class ManagerGUI {
     public static int updateFacultyFromDB(String titlu1, String titlu){
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate1", "root", "");
             String updateQuery = "update faculties set title=? where title=?";
             String updateQuery2 = "update departments set faculty=? where faculty=?";
             String updateQuery3 = "update professors set faculty=? where faculty=?";
@@ -449,12 +442,46 @@ public class ManagerGUI {
         }
         return 1;
     }
+    public static int removeFacultyFromDB(String titlu){
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate1", "root", "");
+            String deleteQuery = "update faculties set flag=0 where title=?";
+            String deleteQuery2 = "update usersecretariat set flag=0 where faculty=?";
+            String deleteQuery3 = "update professors set faculty='' where faculty=?";
+            String deleteQuery4 = "update students set faculty='' where faculty=?";
+            String deleteQuery5 = "update departments set faculty='' where faculty=?";
+            String deleteQuery6 = "update subjects set faculty='' where faculty=?";
+            PreparedStatement ps = conn.prepareStatement(deleteQuery);
+            ps.setString(1,titlu);
+            ps.executeUpdate();
+            ps = conn.prepareStatement(deleteQuery2);
+            ps.setString(1,titlu);
+            ps.executeUpdate();
+            ps = conn.prepareStatement(deleteQuery3);
+            ps.setString(1,titlu);
+            ps.executeUpdate();
+            ps = conn.prepareStatement(deleteQuery4);
+            ps.setString(1,titlu);
+            ps.executeUpdate();
+            ps = conn.prepareStatement(deleteQuery5);
+            ps.setString(1,titlu);
+            ps.executeUpdate();
+            ps = conn.prepareStatement(deleteQuery6);
+            ps.setString(1,titlu);
+            ps.executeUpdate();
+            conn.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return 1;
+    }
     public static int addSubjectInDB(String titlu, String facultate, String specializare, String cicluUniversitar, int semestru, int nrCredite, String profesor){
         String[] prof;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
-            String insertQuery = "insert into subjects(`title`,`faculty`,`department`,`degree`,`semester`,`number_of_credits`,`teacher_first_name`,`teacher_last_name`)values(?,?,?,?,?,?,?,?)";
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate1", "root", "");
+            String insertQuery = "insert into subjects(`title`,`faculty`,`department`,`degree`,`semester`,`number_of_credits`,`teacher_first_name`,`teacher_last_name`,`flag`)values(?,?,?,?,?,?,?,?,1)";
             for(Subject s:materii){
                 if(s.getTitle().equals(titlu) && s.getDepartment().equals(specializare)){
                     JOptionPane.showMessageDialog(null, "Materia există deja în baza de date!", "Operație refuzată", JOptionPane.WARNING_MESSAGE);
@@ -478,15 +505,60 @@ public class ManagerGUI {
         }
         return 1;
     }
+    public static int removeSubjectFromDB(String titlu){
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate1", "root", "");
+            String deleteQuery = "update subjects set flag=0 where title=?";
+            String deleteQuery2 = "update professors set teaching_subject='' where teaching_subject=?";
+            String deleteQuery3 = "update marks set subject='' where subject=?";
+            PreparedStatement ps = conn.prepareStatement(deleteQuery);
+            ps.setString(1,titlu);
+            ps.executeUpdate();
+            ps = conn.prepareStatement(deleteQuery2);
+            ps.setString(1,titlu);
+            ps.executeUpdate();
+            ps = conn.prepareStatement(deleteQuery3);
+            ps.setString(1,titlu);
+            ps.executeUpdate();
+            conn.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return 1;
+    }
+    public static int removeDepartmentFromDB(String titlu){
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate1", "root", "");
+            String deleteQuery = "update departments set flag=0 where title=?";
+            String deleteQuery2 = "update subjects set department='' where department=?";
+            String deleteQuery3 = "update students set department='' where department=?";
+            PreparedStatement ps = conn.prepareStatement(deleteQuery);
+            ps.setString(1,titlu);
+            ps.executeUpdate();
+            ps = conn.prepareStatement(deleteQuery2);
+            ps.setString(1,titlu);
+            ps.executeUpdate();
+            ps = conn.prepareStatement(deleteQuery3);
+            ps.setString(1,titlu);
+            ps.executeUpdate();
+            conn.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return 1;
+    }
     public static int updateDepartmentFromDB(String titlu1, String titlu, String facultate, String cicluUniversitar){
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate1", "root", "");
             String updateQuery = "update departments set title=?, degree=? where title=? and faculty=?";
             String updateQuery2 = "update students set department=? where department=?";
+            String updateQuery3 = "update subjects set department=? where department=?";
             for(Department d:specializari){
-                if(titlu1.equals(titlu) == false && d.getTitle().equals(titlu) && d.getFaculty().equals(facultate)){
-                    JOptionPane.showMessageDialog(null, "Specializarea există");
+                if(!titlu1.equals(titlu) && d.getTitle().equals(titlu) && d.getFaculty().equals(facultate)){
+                    JOptionPane.showMessageDialog(null, "Specializarea există deja în baza de date!","Operație refuzată",JOptionPane.WARNING_MESSAGE);
                     return -1;
                 }
             }
@@ -500,6 +572,10 @@ public class ManagerGUI {
             ps.setString(1,titlu);
             ps.setString(2,titlu1);
             ps.executeUpdate();
+            ps = conn.prepareStatement(updateQuery3);
+            ps.setString(1,titlu);
+            ps.setString(2,titlu1);
+            ps.executeUpdate();
             conn.close();
         }catch(Exception e){
             e.printStackTrace();
@@ -510,8 +586,8 @@ public class ManagerGUI {
         String facultate = "", emailDB;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
-            String selectQuery = "select * from usersecretariat";
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate1", "root", "");
+            String selectQuery = "select * from usersecretariat where flag=1";
             PreparedStatement ps = conn.prepareStatement(selectQuery);
             ResultSet rs = ps.executeQuery(selectQuery);
             while(rs.next()){
@@ -532,8 +608,8 @@ public class ManagerGUI {
         String emailDB;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
-            String selectQuery = "select * from professors";
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate1", "root", "");
+            String selectQuery = "select * from professors where flag=1";
             PreparedStatement ps = conn.prepareStatement(selectQuery);
             ResultSet rs = ps.executeQuery(selectQuery);
             while(rs.next()){

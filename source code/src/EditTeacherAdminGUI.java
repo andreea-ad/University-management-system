@@ -32,8 +32,8 @@ public class EditTeacherAdminGUI {
         selecteaza = new JButton("Selectează");
         inapoi = new JButton("Înapoi");
         ManagerGUI mng = new ManagerGUI();
-        facultati = mng.getInstance().getSetFacultati();
-        profesori = mng.getInstance().getSetProfesori();
+        facultati = mng.getSetFacultati();
+        profesori = mng.getSetProfesori();
         int n = profesori.size();
         dataModel = new TeacherTableModel(n);
         faculties.addItem(new Faculty("Toate facultățile"));
@@ -168,10 +168,14 @@ public class EditTeacherAdminGUI {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                DefaultTableModel model = (DefaultTableModel)tabelProfesori.getModel();
-                int indexRandSelectat = tabelProfesori.getSelectedRow();
-                frame.setVisible(false);
-                EditTeacherGUI window = new EditTeacherGUI(model.getValueAt(indexRandSelectat,0).toString(), model.getValueAt(indexRandSelectat,1).toString(), model.getValueAt(indexRandSelectat,2).toString(), (Date)model.getValueAt(indexRandSelectat,3), model.getValueAt(indexRandSelectat,4).toString(), model.getValueAt(indexRandSelectat,5).toString(), model.getValueAt(indexRandSelectat,6).toString(), model.getValueAt(indexRandSelectat,7).toString(), model.getValueAt(indexRandSelectat,8).toString(), (Date)model.getValueAt(indexRandSelectat,9), (int)model.getValueAt(indexRandSelectat,10));
+                try {
+                    DefaultTableModel model = (DefaultTableModel) tabelProfesori.getModel();
+                    int indexRandSelectat = tabelProfesori.getSelectedRow();
+                    frame.setVisible(false);
+                    EditTeacherGUI window = new EditTeacherGUI(model.getValueAt(indexRandSelectat, 0).toString(), model.getValueAt(indexRandSelectat, 1).toString(), model.getValueAt(indexRandSelectat, 2).toString(), (Date) model.getValueAt(indexRandSelectat, 3), model.getValueAt(indexRandSelectat, 4).toString(), model.getValueAt(indexRandSelectat, 5).toString(), model.getValueAt(indexRandSelectat, 6).toString(), model.getValueAt(indexRandSelectat, 7).toString(), model.getValueAt(indexRandSelectat, 8).toString(), (Date) model.getValueAt(indexRandSelectat, 9), (int) model.getValueAt(indexRandSelectat, 10));
+                }catch (Exception e1){
+                    JOptionPane.showMessageDialog(null,"Selectați o înregistrare din tabel!");
+                }
             }
         });
         //go back to user menu

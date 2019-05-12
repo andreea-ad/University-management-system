@@ -27,6 +27,6 @@ public class StudentTableModel extends AbstractTableModel {
         fireTableCellUpdated(row, col);
     }
     public void removeTable(){
-        this.studenti = new Object[nrStudenti][20];
+        this.studenti = new Object[nrStudenti][12];
     }
 }

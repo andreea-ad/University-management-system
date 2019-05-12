@@ -27,8 +27,8 @@ public class ViewMarksProfessorGUI {
         inapoi = new JButton("Înapoi");
 
         ManagerGUI mng = new ManagerGUI();
-        profesori = mng.getInstance().getSetProfesori();
-        note = mng.getInstance().getSetNoteDupaEmail();
+        profesori = mng.getSetProfesori();
+        note = mng.getSetNoteDupaEmail();
         int n = 0;
         int i = 0;
         //get teacher's full name

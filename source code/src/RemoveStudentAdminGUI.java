@@ -15,8 +15,10 @@ public class RemoveStudentAdminGUI {
     private String studentCautat;
     private JTextField searchBox;
     private JComboBox<Faculty> facultate;
+    private JComboBox<Department> specializare;
     private JButton eliminare, cautare, inapoi;
     private HashSet<Faculty> facultati;
+    private HashSet<Department> specializari;
     private HashSet<Student> studenti;
     private StudentTableModel dataModel;
     private JTable tabelStudenti = new JTable();
@@ -29,13 +31,15 @@ public class RemoveStudentAdminGUI {
         */
         frame = new JFrame("Eliminare student");
         facultate = new JComboBox<>();
+        specializare = new JComboBox<>();
         eliminare = new JButton("Eliminare student");
         cautare = new JButton("Căutare");
         inapoi = new JButton("Înapoi");
         searchBox = new JTextField("");
         ManagerGUI mng = new ManagerGUI();
-        facultati = mng.getInstance().getSetFacultati();
-        studenti = mng.getInstance().getSetStudenti();
+        facultati = mng.getSetFacultati();
+        specializari = mng.getSetSpecializari();
+        studenti = mng.getSetStudenti();
         int n = studenti.size();
         dataModel = new StudentTableModel(n);
         facultate.addItem(new Faculty("Toate facultățile"));
@@ -123,6 +127,7 @@ public class RemoveStudentAdminGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int i = 0, q = 0;
+                specializare.removeAllItems();
                 for(Student s:studenti){
                     if(facultate.getSelectedItem().toString().equals("Toate facultățile")){
                         q = studenti.size();
@@ -172,7 +177,26 @@ public class RemoveStudentAdminGUI {
                         return false;
                     }
                 };
+                specializare.addItem(new Department("Toate specializările"));
+                for(Department d:specializari){
+                    if(facultate.getSelectedItem().toString().equals("Toate facultățile")){
+                        specializare.addItem(d);
+                    }else if(d.getFaculty().equals(facultate)){
+                        specializare.addItem(d);
+                    }
+                }
+                frame.add(specializare);
+                specializare.setBounds(350,60,300,25);
                 tabelStudenti.setModel(model);
+            }
+        });
+        //add students into table when selecting a department
+        specializare.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int i = 0;
+                dataModel.removeTable();
+
             }
         });
         //find student into table when hitting enter
@@ -302,11 +326,15 @@ public class RemoveStudentAdminGUI {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                DefaultTableModel model = (DefaultTableModel)tabelStudenti.getModel();
-                int indexRandSelectat = tabelStudenti.getSelectedRow();
-                mng.getInstance().removeStudentFromDB(model.getValueAt(indexRandSelectat,0).toString(), model.getValueAt(indexRandSelectat,1).toString(), model.getValueAt(indexRandSelectat,6).toString());
-                mng.getInstance().removeMarkFromDB(model.getValueAt(indexRandSelectat,0).toString(), model.getValueAt(indexRandSelectat,1).toString());
-                model.removeRow(indexRandSelectat);
+                try {
+                    DefaultTableModel model = (DefaultTableModel) tabelStudenti.getModel();
+                    int indexRandSelectat = tabelStudenti.getSelectedRow();
+                    mng.removeStudentFromDB(model.getValueAt(indexRandSelectat, 0).toString(), model.getValueAt(indexRandSelectat, 1).toString(), model.getValueAt(indexRandSelectat, 6).toString());
+                    mng.removeMarkFromDB(model.getValueAt(indexRandSelectat, 0).toString(), model.getValueAt(indexRandSelectat, 1).toString());
+                    model.removeRow(indexRandSelectat);
+                }catch (Exception e1){
+                    JOptionPane.showMessageDialog(null, "Selectați o înregistrare din tabel!");
+                }
             }
         });
         //go back to user menu

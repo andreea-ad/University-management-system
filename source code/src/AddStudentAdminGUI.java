@@ -52,7 +52,7 @@ public class AddStudentAdminGUI {
         nrTelefon = new JTextField();
         adresa = new JTextField();
         adresaEmail = new JTextField();
-        nrCredite = new JTextField(0);
+        nrCredite = new JTextField();
         facultate = new JComboBox<>();
         specializare = new JComboBox<>();
         cicluUniversitar = new JComboBox<>();
@@ -61,14 +61,20 @@ public class AddStudentAdminGUI {
         ziNastere = new JComboBox<>();
         spinnerModelAn = new SpinnerNumberModel(1,1,3,1);
         anUniversitar = new JSpinner(spinnerModelAn);
-        adaugare = new JButton("Adăugare student");
-        anulare = new JButton("Anulare");
+        adaugare = new JButton("Adaugă student");
+        anulare = new JButton("Anulează");
         inapoi = new JButton("Înapoi");
         ManagerGUI mng = new ManagerGUI();
-        facultati = mng.getInstance().getSetFacultati();
-        specializari = mng.getInstance().getSetSpecializari();
+        facultati = mng.getSetFacultati();
+        specializari = mng.getSetSpecializari();
         for(Faculty f:facultati){
             facultate.addItem(f);
+        }
+        //add departments into combobox
+        for(Department d:specializari){
+            if(d.getFaculty().equals(facultate.getSelectedItem().toString())){
+                specializare.addItem(d);
+            }
         }
         cicluUniversitar.addItem("LICENTA");
         cicluUniversitar.addItem("MASTER");
@@ -112,40 +118,38 @@ public class AddStudentAdminGUI {
         frame.add(adaugare);
         frame.add(anulare);
         frame.add(inapoi);
-        //set textfield not editable
-        nrCredite.setEditable(false);
         //set white background
         frame.getContentPane().setBackground(Color.WHITE);
         //set bounds for elements
-        labelNume.setBounds(150,50,120,25);
-        nume.setBounds(270,50,250,25);
-        labelPrenume.setBounds(150,80,120,25);
-        prenume.setBounds(270,80,250,25);
-        labelCnp.setBounds(150,110,120,25);
-        cnp.setBounds(270,110,250,25);
-        labelDataNasterii.setBounds(150,140,120,25);
-        anNastere.setBounds(270,140,60,25);
-        lunaNastere.setBounds(340,140,120,25);
-        ziNastere.setBounds(469,140,50,25);
-        labelNrTelefon.setBounds(150,170,120,25);
-        nrTelefon.setBounds(270,170,250,25);
-        labelAdresa.setBounds(150,200,120,25);
-        adresa.setBounds(270,200,250,25);
-        labelAdresaEmail.setBounds(150,230,120,25);
-        adresaEmail.setBounds(270,230,250,25);
-        labelFacultate.setBounds(150,260,120,25);
-        facultate.setBounds(270,260,250,25);
-        labelSpecializare.setBounds(150,290,120,25);
-        specializare.setBounds(270,290,250,25);
-        labelCicluUniversitar.setBounds(150,320,120,25);
-        cicluUniversitar.setBounds(270,320,250,25);
-        labelAn.setBounds(150,350,120,25);
-        anUniversitar.setBounds(270,350,250,25);
-        labelNrCredite.setBounds(150,380,120,25);
-        nrCredite.setBounds(270,380,250,25);
-        adaugare.setBounds(105,430,150,25);
-        anulare.setBounds(260,430,150,25);
-        inapoi.setBounds(415,430,150,25);
+        labelNume.setBounds(190,70,120,25);
+        nume.setBounds(300,70,250,25);
+        labelPrenume.setBounds(190,100,120,25);
+        prenume.setBounds(300,100,250,25);
+        labelCnp.setBounds(190,130,120,25);
+        cnp.setBounds(300,130,250,25);
+        labelDataNasterii.setBounds(190,160,120,25);
+        anNastere.setBounds(300,160,60,25);
+        lunaNastere.setBounds(370,160,120,25);
+        ziNastere.setBounds(500,160,50,25);
+        labelNrTelefon.setBounds(190,190,120,25);
+        nrTelefon.setBounds(300,190,250,25);
+        labelAdresa.setBounds(190,220,120,25);
+        adresa.setBounds(300,220,250,25);
+        labelAdresaEmail.setBounds(190,250,120,25);
+        adresaEmail.setBounds(300,250,250,25);
+        labelFacultate.setBounds(190,280,120,25);
+        facultate.setBounds(300,280,250,25);
+        labelSpecializare.setBounds(190,310,120,25);
+        specializare.setBounds(300,310,250,25);
+        labelCicluUniversitar.setBounds(190,340,120,25);
+        cicluUniversitar.setBounds(300,340,250,25);
+        labelAn.setBounds(190,370,120,25);
+        anUniversitar.setBounds(300,370,250,25);
+        labelNrCredite.setBounds(190,400,120,25);
+        nrCredite.setBounds(300,400,250,25);
+        adaugare.setBounds(140,450,150,25);
+        anulare.setBounds(295,450,150,25);
+        inapoi.setBounds(450,450,150,25);
         //buttons design
         adaugare.setBorderPainted(false);
         adaugare.setBackground(new Color(233,233,233));
@@ -176,7 +180,7 @@ public class AddStudentAdminGUI {
             ie.printStackTrace();
         }
         //set frame size
-        frame.setPreferredSize(new Dimension(685,550));
+        frame.setPreferredSize(new Dimension(755,600));
         frame.setLayout(null);
         frame.pack();
         //set window in the middle of the screen
@@ -205,42 +209,36 @@ public class AddStudentAdminGUI {
             }
         });
         //add days into the combobox
-        lunaNastere.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String luna = String.valueOf(lunaNastere.getSelectedItem());
-                int an = (int)anNastere.getSelectedItem();
-                ziNastere.removeAllItems();
-                if((luna.equals("IANURIE"))||(luna.equals("MARTIE"))||(luna.equals("MAI"))||(luna.equals("IULIE"))||(luna.equals("AUGUST"))||(luna.equals("OCTOMBRIE"))||(luna.equals("DECEMBRIE"))){
-                    for(int i=1;i<=31;i++){
-                        ziNastere.addItem(i);
-                    }
-                }else if((luna.equals("APRILIE"))||(luna.equals("IUNIE"))||(luna.equals("SEPTEMBRIE"))||(luna.equals("NOIEMBRIE"))){
-                    for(int i=1;i<=30;i++){
+        lunaNastere.addActionListener(e -> {
+            String luna = String.valueOf(lunaNastere.getSelectedItem());
+            int an = (int)anNastere.getSelectedItem();
+            ziNastere.removeAllItems();
+            if((luna.equals("IANUARIE"))||(luna.equals("MARTIE"))||(luna.equals("MAI"))||(luna.equals("IULIE"))||(luna.equals("AUGUST"))||(luna.equals("OCTOMBRIE"))||(luna.equals("DECEMBRIE"))){
+                for(int i=1;i<=31;i++){
+                    ziNastere.addItem(i);
+                }
+            }else if((luna.equals("APRILIE"))||(luna.equals("IUNIE"))||(luna.equals("SEPTEMBRIE"))||(luna.equals("NOIEMBRIE"))){
+                for(int i=1;i<=30;i++){
+                    ziNastere.addItem(i);
+                }
+            }else{
+                if(isLeapYear(an)){
+                    for(int i=1;i<=29;i++){
                         ziNastere.addItem(i);
                     }
                 }else{
-                    if(isLeapYear(an)){
-                        for(int i=1;i<=29;i++){
-                            ziNastere.addItem(i);
-                        }
-                    }else{
-                        for(int i=1;i<=28;i++){
-                            ziNastere.addItem(i);
-                        }
+                    for(int i=1;i<=28;i++){
+                        ziNastere.addItem(i);
                     }
                 }
             }
         });
         //add days into combobox
-        anNastere.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                lunaNastere.setSelectedItem("IANUARIE");
-                ziNastere.removeAllItems();
-                for(int i=1;i<=31;i++){
-                    ziNastere.addItem(i);
-                }
+        anNastere.addActionListener(e -> {
+            lunaNastere.setSelectedItem("IANUARIE");
+            ziNastere.removeAllItems();
+            for(int i=1;i<=31;i++){
+                ziNastere.addItem(i);
             }
         });
         //add student into DB
@@ -263,7 +261,7 @@ public class AddStudentAdminGUI {
                 cicluUniversitarSelectat = String.valueOf(cicluUniversitar.getSelectedItem());
                 anUniversitarIntrodus = (int)anUniversitar.getValue();
                 nrCrediteIntroduse = Integer.valueOf(nrCredite.getText());
-                if(mng.getInstance().addStudentInDB(prenumeIntrodus,numeIntrodus,cnpIntrodus,dataNasteriiSelectata,nrTelefonIntrodus,adresaIntrodusa,emailIntrodus,facultateSelectata,specializareSelectata,cicluUniversitarSelectat,anUniversitarIntrodus,nrCrediteIntroduse) == 1){
+                if(mng.addStudentInDB(prenumeIntrodus,numeIntrodus,cnpIntrodus,dataNasteriiSelectata,nrTelefonIntrodus,adresaIntrodusa,emailIntrodus,facultateSelectata,specializareSelectata,cicluUniversitarSelectat,anUniversitarIntrodus,nrCrediteIntroduse) == 1){
                     JOptionPane.showMessageDialog(null, "Studentul a fost adăugat în baza de date!");
                 }
             }
@@ -285,11 +283,11 @@ public class AddStudentAdminGUI {
                 nrTelefon.setText("");
                 adresa.setText("");
                 adresaEmail.setText("");
-                facultate.setSelectedItem("Facultatea de Chimie și Biologie");
-                specializare.setSelectedItem("Biologie");
-                cicluUniversitar.setSelectedItem("LICENȚĂ");
+                facultate.setSelectedIndex(0);
+                specializare.setSelectedIndex(0);
+                cicluUniversitar.setSelectedIndex(0);
                 anUniversitar.setValue(1);
-                nrCredite.setText("0");
+                nrCredite.setText("");
             }
         });
         //go back to user menu

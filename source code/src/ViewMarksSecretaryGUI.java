@@ -35,9 +35,9 @@ public class ViewMarksSecretaryGUI {
 
         ManagerGUI mng = new ManagerGUI();
         facultate = mng.getFacultateDupaEmail(email);
-        specializari = mng.getInstance().getSetSpecializari();
-        materii = mng.getInstance().getSetMaterii();
-        note = mng.getInstance().getSetNoteDupaSpecializare();
+        specializari = mng.getSetSpecializari();
+        materii = mng.getSetMaterii();
+        note = mng.getSetNoteDupaSpecializare();
         int n = note.size();
         dataModel = new MarkTableModel(n,7);
         int i = 0;

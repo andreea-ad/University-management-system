@@ -7,13 +7,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import org.jdesktop.swingx.prompt.*;
 
-import java.io.File;
 import java.io.IOException;
 import java.sql.*;
 
 public class LoginGUI{
     private JFrame frame;
-    private JLabel lUser, lPass;
+    private JLabel lIcon, lUser, lPass;
     private JTextField username;
     private JPasswordField password;
     private JButton login;
@@ -25,6 +24,7 @@ public class LoginGUI{
         //create input elements
         lUser = new JLabel("Utilizator:");
         lPass = new JLabel("Parolă:");
+        lIcon = new JLabel();
         username = new JTextField(80);
         //add default text
         PromptSupport.setPrompt("Introduceti adresa dvs. de email", username);
@@ -36,11 +36,12 @@ public class LoginGUI{
         //login button
         login = new JButton("Autentificare");
         //set size and position for the elements
-        lUser.setBounds(100, 70, 70, 30);
-        lPass.setBounds(100, 110, 70, 30);
-        username.setBounds(200, 70, 200, 30);
-        password.setBounds(200, 110, 200, 30);
-        login.setBounds(185, 160, 150, 30);
+        lIcon.setBounds(270,50,50,50);
+        lUser.setBounds(150, 150, 70, 30);
+        username.setBounds(220, 150, 200, 30);
+        lPass.setBounds(150, 190, 70, 30);
+        password.setBounds(220, 190, 200, 30);
+        login.setBounds(225, 250, 150, 30);
         //labels design
         lUser.setForeground(new Color(100,100,100));
         lPass.setForeground(new Color(100,100,100));
@@ -117,6 +118,7 @@ public class LoginGUI{
             }
         });
         //add the elements to the frame
+        frame.add(lIcon);
         frame.add(lUser);
         frame.add(username);
         frame.add(lPass);
@@ -125,11 +127,19 @@ public class LoginGUI{
         //set frame icon
         try {
             frame.setIconImage(ImageIO.read(getClass().getResource("resources/1.png")));
+            //place the app icon into the frame
+            ImageIcon icon = new ImageIcon(getClass().getResource("resources/1.png"));
+            if(icon!=null){
+                Image img = icon.getImage();
+                Image newimg = img.getScaledInstance(lIcon.getWidth(), lIcon.getHeight(),  java.awt.Image.SCALE_SMOOTH);
+                icon = new ImageIcon(newimg);
+                lIcon.setIcon(icon);
+            }
         }catch(IOException ie){
             ie.printStackTrace();
         }
         //set frame size
-        frame.setPreferredSize(new Dimension(530,300));
+        frame.setPreferredSize(new Dimension(600,380));
         frame.setLayout(null);
         frame.pack();
         //set window in the middle of the screen
@@ -145,12 +155,12 @@ public class LoginGUI{
     public void loginActionPerformed(){
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate1", "root", "");
 
             String sqlAdmin = "select email_address, pass from useradmin where email_address=? and pass=?";
-            String sqlSecretary = "select email_address, pass from usersecretariat where email_address=? and pass=?";
-            String sqlProfessor = "select email_address, pass from userprofesor where email_address=? and pass=?";
-            String sqlStudent = "select email_address, pass from userstudent where email_address=? and pass=?";
+            String sqlSecretary = "select email_address, pass from usersecretariat where email_address=? and pass=? and flag=1";
+            String sqlProfessor = "select email_address, pass from userprofesor where email_address=? and pass=? and flag=1";
+            String sqlStudent = "select email_address, pass from userstudent where email_address=? and pass=? and flag=1";
 
             PreparedStatement ps1 = conn.prepareStatement(sqlAdmin);
             ps1.setString(1, username.getText());

@@ -29,8 +29,8 @@ public class EditMarkProfessorGUI {
         inapoi = new JButton("Înapoi");
         ManagerGUI mng = new ManagerGUI();
         profesor = mng.getProfesorDupaEmail(email);
-        note = mng.getInstance().getSetNote();
-        profesori = mng.getInstance().getSetProfesori();
+        note = mng.getSetNote();
+        profesori = mng.getSetProfesori();
         int n = 0;
         for(Mark m:note){
             if(m.getTeacherFirstName().equals(profesor[0]) && m.getTeacherLastName().equals(profesor[1])){
@@ -106,10 +106,14 @@ public class EditMarkProfessorGUI {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                frame.setVisible(false);
-                DefaultTableModel model = (DefaultTableModel)tabelNote.getModel();
-                int indexRandSelectat = tabelNote.getSelectedRow();
-                EditMarkGUI window = new EditMarkGUI(1, email, model.getValueAt(indexRandSelectat,0).toString(), model.getValueAt(indexRandSelectat,1).toString(), (int)model.getValueAt(indexRandSelectat,2), model.getValueAt(indexRandSelectat,3).toString(), (Date)model.getValueAt(indexRandSelectat,4));
+                try {
+                    frame.setVisible(false);
+                    DefaultTableModel model = (DefaultTableModel) tabelNote.getModel();
+                    int indexRandSelectat = tabelNote.getSelectedRow();
+                    EditMarkGUI window = new EditMarkGUI(1, email, model.getValueAt(indexRandSelectat, 0).toString(), model.getValueAt(indexRandSelectat, 1).toString(), (int) model.getValueAt(indexRandSelectat, 2), model.getValueAt(indexRandSelectat, 3).toString(), (Date) model.getValueAt(indexRandSelectat, 4));
+                }catch (Exception e1){
+                    JOptionPane.showMessageDialog(null,"Selectați o înregistrare din tabel!");
+                }
             }
         });
         //go back to user menu

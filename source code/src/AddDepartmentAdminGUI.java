@@ -31,7 +31,7 @@ public class AddDepartmentAdminGUI {
         anulare = new JButton("Anulează");
         inapoi = new JButton("Înapoi");
         ManagerGUI mng = new ManagerGUI();
-        facultati = mng.getInstance().getSetFacultati();
+        facultati = mng.getSetFacultati();
         //add all faculties into combobox
         for(Faculty f:facultati){
             faculties.addItem(f);

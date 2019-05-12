@@ -139,10 +139,14 @@ public class EditDepartmentAdminGUI {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                frame.setVisible(false);
-                DefaultTableModel model = (DefaultTableModel)tabelSpecializari.getModel();
-                int indexRandSelectat = tabelSpecializari.getSelectedRow();
-                EditDepartmentGUI window = new EditDepartmentGUI(model.getValueAt(indexRandSelectat,0).toString(), model.getValueAt(indexRandSelectat,1).toString(), model.getValueAt(indexRandSelectat,2).toString());
+                try {
+                    frame.setVisible(false);
+                    DefaultTableModel model = (DefaultTableModel) tabelSpecializari.getModel();
+                    int indexRandSelectat = tabelSpecializari.getSelectedRow();
+                    EditDepartmentGUI window = new EditDepartmentGUI(model.getValueAt(indexRandSelectat, 0).toString(), model.getValueAt(indexRandSelectat, 1).toString(), model.getValueAt(indexRandSelectat, 2).toString());
+                }catch (Exception e1){
+                    JOptionPane.showMessageDialog(null,"Selectați o înregistrare din tabel!");
+                }
             }
         });
         //go back to user menu

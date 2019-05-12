@@ -51,9 +51,9 @@ public class AddSubjectAdminGUI {
         anulare = new JButton("Anulează");
         inapoi = new JButton("Înapoi");
         ManagerGUI mng = new ManagerGUI();
-        facultati = mng.getInstance().getSetFacultati();
-        specializari = mng.getInstance().getSetSpecializari();
-        profesori = mng.getInstance().getSetProfesori();
+        facultati = mng.getSetFacultati();
+        specializari = mng.getSetSpecializari();
+        profesori = mng.getSetProfesori();
         //add faculties into combobox
         for(Faculty f:facultati){
             faculties.addItem(f);

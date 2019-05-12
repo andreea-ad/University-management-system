@@ -12,6 +12,10 @@ public class Professor {
     private String teachingSubject;
     private Date hireDate;
     private int salary;
+    public Professor(String first, String last){
+        setFirstName(first);
+        setLastName(last);
+    }
     public Professor(int id, String first, String last, String cnp, Date dob, String number, String address, String email, String faculty, String subject, Date hireDate, int salary){
         setID(id);
         setFirstName(first);
