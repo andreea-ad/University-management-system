@@ -11,7 +11,7 @@ public class PDViewProfessorGUI {
     private JLabel welcome, labelNume, labelPrenume, labelCnp, labelDataNasterii, labelNrTelefon, labelAdresa, labelAdresaEmail, labelFacultate, labelMateriePredata, labelDataAngajarii, labelSalariu;
     private JTextField nume, prenume, cnp, dataNasterii, nrTelefon, adresa, adresaEmail, facultate, materiePredata, dataAngajarii, salariu;
     private JButton inapoi;
-    public PDViewProfessorGUI(String email){
+    public PDViewProfessorGUI(int menu, String email){
         /*
         ====================
         initialize variables
@@ -53,7 +53,7 @@ public class PDViewProfessorGUI {
             }
         }
         //add elements to the frame
-        frame.add(welcome);
+        //frame.add(welcome);
         frame.add(labelNume);
         frame.add(nume);
         frame.add(labelPrenume);
@@ -80,7 +80,7 @@ public class PDViewProfessorGUI {
         //set white background
         frame.getContentPane().setBackground(Color.WHITE);
         //set increased font size
-        welcome.setFont(new Font(String.valueOf(welcome.getFont().getName()),Font.PLAIN,20));
+        //welcome.setFont(new Font(String.valueOf(welcome.getFont().getName()),Font.PLAIN,20));
         //set fields not editable so the user cannot modify any data
         nume.setEditable(false);
         prenume.setEditable(false);
@@ -94,30 +94,30 @@ public class PDViewProfessorGUI {
         dataAngajarii.setEditable(false);
         salariu.setEditable(false);
         //set bounds for elements
-        welcome.setBounds(290,13,300,100);
-        labelNume.setBounds(150,110,120,25);
-        nume.setBounds(270,110,270,25);
-        labelPrenume.setBounds(150,140,120,25);
-        prenume.setBounds(270,140,270,25);
-        labelCnp.setBounds(150,170,120,25);
-        cnp.setBounds(270,170,270,25);
-        labelDataNasterii.setBounds(150,200,120,25);
-        dataNasterii.setBounds(270,200,270,25);
-        labelNrTelefon.setBounds(150,230,120,25);
-        nrTelefon.setBounds(270,230,270,25);
-        labelAdresa.setBounds(150,260,120,25);
-        adresa.setBounds(270,260,270,25);
-        labelAdresaEmail.setBounds(150,290,120,25);
-        adresaEmail.setBounds(270,290,270,25);
-        labelFacultate.setBounds(150,320,120,25);
-        facultate.setBounds(270,320,270,25);
-        labelMateriePredata.setBounds(150,350,120,25);
-        materiePredata.setBounds(270,350,270,25);
-        labelDataAngajarii.setBounds(150,380,120,25);
-        dataAngajarii.setBounds(270,380,270,25);
-        labelSalariu.setBounds(150,410,120,25);
-        salariu.setBounds(270,410,270,25);
-        inapoi.setBounds(270,475,145,25);
+        //welcome.setBounds(290,13,300,100);
+        labelNume.setBounds(270,80,120,25);
+        nume.setBounds(420,80,300,25);
+        labelPrenume.setBounds(270,120,120,25);
+        prenume.setBounds(420,120,300,25);
+        labelCnp.setBounds(270,160,120,25);
+        cnp.setBounds(420,160,300,25);
+        labelDataNasterii.setBounds(270,200,120,25);
+        dataNasterii.setBounds(420,200,300,25);
+        labelNrTelefon.setBounds(270,240,120,25);
+        nrTelefon.setBounds(420,240,300,25);
+        labelAdresa.setBounds(270,280,120,25);
+        adresa.setBounds(420,280,300,25);
+        labelAdresaEmail.setBounds(270,320,120,25);
+        adresaEmail.setBounds(420,320,300,25);
+        labelFacultate.setBounds(270,360,120,25);
+        facultate.setBounds(420,360,300,25);
+        labelMateriePredata.setBounds(270,400,120,25);
+        materiePredata.setBounds(420,400,300,25);
+        labelDataAngajarii.setBounds(270,440,120,25);
+        dataAngajarii.setBounds(420,440,300,25);
+        labelSalariu.setBounds(270,480,120,25);
+        salariu.setBounds(420,480,300,25);
+        inapoi.setBounds(410,540,145,25);
         //button design
         inapoi.setBorderPainted(false);
         inapoi.setBackground(new Color(233,233,233));
@@ -141,7 +141,7 @@ public class PDViewProfessorGUI {
             ie.printStackTrace();
         }
         //set frame size
-        frame.setPreferredSize(new Dimension(700,600));
+        frame.setPreferredSize(new Dimension(1000,700));
         frame.setLayout(null);
         frame.pack();
         //set window in the middle of the screen
@@ -163,7 +163,11 @@ public class PDViewProfessorGUI {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 frame.setVisible(false);
-                ProfessorMenuGUI window = new ProfessorMenuGUI(email);
+                if(menu == 1){
+                    ProfessorMenuGUI window = new ProfessorMenuGUI(email);
+                }else if(menu == 2){
+                    ViewTeachersAdminGUI window = new ViewTeachersAdminGUI();
+                }
             }
         });
     }

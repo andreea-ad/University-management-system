@@ -95,7 +95,7 @@ public class ProfessorMenuGUI extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                PDViewProfessorGUI window = new PDViewProfessorGUI(email);
+                PDViewProfessorGUI window = new PDViewProfessorGUI(1,email);
                 frame.setVisible(false);
             }
         });
