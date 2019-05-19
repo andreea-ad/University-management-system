@@ -48,6 +48,16 @@ public class EditMarkAdminGUI {
         for(Faculty f:facultati){
             faculties.addItem(f);
         }
+        //add all departments into combobox
+        departments.addItem(new Department("Toate specializările"));
+        for(Department d:specializari){
+            departments.addItem(d);
+        }
+        ///add all subjects into combobox
+        subjects.addItem(new Subject("Toate materiile"));
+        for(Subject s:materii){
+            subjects.addItem(s);
+        }
         //add all marks into table
         int i = 0;
         for(MarkByDepartment m:note){
@@ -69,7 +79,9 @@ public class EditMarkAdminGUI {
         };
         //add elements to the frame
         frame.add(scrollPane);
+        frame.add(faculties);
         frame.add(departments);
+        frame.add(subjects);
         frame.add(selecteaza);
         frame.add(inapoi);
         //set white background
@@ -79,10 +91,12 @@ public class EditMarkAdminGUI {
         //set table sorter
         tabelNote.setAutoCreateRowSorter(true);
         //set bounds for elements
-        scrollPane.setBounds(42,110,1100,183);
-        faculties.setBounds(42,60,300,25);
-        selecteaza.setBounds(430,335,145,25);
-        inapoi.setBounds(590,335,145,25);
+        scrollPane.setBounds(42,130,1100,183);
+        faculties.setBounds(42,80,300,25);
+        departments.setBounds(350,80,300,25);
+        subjects.setBounds(658,80,200,25);
+        selecteaza.setBounds(440,335,145,25);
+        inapoi.setBounds(600,335,145,25);
         //buttons design
         selecteaza.setBorderPainted(false);
         selecteaza.setBackground(new Color(233,233,233));
@@ -90,6 +104,12 @@ public class EditMarkAdminGUI {
         inapoi.setBorderPainted(false);
         inapoi.setBackground(new Color(233,233,233));
         inapoi.setForeground(new Color(100,100,100));
+        faculties.setBackground(new Color(233,233,233));
+        faculties.setForeground(new Color(100,100,100));
+        departments.setBackground(new Color(233,233,233));
+        departments.setForeground(new Color(100,100,100));
+        subjects.setBackground(new Color(233,233,233));
+        subjects.setForeground(new Color(100,100,100));
         //set frame icon
         try {
             frame.setIconImage(ImageIO.read(getClass().getResource("resources/1.png")));
@@ -104,8 +124,6 @@ public class EditMarkAdminGUI {
         frame.setLocationRelativeTo(null);
         //set the default close button
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //block resize operation
-        frame.setResizable(false);
         //set frame visible
         frame.setVisible(true);
         /*
@@ -117,9 +135,18 @@ public class EditMarkAdminGUI {
         faculties.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int i = 0;
-                dataModel.removeTable();
+                int i = 0, q = 0;
                 departments.removeAllItems();
+                subjects.removeAllItems();
+                for(MarkByDepartment m:note){
+                    if(faculties.getSelectedItem().toString().equals("Toate facultățile")){
+                        q = note.size();
+                        break;
+                    }else if(m.getFaculty().equals(faculties.getSelectedItem().toString())){
+                        q++;
+                    }
+                }
+                dataModel = new MarkTableModel(q,7);
                 for(MarkByDepartment m:note){
                     if(faculties.getSelectedItem().toString().equals("Toate facultățile")){
                         dataModel.setValueAt(m.getStudentLastName() + " " + m.getStudentFirstName(), i, 0);
@@ -156,19 +183,35 @@ public class EditMarkAdminGUI {
                         departments.addItem(d);
                     }
                 }
+                subjects.addItem(new Subject("Toate materiile"));
+                for(Subject s:materii){
+                    if(faculties.getSelectedItem().toString().equals("Toate facultățile")){
+                        subjects.addItem(s);
+                    }else if(s.getFaculty().equals(faculties.getSelectedItem().toString())){
+                        subjects.addItem(s);
+                    }
+                }
                 tabelNote.setModel(model);
-                frame.add(departments);
-                departments.setBounds(350,60,300,25);
             }
         });
         //add marks into table when selecting a department
         departments.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int i = 0;
-                dataModel.removeTable();
+                int i = 0, q = 0;
                 subjects.removeAllItems();
                 if(departments.getItemCount() > 0){
+                    for(MarkByDepartment m:note){
+                        if(faculties.getSelectedItem().toString().equals("Toate facultățile") && departments.getSelectedItem().toString().equals("Toate specializările")) {
+                            q = note.size();
+                            break;
+                        }else if(departments.getSelectedItem().toString().equals("Toate specializările") && m.getFaculty().equals(faculties.getSelectedItem().toString())){
+                            q++;
+                        }else if(m.getDepartment().equals(departments.getSelectedItem().toString())){
+                            q++;
+                        }
+                    }
+                    dataModel = new MarkTableModel(q,7);
                     for(MarkByDepartment m:note){
                         if(departments.getSelectedItem().toString().equals("Toate specializările") && faculties.getSelectedItem().toString().equals("Toate facultățile")){
                             dataModel.setValueAt(m.getStudentLastName() + " " + m.getStudentFirstName(), i, 0);
@@ -217,8 +260,86 @@ public class EditMarkAdminGUI {
                         }
                     }
                     tabelNote.setModel(model);
-                    frame.add(subjects);
-                    subjects.setBounds(658,60,300,25);
+                }
+            }
+        });
+        //add marks into table when selecting a department
+        subjects.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int i = 0, q = 0;
+                if(subjects.getItemCount() > 0){
+                    for(MarkByDepartment m:note){
+                        if(faculties.getSelectedItem().toString().equals("Toate facultățile") && departments.getSelectedItem().toString().equals("Toate specializările") && subjects.getSelectedItem().toString().equals("Toate materiile")){
+                            q = note.size();
+                            break;
+                        }else if(faculties.getSelectedItem().toString().equals("Toate facultățile") && departments.getSelectedItem().toString().equals("Toate specializările") && m.getSubject().equals(subjects.getSelectedItem().toString())){
+                            q++;
+                        }else if(m.getDepartment().equals(departments.getSelectedItem().toString()) && subjects.getSelectedItem().toString().equals("Toate materiile")){
+                            q++;
+                        }else if(m.getDepartment().equals(departments.getSelectedItem().toString()) && m.getSubject().equals(subjects.getSelectedItem().toString())){
+                            q++;
+                        }else if(m.getFaculty().equals(faculties.getSelectedItem().toString()) && departments.getSelectedItem().toString().equals("Toate specializările") && subjects.getSelectedItem().toString().equals("Toate materiile")){
+                            q++;
+                        }
+                    }
+                    dataModel = new MarkTableModel(q,7);
+                    for(MarkByDepartment m:note){
+                        if(faculties.getSelectedItem().toString().equals("Toate facultățile") && departments.getSelectedItem().toString().equals("Toate specializările") && subjects.getSelectedItem().toString().equals("Toate materiile")){
+                            dataModel.setValueAt(m.getStudentLastName() + " " + m.getStudentFirstName(), i, 0);
+                            dataModel.setValueAt(m.getMark(), i, 1);
+                            dataModel.setValueAt(m.getSubject(), i, 2);
+                            dataModel.setValueAt(m.getCredits(), i, 3);
+                            dataModel.setValueAt(m.getProfessor(), i, 4);
+                            dataModel.setValueAt(m.getFaculty(), i, 5);
+                            dataModel.setValueAt(m.getDateAdded(), i, 6);
+                            i++;
+                        }else if(faculties.getSelectedItem().toString().equals("Toate facultățile") && departments.getSelectedItem().toString().equals("Toate specializările") && m.getSubject().equals(subjects.getSelectedItem().toString())){
+                            dataModel.setValueAt(m.getStudentLastName() + " " + m.getStudentFirstName(), i, 0);
+                            dataModel.setValueAt(m.getMark(), i, 1);
+                            dataModel.setValueAt(m.getSubject(), i, 2);
+                            dataModel.setValueAt(m.getCredits(), i, 3);
+                            dataModel.setValueAt(m.getProfessor(), i, 4);
+                            dataModel.setValueAt(m.getFaculty(), i, 5);
+                            dataModel.setValueAt(m.getDateAdded(), i, 6);
+                            i++;
+                        }else if(m.getDepartment().equals(departments.getSelectedItem().toString()) && subjects.getSelectedItem().toString().equals("Toate materiile")){
+                            dataModel.setValueAt(m.getStudentLastName() + " " + m.getStudentFirstName(), i, 0);
+                            dataModel.setValueAt(m.getMark(), i, 1);
+                            dataModel.setValueAt(m.getSubject(), i, 2);
+                            dataModel.setValueAt(m.getCredits(), i, 3);
+                            dataModel.setValueAt(m.getProfessor(), i, 4);
+                            dataModel.setValueAt(m.getFaculty(), i, 5);
+                            dataModel.setValueAt(m.getDateAdded(), i, 6);
+                            i++;
+                        }else if(m.getDepartment().equals(departments.getSelectedItem().toString()) && m.getSubject().equals(subjects.getSelectedItem().toString())){
+                            dataModel.setValueAt(m.getStudentLastName() + " " + m.getStudentFirstName(), i, 0);
+                            dataModel.setValueAt(m.getMark(), i, 1);
+                            dataModel.setValueAt(m.getSubject(), i, 2);
+                            dataModel.setValueAt(m.getCredits(), i, 3);
+                            dataModel.setValueAt(m.getProfessor(), i, 4);
+                            dataModel.setValueAt(m.getFaculty(), i, 5);
+                            dataModel.setValueAt(m.getDateAdded(), i, 6);
+                            i++;
+                        }else if(m.getFaculty().equals(faculties.getSelectedItem().toString()) && departments.getSelectedItem().toString().equals("Toate specializările") && subjects.getSelectedItem().toString().equals("Toate materiile")){
+                            dataModel.setValueAt(m.getStudentLastName() + " " + m.getStudentFirstName(), i, 0);
+                            dataModel.setValueAt(m.getMark(), i, 1);
+                            dataModel.setValueAt(m.getSubject(), i, 2);
+                            dataModel.setValueAt(m.getCredits(), i, 3);
+                            dataModel.setValueAt(m.getProfessor(), i, 4);
+                            dataModel.setValueAt(m.getFaculty(), i, 5);
+                            dataModel.setValueAt(m.getDateAdded(), i, 6);
+                            i++;
+                        }
+                    }
+                    String[] coloane = {"STUDENT", "NOTĂ","MATERIE","NUMĂR DE CREDITE", "PROFESOR", "FACULTATE", "DATA ULTIMEI MODIFICĂRI"};
+                    TableModel model = new DefaultTableModel(dataModel.getNote(), coloane) {
+                        public boolean isCellEditable(int row, int column) {
+                            //set cells uneditable
+                            return false;
+                        }
+                    };
+                    tabelNote.setModel(model);
                 }
             }
         });

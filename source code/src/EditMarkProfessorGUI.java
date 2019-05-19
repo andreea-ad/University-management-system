@@ -92,8 +92,6 @@ public class EditMarkProfessorGUI {
         frame.setLocationRelativeTo(null);
         //set the default close button
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //block resize operation
-        frame.setResizable(false);
         //set frame visible
         frame.setVisible(true);
         /*
@@ -127,6 +125,6 @@ public class EditMarkProfessorGUI {
         });
     }
     public static void main(String[] args){
-        EditMarkProfessorGUI window = new EditMarkProfessorGUI("maria.ionescu@gmail.com");
+        EditMarkProfessorGUI window = new EditMarkProfessorGUI("roxana.popescu@gmail.com");
     }
 }

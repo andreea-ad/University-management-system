@@ -39,14 +39,14 @@ public class ManagerGUI {
             ps = conn.prepareStatement(departments);
             rs = ps.executeQuery();
             while(rs.next()) {
-                Department department = new Department(rs.getInt("id"),rs.getString("title"),rs.getString("faculty"),Degree.valueOf(rs.getString("degree")));
+                Department department = new Department(rs.getInt("id"),rs.getString("title"),rs.getString("faculty"),rs.getString("degree"));
                 specializari.add(department);
             }
 
             ps = conn.prepareStatement(subjects);
             rs = ps.executeQuery();
             while(rs.next()) {
-                Subject subject = new Subject(rs.getInt("id"),rs.getString("title"),rs.getString("faculty"),rs.getString("department"),Degree.valueOf(rs.getString("degree")),rs.getInt("semester"),rs.getInt("number_of_credits"),rs.getString("teacher_first_name"),rs.getString("teacher_last_name"));
+                Subject subject = new Subject(rs.getInt("id"),rs.getString("title"),rs.getString("faculty"),rs.getString("department"),rs.getString("degree"),rs.getInt("semester"),rs.getInt("number_of_credits"),rs.getString("teacher_first_name"),rs.getString("teacher_last_name"));
                 materii.add(subject);
             }
 
@@ -60,7 +60,7 @@ public class ManagerGUI {
             ps = conn.prepareStatement(students);
             rs = ps.executeQuery();
             while(rs.next()) {
-                Student student = new Student(rs.getInt("id"),rs.getString("first_name"),rs.getString("last_name"),rs.getBigDecimal("cnp").toString(),rs.getDate("dob"),rs.getString("phone_number"),rs.getString("address"),rs.getString("email_address"),rs.getString("faculty"),rs.getString("department"),Degree.valueOf(rs.getString("degree")),rs.getInt("year"),rs.getInt("number_of_credits"));
+                Student student = new Student(rs.getInt("id"),rs.getString("first_name"),rs.getString("last_name"),rs.getBigDecimal("cnp").toString(),rs.getDate("dob"),rs.getString("phone_number"),rs.getString("address"),rs.getString("email_address"),rs.getString("faculty"),rs.getString("department"),rs.getString("degree"),rs.getInt("year"),rs.getInt("number_of_credits"));
                 studenti.add(student);
             }
 
@@ -520,6 +520,44 @@ public class ManagerGUI {
             ps.executeUpdate();
             ps = conn.prepareStatement(deleteQuery3);
             ps.setString(1,titlu);
+            ps.executeUpdate();
+            conn.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return 1;
+    }
+    public static int updateSubjectFromDB(String titlu1, String titlu, String facultate, String specializare, String cicluUniversitar, int semestru, int nrCredite, String prenumeProfesor, String numeProfesor){
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate1", "root", "");
+            String updateQuery = "update subjects set title=?, faculty=?, department=?, degree=?, semester=?, credits=?, teacher_first_name=?, teacher_last_name=? where title=?";
+            String updateQuery1 = "update marks set subject=? where subject=?";
+            String updateQuery2 = "update professors set teaching_subject=? where teaching_subject=?";
+            for(Subject s:materii){
+                if(s.getTitle().equals(titlu)){
+                    JOptionPane.showMessageDialog(null,"Materia aceasta există deja în baza de date!","Operație refuzată",JOptionPane.WARNING_MESSAGE);
+                    return -1;
+                }
+            }
+            PreparedStatement ps = conn.prepareStatement(updateQuery);
+            ps.setString(1,titlu);
+            ps.setString(2,facultate);
+            ps.setString(3,specializare);
+            ps.setString(4,cicluUniversitar);
+            ps.setInt(5,semestru);
+            ps.setInt(6,nrCredite);
+            ps.setString(7,prenumeProfesor);
+            ps.setString(8,numeProfesor);
+            ps.setString(9,titlu1);
+            ps.executeUpdate();
+            ps = conn.prepareStatement(updateQuery1);
+            ps.setString(1,titlu);
+            ps.setString(2,titlu1);
+            ps.executeUpdate();
+            ps = conn.prepareStatement(updateQuery2);
+            ps.setString(1,titlu);
+            ps.setString(2,titlu1);
             ps.executeUpdate();
             conn.close();
         }catch (Exception e){

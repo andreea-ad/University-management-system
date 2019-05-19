@@ -91,6 +91,14 @@ public class AddMarkAdminGUI {
         inapoi.setBorderPainted(false);
         inapoi.setBackground(new Color(233,233,233));
         inapoi.setForeground(new Color(100,100,100));
+        faculties.setBackground(new Color(233,233,233));
+        faculties.setForeground(new Color(100,100,100));
+        departments.setBackground(new Color(233,233,233));
+        departments.setForeground(new Color(100,100,100));
+        subjects.setBackground(new Color(233,233,233));
+        subjects.setForeground(new Color(100,100,100));
+        students.setBackground(new Color(233,233,233));
+        students.setForeground(new Color(100,100,100));
         //labels design
         labelFacultate.setForeground(new Color(100,100,100));
         labelSpecializare.setForeground(new Color(100,100,100));
@@ -112,8 +120,6 @@ public class AddMarkAdminGUI {
         frame.setLocationRelativeTo(null);
         //set the default close button
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //block resize operation
-        frame.setResizable(false);
         //set frame visible
         frame.setVisible(true);
         /*

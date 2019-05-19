@@ -78,32 +78,32 @@ public class EditStudentGUI {
         //set white background
         frame.getContentPane().setBackground(Color.WHITE);
         //set bounds for elements
-        labelNume.setBounds(150,50,120,25);
-        nume.setBounds(270,50,250,25);
-        labelPrenume.setBounds(150,80,120,25);
-        prenume.setBounds(270,80,250,25);
-        labelCnp.setBounds(150,110,120,25);
-        cnp.setBounds(270,110,250,25);
-        labelDataNasterii.setBounds(150,140,120,25);
-        dataNasterii.setBounds(270,140,250,25);
-        labelNrTelefon.setBounds(150,170,120,25);
-        nrTelefon.setBounds(270,170,250,25);
-        labelAdresa.setBounds(150,200,120,25);
-        adresa.setBounds(270,200,250,25);
-        labelAdresaEmail.setBounds(150,230,120,25);
-        adresaEmail.setBounds(270,230,250,25);
-        labelFacultate.setBounds(150,260,120,25);
-        facultate.setBounds(270,260,250,25);
-        labelSpecializare.setBounds(150,290,120,25);
-        specializare.setBounds(270,290,250,25);
-        labelCicluUniversitar.setBounds(150,320,120,25);
-        cicluUniversitar.setBounds(270,320,250,25);
-        labelAn.setBounds(150,350,120,25);
-        anUniversitar.setBounds(270,350,250,25);
-        labelNrCredite.setBounds(150,380,120,25);
-        nrCredite.setBounds(270,380,250,25);
-        editeaza.setBounds(180,420,150,25);
-        inapoi.setBounds(340,420,150,25);
+        labelNume.setBounds(170,50,120,25);
+        nume.setBounds(300,50,250,25);
+        labelPrenume.setBounds(170,80,120,25);
+        prenume.setBounds(300,80,250,25);
+        labelCnp.setBounds(170,110,120,25);
+        cnp.setBounds(300,110,250,25);
+        labelDataNasterii.setBounds(170,140,120,25);
+        dataNasterii.setBounds(300,140,250,25);
+        labelNrTelefon.setBounds(170,170,120,25);
+        nrTelefon.setBounds(300,170,250,25);
+        labelAdresa.setBounds(170,200,120,25);
+        adresa.setBounds(300,200,250,25);
+        labelAdresaEmail.setBounds(170,230,120,25);
+        adresaEmail.setBounds(300,230,250,25);
+        labelFacultate.setBounds(170,260,120,25);
+        facultate.setBounds(300,260,250,25);
+        labelSpecializare.setBounds(170,290,120,25);
+        specializare.setBounds(300,290,250,25);
+        labelCicluUniversitar.setBounds(170,320,120,25);
+        cicluUniversitar.setBounds(300,320,250,25);
+        labelAn.setBounds(170,350,120,25);
+        anUniversitar.setBounds(300,350,250,25);
+        labelNrCredite.setBounds(170,380,120,25);
+        nrCredite.setBounds(300,380,250,25);
+        editeaza.setBounds(205,430,150,25);
+        inapoi.setBounds(365,430,150,25);
         //buttons design
         editeaza.setBorderPainted(false);
         editeaza.setBackground(new Color(233,233,233));
@@ -131,15 +131,13 @@ public class EditStudentGUI {
             ie.printStackTrace();
         }
         //set frame size
-        frame.setPreferredSize(new Dimension(700, 530));
+        frame.setPreferredSize(new Dimension(730, 550));
         frame.setLayout(null);
         frame.pack();
         //set window in the middle of the screen
         frame.setLocationRelativeTo(null);
         //set the default close button
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //block resize operation
-        frame.setResizable(false);
         //set frame visible
         frame.setVisible(true);
         /*

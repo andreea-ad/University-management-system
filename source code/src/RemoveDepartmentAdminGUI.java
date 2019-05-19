@@ -77,6 +77,8 @@ public class RemoveDepartmentAdminGUI {
         inapoi.setBorderPainted(false);
         inapoi.setBackground(new Color(233,233,233));
         inapoi.setForeground(new Color(100,100,100));
+        faculties.setBackground(new Color(233,233,233));
+        faculties.setForeground(new Color(100,100,100));
         //set frame icon
         try {
             frame.setIconImage(ImageIO.read(getClass().getResource("resources/1.png")));
@@ -91,8 +93,6 @@ public class RemoveDepartmentAdminGUI {
         frame.setLocationRelativeTo(null);
         //set the default close button
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //block resize operation
-        frame.setResizable(false);
         //set frame visible
         frame.setVisible(true);
         /*

@@ -36,10 +36,12 @@ public class EditTeacherAdminGUI {
         profesori = mng.getSetProfesori();
         int n = profesori.size();
         dataModel = new TeacherTableModel(n);
+        //add all faculties into combobox
         faculties.addItem(new Faculty("Toate facultățile"));
         for (Faculty f:facultati) {
             faculties.addItem(f);
         }
+        //add all teachers into table
         int i = 0;
         for (Professor p:profesori) {
             dataModel.setValueAt(p.getLastName(), i, 0);
@@ -85,6 +87,8 @@ public class EditTeacherAdminGUI {
         inapoi.setBorderPainted(false);
         inapoi.setBackground(new Color(233,233,233));
         inapoi.setForeground(new Color(100,100,100));
+        faculties.setBackground(new Color(233,233,233));
+        faculties.setForeground(new Color(100,100,100));
         //set frame icon
         try {
             frame.setIconImage(ImageIO.read(getClass().getResource("resources/1.png")));
@@ -99,8 +103,6 @@ public class EditTeacherAdminGUI {
         frame.setLocationRelativeTo(null);
         //set the default close button
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //block resize operation
-        frame.setResizable(false);
         //set frame visible
         frame.setVisible(true);
         /*
@@ -122,7 +124,6 @@ public class EditTeacherAdminGUI {
                     }
                 }
                 dataModel = new TeacherTableModel(q);
-                if(e.getSource() == faculties){
                     for(Professor p:profesori) {
                         if(faculties.getSelectedItem().toString().equals("Toate facultățile")){
                             dataModel.setValueAt(p.getLastName(), i, 0);
@@ -151,7 +152,6 @@ public class EditTeacherAdminGUI {
                             dataModel.setValueAt(p.getSalary(), i, 10);
                             i++;
                         }
-                    }
                 }
                 String[] coloane = {"NUME", "PRENUME", "CNP", "DATA NAȘTERII", "NUMĂR DE TELEFON", "ADRESĂ", "ADRESĂ DE EMAIL", "FACULTATE", "MATERIE PREDATĂ", "DATA ANGAJĂRII", "SALARIU"};
                 TableModel model = new DefaultTableModel(dataModel.getProfesori(), coloane) {

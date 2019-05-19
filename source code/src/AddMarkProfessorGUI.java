@@ -1,5 +1,6 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.plaf.synth.SynthTableUI;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -100,6 +101,8 @@ public class AddMarkProfessorGUI {
         inapoi.setBorderPainted(false);
         inapoi.setBackground(new Color(233,233,233));
         inapoi.setForeground(new Color(100,100,100));
+        students.setBackground(new Color(233,233,233));
+        students.setForeground(new Color(100,100,100));
         //labels design
         labelStudent.setForeground(new Color(100,100,100));
         labelMaterie.setForeground(new Color(100,100,100));
@@ -119,8 +122,6 @@ public class AddMarkProfessorGUI {
         frame.setLocationRelativeTo(null);
         //set the default close button
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //block resize operation
-        frame.setResizable(false);
         //set frame visible
         frame.setVisible(true);
         /*

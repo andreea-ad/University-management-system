@@ -53,15 +53,15 @@ public class AddDepartmentAdminGUI {
         //set white background
         frame.getContentPane().setBackground(Color.WHITE);
         //set bounds for elements
-        denumire.setBounds(100,60,150,25);
-        titlu.setBounds(290,60,300,25);
-        facultate.setBounds(100,90,150,25);
-        faculties.setBounds(290,90,300,25);
-        cicluUniversitar.setBounds(100,120,150,25);
-        degrees.setBounds(290,120,300,25);
-        adaugare.setBounds(110,170,150,25);
-        anulare.setBounds(270,170,150,25);
-        inapoi.setBounds(430,170,150,25);
+        denumire.setBounds(100,90,150,25);
+        titlu.setBounds(290,90,300,25);
+        facultate.setBounds(100,120,150,25);
+        faculties.setBounds(290,120,300,25);
+        cicluUniversitar.setBounds(100,150,150,25);
+        degrees.setBounds(290,150,300,25);
+        adaugare.setBounds(110,200,150,25);
+        anulare.setBounds(270,200,150,25);
+        inapoi.setBounds(430,200,150,25);
         //buttons design
         adaugare.setBorderPainted(false);
         adaugare.setBackground(new Color(233,233,233));
@@ -72,6 +72,10 @@ public class AddDepartmentAdminGUI {
         inapoi.setBorderPainted(false);
         inapoi.setBackground(new Color(233,233,233));
         inapoi.setForeground(new Color(100,100,100));
+        faculties.setBackground(new Color(233,233,233));
+        faculties.setForeground(new Color(100,100,100));
+        degrees.setBackground(new Color(233,233,233));
+        degrees.setForeground(new Color(100,100,100));
         //labels design
         denumire.setForeground(new Color(100,100,100));
         facultate.setForeground(new Color(100,100,100));
@@ -83,15 +87,13 @@ public class AddDepartmentAdminGUI {
             ie.printStackTrace();
         }
         //set frame size
-        frame.setPreferredSize(new Dimension(710,300));
+        frame.setPreferredSize(new Dimension(710,350));
         frame.setLayout(null);
         frame.pack();
         //set window in the middle of the screen
         frame.setLocationRelativeTo(null);
         //set the default close button
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //block resize operation
-        frame.setResizable(false);
         //set frame visible
         frame.setVisible(true);
         /*

@@ -4,13 +4,13 @@ public class Department {
     private int id;
     private String title;
     private String faculty;
-    private Degree degree;
+    private String degree;
     public Department(String title){
         setTitle(title);
         setFaculty(null);
         setDegree(null);
     }
-    public Department(int id, String title, String faculty, Degree degree){
+    public Department(int id, String title, String faculty, String degree){
         setID(id);
         setTitle(title);
         setFaculty(faculty);
@@ -38,11 +38,11 @@ public class Department {
         this.faculty = faculty;
     }
 
-    public Degree getDegree() {
+    public String getDegree() {
         return degree;
     }
 
-    public void setDegree(Degree degree) {
+    public void setDegree(String degree) {
         this.degree = degree;
     }
     public String toString(){ return title; }

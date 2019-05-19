@@ -38,7 +38,7 @@ public class AddMarkSecretaryGUI {
         inapoi = new JButton("Înapoi");
         labelSpecializare = new JLabel("Specializare: ");
         labelMaterie = new JLabel("Materie: ");
-        labelStudent = new JLabel("Studenți: ");
+        labelStudent = new JLabel("Student: ");
         labelNota = new JLabel("Notă: ");
         labelDataAdaugarii = new JLabel("Data adăugării: ");
         spinnerModelNota = new SpinnerNumberModel(1,1,10,1);
@@ -86,18 +86,18 @@ public class AddMarkSecretaryGUI {
         //set textfield not editable
         dataAdaugarii.setEditable(false);
         //set bounds for elements
-        labelSpecializare.setBounds(140,50,120,25);
-        departments.setBounds(260,50,170,25);
-        labelMaterie.setBounds(140,80,120,25);
-        subjects.setBounds(260,80,170,25);
-        labelStudent.setBounds(140,110,120,25);
-        students.setBounds(260,110,170,25);
-        labelNota.setBounds(140,140,120,25);
-        nota.setBounds(260,140,170,25);
-        labelDataAdaugarii.setBounds(140,170,120,25);
-        dataAdaugarii.setBounds(260,170,170,25);
-        adaugare.setBounds(130,220,150,25);
-        inapoi.setBounds(293,220,150,25);
+        labelSpecializare.setBounds(190,90,120,25);
+        departments.setBounds(320,90,170,25);
+        labelMaterie.setBounds(190,120,120,25);
+        subjects.setBounds(320,120,170,25);
+        labelStudent.setBounds(190,150,120,25);
+        students.setBounds(320,150,170,25);
+        labelNota.setBounds(190,180,120,25);
+        nota.setBounds(320,180,170,25);
+        labelDataAdaugarii.setBounds(190,210,120,25);
+        dataAdaugarii.setBounds(320,210,170,25);
+        adaugare.setBounds(185,260,150,25);
+        inapoi.setBounds(345,260,150,25);
         //buttons design
         adaugare.setBorderPainted(false);
         adaugare.setBackground(new Color(233,233,233));
@@ -105,6 +105,12 @@ public class AddMarkSecretaryGUI {
         inapoi.setBorderPainted(false);
         inapoi.setBackground(new Color(233,233,233));
         inapoi.setForeground(new Color(100,100,100));
+        departments.setBackground(new Color(233,233,233));
+        departments.setForeground(new Color(100,100,100));
+        subjects.setBackground(new Color(233,233,233));
+        subjects.setForeground(new Color(100,100,100));
+        students.setBackground(new Color(233,233,233));
+        students.setForeground(new Color(100,100,100));
         //labels design
         labelSpecializare.setForeground(new Color(100,100,100));
         labelMaterie.setForeground(new Color(100,100,100));
@@ -118,15 +124,13 @@ public class AddMarkSecretaryGUI {
             ie.printStackTrace();
         }
         //set frame size
-        frame.setPreferredSize(new Dimension(600,350));
+        frame.setPreferredSize(new Dimension(700,420));
         frame.setLayout(null);
         frame.pack();
         //set window in the middle of the screen
         frame.setLocationRelativeTo(null);
         //set the default close button
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //block resize operation
-        frame.setResizable(false);
         //set frame visible
         frame.setVisible(true);
         /*

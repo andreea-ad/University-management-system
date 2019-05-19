@@ -1,5 +1,7 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import java.awt.*;
@@ -14,6 +16,8 @@ public class RemoveStudentSecretaryGUI {
     private JFrame frame;
     private String facultate = "", studentCautat;
     private HashSet<Student> studenti;
+    private HashSet<Department> specializari;
+    private JComboBox<Department> departments;
     private JTextField searchBox;
     private JButton cautare, eliminare, inapoi;
     private StudentTableModel dataModel;
@@ -27,13 +31,14 @@ public class RemoveStudentSecretaryGUI {
         */
         frame = new JFrame("Eliminare student");
         searchBox = new JTextField();
+        departments = new JComboBox<>();
         cautare = new JButton("Caută");
         eliminare = new JButton("Elimină student");
         inapoi = new JButton("Înapoi");
-
         ManagerGUI mng = new ManagerGUI();
         facultate += mng.getFacultateDupaEmail(email);
         studenti = mng.getSetStudenti();
+        specializari = mng.getSetSpecializari();
         int n = 0;
         for(Student s:studenti){
             if(s.getFaculty().equals(facultate)){
@@ -41,6 +46,13 @@ public class RemoveStudentSecretaryGUI {
             }
         }
         dataModel = new StudentTableModel(n);
+        //add all departments into combobox
+        departments.addItem(new Department("Toate specializările"));
+        for(Department d:specializari){
+            if(d.getFaculty().equals(facultate)){
+                departments.addItem(d);
+            }
+        }
         //add all students into table
         int i = 0;
         for(Student s:studenti) {
@@ -69,6 +81,7 @@ public class RemoveStudentSecretaryGUI {
         };
         //add elements to the frame
         frame.add(scrollPane);
+        frame.add(departments);
         frame.add(searchBox);
         frame.add(cautare);
         frame.add(eliminare);
@@ -80,11 +93,12 @@ public class RemoveStudentSecretaryGUI {
         //set table sorter
         tabelStudenti.setAutoCreateRowSorter(true);
         //set bounds for elements
-        scrollPane.setBounds(42,110,1100,183);
-        searchBox.setBounds(42,60,200,25);
-        cautare.setBounds(255,60,100,25);
-        eliminare.setBounds(430,320,150,25);
-        inapoi.setBounds(590,320,150,25);
+        scrollPane.setBounds(42,170,1300,183);
+        departments.setBounds(42,90,312,25);
+        searchBox.setBounds(42,130,200,25);
+        cautare.setBounds(255,130,100,25);
+        eliminare.setBounds(530,400,150,25);
+        inapoi.setBounds(690,400,150,25);
         //buttons design
         cautare.setBorderPainted(false);
         cautare.setBackground(new Color(233,233,233));
@@ -95,6 +109,8 @@ public class RemoveStudentSecretaryGUI {
         inapoi.setBorderPainted(false);
         inapoi.setBackground(new Color(233,233,233));
         inapoi.setForeground(new Color(100,100,100));
+        departments.setBackground(new Color(233,233,233));
+        departments.setForeground(new Color(100,100,100));
         //set frame icon
         try {
             frame.setIconImage(ImageIO.read(getClass().getResource("resources/1.png")));
@@ -102,15 +118,13 @@ public class RemoveStudentSecretaryGUI {
             ie.printStackTrace();
         }
         //set frame size
-        frame.setPreferredSize(new Dimension(1200,450));
+        frame.setPreferredSize(new Dimension(1400,550));
         frame.setLayout(null);
         frame.pack();
         //set window in the middle of the screen
         frame.setLocationRelativeTo(null);
         //set the default close button
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //block resize operation
-        frame.setResizable(false);
         //set frame visible
         frame.setVisible(true);
         /*
@@ -118,14 +132,95 @@ public class RemoveStudentSecretaryGUI {
         define actions
         ==============
         */
-        //find student into table when hitting enter
-        searchBox.addActionListener(new ActionListener() {
+        //add students into table when selecting a department
+        departments.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(searchBox.getText().equals("") || searchBox.getText().equals(" ")){
-                    int i = 0;
-                    for(Student s:studenti) {
-                        if(s.getFaculty().equals(facultate)) {
+                int i = 0, q = 0;
+                searchBox.setText("");
+                for(Student s:studenti){
+                    if(departments.getSelectedItem().toString().equals("Toate specializările") && s.getFaculty().equals(facultate)){
+                        q++;
+                    }else if(s.getDepartment().equals(departments.getSelectedItem().toString())){
+                        q++;
+                    }
+                }
+                dataModel = new StudentTableModel(q);
+                for(Student s:studenti){
+                    if(departments.getSelectedItem().toString().equals("Toate specializările") && s.getFaculty().equals(facultate)){
+                        dataModel.setValueAt(s.getLastName(), i, 0);
+                        dataModel.setValueAt(s.getFirstName(), i, 1);
+                        dataModel.setValueAt(s.getCnp(), i, 2);
+                        dataModel.setValueAt(s.getDob(), i, 3);
+                        dataModel.setValueAt(s.getPhoneNumber(), i, 4);
+                        dataModel.setValueAt(s.getAddress(), i, 5);
+                        dataModel.setValueAt(s.getEmailAddress(), i, 6);
+                        dataModel.setValueAt(s.getFaculty(), i, 7);
+                        dataModel.setValueAt(s.getDepartment(), i, 8);
+                        dataModel.setValueAt(s.getDegree(), i, 9);
+                        dataModel.setValueAt(s.getYear(), i, 10);
+                        dataModel.setValueAt(s.getNumberOfCredits(), i, 11);
+                        i++;
+                    }else if(s.getDepartment().equals(departments.getSelectedItem().toString())){
+                        dataModel.setValueAt(s.getLastName(), i, 0);
+                        dataModel.setValueAt(s.getFirstName(), i, 1);
+                        dataModel.setValueAt(s.getCnp(), i, 2);
+                        dataModel.setValueAt(s.getDob(), i, 3);
+                        dataModel.setValueAt(s.getPhoneNumber(), i, 4);
+                        dataModel.setValueAt(s.getAddress(), i, 5);
+                        dataModel.setValueAt(s.getEmailAddress(), i, 6);
+                        dataModel.setValueAt(s.getFaculty(), i, 7);
+                        dataModel.setValueAt(s.getDepartment(), i, 8);
+                        dataModel.setValueAt(s.getDegree(), i, 9);
+                        dataModel.setValueAt(s.getYear(), i, 10);
+                        dataModel.setValueAt(s.getNumberOfCredits(), i, 11);
+                        i++;
+                    }
+                }
+                String[] coloane = {"NUME", "PRENUME", "CNP", "DATA NAȘTERII", "NUMĂR DE TELEFON", "ADRESĂ", "ADRESĂ DE EMAIL", "FACULTATE", "SPECIALIZARE", "CICLU UNIVERSITAR", "AN", "NUMĂR DE CREDITE"};
+                TableModel model = new DefaultTableModel(dataModel.getStudenti(), coloane) {
+                    public boolean isCellEditable(int row, int column) {
+                        //set cells uneditable
+                        return false;
+                    }
+                };
+                tabelStudenti.setModel(model);
+            }
+        });
+        //update table when emptying the search box
+        searchBox.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                int i = 0, q = 0;
+                if(departments.getItemCount() > 0) {
+                    for(Student s:studenti){
+                        if(departments.getSelectedItem().toString().equals("Toate specializările") && s.getFaculty().equals(facultate)){
+                            q++;
+                        }else if(s.getDepartment().equals(departments.getSelectedItem().toString())){
+                            q++;
+                        }
+                    }
+                    dataModel = new StudentTableModel(q);
+                    for(Student s:studenti){
+                        if(departments.getSelectedItem().toString().equals("Toate specializările") && s.getFaculty().equals(facultate)){
+                            dataModel.setValueAt(s.getLastName(), i, 0);
+                            dataModel.setValueAt(s.getFirstName(), i, 1);
+                            dataModel.setValueAt(s.getCnp(), i, 2);
+                            dataModel.setValueAt(s.getDob(), i, 3);
+                            dataModel.setValueAt(s.getPhoneNumber(), i, 4);
+                            dataModel.setValueAt(s.getAddress(), i, 5);
+                            dataModel.setValueAt(s.getEmailAddress(), i, 6);
+                            dataModel.setValueAt(s.getFaculty(), i, 7);
+                            dataModel.setValueAt(s.getDepartment(), i, 8);
+                            dataModel.setValueAt(s.getDegree(), i, 9);
+                            dataModel.setValueAt(s.getYear(), i, 10);
+                            dataModel.setValueAt(s.getNumberOfCredits(), i, 11);
+                            i++;
+                        }else if(s.getDepartment().equals(departments.getSelectedItem().toString())){
                             dataModel.setValueAt(s.getLastName(), i, 0);
                             dataModel.setValueAt(s.getFirstName(), i, 1);
                             dataModel.setValueAt(s.getCnp(), i, 2);
@@ -149,40 +244,120 @@ public class RemoveStudentSecretaryGUI {
                         }
                     };
                     tabelStudenti.setModel(model);
-                }else{
-                    studentCautat = searchBox.getText();
-                    StudentTableModel modelCopy = new StudentTableModel(dataModel.getRowCount());
-                    int q = 0;
-                    for(int i = 0; i < dataModel.getRowCount(); i++) {
-                        if (dataModel.getValueAt(i, 0).equals(studentCautat) || dataModel.getValueAt(i,0).toString().toLowerCase().equals(studentCautat) ||
-                                (dataModel.getValueAt(i, 0) + " " + dataModel.getValueAt(i, 1)).equals(studentCautat) ||
-                                (dataModel.getValueAt(i,0).toString().toLowerCase() + " " + dataModel.getValueAt(i,1).toString().toLowerCase()).equals(studentCautat) ||
-                                (dataModel.getValueAt(i, 1) + " " + dataModel.getValueAt(i, 0)).equals(studentCautat) ||
-                                (dataModel.getValueAt(i,1).toString().toLowerCase() + " " + dataModel.getValueAt(i,0).toString().toLowerCase()).equals(studentCautat) ||
-                                dataModel.getValueAt(i,1).equals(studentCautat) || dataModel.getValueAt(i,1).toString().toLowerCase().equals(studentCautat)){
-                            modelCopy.setValueAt(dataModel.getValueAt(i, 0), q, 0);
-                            modelCopy.setValueAt(dataModel.getValueAt(i, 1), q, 1);
-                            modelCopy.setValueAt(dataModel.getValueAt(i, 2), q, 2);
-                            modelCopy.setValueAt(dataModel.getValueAt(i, 3), q, 3);
-                            modelCopy.setValueAt(dataModel.getValueAt(i, 4), q, 4);
-                            modelCopy.setValueAt(dataModel.getValueAt(i, 5), q, 5);
-                            modelCopy.setValueAt(dataModel.getValueAt(i, 6), q, 6);
-                            modelCopy.setValueAt(dataModel.getValueAt(i, 7), q, 7);
-                            modelCopy.setValueAt(dataModel.getValueAt(i, 8), q, 8);
-                            modelCopy.setValueAt(dataModel.getValueAt(i, 9), q, 9);
-                            modelCopy.setValueAt(dataModel.getValueAt(i, 10), q, 10);
-                            modelCopy.setValueAt(dataModel.getValueAt(i, 11), q, 11);
-                            q++;
+                }
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+
+            }
+        });
+        //find student into table when hitting enter
+        searchBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (searchBox.getText().equals("") || searchBox.getText().equals(" ")) {
+                    int i = 0;
+                    for (Student s : studenti) {
+                        if(departments.getSelectedItem().toString().equals("Toate specializările") && s.getFaculty().equals(facultate)){
+                            dataModel.setValueAt(s.getLastName(), i, 0);
+                            dataModel.setValueAt(s.getFirstName(), i, 1);
+                            dataModel.setValueAt(s.getCnp(), i, 2);
+                            dataModel.setValueAt(s.getDob(), i, 3);
+                            dataModel.setValueAt(s.getPhoneNumber(), i, 4);
+                            dataModel.setValueAt(s.getAddress(), i, 5);
+                            dataModel.setValueAt(s.getEmailAddress(), i, 6);
+                            dataModel.setValueAt(s.getFaculty(), i, 7);
+                            dataModel.setValueAt(s.getDepartment(), i, 8);
+                            dataModel.setValueAt(s.getDegree(), i, 9);
+                            dataModel.setValueAt(s.getYear(), i, 10);
+                            dataModel.setValueAt(s.getNumberOfCredits(), i, 11);
+                            i++;
+                        }else if(s.getDepartment().equals(departments.getSelectedItem().toString())){
+                            dataModel.setValueAt(s.getLastName(), i, 0);
+                            dataModel.setValueAt(s.getFirstName(), i, 1);
+                            dataModel.setValueAt(s.getCnp(), i, 2);
+                            dataModel.setValueAt(s.getDob(), i, 3);
+                            dataModel.setValueAt(s.getPhoneNumber(), i, 4);
+                            dataModel.setValueAt(s.getAddress(), i, 5);
+                            dataModel.setValueAt(s.getEmailAddress(), i, 6);
+                            dataModel.setValueAt(s.getFaculty(), i, 7);
+                            dataModel.setValueAt(s.getDepartment(), i, 8);
+                            dataModel.setValueAt(s.getDegree(), i, 9);
+                            dataModel.setValueAt(s.getYear(), i, 10);
+                            dataModel.setValueAt(s.getNumberOfCredits(), i, 11);
+                            i++;
                         }
                     }
                     String[] coloane = {"NUME", "PRENUME", "CNP", "DATA NAȘTERII", "NUMĂR DE TELEFON", "ADRESĂ", "ADRESĂ DE EMAIL", "FACULTATE", "SPECIALIZARE", "CICLU UNIVERSITAR", "AN", "NUMĂR DE CREDITE"};
-                    TableModel model = new DefaultTableModel(modelCopy.getStudenti(), coloane) {
+                    TableModel model = new DefaultTableModel(dataModel.getStudenti(), coloane) {
                         public boolean isCellEditable(int row, int column) {
                             //set cells uneditable
                             return false;
                         }
                     };
                     tabelStudenti.setModel(model);
+                } else {
+                    studentCautat = searchBox.getText().toLowerCase();
+                    DefaultTableModel mod = (DefaultTableModel) tabelStudenti.getModel();
+                    int nrStudenti = 0;
+                    int j = 0;
+                    for (int i = 0; i < mod.getRowCount(); i++) {
+                        if (departments.getSelectedItem().toString().equals("Toate specializările") && String.valueOf(mod.getValueAt(i,7)).equals(facultate)) {
+                            nrStudenti++;
+                        } else if (String.valueOf(mod.getValueAt(i,8)).equals(departments.getSelectedItem().toString())) {
+                            nrStudenti++;
+                        }
+                    }
+                    dataModel = new StudentTableModel(nrStudenti);
+                    for(int i = 0; i < mod.getRowCount(); i++) {
+                       if (departments.getSelectedItem().toString().equals("Toate specializările") &&
+                                String.valueOf(mod.getValueAt(i, 7)).equals(facultate) &&
+                                (String.valueOf(mod.getValueAt(i, 0)).toLowerCase().equals(studentCautat) ||
+                                        String.valueOf(mod.getValueAt(i, 1)).toLowerCase().equals(studentCautat) ||
+                                        (String.valueOf(mod.getValueAt(i, 0)).toLowerCase() + " " + String.valueOf(mod.getValueAt(i, 1)).toLowerCase()).equals(studentCautat) ||
+                                        (String.valueOf(mod.getValueAt(i, 1)).toLowerCase() + " " + String.valueOf(mod.getValueAt(i, 0)).toLowerCase()).equals(studentCautat))) {
+                            dataModel.setValueAt(mod.getValueAt(i, 0), j, 0);
+                            dataModel.setValueAt(mod.getValueAt(i, 1), j, 1);
+                            dataModel.setValueAt(mod.getValueAt(i, 2), j, 2);
+                            dataModel.setValueAt(mod.getValueAt(i, 3), j, 3);
+                            dataModel.setValueAt(mod.getValueAt(i, 4), j, 4);
+                            dataModel.setValueAt(mod.getValueAt(i, 5), j, 5);
+                            dataModel.setValueAt(mod.getValueAt(i, 6), j, 6);
+                            dataModel.setValueAt(mod.getValueAt(i, 7), j, 7);
+                            dataModel.setValueAt(mod.getValueAt(i, 8), j, 8);
+                            dataModel.setValueAt(mod.getValueAt(i, 9), j, 9);
+                            dataModel.setValueAt(mod.getValueAt(i, 10), j, 10);
+                            dataModel.setValueAt(mod.getValueAt(i, 11), j, 11);
+                            j++;
+                        } else if (String.valueOf(mod.getValueAt(i, 8)).equals(departments.getSelectedItem().toString()) &&
+                                (String.valueOf(mod.getValueAt(i, 0)).toLowerCase().equals(studentCautat) ||
+                                        String.valueOf(mod.getValueAt(i, 1)).toLowerCase().equals(studentCautat) ||
+                                        (String.valueOf(mod.getValueAt(i, 0)).toLowerCase() + " " + String.valueOf(mod.getValueAt(i, 1)).toLowerCase()).equals(studentCautat) ||
+                                        (String.valueOf(mod.getValueAt(i, 1)).toLowerCase() + " " + String.valueOf(mod.getValueAt(i, 0)).toLowerCase()).equals(studentCautat))) {
+                            dataModel.setValueAt(mod.getValueAt(i, 0), j, 0);
+                            dataModel.setValueAt(mod.getValueAt(i, 1), j, 1);
+                            dataModel.setValueAt(mod.getValueAt(i, 2), j, 2);
+                            dataModel.setValueAt(mod.getValueAt(i, 3), j, 3);
+                            dataModel.setValueAt(mod.getValueAt(i, 4), j, 4);
+                            dataModel.setValueAt(mod.getValueAt(i, 5), j, 5);
+                            dataModel.setValueAt(mod.getValueAt(i, 6), j, 6);
+                            dataModel.setValueAt(mod.getValueAt(i, 7), j, 7);
+                            dataModel.setValueAt(mod.getValueAt(i, 8), j, 8);
+                            dataModel.setValueAt(mod.getValueAt(i, 9), j, 9);
+                            dataModel.setValueAt(mod.getValueAt(i, 10), j, 10);
+                            dataModel.setValueAt(mod.getValueAt(i, 11), j, 11);
+                            j++;
+                        }
+                        String[] coloane = {"NUME", "PRENUME", "CNP", "DATA NAȘTERII", "NUMĂR DE TELEFON", "ADRESĂ", "ADRESĂ DE EMAIL", "FACULTATE", "SPECIALIZARE", "CICLU UNIVERSITAR", "AN", "NUMĂR DE CREDITE"};
+                        TableModel model = new DefaultTableModel(dataModel.getStudenti(), coloane) {
+                            public boolean isCellEditable(int row, int column) {
+                                //set cells uneditable
+                                return false;
+                            }
+                        };
+                        tabelStudenti.setModel(model);
+                    }
                 }
             }
         });
@@ -191,39 +366,109 @@ public class RemoveStudentSecretaryGUI {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                studentCautat = searchBox.getText();
-                StudentTableModel modelCopy = new StudentTableModel(dataModel.getRowCount());
-                int q = 0;
-                for(int i = 0; i < dataModel.getRowCount(); i++) {
-                    if (dataModel.getValueAt(i, 0).equals(studentCautat) || dataModel.getValueAt(i,0).toString().toLowerCase().equals(studentCautat) ||
-                            (dataModel.getValueAt(i, 0) + " " + dataModel.getValueAt(i, 1)).equals(studentCautat) ||
-                            (dataModel.getValueAt(i,0).toString().toLowerCase() + " " + dataModel.getValueAt(i,1).toString().toLowerCase()).equals(studentCautat) ||
-                            (dataModel.getValueAt(i, 1) + " " + dataModel.getValueAt(i, 0)).equals(studentCautat) ||
-                            (dataModel.getValueAt(i,1).toString().toLowerCase() + " " + dataModel.getValueAt(i,0).toString().toLowerCase()).equals(studentCautat) ||
-                            dataModel.getValueAt(i,1).equals(studentCautat) || dataModel.getValueAt(i,1).toString().toLowerCase().equals(studentCautat)){
-                        modelCopy.setValueAt(dataModel.getValueAt(i, 0), q, 0);
-                        modelCopy.setValueAt(dataModel.getValueAt(i, 1), q, 1);
-                        modelCopy.setValueAt(dataModel.getValueAt(i, 2), q, 2);
-                        modelCopy.setValueAt(dataModel.getValueAt(i, 3), q, 3);
-                        modelCopy.setValueAt(dataModel.getValueAt(i, 4), q, 4);
-                        modelCopy.setValueAt(dataModel.getValueAt(i, 5), q, 5);
-                        modelCopy.setValueAt(dataModel.getValueAt(i, 6), q, 6);
-                        modelCopy.setValueAt(dataModel.getValueAt(i, 7), q, 7);
-                        modelCopy.setValueAt(dataModel.getValueAt(i, 8), q, 8);
-                        modelCopy.setValueAt(dataModel.getValueAt(i, 9), q, 9);
-                        modelCopy.setValueAt(dataModel.getValueAt(i, 10), q, 10);
-                        modelCopy.setValueAt(dataModel.getValueAt(i, 11), q, 11);
-                        q++;
+                if (searchBox.getText().equals("") || searchBox.getText().equals(" ")) {
+                    int i = 0;
+                    for (Student s : studenti) {
+                        if(departments.getSelectedItem().toString().equals("Toate specializările") && s.getFaculty().equals(facultate)){
+                            dataModel.setValueAt(s.getLastName(), i, 0);
+                            dataModel.setValueAt(s.getFirstName(), i, 1);
+                            dataModel.setValueAt(s.getCnp(), i, 2);
+                            dataModel.setValueAt(s.getDob(), i, 3);
+                            dataModel.setValueAt(s.getPhoneNumber(), i, 4);
+                            dataModel.setValueAt(s.getAddress(), i, 5);
+                            dataModel.setValueAt(s.getEmailAddress(), i, 6);
+                            dataModel.setValueAt(s.getFaculty(), i, 7);
+                            dataModel.setValueAt(s.getDepartment(), i, 8);
+                            dataModel.setValueAt(s.getDegree(), i, 9);
+                            dataModel.setValueAt(s.getYear(), i, 10);
+                            dataModel.setValueAt(s.getNumberOfCredits(), i, 11);
+                            i++;
+                        }else if(s.getDepartment().equals(departments.getSelectedItem().toString())){
+                            dataModel.setValueAt(s.getLastName(), i, 0);
+                            dataModel.setValueAt(s.getFirstName(), i, 1);
+                            dataModel.setValueAt(s.getCnp(), i, 2);
+                            dataModel.setValueAt(s.getDob(), i, 3);
+                            dataModel.setValueAt(s.getPhoneNumber(), i, 4);
+                            dataModel.setValueAt(s.getAddress(), i, 5);
+                            dataModel.setValueAt(s.getEmailAddress(), i, 6);
+                            dataModel.setValueAt(s.getFaculty(), i, 7);
+                            dataModel.setValueAt(s.getDepartment(), i, 8);
+                            dataModel.setValueAt(s.getDegree(), i, 9);
+                            dataModel.setValueAt(s.getYear(), i, 10);
+                            dataModel.setValueAt(s.getNumberOfCredits(), i, 11);
+                            i++;
+                        }
+                    }
+                    String[] coloane = {"NUME", "PRENUME", "CNP", "DATA NAȘTERII", "NUMĂR DE TELEFON", "ADRESĂ", "ADRESĂ DE EMAIL", "FACULTATE", "SPECIALIZARE", "CICLU UNIVERSITAR", "AN", "NUMĂR DE CREDITE"};
+                    TableModel model = new DefaultTableModel(dataModel.getStudenti(), coloane) {
+                        public boolean isCellEditable(int row, int column) {
+                            //set cells uneditable
+                            return false;
+                        }
+                    };
+                    tabelStudenti.setModel(model);
+                } else {
+                    studentCautat = searchBox.getText().toLowerCase();
+                    DefaultTableModel mod = (DefaultTableModel) tabelStudenti.getModel();
+                    int nrStudenti = 0;
+                    int j = 0;
+                    for (int i = 0; i < mod.getRowCount(); i++) {
+                        if (departments.getSelectedItem().toString().equals("Toate specializările") && String.valueOf(mod.getValueAt(i,7)).equals(facultate)) {
+                            nrStudenti++;
+                        } else if (String.valueOf(mod.getValueAt(i,8)).equals(departments.getSelectedItem().toString())) {
+                            nrStudenti++;
+                        }
+                    }
+                    dataModel = new StudentTableModel(nrStudenti);
+                    for(int i = 0; i < mod.getRowCount(); i++) {
+                        if (departments.getSelectedItem().toString().equals("Toate specializările") &&
+                                String.valueOf(mod.getValueAt(i, 7)).equals(facultate) &&
+                                (String.valueOf(mod.getValueAt(i, 0)).toLowerCase().equals(studentCautat) ||
+                                        String.valueOf(mod.getValueAt(i, 1)).toLowerCase().equals(studentCautat) ||
+                                        (String.valueOf(mod.getValueAt(i, 0)).toLowerCase() + " " + String.valueOf(mod.getValueAt(i, 1)).toLowerCase()).equals(studentCautat) ||
+                                        (String.valueOf(mod.getValueAt(i, 1)).toLowerCase() + " " + String.valueOf(mod.getValueAt(i, 0)).toLowerCase()).equals(studentCautat))) {
+                            dataModel.setValueAt(mod.getValueAt(i, 0), j, 0);
+                            dataModel.setValueAt(mod.getValueAt(i, 1), j, 1);
+                            dataModel.setValueAt(mod.getValueAt(i, 2), j, 2);
+                            dataModel.setValueAt(mod.getValueAt(i, 3), j, 3);
+                            dataModel.setValueAt(mod.getValueAt(i, 4), j, 4);
+                            dataModel.setValueAt(mod.getValueAt(i, 5), j, 5);
+                            dataModel.setValueAt(mod.getValueAt(i, 6), j, 6);
+                            dataModel.setValueAt(mod.getValueAt(i, 7), j, 7);
+                            dataModel.setValueAt(mod.getValueAt(i, 8), j, 8);
+                            dataModel.setValueAt(mod.getValueAt(i, 9), j, 9);
+                            dataModel.setValueAt(mod.getValueAt(i, 10), j, 10);
+                            dataModel.setValueAt(mod.getValueAt(i, 11), j, 11);
+                            j++;
+                        } else if (String.valueOf(mod.getValueAt(i, 8)).equals(departments.getSelectedItem().toString()) &&
+                                (String.valueOf(mod.getValueAt(i, 0)).toLowerCase().equals(studentCautat) ||
+                                        String.valueOf(mod.getValueAt(i, 1)).toLowerCase().equals(studentCautat) ||
+                                        (String.valueOf(mod.getValueAt(i, 0)).toLowerCase() + " " + String.valueOf(mod.getValueAt(i, 1)).toLowerCase()).equals(studentCautat) ||
+                                        (String.valueOf(mod.getValueAt(i, 1)).toLowerCase() + " " + String.valueOf(mod.getValueAt(i, 0)).toLowerCase()).equals(studentCautat))) {
+                            dataModel.setValueAt(mod.getValueAt(i, 0), j, 0);
+                            dataModel.setValueAt(mod.getValueAt(i, 1), j, 1);
+                            dataModel.setValueAt(mod.getValueAt(i, 2), j, 2);
+                            dataModel.setValueAt(mod.getValueAt(i, 3), j, 3);
+                            dataModel.setValueAt(mod.getValueAt(i, 4), j, 4);
+                            dataModel.setValueAt(mod.getValueAt(i, 5), j, 5);
+                            dataModel.setValueAt(mod.getValueAt(i, 6), j, 6);
+                            dataModel.setValueAt(mod.getValueAt(i, 7), j, 7);
+                            dataModel.setValueAt(mod.getValueAt(i, 8), j, 8);
+                            dataModel.setValueAt(mod.getValueAt(i, 9), j, 9);
+                            dataModel.setValueAt(mod.getValueAt(i, 10), j, 10);
+                            dataModel.setValueAt(mod.getValueAt(i, 11), j, 11);
+                            j++;
+                        }
+                        String[] coloane = {"NUME", "PRENUME", "CNP", "DATA NAȘTERII", "NUMĂR DE TELEFON", "ADRESĂ", "ADRESĂ DE EMAIL", "FACULTATE", "SPECIALIZARE", "CICLU UNIVERSITAR", "AN", "NUMĂR DE CREDITE"};
+                        TableModel model = new DefaultTableModel(dataModel.getStudenti(), coloane) {
+                            public boolean isCellEditable(int row, int column) {
+                                //set cells uneditable
+                                return false;
+                            }
+                        };
+                        tabelStudenti.setModel(model);
                     }
                 }
-                String[] coloane = {"NUME", "PRENUME", "CNP", "DATA NAȘTERII", "NUMĂR DE TELEFON", "ADRESĂ", "ADRESĂ DE EMAIL", "FACULTATE", "SPECIALIZARE", "CICLU UNIVERSITAR", "AN", "NUMĂR DE CREDITE"};
-                TableModel model = new DefaultTableModel(modelCopy.getStudenti(), coloane) {
-                    public boolean isCellEditable(int row, int column) {
-                        //set cells uneditable
-                        return false;
-                    }
-                };
-                tabelStudenti.setModel(model);
             }
         });
         //remove student from the database and from the table too

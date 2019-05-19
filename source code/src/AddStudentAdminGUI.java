@@ -13,10 +13,10 @@ import java.util.*;
 public class AddStudentAdminGUI {
     private JFrame frame;
     private JLabel labelNume, labelPrenume, labelCnp, labelDataNasterii, labelNrTelefon, labelAdresa, labelAdresaEmail, labelFacultate, labelSpecializare, labelCicluUniversitar, labelAn, labelNrCredite;
-    private JTextField nume, prenume, cnp, nrTelefon, adresa, adresaEmail, nrCredite;
+    private JTextField nume, prenume, cnp, nrTelefon, adresa, adresaEmail, cicluUniversitar, nrCredite;
     private JComboBox<Faculty> facultate;
     private JComboBox<Department>specializare;
-    private JComboBox<String> cicluUniversitar, lunaNastere;
+    private JComboBox<String> lunaNastere;
     private JComboBox<Integer> ziNastere, anNastere;
     private SpinnerModel spinnerModelAn;
     private JSpinner anUniversitar;
@@ -52,10 +52,10 @@ public class AddStudentAdminGUI {
         nrTelefon = new JTextField();
         adresa = new JTextField();
         adresaEmail = new JTextField();
+        cicluUniversitar = new JTextField();
         nrCredite = new JTextField();
         facultate = new JComboBox<>();
         specializare = new JComboBox<>();
-        cicluUniversitar = new JComboBox<>();
         anNastere = new JComboBox<>();
         lunaNastere = new JComboBox<>();
         ziNastere = new JComboBox<>();
@@ -76,9 +76,12 @@ public class AddStudentAdminGUI {
                 specializare.addItem(d);
             }
         }
-        cicluUniversitar.addItem("LICENTA");
-        cicluUniversitar.addItem("MASTER");
-        cicluUniversitar.addItem("DOCTORAT");
+        for(Department d:specializari){
+            if(d.getTitle().equals(specializare.getSelectedItem().toString())){
+                cicluUniversitar.setText(d.getDegree().toString());
+                break;
+            }
+        }
         for(int i=1920;i<=2000;i++){
             anNastere.addItem(i);
         }
@@ -120,6 +123,8 @@ public class AddStudentAdminGUI {
         frame.add(inapoi);
         //set white background
         frame.getContentPane().setBackground(Color.WHITE);
+        //set textfield not editable
+        cicluUniversitar.setEditable(false);
         //set bounds for elements
         labelNume.setBounds(190,70,120,25);
         nume.setBounds(300,70,250,25);
@@ -160,6 +165,18 @@ public class AddStudentAdminGUI {
         inapoi.setBorderPainted(false);
         inapoi.setBackground(new Color(233,233,233));
         inapoi.setForeground(new Color(100,100,100));
+        facultate.setBackground(new Color(233,233,233));
+        facultate.setForeground(new Color(100,100,100));
+        specializare.setBackground(new Color(233,233,233));
+        specializare.setForeground(new Color(100,100,100));
+        cicluUniversitar.setBackground(new Color(233,233,233));
+        cicluUniversitar.setForeground(new Color(100,100,100));
+        anNastere.setBackground(new Color(233,233,233));
+        anNastere.setForeground(new Color(100,100,100));
+        lunaNastere.setBackground(new Color(233,233,233));
+        lunaNastere.setForeground(new Color(100,100,100));
+        ziNastere.setBackground(new Color(233,233,233));
+        ziNastere.setForeground(new Color(100,100,100));
         //labels design
         labelNume.setForeground(new Color(100,100,100));
         labelPrenume.setForeground(new Color(100,100,100));
@@ -187,8 +204,6 @@ public class AddStudentAdminGUI {
         frame.setLocationRelativeTo(null);
         //set the default close button
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //block resize operation
-        frame.setResizable(false);
         //set frame visible
         frame.setVisible(true);
         /*
@@ -204,6 +219,20 @@ public class AddStudentAdminGUI {
                 for(Department d:specializari){
                     if(d.getFaculty().equals(facultate.getSelectedItem().toString())){
                         specializare.addItem(d);
+                    }
+                }
+            }
+        });
+        //set degree when selecting a department
+        specializare.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(specializare.getItemCount() > 0) {
+                    for (Department d : specializari) {
+                        if (d.getTitle().equals(specializare.getSelectedItem().toString())) {
+                            cicluUniversitar.setText(d.getDegree().toString());
+                            break;
+                        }
                     }
                 }
             }
@@ -258,7 +287,7 @@ public class AddStudentAdminGUI {
                 emailIntrodus = adresaEmail.getText();
                 facultateSelectata = String.valueOf(facultate.getSelectedItem());
                 specializareSelectata = String.valueOf(specializare.getSelectedItem());
-                cicluUniversitarSelectat = String.valueOf(cicluUniversitar.getSelectedItem());
+                cicluUniversitarSelectat = String.valueOf(cicluUniversitar.getText());
                 anUniversitarIntrodus = (int)anUniversitar.getValue();
                 nrCrediteIntroduse = Integer.valueOf(nrCredite.getText());
                 if(mng.addStudentInDB(prenumeIntrodus,numeIntrodus,cnpIntrodus,dataNasteriiSelectata,nrTelefonIntrodus,adresaIntrodusa,emailIntrodus,facultateSelectata,specializareSelectata,cicluUniversitarSelectat,anUniversitarIntrodus,nrCrediteIntroduse) == 1){
@@ -274,8 +303,8 @@ public class AddStudentAdminGUI {
                 nume.setText("");
                 prenume.setText("");
                 cnp.setText("");
-                anNastere.setSelectedItem(1920);
-                lunaNastere.setSelectedItem("IANUARIE");
+                anNastere.setSelectedIndex(0);
+                lunaNastere.setSelectedIndex(0);
                 ziNastere.removeAllItems();
                 for(int i=1;i<=31;i++){
                     ziNastere.addItem(i);
@@ -285,7 +314,12 @@ public class AddStudentAdminGUI {
                 adresaEmail.setText("");
                 facultate.setSelectedIndex(0);
                 specializare.setSelectedIndex(0);
-                cicluUniversitar.setSelectedIndex(0);
+                for(Department d:specializari){
+                    if(d.getTitle().equals(specializare.getSelectedItem().toString())){
+                        cicluUniversitar.setText(d.getDegree().toString());
+                        break;
+                    }
+                }
                 anUniversitar.setValue(1);
                 nrCredite.setText("");
             }

@@ -11,12 +11,12 @@ import java.util.HashSet;
 public class EditSubjectGUI {
     private JFrame frame;
     private JLabel labelDenumire, labelFacultate, labelSpecializare, labelCicluUniversitar, labelSemestru, labelCredite, labelProfesor;
-    private JTextField denumire;
+    private JTextField denumire, cicluUniversitar;
     private SpinnerNumberModel semestru, nrCredite;
     private JSpinner sem, cred;
     private JComboBox<Faculty> faculties;
     private JComboBox<Department> departments;
-    private JComboBox<String> degrees, professors;
+    private JComboBox<String> professors;
     private HashSet<Faculty> facultati;
     private HashSet<Department> specializari;
     private HashSet<Professor> profesori;
@@ -37,11 +37,11 @@ public class EditSubjectGUI {
         labelProfesor = new JLabel("Profesor: ");
         faculties = new JComboBox<>();
         departments = new JComboBox<>();
-        degrees = new JComboBox<>();
         professors = new JComboBox<>();
         editare = new JButton("Editează materie");
         inapoi = new JButton("Înapoi");
         denumire = new JTextField(title);
+        cicluUniversitar = new JTextField(degree);
         semestru = new SpinnerNumberModel(semester,1,6,1);
         sem = new JSpinner(semestru);
         nrCredite = new SpinnerNumberModel(credits,1,10,1);
@@ -54,18 +54,14 @@ public class EditSubjectGUI {
         for(Faculty f:facultati){
             faculties.addItem(f);
         }
-        if(faculty.isEmpty()){
-            faculties.addItem(new Faculty(""));
-            faculties.setSelectedItem(new Faculty(""));
-        }else {
-            faculties.setSelectedItem(new Faculty(faculty));
-        }
+        faculties.setSelectedItem(new Faculty(faculty));
+        //add all departments into combobox
         for(Department d:specializari){
-            if(d.getFaculty().equals(faculties.getSelectedItem().toString())){
+            if(d.getFaculty().equals(faculty)){
                 departments.addItem(d);
             }
         }
-        departments.setSelectedItem(new Department(department));
+        departments.setSelectedItem(department);
         for(Professor p:profesori){
             if((p.getFaculty().equals(faculties.getSelectedItem().toString()) && p.getTeachingSubject().isEmpty()) ||
                     (p.getFaculty().isEmpty() && p.getTeachingSubject().isEmpty())){
@@ -74,10 +70,6 @@ public class EditSubjectGUI {
         }
         professors.addItem(professor);
         professors.setSelectedItem(professor);
-        degrees.addItem("LICENTA");
-        degrees.addItem("MASTER");
-        degrees.addItem("DOCTORAT");
-        degrees.setSelectedItem(degree);
         //add elements to the frame
         frame.add(labelDenumire);
         frame.add(denumire);
@@ -86,7 +78,7 @@ public class EditSubjectGUI {
         frame.add(labelSpecializare);
         frame.add(departments);
         frame.add(labelCicluUniversitar);
-        frame.add(degrees);
+        frame.add(cicluUniversitar);
         frame.add(labelSemestru);
         frame.add(sem);
         frame.add(labelCredite);
@@ -95,25 +87,27 @@ public class EditSubjectGUI {
         frame.add(professors);
         frame.add(editare);
         frame.add(inapoi);
+        //set textfield not editable
+        cicluUniversitar.setEditable(false);
         //set white background
         frame.getContentPane().setBackground(Color.WHITE);
         //set bounds for elements
-        labelDenumire.setBounds(150,70,120,25);
-        denumire.setBounds(270,70,310,25);
-        labelFacultate.setBounds(150,100,120,25);
-        faculties.setBounds(270,100,310,25);
-        labelSpecializare.setBounds(150,130,120,25);
-        departments.setBounds(270,130,310,25);
-        labelCicluUniversitar.setBounds(150,160,120,25);
-        degrees.setBounds(270,160,310,25);
-        labelSemestru.setBounds(150,190,120,25);
-        sem.setBounds(270,190,310,25);
-        labelCredite.setBounds(150,220,120,25);
-        cred.setBounds(270,220,310,25);
-        labelProfesor.setBounds(150,250,120,25);
-        professors.setBounds(270,250,310,25);
-        editare.setBounds(200,320,145,25);
-        inapoi.setBounds(360,320,150,25);
+        labelDenumire.setBounds(150,90,120,25);
+        denumire.setBounds(270,90,310,25);
+        labelFacultate.setBounds(150,120,120,25);
+        faculties.setBounds(270,120,310,25);
+        labelSpecializare.setBounds(150,150,120,25);
+        departments.setBounds(270,150,310,25);
+        labelCicluUniversitar.setBounds(150,180,120,25);
+        cicluUniversitar.setBounds(270,180,310,25);
+        labelSemestru.setBounds(150,210,120,25);
+        sem.setBounds(270,210,310,25);
+        labelCredite.setBounds(150,240,120,25);
+        cred.setBounds(270,240,310,25);
+        labelProfesor.setBounds(150,270,120,25);
+        professors.setBounds(270,270,310,25);
+        editare.setBounds(220,330,145,25);
+        inapoi.setBounds(380,330,145,25);
         //button design
         editare.setBorderPainted(false);
         editare.setBackground(new Color(233,233,233));
@@ -121,6 +115,12 @@ public class EditSubjectGUI {
         inapoi.setBorderPainted(false);
         inapoi.setBackground(new Color(233,233,233));
         inapoi.setForeground(new Color(100,100,100));
+        faculties.setBackground(new Color(233,233,233));
+        faculties.setForeground(new Color(100,100,100));
+        departments.setBackground(new Color(233,233,233));
+        departments.setForeground(new Color(100,100,100));
+        professors.setBackground(new Color(233,233,233));
+        professors.setForeground(new Color(100,100,100));
         //set frame icon
         try {
             frame.setIconImage(ImageIO.read(getClass().getResource("resources/1.png")));
@@ -135,8 +135,6 @@ public class EditSubjectGUI {
         frame.setLocationRelativeTo(null);
         //set the default close button
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //block resize operation
-        frame.setResizable(false);
         //set frame visible
         frame.setVisible(true);
         /*
@@ -148,15 +146,15 @@ public class EditSubjectGUI {
         faculties.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                faculties.removeItem("");
                 professors.removeAllItems();
+                departments.removeAllItems();
                 for(Professor p:profesori){
                     if((p.getFaculty().equals(faculties.getSelectedItem().toString()) && p.getTeachingSubject().isEmpty()) ||
-                        (p.getFaculty().isEmpty() && p.getTeachingSubject().isEmpty())){
+                        (p.getFaculty().isEmpty() && p.getTeachingSubject().isEmpty()) ||
+                            p.getTeachingSubject().equals(title) && p.getFaculty().equals(faculties.getSelectedItem().toString())){
                         professors.addItem(p.getLastName() + " " + p.getFirstName());
                     }
                 }
-                departments.removeAllItems();
                 for(Department d:specializari){
                     if(d.getFaculty().equals(faculties.getSelectedItem().toString())){
                         departments.addItem(d);
@@ -168,9 +166,11 @@ public class EditSubjectGUI {
         departments.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for(Department d:specializari){
-                    if(d.getTitle().equals(departments.getSelectedItem().toString())){
-                        degrees.setSelectedItem(d.getDegree().toString());
+                if(departments.getItemCount() > 0) {
+                    for (Department d : specializari) {
+                        if (d.getTitle().equals(departments.getSelectedItem().toString())) {
+                            cicluUniversitar.setText(d.getDegree());
+                        }
                     }
                 }
             }
@@ -180,9 +180,18 @@ public class EditSubjectGUI {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                //if(mng.updateSubjectFromDB(title, faculties.getSelectedItem().toString(),departments.getSelectedItem().toString(),degrees.getSelectedItem(),sem.getValue(),cred.getValue(),professors.getSelectedItem().toString().split(" ")[1],professors.getSelectedItem().toString().split(" ")[0]) ==1){
-                //    JOptionPane.showMessageDialog(null,"Datele materiei au fost actualizate!");
-                //}
+                if(mng.updateSubjectFromDB(title, denumire.getText(),faculties.getSelectedItem().toString(),departments.getSelectedItem().toString(),cicluUniversitar.getText(),(int)sem.getValue(),(int)cred.getValue(),professors.getSelectedItem().toString().split(" ")[1],professors.getSelectedItem().toString().split(" ")[0]) ==1){
+                    JOptionPane.showMessageDialog(null,"Datele materiei au fost actualizate!");
+                }
+            }
+        });
+        //go back to select subject to edit subject menu
+        inapoi.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                frame.setVisible(false);
+                EditSubjectAdminGUI window = new EditSubjectAdminGUI();
             }
         });
     }

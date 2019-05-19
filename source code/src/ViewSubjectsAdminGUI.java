@@ -14,7 +14,6 @@ public class ViewSubjectsAdminGUI {
     private JFrame frame;
     private JComboBox<Faculty> faculties;
     private JComboBox<Department> departments;
-    private JComboBox<String> degrees, semesters, credits;
     private HashSet<Faculty> facultati;
     private HashSet<Department> specializari;
     private HashSet<Subject> materii;
@@ -22,7 +21,7 @@ public class ViewSubjectsAdminGUI {
     private JTable tabelMaterii = new JTable();
     private JScrollPane scrollPane = new JScrollPane(tabelMaterii);
     private JButton inapoi;
-    public ViewSubjectsAdminGUI(){
+    public ViewSubjectsAdminGUI() {
         /*
         ====================
         initialize variables
@@ -31,51 +30,33 @@ public class ViewSubjectsAdminGUI {
         frame = new JFrame("Vizualizare materii");
         faculties = new JComboBox<>();
         departments = new JComboBox<>();
-        degrees = new JComboBox<>();
-        semesters = new JComboBox<>();
-        credits = new JComboBox<>();
         inapoi = new JButton("Înapoi");
         ManagerGUI mng = new ManagerGUI();
-        facultati = mng.getSetFacultati();
-        specializari = mng.getSetSpecializari();
-        materii = mng.getSetMaterii();
+        facultati = ManagerGUI.getSetFacultati();
+        specializari = ManagerGUI.getSetSpecializari();
+        materii = ManagerGUI.getSetMaterii();
         int n = materii.size();
         dataModel = new SubjectTableModel(n);
         //add faculties into combobox
         faculties.addItem(new Faculty("Toate facultățile"));
-        for(Faculty f:facultati){
+        for (Faculty f : facultati) {
             faculties.addItem(f);
         }
         //add departments into combobox
         departments.addItem(new Department("Toate specializările"));
-        for(Department d:specializari){
+        for (Department d : specializari) {
             departments.addItem(d);
-        }
-        //add degrees into combobox
-        degrees.addItem("Toate ciclurile universitare");
-        degrees.addItem("LICENTA");
-        degrees.addItem("MASTER");
-        degrees.addItem("DOCTORAT");
-        //add credits into combobox
-        credits.addItem("Toate creditele");
-        for(int i = 1; i <= 10; i++){
-            credits.addItem(String.valueOf(i));
-        }
-        //add semesters into combobox
-        semesters.addItem("Toate semestrele");
-        for(int i = 1; i <= 6; i++){
-            semesters.addItem(String.valueOf(i));
         }
         //add all subjects into table
         int i = 0;
-        for(Subject s:materii){
-            dataModel.setValueAt(s.getTitle(),i,0);
-            dataModel.setValueAt(s.getFaculty(),i,1);
-            dataModel.setValueAt(s.getDepartment(),i,2);
-            dataModel.setValueAt(s.getDegree(),i,3);
-            dataModel.setValueAt(s.getSemester(),i,4);
-            dataModel.setValueAt(s.getNumberOfCredits(),i,5);
-            dataModel.setValueAt(s.getTeacherLastName() + " " + s.getTeacherFirstName(),i,6);
+        for (Subject s : materii) {
+            dataModel.setValueAt(s.getTitle(), i, 0);
+            dataModel.setValueAt(s.getFaculty(), i, 1);
+            dataModel.setValueAt(s.getDepartment(), i, 2);
+            dataModel.setValueAt(s.getDegree(), i, 3);
+            dataModel.setValueAt(s.getSemester(), i, 4);
+            dataModel.setValueAt(s.getNumberOfCredits(), i, 5);
+            dataModel.setValueAt(s.getTeacherLastName() + " " + s.getTeacherFirstName(), i, 6);
             i++;
         }
         String[] coloane = {"DENUMIRE", "FACULTATE", "SPECIALIZARE", "CICLU UNIVERSITAR", "SEMESTRU", "NUMĂR DE CREDITE", "PROFESOR"};
@@ -88,9 +69,6 @@ public class ViewSubjectsAdminGUI {
         //add elements to the frame
         frame.add(faculties);
         frame.add(departments);
-        frame.add(degrees);
-        frame.add(credits);
-        frame.add(semesters);
         frame.add(scrollPane);
         frame.add(inapoi);
         //set white background
@@ -100,33 +78,32 @@ public class ViewSubjectsAdminGUI {
         //set table sorter
         tabelMaterii.setAutoCreateRowSorter(true);
         //set bounds for elements
-        faculties.setBounds(42,60,300,25);
-        departments.setBounds(350,60,180,25);
-        degrees.setBounds(538,60,180,25);
-        semesters.setBounds(726,60,125,25);
-        credits.setBounds(859,60,110,25);
-        scrollPane.setBounds(42,110,1300,437);
-        inapoi.setBounds(610,560,145,25);
+        faculties.setBounds(42, 60, 300, 25);
+        departments.setBounds(350, 60, 180, 25);
+        scrollPane.setBounds(42, 110, 1300, 437);
+        inapoi.setBounds(610, 580, 145, 25);
         //buttons design
         inapoi.setBorderPainted(false);
-        inapoi.setBackground(new Color(233,233,233));
-        inapoi.setForeground(new Color(100,100,100));
+        inapoi.setBackground(new Color(233, 233, 233));
+        inapoi.setForeground(new Color(100, 100, 100));
+        faculties.setBackground(new Color(233,233,233));
+        faculties.setForeground(new Color(100,100,100));
+        departments.setBackground(new Color(233,233,233));
+        departments.setForeground(new Color(100,100,100));
         //set frame icon
         try {
             frame.setIconImage(ImageIO.read(getClass().getResource("resources/1.png")));
-        }catch(IOException ie){
+        } catch (IOException ie) {
             ie.printStackTrace();
         }
         //set frame size
-        frame.setPreferredSize(new Dimension(1400,700));
+        frame.setPreferredSize(new Dimension(1400, 700));
         frame.setLayout(null);
         frame.pack();
         //set window in the middle of the screen
         frame.setLocationRelativeTo(null);
         //set the default close button
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //block resize operation
-        frame.setResizable(false);
         //set frame visible
         frame.setVisible(true);
         /*
@@ -139,52 +116,53 @@ public class ViewSubjectsAdminGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int i = 0, q = 0;
-                if (faculties.getItemCount() > 0) {
-                    departments.setSelectedIndex(0);
-                    degrees.setSelectedIndex(0);
-                    semesters.setSelectedIndex(0);
-                    credits.setSelectedIndex(0);
-                    for (Subject s : materii) {
-                        if (faculties.getSelectedItem().toString().equals("Toate facultățile")) {
-                            dataModel = new SubjectTableModel(n);
-                            break;
-                        } else if (s.getFaculty().equals(faculties.getSelectedItem().toString())) {
-                            q++;
-                        }
+                departments.removeAllItems();
+                for (Subject s : materii) {
+                    if (faculties.getSelectedItem().toString().equals("Toate facultățile")) {
+                        q = materii.size();
+                        break;
+                    } else if (s.getFaculty().equals(faculties.getSelectedItem().toString())) {
+                        q++;
                     }
-                    if (!faculties.getSelectedItem().toString().equals("Toate facultățile")) {
-                        dataModel = new SubjectTableModel(q);
-                    }
-                    for (Subject s : materii) {
-                        if (faculties.getSelectedItem().toString().equals("Toate facultățile")) {
-                            dataModel.setValueAt(s.getTitle(), i, 0);
-                            dataModel.setValueAt(s.getFaculty(), i, 1);
-                            dataModel.setValueAt(s.getDepartment(), i, 2);
-                            dataModel.setValueAt(s.getDegree(), i, 3);
-                            dataModel.setValueAt(s.getSemester(), i, 4);
-                            dataModel.setValueAt(s.getNumberOfCredits(), i, 5);
-                            dataModel.setValueAt(s.getTeacherLastName() + " " + s.getTeacherFirstName(), i, 6);
-                            i++;
-                        } else if (s.getFaculty().equals(faculties.getSelectedItem().toString())) {
-                            dataModel.setValueAt(s.getTitle(), i, 0);
-                            dataModel.setValueAt(s.getFaculty(), i, 1);
-                            dataModel.setValueAt(s.getDepartment(), i, 2);
-                            dataModel.setValueAt(s.getDegree(), i, 3);
-                            dataModel.setValueAt(s.getSemester(), i, 4);
-                            dataModel.setValueAt(s.getNumberOfCredits(), i, 5);
-                            dataModel.setValueAt(s.getTeacherLastName() + " " + s.getTeacherFirstName(), i, 6);
-                            i++;
-                        }
-                    }
-                    String[] coloane = {"DENUMIRE", "FACULTATE", "SPECIALIZARE", "CICLU UNIVERSITAR", "SEMESTRU", "NUMĂR DE CREDITE", "PROFESOR"};
-                    TableModel model = new DefaultTableModel(dataModel.getMaterii(), coloane) {
-                        public boolean isCellEditable(int row, int column) {
-                            //set cells uneditable
-                            return false;
-                        }
-                    };
-                    tabelMaterii.setModel(model);
                 }
+                dataModel = new SubjectTableModel(q);
+                for (Subject s : materii) {
+                    if (faculties.getSelectedItem().toString().equals("Toate facultățile")) {
+                        dataModel.setValueAt(s.getTitle(), i, 0);
+                        dataModel.setValueAt(s.getFaculty(), i, 1);
+                        dataModel.setValueAt(s.getDepartment(), i, 2);
+                        dataModel.setValueAt(s.getDegree(), i, 3);
+                        dataModel.setValueAt(s.getSemester(), i, 4);
+                        dataModel.setValueAt(s.getNumberOfCredits(), i, 5);
+                        dataModel.setValueAt(s.getTeacherLastName() + " " + s.getTeacherFirstName(), i, 6);
+                        i++;
+                    } else if (s.getFaculty().equals(faculties.getSelectedItem().toString())) {
+                        dataModel.setValueAt(s.getTitle(), i, 0);
+                        dataModel.setValueAt(s.getFaculty(), i, 1);
+                        dataModel.setValueAt(s.getDepartment(), i, 2);
+                        dataModel.setValueAt(s.getDegree(), i, 3);
+                        dataModel.setValueAt(s.getSemester(), i, 4);
+                        dataModel.setValueAt(s.getNumberOfCredits(), i, 5);
+                        dataModel.setValueAt(s.getTeacherLastName() + " " + s.getTeacherFirstName(), i, 6);
+                        i++;
+                    }
+                }
+                String[] coloane = {"DENUMIRE", "FACULTATE", "SPECIALIZARE", "CICLU UNIVERSITAR", "SEMESTRU", "NUMĂR DE CREDITE", "PROFESOR"};
+                TableModel model = new DefaultTableModel(dataModel.getMaterii(), coloane) {
+                    public boolean isCellEditable(int row, int column) {
+                        //set cells uneditable
+                        return false;
+                    }
+                };
+                departments.addItem(new Department("Toate specializările"));
+                for (Department d : specializari) {
+                    if (faculties.getSelectedItem().toString().equals("Toate facultățile")) {
+                        departments.addItem(d);
+                    } else if (d.getFaculty().equals(faculties.getSelectedItem().toString())) {
+                        departments.addItem(d);
+                    }
+                }
+                tabelMaterii.setModel(model);
             }
         });
         //add subjects into table when selecting a department
@@ -194,18 +172,27 @@ public class ViewSubjectsAdminGUI {
                 int i = 0, q = 0;
                 if (departments.getItemCount() > 0) {
                     for (Subject s : materii) {
-                        if (departments.getSelectedItem().toString().equals("Toate specializările")) {
-                            dataModel = new SubjectTableModel(n);
+                        if (faculties.getSelectedItem().toString().equals("Toate facultățile") && departments.getSelectedItem().toString().equals("Toate specializările")) {
+                            q = materii.size();
                             break;
+                        } else if (departments.getSelectedItem().toString().equals("Toate specializările") && s.getFaculty().equals(faculties.getSelectedItem().toString())) {
+                            q++;
                         } else if (s.getDepartment().equals(departments.getSelectedItem().toString())) {
                             q++;
                         }
                     }
-                    if (!departments.getSelectedItem().toString().equals("Toate specializările")) {
-                        dataModel = new SubjectTableModel(q);
-                    }
+                    dataModel = new SubjectTableModel(q);
                     for (Subject s : materii) {
-                        if (departments.getSelectedItem().toString().equals("Toate specializările")) {
+                        if (faculties.getSelectedItem().toString().equals("Toate facultățile") && departments.getSelectedItem().toString().equals("Toate specializările")) {
+                            dataModel.setValueAt(s.getTitle(), i, 0);
+                            dataModel.setValueAt(s.getFaculty(), i, 1);
+                            dataModel.setValueAt(s.getDepartment(), i, 2);
+                            dataModel.setValueAt(s.getDegree(), i, 3);
+                            dataModel.setValueAt(s.getSemester(), i, 4);
+                            dataModel.setValueAt(s.getNumberOfCredits(), i, 5);
+                            dataModel.setValueAt(s.getTeacherLastName() + " " + s.getTeacherFirstName(), i, 6);
+                            i++;
+                        } else if (departments.getSelectedItem().toString().equals("Toate specializările") && s.getFaculty().equals(faculties.getSelectedItem().toString())) {
                             dataModel.setValueAt(s.getTitle(), i, 0);
                             dataModel.setValueAt(s.getFaculty(), i, 1);
                             dataModel.setValueAt(s.getDepartment(), i, 2);
@@ -215,153 +202,6 @@ public class ViewSubjectsAdminGUI {
                             dataModel.setValueAt(s.getTeacherLastName() + " " + s.getTeacherFirstName(), i, 6);
                             i++;
                         } else if (s.getDepartment().equals(departments.getSelectedItem().toString())) {
-                            dataModel.setValueAt(s.getTitle(), i, 0);
-                            dataModel.setValueAt(s.getFaculty(), i, 1);
-                            dataModel.setValueAt(s.getDepartment(), i, 2);
-                            dataModel.setValueAt(s.getDegree(), i, 3);
-                            dataModel.setValueAt(s.getSemester(), i, 4);
-                            dataModel.setValueAt(s.getNumberOfCredits(), i, 5);
-                            dataModel.setValueAt(s.getTeacherLastName() + " " + s.getTeacherFirstName(), i, 6);
-                            i++;
-                        }
-                    }
-                    String[] coloane = {"DENUMIRE", "FACULTATE", "SPECIALIZARE", "CICLU UNIVERSITAR", "SEMESTRU", "NUMĂR DE CREDITE", "PROFESOR"};
-                    TableModel model = new DefaultTableModel(dataModel.getMaterii(), coloane) {
-                        public boolean isCellEditable(int row, int column) {
-                            //set cells uneditable
-                            return false;
-                        }
-                    };
-                    tabelMaterii.setModel(model);
-                }
-            }
-        });
-        //add subjects into table when selecting a degree
-        degrees.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int i = 0, q = 0;
-                if(degrees.getItemCount() > 0) {
-                    for (Subject s : materii) {
-                        if (degrees.getSelectedItem().toString().equals("Toate ciclurile universitare")) {
-                            dataModel = new SubjectTableModel(n);
-                            break;
-                        } else if (s.getDegree().equals(Degree.valueOf(degrees.getSelectedItem().toString()))) {
-                            q++;
-                        }
-                    }
-                    if (!degrees.getSelectedItem().toString().equals("Toate ciclurile universitare")) {
-                        dataModel = new SubjectTableModel(q);
-                    }
-                    for (Subject s : materii) {
-                        if (degrees.getSelectedItem().toString().equals("Toate ciclurile universitare")) {
-                            dataModel.setValueAt(s.getTitle(), i, 0);
-                            dataModel.setValueAt(s.getFaculty(), i, 1);
-                            dataModel.setValueAt(s.getDepartment(), i, 2);
-                            dataModel.setValueAt(s.getDegree(), i, 3);
-                            dataModel.setValueAt(s.getSemester(), i, 4);
-                            dataModel.setValueAt(s.getNumberOfCredits(), i, 5);
-                            dataModel.setValueAt(s.getTeacherLastName() + " " + s.getTeacherFirstName(), i, 6);
-                            i++;
-                        } else if (s.getDegree().equals(Degree.valueOf(degrees.getSelectedItem().toString()))) {
-                            dataModel.setValueAt(s.getTitle(), i, 0);
-                            dataModel.setValueAt(s.getFaculty(), i, 1);
-                            dataModel.setValueAt(s.getDepartment(), i, 2);
-                            dataModel.setValueAt(s.getDegree(), i, 3);
-                            dataModel.setValueAt(s.getSemester(), i, 4);
-                            dataModel.setValueAt(s.getNumberOfCredits(), i, 5);
-                            dataModel.setValueAt(s.getTeacherLastName() + " " + s.getTeacherFirstName(), i, 6);
-                            i++;
-                        }
-                    }
-                    String[] coloane = {"DENUMIRE", "FACULTATE", "SPECIALIZARE", "CICLU UNIVERSITAR", "SEMESTRU", "NUMĂR DE CREDITE", "PROFESOR"};
-                    TableModel model = new DefaultTableModel(dataModel.getMaterii(), coloane) {
-                        public boolean isCellEditable(int row, int column) {
-                            //set cells uneditable
-                            return false;
-                        }
-                    };
-                    tabelMaterii.setModel(model);
-                }
-            }
-        });
-        //add subjects into table when selecting a semester
-        semesters.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int i = 0, q = 0;
-                if(semesters.getItemCount() > 0) {
-                    for (Subject s : materii) {
-                        if (semesters.getSelectedItem().toString().equals("Toate semestrele")) {
-                            dataModel = new SubjectTableModel(n);
-                            break;
-                        } else if (s.getSemester() == Integer.valueOf(semesters.getSelectedItem().toString())) {
-                            q++;
-                        }
-                    }
-                    if (!semesters.getSelectedItem().toString().equals("Toate semestrele")) {
-                        dataModel = new SubjectTableModel(q);
-                    }
-                    for (Subject s : materii) {
-                        if (semesters.getSelectedItem().toString().equals("Toate semestrele")) {
-                            dataModel.setValueAt(s.getTitle(), i, 0);
-                            dataModel.setValueAt(s.getFaculty(), i, 1);
-                            dataModel.setValueAt(s.getDepartment(), i, 2);
-                            dataModel.setValueAt(s.getDegree(), i, 3);
-                            dataModel.setValueAt(s.getSemester(), i, 4);
-                            dataModel.setValueAt(s.getNumberOfCredits(), i, 5);
-                            dataModel.setValueAt(s.getTeacherLastName() + " " + s.getTeacherFirstName(), i, 6);
-                            i++;
-                        } else if (s.getSemester() == Integer.valueOf(semesters.getSelectedItem().toString())) {
-                            dataModel.setValueAt(s.getTitle(), i, 0);
-                            dataModel.setValueAt(s.getFaculty(), i, 1);
-                            dataModel.setValueAt(s.getDepartment(), i, 2);
-                            dataModel.setValueAt(s.getDegree(), i, 3);
-                            dataModel.setValueAt(s.getSemester(), i, 4);
-                            dataModel.setValueAt(s.getNumberOfCredits(), i, 5);
-                            dataModel.setValueAt(s.getTeacherLastName() + " " + s.getTeacherFirstName(), i, 6);
-                            i++;
-                        }
-                    }
-                    String[] coloane = {"DENUMIRE", "FACULTATE", "SPECIALIZARE", "CICLU UNIVERSITAR", "SEMESTRU", "NUMĂR DE CREDITE", "PROFESOR"};
-                    TableModel model = new DefaultTableModel(dataModel.getMaterii(), coloane) {
-                        public boolean isCellEditable(int row, int column) {
-                            //set cells uneditable
-                            return false;
-                        }
-                    };
-                    tabelMaterii.setModel(model);
-                }
-            }
-        });
-        //add subjects into table when selecting a number of credits
-        credits.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int i = 0, q = 0;
-                if(credits.getItemCount() > 0) {
-                    for (Subject s : materii) {
-                        if (credits.getSelectedItem().toString().equals("Toate creditele")) {
-                            dataModel = new SubjectTableModel(n);
-                            break;
-                        } else if (s.getNumberOfCredits() == Integer.valueOf(credits.getSelectedItem().toString())) {
-                            q++;
-                        }
-                    }
-                    if (!credits.getSelectedItem().toString().equals("Toate creditele")) {
-                        dataModel = new SubjectTableModel(q);
-                    }
-                    for (Subject s : materii) {
-                        if (credits.getSelectedItem().toString().equals("Toate creditele")) {
-                            dataModel.setValueAt(s.getTitle(), i, 0);
-                            dataModel.setValueAt(s.getFaculty(), i, 1);
-                            dataModel.setValueAt(s.getDepartment(), i, 2);
-                            dataModel.setValueAt(s.getDegree(), i, 3);
-                            dataModel.setValueAt(s.getSemester(), i, 4);
-                            dataModel.setValueAt(s.getNumberOfCredits(), i, 5);
-                            dataModel.setValueAt(s.getTeacherLastName() + " " + s.getTeacherFirstName(), i, 6);
-                            i++;
-                        } else if (s.getNumberOfCredits() == Integer.valueOf(credits.getSelectedItem().toString())) {
                             dataModel.setValueAt(s.getTitle(), i, 0);
                             dataModel.setValueAt(s.getFaculty(), i, 1);
                             dataModel.setValueAt(s.getDepartment(), i, 2);
@@ -393,7 +233,8 @@ public class ViewSubjectsAdminGUI {
             }
         });
     }
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         ViewSubjectsAdminGUI window = new ViewSubjectsAdminGUI();
     }
 }

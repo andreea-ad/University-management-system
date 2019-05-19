@@ -18,7 +18,7 @@ public class LoginGUI{
     private JButton login;
     static Connection conn = null;
     public LoginGUI(){
-        frame = new JFrame("Conectare platformă");
+        frame = new JFrame("e-University");
         //set background white
         frame.getContentPane().setBackground(Color.WHITE);
         //create input elements

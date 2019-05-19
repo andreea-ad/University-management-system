@@ -101,8 +101,6 @@ public class ViewTeachersAdminGUI {
         frame.setLocationRelativeTo(null);
         //set the default close button
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //block resize operation
-        frame.setResizable(false);
         //set frame visible
         frame.setVisible(true);
         /*
@@ -117,15 +115,13 @@ public class ViewTeachersAdminGUI {
                     int i = 0, q = 0;
                     for(Professor p:profesori){
                         if(faculties.getSelectedItem().toString().equals("Toate facultățile")){
-                            dataModel = new TeacherTableModel(n);
+                            q = profesori.size();
                             break;
                         }else if(p.getFaculty().equals(faculties.getSelectedItem().toString())){
                             q++;
                         }
                     }
-                    if(!faculties.getSelectedItem().toString().equals("Toate facultățile")) {
-                        dataModel = new TeacherTableModel(q);
-                    }
+                    dataModel = new TeacherTableModel(q);
                     for(Professor p:profesori) {
                         if(faculties.getSelectedItem().toString().equals("Toate facultățile")){
                             dataModel.setValueAt(p.getLastName(), i, 0);

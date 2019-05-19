@@ -52,9 +52,9 @@ public class RemoveFacultyAdminGUI {
         //set table sorter
         tabelFacultati.setAutoCreateRowSorter(true);
         //set bounds for elements
-        scrollPane.setBounds(42,80,1300,437);
-        eliminare.setBounds(530,560,145,25);
-        inapoi.setBounds(685,560,145,25);
+        scrollPane.setBounds(42,80,1300,183);
+        eliminare.setBounds(530,300,145,25);
+        inapoi.setBounds(685,300,145,25);
         //buttons design
         eliminare.setBorderPainted(false);
         eliminare.setBackground(new Color(233,233,233));
@@ -69,15 +69,13 @@ public class RemoveFacultyAdminGUI {
             ie.printStackTrace();
         }
         //set frame size
-        frame.setPreferredSize(new Dimension(1400,700));
+        frame.setPreferredSize(new Dimension(1400,450));
         frame.setLayout(null);
         frame.pack();
         //set window in the middle of the screen
         frame.setLocationRelativeTo(null);
         //set the default close button
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //block resize operation
-        frame.setResizable(false);
         //set frame visible
         frame.setVisible(true);
         /*

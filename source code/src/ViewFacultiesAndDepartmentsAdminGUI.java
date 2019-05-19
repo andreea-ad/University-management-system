@@ -106,8 +106,6 @@ public class ViewFacultiesAndDepartmentsAdminGUI {
         frame.setLocationRelativeTo(null);
         //set the default close button
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //block resize operation
-        frame.setResizable(false);
         //set frame visible
         frame.setVisible(true);
         /*
@@ -118,9 +116,15 @@ public class ViewFacultiesAndDepartmentsAdminGUI {
         tabelFacultati.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                int i = 0;
+                int i = 0, q = 0;
                 dataModel2.removeTable();
                 String facultate = tabelFacultati.getModel().getValueAt(tabelFacultati.getSelectedRow(),0).toString();
+                for(Department d:specializari){
+                    if(d.getFaculty().equals(facultate)){
+                        q++;
+                    }
+                }
+                dataModel2 = new DepartmentTableModel(q);
                 for(Department d:specializari){
                     if(d.getFaculty().equals(facultate)){
                         dataModel2.setValueAt(d.getTitle(),i,0);

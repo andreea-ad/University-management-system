@@ -25,7 +25,6 @@ public class ViewMarksProfessorGUI {
         */
         frame = new JFrame("Vizualizare note");
         inapoi = new JButton("Înapoi");
-
         ManagerGUI mng = new ManagerGUI();
         profesori = mng.getSetProfesori();
         note = mng.getSetNoteDupaEmail();
@@ -92,8 +91,6 @@ public class ViewMarksProfessorGUI {
         frame.setLocationRelativeTo(null);
         //set the default close button
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //block resize operation
-        frame.setResizable(false);
         //set frame visible
         frame.setVisible(true);
         /*
@@ -112,6 +109,6 @@ public class ViewMarksProfessorGUI {
         });
     }
     public static void main(String[] args){
-        ViewMarksProfessorGUI window = new ViewMarksProfessorGUI("maria.ionescu@gmail.com");
+        ViewMarksProfessorGUI window = new ViewMarksProfessorGUI("roxana.popescu@gmail.com");
     }
 }

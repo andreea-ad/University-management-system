@@ -31,8 +31,8 @@ public class EditFacultyGUI {
         //set bounds for elements
         labelTitlu.setBounds(170,60,170,25);
         title.setBounds(310,60,250,25);
-        editeaza.setBounds(210,100,150,25);
-        inapoi.setBounds(370,100,150,25);
+        editeaza.setBounds(210,110,150,25);
+        inapoi.setBounds(370,110,150,25);
         //buttons design
         editeaza.setBorderPainted(false);
         editeaza.setBackground(new Color(233,233,233));
@@ -49,15 +49,13 @@ public class EditFacultyGUI {
             ie.printStackTrace();
         }
         //set frame size
-        frame.setPreferredSize(new Dimension(745, 200));
+        frame.setPreferredSize(new Dimension(745, 230));
         frame.setLayout(null);
         frame.pack();
         //set window in the middle of the screen
         frame.setLocationRelativeTo(null);
         //set the default close button
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //block resize operation
-        frame.setResizable(false);
         //set frame visible
         frame.setVisible(true);
         /*

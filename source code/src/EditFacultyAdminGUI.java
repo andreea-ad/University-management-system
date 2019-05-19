@@ -53,8 +53,8 @@ public class EditFacultyAdminGUI {
         tabelFacultati.setAutoCreateRowSorter(true);
         //set bounds for elements
         scrollPane.setBounds(42,60,1100,183);
-        selecteaza.setBounds(430,280,145,25);
-        inapoi.setBounds(590,280,145,25);
+        selecteaza.setBounds(440,280,145,25);
+        inapoi.setBounds(600,280,145,25);
         //buttons design
         selecteaza.setBorderPainted(false);
         selecteaza.setBackground(new Color(233,233,233));
@@ -76,8 +76,6 @@ public class EditFacultyAdminGUI {
         frame.setLocationRelativeTo(null);
         //set the default close button
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //block resize operation
-        frame.setResizable(false);
         //set frame visible
         frame.setVisible(true);
         /*

@@ -69,6 +69,11 @@ public class AddTeacherAdminGUI {
         for(Faculty f:facultati){
             facultate.addItem(f);
         }
+        for(Subject s:materii){
+            if(s.getFaculty().equals(facultate.getSelectedItem().toString()) && s.getTeacherFirstName().isEmpty() && s.getTeacherLastName().isEmpty()){
+                materie.addItem(s);
+            }
+        }
         for(int i=1920;i<=2000;i++){
             anNastere.addItem(i);
         }
@@ -154,6 +159,22 @@ public class AddTeacherAdminGUI {
         inapoi.setBorderPainted(false);
         inapoi.setBackground(new Color(233,233,233));
         inapoi.setForeground(new Color(100,100,100));
+        facultate.setBackground(new Color(233,233,233));
+        facultate.setForeground(new Color(100,100,100));
+        materie.setBackground(new Color(233,233,233));
+        materie.setForeground(new Color(100,100,100));
+        lunaNastere.setBackground(new Color(233,233,233));
+        lunaNastere.setForeground(new Color(100,100,100));
+        lunaAngajare.setBackground(new Color(233,233,233));
+        lunaAngajare.setForeground(new Color(100,100,100));
+        ziNastere.setBackground(new Color(233,233,233));
+        ziNastere.setForeground(new Color(100,100,100));
+        ziAngajare.setBackground(new Color(233,233,233));
+        ziAngajare.setForeground(new Color(100,100,100));
+        anNastere.setBackground(new Color(233,233,233));
+        anNastere.setForeground(new Color(100,100,100));
+        anAngajare.setBackground(new Color(233,233,233));
+        anAngajare.setForeground(new Color(100,100,100));
         //labels design
         labelNume.setForeground(new Color(100,100,100));
         labelPrenume.setForeground(new Color(100,100,100));
@@ -180,8 +201,6 @@ public class AddTeacherAdminGUI {
         frame.setLocationRelativeTo(null);
         //set the default close button
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //block resize operation
-        frame.setResizable(false);
         //set frame visible
         frame.setVisible(true);
         /*
@@ -195,7 +214,7 @@ public class AddTeacherAdminGUI {
             public void actionPerformed(ActionEvent e) {
                 materie.removeAllItems();
                 for(Subject s:materii){
-                    if(s.getFaculty().equals(facultate.getSelectedItem().toString())){
+                    if(s.getFaculty().equals(facultate.getSelectedItem().toString()) && s.getTeacherFirstName().isEmpty() && s.getTeacherLastName().isEmpty()){
                         materie.addItem(s);
                     }
                 }
@@ -208,7 +227,7 @@ public class AddTeacherAdminGUI {
                 String luna = String.valueOf(lunaNastere.getSelectedItem());
                 int an = (int)anNastere.getSelectedItem();
                 ziNastere.removeAllItems();
-                if((luna.equals("IANURIE"))||(luna.equals("MARTIE"))||(luna.equals("MAI"))||(luna.equals("IULIE"))||(luna.equals("AUGUST"))||(luna.equals("OCTOMBRIE"))||(luna.equals("DECEMBRIE"))){
+                if((luna.equals("IANUARIE"))||(luna.equals("MARTIE"))||(luna.equals("MAI"))||(luna.equals("IULIE"))||(luna.equals("AUGUST"))||(luna.equals("OCTOMBRIE"))||(luna.equals("DECEMBRIE"))){
                     for(int i=1;i<=31;i++){
                         ziNastere.addItem(i);
                     }
@@ -287,8 +306,8 @@ public class AddTeacherAdminGUI {
                 nume.setText("");
                 prenume.setText("");
                 cnp.setText("");
-                anNastere.setSelectedItem(1920);
-                lunaNastere.setSelectedItem("IANUARIE");
+                anNastere.setSelectedIndex(0);
+                lunaNastere.setSelectedIndex(0);
                 ziNastere.removeAllItems();
                 for(int i=1;i<=31;i++){
                     ziNastere.addItem(i);
@@ -296,10 +315,10 @@ public class AddTeacherAdminGUI {
                 nrTelefon.setText("");
                 adresa.setText("");
                 adresaEmail.setText("");
-                facultate.setSelectedItem("Facultatea de Chimie și Biologie");
-                materie.setSelectedItem("Biologie moleculară");
-                anAngajare.setSelectedItem(1980);
-                lunaAngajare.setSelectedItem("IANUARIE");
+                facultate.setSelectedIndex(0);
+                materie.setSelectedIndex(0);
+                anAngajare.setSelectedIndex(0);
+                lunaAngajare.setSelectedIndex(0);
                 ziAngajare.removeAllItems();
                 for(int i=1;i<=31;i++){
                     ziAngajare.addItem(i);

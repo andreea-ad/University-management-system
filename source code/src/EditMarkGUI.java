@@ -58,18 +58,18 @@ public class EditMarkGUI {
         materie.setEditable(false);
         data.setEditable(false);
         //set bounds for elements
-        labelNume.setBounds(170,50,170,25);
-        nume.setBounds(310,50,250,25);
-        labelPrenume.setBounds(170,80,170,25);
-        prenume.setBounds(310,80,250,25);
-        labelMaterie.setBounds(170,110,170,25);
-        materie.setBounds(310,110,250,25);
-        labelNota.setBounds(170,140,170,25);
-        notaMaterie.setBounds(310,140,250,25);
-        labelData.setBounds(170,170,170,25);
-        data.setBounds(310,170,250,25);
-        editeaza.setBounds(210,220,150,25);
-        inapoi.setBounds(370,220,150,25);
+        labelNume.setBounds(170,60,170,25);
+        nume.setBounds(310,60,250,25);
+        labelPrenume.setBounds(170,90,170,25);
+        prenume.setBounds(310,90,250,25);
+        labelMaterie.setBounds(170,120,170,25);
+        materie.setBounds(310,120,250,25);
+        labelNota.setBounds(170,150,170,25);
+        notaMaterie.setBounds(310,150,250,25);
+        labelData.setBounds(170,180,170,25);
+        data.setBounds(310,180,250,25);
+        editeaza.setBounds(210,225,150,25);
+        inapoi.setBounds(370,225,150,25);
         //buttons design
         editeaza.setBorderPainted(false);
         editeaza.setBackground(new Color(233,233,233));
@@ -97,8 +97,6 @@ public class EditMarkGUI {
         frame.setLocationRelativeTo(null);
         //set the default close button
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //block resize operation
-        frame.setResizable(false);
         //set frame visible
         frame.setVisible(true);
         /*

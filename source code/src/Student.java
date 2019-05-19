@@ -10,10 +10,10 @@ public class Student {
     private String emailAddress;
     private String faculty;
     private String department;
-    private Degree degree;
+    private String degree;
     private int year;
     private int numberOfCredits;
-    public Student(int id, String first, String last, String cnp, Date dob, String number, String address, String email, String faculty, String dept, Degree degree, int year, int credits){
+    public Student(int id, String first, String last, String cnp, Date dob, String number, String address, String email, String faculty, String dept, String degree, int year, int credits){
         setID(id);
         setFirstName(first);
         setLastName(last);
@@ -101,11 +101,11 @@ public class Student {
         this.faculty = faculty;
     }
 
-    public Degree getDegree() {
+    public String getDegree() {
         return degree;
     }
 
-    public void setDegree(Degree degree) {
+    public void setDegree(String degree) {
         this.degree = degree;
     }
 

@@ -158,16 +158,14 @@ public class PDViewStudentGUI{
             ie.printStackTrace();
         }
         //set frame size
-        frame.setPreferredSize(new Dimension(700,620));
+        frame.setPreferredSize(new Dimension(700,660));
         frame.setLayout(null);
         frame.pack();
         //set window in the middle of the screen
         frame.setLocationRelativeTo(null);
         //set the default close button
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //block resize operation
-        frame.setResizable(false);
-        //make visible frame
+        //set frame visible
         frame.setVisible(true);
         /*
         ==============

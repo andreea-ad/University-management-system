@@ -68,8 +68,8 @@ public class EditDepartmentAdminGUI {
         //set bounds for elements
         scrollPane.setBounds(42,110,1100,183);
         faculties.setBounds(42,60,300,25);
-        selecteaza.setBounds(430,335,145,25);
-        inapoi.setBounds(590,335,145,25);
+        selecteaza.setBounds(430,320,145,25);
+        inapoi.setBounds(590,320,145,25);
         //buttons design
         selecteaza.setBorderPainted(false);
         selecteaza.setBackground(new Color(233,233,233));
@@ -77,6 +77,8 @@ public class EditDepartmentAdminGUI {
         inapoi.setBorderPainted(false);
         inapoi.setBackground(new Color(233,233,233));
         inapoi.setForeground(new Color(100,100,100));
+        faculties.setBackground(new Color(233,233,233));
+        faculties.setForeground(new Color(100,100,100));
         //set frame icon
         try {
             frame.setIconImage(ImageIO.read(getClass().getResource("resources/1.png")));
@@ -91,8 +93,6 @@ public class EditDepartmentAdminGUI {
         frame.setLocationRelativeTo(null);
         //set the default close button
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //block resize operation
-        frame.setResizable(false);
         //set frame visible
         frame.setVisible(true);
         /*
