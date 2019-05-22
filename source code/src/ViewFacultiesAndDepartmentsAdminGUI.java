@@ -5,6 +5,8 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.HashSet;
 
@@ -113,6 +115,7 @@ public class ViewFacultiesAndDepartmentsAdminGUI {
         define actions
         ==============
         */
+        //modify departments table when selecting a faculty from faculties table
         tabelFacultati.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -141,6 +144,15 @@ public class ViewFacultiesAndDepartmentsAdminGUI {
                     }
                 };
                 tabelSpecializari.setModel(model2);
+            }
+        });
+        //go back to user menu
+        inapoi.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                frame.setVisible(false);
+                AdminMenuGUI window = new AdminMenuGUI();
             }
         });
     }

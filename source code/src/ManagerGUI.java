@@ -126,7 +126,7 @@ public class ManagerGUI {
             ps.setString(1,prenume);
             ps.setString(2,nume);
             ps.setString(3,materie);
-            ps.execute();
+            ps.executeUpdate();
             conn.close();
         }catch(Exception e){
             e.printStackTrace();
@@ -140,7 +140,7 @@ public class ManagerGUI {
             PreparedStatement ps = conn.prepareStatement(deleteQuery);
             ps.setString(1,prenume);
             ps.setString(2,nume);
-            ps.execute();
+            ps.executeUpdate();
             conn.close();
         }catch(Exception e){
             e.printStackTrace();
@@ -211,13 +211,18 @@ public class ManagerGUI {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/universitate1", "root", "");
             String deleteQuery = "update professors set flag=0 where `first_name`=? and `last_name`=?";
             String deleteUserQuery = "update userprofesor set flag=0 where `email_address`=?";
+            String deleteQuery2 = "update subjects set teacher_first_name='', teacher_last_name='' where teacher_first_name=? and teacher_last_name=?";
             PreparedStatement ps = conn.prepareStatement(deleteQuery);
             ps.setString(1,prenume);
             ps.setString(2,nume);
-            ps.execute();
+            ps.executeUpdate();
             ps = conn.prepareStatement(deleteUserQuery);
             ps.setString(1,email);
-            ps.execute();
+            ps.executeUpdate();
+            ps = conn.prepareStatement(deleteQuery2);
+            ps.setString(1,prenume);
+            ps.setString(2,nume);
+            ps.executeUpdate();
             conn.close();
         }catch(Exception e){
             e.printStackTrace();
@@ -299,10 +304,10 @@ public class ManagerGUI {
             PreparedStatement ps = conn.prepareStatement(deleteQuery);
             ps.setString(1,prenume);
             ps.setString(2,nume);
-            ps.execute();
+            ps.executeUpdate();
             ps = conn.prepareStatement(deleteUserQuery);
             ps.setString(1,email);
-            ps.execute();
+            ps.executeUpdate();
             conn.close();
         }catch(Exception e){
             e.printStackTrace();

@@ -164,7 +164,7 @@ public class EditTeacherGUI {
             public void actionPerformed(ActionEvent e) {
                 materie.removeAllItems();
                 for(Subject s:materii){
-                    if(s.getFaculty().equals(facultate.getSelectedItem().toString())){
+                    if(s.getFaculty().equals(facultate.getSelectedItem().toString()) && s.getTeacherFirstName().isEmpty() && s.getTeacherLastName().isEmpty()){
                         materie.addItem(s);
                     }
                 }

@@ -4,11 +4,15 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.util.HashSet;
 
 public class EditDepartmentGUI {
     private JFrame frame;
     private JLabel labelTitlu, labelFacultate, labelCicluUniversitar;
-    private JTextField title, faculty, degree;
+    private JComboBox<Faculty> faculties;
+    private JComboBox<String> degrees;
+    private JTextField title;
+    private HashSet<Faculty> facultati;
     private JButton editeaza, inapoi;
     public EditDepartmentGUI(String titlu, String facultate, String cicluUniversitar){
         /*
@@ -21,31 +25,38 @@ public class EditDepartmentGUI {
         labelFacultate = new JLabel("Facultate: ");
         labelCicluUniversitar = new JLabel("Ciclu universitar: ");
         title = new JTextField(titlu);
-        faculty = new JTextField(facultate);
-        degree = new JTextField(cicluUniversitar);
+        faculties = new JComboBox<>();
+        degrees = new JComboBox<>();
+        ManagerGUI mng = new ManagerGUI();
+        facultati = mng.getSetFacultati();
         editeaza = new JButton("Editează");
         inapoi = new JButton("Înapoi");
+        for(Faculty f:facultati){
+            faculties.addItem(f);
+        }
+        faculties.setSelectedItem(new Faculty(facultate));
+        degrees.addItem("LICENTA");
+        degrees.addItem("MASTER");
+        degrees.addItem("DOCTORAT");
+        degrees.setSelectedItem(cicluUniversitar);
         //add elements to the frame
         frame.add(labelTitlu);
         frame.add(title);
         frame.add(labelFacultate);
-        frame.add(faculty);
+        frame.add(faculties);
         frame.add(labelCicluUniversitar);
-        frame.add(degree);
+        frame.add(degrees);
         frame.add(editeaza);
         frame.add(inapoi);
         //set white background
         frame.getContentPane().setBackground(Color.WHITE);
-        //set textfields not editable
-        faculty.setEditable(false);
-        degree.setEditable(false);
         //set bounds for elements
         labelTitlu.setBounds(170,60,170,25);
         title.setBounds(310,60,250,25);
         labelFacultate.setBounds(170,90,170,25);
-        faculty.setBounds(310,90,250,25);
+        faculties.setBounds(310,90,250,25);
         labelCicluUniversitar.setBounds(170,120,170,25);
-        degree.setBounds(310,120,250,25);
+        degrees.setBounds(310,120,250,25);
         editeaza.setBounds(210,170,150,25);
         inapoi.setBounds(370,170,150,25);
         //buttons design
@@ -55,6 +66,8 @@ public class EditDepartmentGUI {
         inapoi.setBorderPainted(false);
         inapoi.setBackground(new Color(233,233,233));
         inapoi.setForeground(new Color(100,100,100));
+        degrees.setBackground(new Color(233,233,233));
+        degrees.setForeground(new Color(100,100,100));
         //labels design
         labelTitlu.setForeground(new Color(100,100,100));
         labelFacultate.setForeground(new Color(100,100,100));
@@ -85,7 +98,7 @@ public class EditDepartmentGUI {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                if(ManagerGUI.updateDepartmentFromDB(titlu, title.getText(), faculty.getText(), degree.getText()) == 1){
+                if(ManagerGUI.updateDepartmentFromDB(titlu, title.getText(), faculties.getSelectedItem().toString(), degrees.getSelectedItem().toString()) == 1){
                     JOptionPane.showMessageDialog(null,"Specializarea a fost modificată în baza de date!");
                 }
             }

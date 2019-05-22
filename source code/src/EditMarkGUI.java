@@ -14,14 +14,12 @@ public class EditMarkGUI {
     private SpinnerModel spinnerModelNota;
     private JSpinner notaMaterie;
     private JButton editeaza, inapoi;
-    private int option;
     public EditMarkGUI(int option, String email, String numeStudent, String prenumeStudent, int nota, String materieNota, Date dataUltimeiModificari){
         /*
         ====================
         initialize variables
         ====================
         */
-        this.option = option;
         frame = new JFrame("Modificare notă");
         labelNume = new JLabel("Nume student: ");
         labelPrenume = new JLabel("Prenume student: ");

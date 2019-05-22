@@ -84,16 +84,16 @@ public class AddMarkProfessorGUI {
         dataAdaugarii.setEditable(false);
         materie.setEditable(false);
         //set bounds for elements
-        labelMaterie.setBounds(150,50,120,25);
-        materie.setBounds(280,50,120,25);
-        labelStudent.setBounds(150,80,120,25);
-        students.setBounds(280,80,120,25);
-        labelNota.setBounds(150,110,120,25);
-        nota.setBounds(280,110,120,25);
-        labelDataAdaugarii.setBounds(150,140,120,25);
-        dataAdaugarii.setBounds(280,140,120,25);
-        adaugare.setBounds(125,190,150,25);
-        inapoi.setBounds(285,190,150,25);
+        labelMaterie.setBounds(150,100,120,25);
+        materie.setBounds(280,100,300,25);
+        labelStudent.setBounds(150,130,120,25);
+        students.setBounds(280,130,300,25);
+        labelNota.setBounds(150,160,120,25);
+        nota.setBounds(280,160,300,25);
+        labelDataAdaugarii.setBounds(150,190,120,25);
+        dataAdaugarii.setBounds(280,190,300,25);
+        adaugare.setBounds(215,240,145,25);
+        inapoi.setBounds(365,240,145,25);
         //buttons design
         adaugare.setBorderPainted(false);
         adaugare.setBackground(new Color(233,233,233));
@@ -115,7 +115,7 @@ public class AddMarkProfessorGUI {
             ie.printStackTrace();
         }
         //set frame size
-        frame.setPreferredSize(new Dimension(570,300));
+        frame.setPreferredSize(new Dimension(740,400));
         frame.setLayout(null);
         frame.pack();
         //set window in the middle of the screen

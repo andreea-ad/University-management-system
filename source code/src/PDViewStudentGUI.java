@@ -12,7 +12,7 @@ public class PDViewStudentGUI{
     private JTextField nrMatricol, nume, prenume, cnp, dataNasterii, nrTelefon, adresa, adresaEmail, facultate, specializare, cicluUniversitar, an, nrCredite;
     private HashSet<Student> studenti;
     private JButton inapoi;
-    public PDViewStudentGUI(String email){
+    public PDViewStudentGUI(int flag, String secretaryEmail, String email){
         /*
         ====================
         initialize variables
@@ -178,7 +178,13 @@ public class PDViewStudentGUI{
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 frame.setVisible(false);
-                StudentMenuGUI window = new StudentMenuGUI(email);
+                if(flag == 1) {
+                    StudentMenuGUI window = new StudentMenuGUI(email);
+                }else if(flag == 2){
+                    ViewStudentsSecretaryGUI window = new ViewStudentsSecretaryGUI(secretaryEmail);
+                }else if(flag == 3){
+                    ViewStudentsAdminGUI window =  new ViewStudentsAdminGUI();
+                }
             }
         });
     }

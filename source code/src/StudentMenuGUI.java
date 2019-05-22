@@ -27,7 +27,7 @@ public class StudentMenuGUI{
         studenti = mng.getSetStudenti();
         for(Student s:studenti){
             if(s.getEmailAddress().equals(email)){
-                cicluUniversitar += s.getDegree().toString();
+                cicluUniversitar += s.getDegree();
                 break;
             }
         }
@@ -83,7 +83,7 @@ public class StudentMenuGUI{
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                PDViewStudentGUI window = new PDViewStudentGUI(email);
+                PDViewStudentGUI window = new PDViewStudentGUI(1,"",email);
                 frame.setVisible(false);
             }
         });

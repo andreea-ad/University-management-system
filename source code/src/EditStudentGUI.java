@@ -1,19 +1,27 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashSet;
 
 public class EditStudentGUI {
     private JFrame frame;
     private JLabel labelPrenume, labelNume, labelCnp, labelDataNasterii, labelNrTelefon, labelAdresa, labelAdresaEmail, labelFacultate, labelSpecializare, labelCicluUniversitar, labelAn, labelNrCredite;
-    private JTextField prenume, nume, cnp, dataNasterii, nrTelefon, adresa, adresaEmail, facultate, specializare, cicluUniversitar, nrCredite;
+    private JTextField prenume, nume, cnp, dataNasterii, nrTelefon, adresa, adresaEmail, nrCredite;
     private SpinnerModel spinnerModelAn;
     private JSpinner anUniversitar;
+    private JComboBox<Faculty> facultate;
+    private JComboBox<String> cicluUniversitar;
+    private JComboBox<Department> specializare;
+    private HashSet<Faculty> facultati;
+    private HashSet<Department> specializari;
     private JButton editeaza, inapoi;
-    public EditStudentGUI(String lastName, String firstName, String CNP, Date dob, String phoneNo, String address, String emailAddress, String faculty, String department, String degree, int year, int credits){
+    public EditStudentGUI(int flag, String secretaryEmail, String lastName, String firstName, String CNP, Date dob, String phoneNo, String address, String emailAddress, String faculty, String department, String degree, int year, int credits){
         /*
         ====================
         initialize variables
@@ -43,11 +51,28 @@ public class EditStudentGUI {
         nrTelefon = new JTextField(phoneNo);
         adresa = new JTextField(address);
         adresaEmail = new JTextField(emailAddress);
-        facultate = new JTextField(faculty);
-        specializare = new JTextField(department);
-        cicluUniversitar = new JTextField(degree);
         spinnerModelAn.setValue(year);
         nrCredite = new JTextField(String.valueOf(credits));
+        facultate = new JComboBox<>();
+        cicluUniversitar = new JComboBox<>();
+        specializare = new JComboBox<>();
+        ManagerGUI mng = new ManagerGUI();
+        facultati = mng.getSetFacultati();
+        specializari = mng.getSetSpecializari();
+        for(Faculty f:facultati){
+            facultate.addItem(f);
+        }
+        facultate.setSelectedItem(new Faculty(faculty));
+        cicluUniversitar.addItem("LICENTA");
+        cicluUniversitar.addItem("MASTER");
+        cicluUniversitar.addItem("DOCTORAT");
+        cicluUniversitar.setSelectedItem(degree);
+        for(Department d:specializari){
+            if(d.getFaculty().equals(facultate.getSelectedItem().toString()) && d.getDegree().equals(cicluUniversitar.getSelectedItem().toString())){
+                specializare.addItem(d);
+            }
+        }
+        specializare.setSelectedItem(new Department(department));
         //add elements to the frame
         frame.add(labelNume);
         frame.add(nume);
@@ -94,10 +119,10 @@ public class EditStudentGUI {
         adresaEmail.setBounds(300,230,250,25);
         labelFacultate.setBounds(170,260,120,25);
         facultate.setBounds(300,260,250,25);
-        labelSpecializare.setBounds(170,290,120,25);
-        specializare.setBounds(300,290,250,25);
-        labelCicluUniversitar.setBounds(170,320,120,25);
-        cicluUniversitar.setBounds(300,320,250,25);
+        labelCicluUniversitar.setBounds(170,290,120,25);
+        cicluUniversitar.setBounds(300,290,250,25);
+        labelSpecializare.setBounds(170,320,120,25);
+        specializare.setBounds(300,320,250,25);
         labelAn.setBounds(170,350,120,25);
         anUniversitar.setBounds(300,350,250,25);
         labelNrCredite.setBounds(170,380,120,25);
@@ -111,6 +136,12 @@ public class EditStudentGUI {
         inapoi.setBorderPainted(false);
         inapoi.setBackground(new Color(233,233,233));
         inapoi.setForeground(new Color(100,100,100));
+        facultate.setBackground(new Color(233,233,233));
+        facultate.setForeground(new Color(100,100,100));
+        cicluUniversitar.setBackground(new Color(233,233,233));
+        cicluUniversitar.setForeground(new Color(100,100,100));
+        specializare.setBackground(new Color(233,233,233));
+        specializare.setForeground(new Color(100,100,100));
         //labels design
         labelNume.setForeground(new Color(100,100,100));
         labelPrenume.setForeground(new Color(100,100,100));
@@ -145,12 +176,35 @@ public class EditStudentGUI {
         define actions
         ==============
         */
+        //add departments into combobox when selecting a faculty
+        facultate.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                specializare.removeAllItems();
+                for(Department d:specializari){
+                    if(d.getFaculty().equals(facultate.getSelectedItem().toString()) && d.getDegree().equals(cicluUniversitar.getSelectedItem().toString())){
+                        specializare.addItem(d);
+                    }
+                }
+            }
+        });
+        cicluUniversitar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                specializare.removeAllItems();
+                for(Department d:specializari){
+                    if(d.getFaculty().equals(facultate.getSelectedItem().toString()) && d.getDegree().equals(cicluUniversitar.getSelectedItem().toString())){
+                        specializare.addItem(d);
+                    }
+                }
+            }
+        });
         //update the database with the new data
         editeaza.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                if(ManagerGUI.updateStudentFromDB(CNP,prenume.getText(),nume.getText(),cnp.getText(), java.sql.Date.valueOf(dataNasterii.getText()),nrTelefon.getText(),adresa.getText(),adresaEmail.getText(),facultate.getText(),specializare.getText(),cicluUniversitar.getText(),(int)anUniversitar.getValue(),Integer.valueOf(nrCredite.getText())) == 1){
+                if(ManagerGUI.updateStudentFromDB(CNP,prenume.getText(),nume.getText(),cnp.getText(), java.sql.Date.valueOf(dataNasterii.getText()),nrTelefon.getText(),adresa.getText(),adresaEmail.getText(),facultate.getSelectedItem().toString(),specializare.getSelectedItem().toString(),cicluUniversitar.getSelectedItem().toString(),(int)anUniversitar.getValue(),Integer.valueOf(nrCredite.getText())) == 1){
                     JOptionPane.showMessageDialog(null,"Datele studentului au fost modificate în baza de date!");
                 }
             }
@@ -161,7 +215,11 @@ public class EditStudentGUI {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 frame.setVisible(false);
-                EditStudentAdminGUI window = new EditStudentAdminGUI();
+                if(flag == 1) {
+                    EditStudentAdminGUI window = new EditStudentAdminGUI();
+                }else if(flag == 2){
+                    EditStudentSecretaryGUI window = new EditStudentSecretaryGUI(secretaryEmail);
+                }
             }
         });
     }

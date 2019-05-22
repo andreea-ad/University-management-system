@@ -106,6 +106,10 @@ public class ViewStudentsSecretaryGUI {
         inapoi.setBorderPainted(false);
         inapoi.setBackground(new Color(233,233,233));
         inapoi.setForeground(new Color(100,100,100));
+        degrees.setBackground(new Color(233,233,233));
+        degrees.setForeground(new Color(100,100,100));
+        departments.setBackground(new Color(233,233,233));
+        departments.setForeground(new Color(100,100,100));
         //set frame icon
         try {
             frame.setIconImage(ImageIO.read(getClass().getResource("resources/1.png")));
@@ -272,7 +276,7 @@ public class ViewStudentsSecretaryGUI {
                     DefaultTableModel model = (DefaultTableModel) tabelStudenti.getModel();
                     int indexRandSelectat = tabelStudenti.getSelectedRow();
                     frame.setVisible(false);
-                    PDViewStudentGUI window = new PDViewStudentGUI(model.getValueAt(indexRandSelectat, 6).toString());
+                    PDViewStudentGUI window = new PDViewStudentGUI(2, email, model.getValueAt(indexRandSelectat, 6).toString());
                 }catch (Exception e1){
                     JOptionPane.showMessageDialog(null,"Selectați o înregistrare din tabel!");
                 }

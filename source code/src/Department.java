@@ -53,9 +53,9 @@ public class Department {
         if (o == null || getClass() != o.getClass()) return false;
         Department that = (Department) o;
         return id == that.id &&
-                Objects.equals(title, that.title) &&
-                Objects.equals(faculty, that.faculty) &&
-                degree == that.degree;
+                title.equals(that.title) &&
+                faculty.equals(that.faculty) &&
+                degree.equals(that.degree);
     }
 
     @Override

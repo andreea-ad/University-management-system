@@ -186,7 +186,7 @@ public class AddSubjectAdminGUI {
                 if(departments.getItemCount() > 0) {
                     for (Department d : specializari) {
                         if (d.getTitle().equals(departments.getSelectedItem().toString())) {
-                            cicluUniversitar.setText(d.getDegree().toString());
+                            cicluUniversitar.setText(d.getDegree());
                             break;
                         }
                     }

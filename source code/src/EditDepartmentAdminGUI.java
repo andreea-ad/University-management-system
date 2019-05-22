@@ -106,7 +106,10 @@ public class EditDepartmentAdminGUI {
             public void actionPerformed(ActionEvent e) {
                 int i = 0, q = 0;
                 for(Department d:specializari){
-                    if(d.getFaculty().equals(faculties.getSelectedItem().toString())){
+                    if(faculties.getSelectedItem().toString().equals("Toate facultățile")){
+                        q = specializari.size();
+                        break;
+                    }else if(d.getFaculty().equals(faculties.getSelectedItem().toString())){
                         q++;
                     }
                 }

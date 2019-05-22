@@ -22,7 +22,6 @@ public class ViewMarksSecretaryGUI {
     private MarkTableModel dataModel;
     private JTable tabelNote = new JTable();
     private JScrollPane scrollPane = new JScrollPane(tabelNote);
-
     public ViewMarksSecretaryGUI(String email) {
         /*
         ====================
@@ -92,6 +91,10 @@ public class ViewMarksSecretaryGUI {
         inapoi.setBorderPainted(false);
         inapoi.setBackground(new Color(233, 233, 233));
         inapoi.setForeground(new Color(100, 100, 100));
+        department.setBackground(new Color(233,233,233));
+        department.setForeground(new Color(100,100,100));
+        subject.setBackground(new Color(233,233,233));
+        subject.setForeground(new Color(100,100,100));
         //set frame icon
         try {
             frame.setIconImage(ImageIO.read(getClass().getResource("resources/1.png")));

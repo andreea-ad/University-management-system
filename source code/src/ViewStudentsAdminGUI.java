@@ -106,6 +106,12 @@ public class ViewStudentsAdminGUI {
         inapoi.setBorderPainted(false);
         inapoi.setBackground(new Color(233,233,233));
         inapoi.setForeground(new Color(100,100,100));
+        faculties.setBackground(new Color(233,233,233));
+        faculties.setForeground(new Color(100,100,100));
+        departments.setBackground(new Color(233,233,233));
+        departments.setForeground(new Color(100,100,100));
+        degrees.setBackground(new Color(233,233,233));
+        degrees.setForeground(new Color(100,100,100));
         //set frame icon
         try {
             frame.setIconImage(ImageIO.read(getClass().getResource("resources/1.png")));
@@ -288,11 +294,21 @@ public class ViewStudentsAdminGUI {
         departments.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int i = 0;
+                int i = 0, q = 0;
                 dataModel.removeTable();
-                if (departments.getItemCount() > 0) {
+                if(departments.getItemCount() > 0) {
                     for (Student s : studenti) {
-                        if (faculties.getSelectedItem().toString().equals("Toate facultățile") && degrees.getSelectedItem().toString().equals("Toate ciclurile universitare") && departments.getSelectedItem().toString().equals("Toate specializările")) {
+                        if (departments.getSelectedItem().toString().equals("Toate specializările") && degrees.getSelectedItem().toString().equals("Toate ciclurile universitare") && s.getFaculty().equals(faculties.getSelectedItem().toString())) {
+                            q++;
+                        } else if (departments.getSelectedItem().toString().equals("Toate specializările") && s.getDegree().equals(degrees.getSelectedItem().toString()) && s.getFaculty().equals(faculties.getSelectedItem().toString())) {
+                            q++;
+                        } else if (s.getDepartment().equals(departments.getSelectedItem().toString())) {
+                            q++;
+                        }
+                    }
+                    dataModel = new StudentTableModel(q);
+                    for (Student s : studenti) {
+                        if (departments.getSelectedItem().toString().equals("Toate specializările") && degrees.getSelectedItem().toString().equals("Toate ciclurile universitare") && s.getFaculty().equals(faculties.getSelectedItem().toString())) {
                             dataModel.setValueAt(s.getLastName(), i, 0);
                             dataModel.setValueAt(s.getFirstName(), i, 1);
                             dataModel.setValueAt(s.getCnp(), i, 2);
@@ -306,7 +322,7 @@ public class ViewStudentsAdminGUI {
                             dataModel.setValueAt(s.getYear(), i, 10);
                             dataModel.setValueAt(s.getNumberOfCredits(), i, 11);
                             i++;
-                        } else if (degrees.getSelectedItem().toString().equals("Toate ciclurile universitare") && departments.getSelectedItem().toString().equals("Toate specializările") && s.getFaculty().equals(faculties.getSelectedItem().toString())) {
+                        } else if (departments.getSelectedItem().toString().equals("Toate specializările") && s.getDegree().equals(degrees.getSelectedItem().toString()) && s.getFaculty().equals(faculties.getSelectedItem().toString())) {
                             dataModel.setValueAt(s.getLastName(), i, 0);
                             dataModel.setValueAt(s.getFirstName(), i, 1);
                             dataModel.setValueAt(s.getCnp(), i, 2);
@@ -320,7 +336,7 @@ public class ViewStudentsAdminGUI {
                             dataModel.setValueAt(s.getYear(), i, 10);
                             dataModel.setValueAt(s.getNumberOfCredits(), i, 11);
                             i++;
-                        } else if (degrees.getSelectedItem().toString().equals("Toate ciclurile universitare") && s.getDepartment().equals(departments.getSelectedItem().toString())) {
+                        } else if (s.getDepartment().equals(departments.getSelectedItem().toString())) {
                             dataModel.setValueAt(s.getLastName(), i, 0);
                             dataModel.setValueAt(s.getFirstName(), i, 1);
                             dataModel.setValueAt(s.getCnp(), i, 2);
@@ -336,14 +352,14 @@ public class ViewStudentsAdminGUI {
                             i++;
                         }
                     }
-                    String[] coloane13 = {"NUME", "PRENUME", "CNP", "DATA NAȘTERII", "NUMĂR DE TELEFON", "ADRESĂ", "ADRESĂ DE EMAIL", "FACULTATE", "SPECIALIZARE", "CICLU UNIVERSITAR", "AN UNIVERSITAR", "NUMĂR DE CREDITE"};
-                    TableModel model13 = new DefaultTableModel(dataModel.getStudenti(), coloane13) {
+                    String[] coloane = {"NUME", "PRENUME", "CNP", "DATA NAȘTERII", "NUMĂR DE TELEFON", "ADRESĂ", "ADRESĂ DE EMAIL", "FACULTATE", "SPECIALIZARE", "CICLU UNIVERSITAR", "AN UNIVERSITAR", "NUMĂR DE CREDITE"};
+                    TableModel model = new DefaultTableModel(dataModel.getStudenti(), coloane) {
                         public boolean isCellEditable(int row, int column) {
                             //set cells uneditable
                             return false;
                         }
                     };
-                    tabelStudenti.setModel(model13);
+                    tabelStudenti.setModel(model);
                 }
             }
         });
@@ -356,7 +372,7 @@ public class ViewStudentsAdminGUI {
                     DefaultTableModel model = (DefaultTableModel) tabelStudenti.getModel();
                     int indexRandSelectat = tabelStudenti.getSelectedRow();
                     frame.setVisible(false);
-                    PDViewStudentGUI window = new PDViewStudentGUI(model.getValueAt(indexRandSelectat, 6).toString());
+                    PDViewStudentGUI window = new PDViewStudentGUI(3, "", model.getValueAt(indexRandSelectat, 6).toString());
                 }catch (Exception e1){
                     JOptionPane.showMessageDialog(null,"Selectați o înregistrare din tabel!");
                 }

@@ -270,7 +270,7 @@ public class EditStudentAdminGUI {
                     DefaultTableModel model = (DefaultTableModel) tabelStudenti.getModel();
                     int indexRandSelectat = tabelStudenti.getSelectedRow();
                     frame.setVisible(false);
-                    EditStudentGUI window = new EditStudentGUI(model.getValueAt(indexRandSelectat, 0).toString(), model.getValueAt(indexRandSelectat, 1).toString(), model.getValueAt(indexRandSelectat, 2).toString(), (Date) model.getValueAt(indexRandSelectat, 3), model.getValueAt(indexRandSelectat, 4).toString(), model.getValueAt(indexRandSelectat, 5).toString(), model.getValueAt(indexRandSelectat, 6).toString(), model.getValueAt(indexRandSelectat, 7).toString(), model.getValueAt(indexRandSelectat, 8).toString(), model.getValueAt(indexRandSelectat, 9).toString(), (int) model.getValueAt(indexRandSelectat, 10), (int) model.getValueAt(indexRandSelectat, 11));
+                    EditStudentGUI window = new EditStudentGUI(1,"",model.getValueAt(indexRandSelectat, 0).toString(), model.getValueAt(indexRandSelectat, 1).toString(), model.getValueAt(indexRandSelectat, 2).toString(), (Date) model.getValueAt(indexRandSelectat, 3), model.getValueAt(indexRandSelectat, 4).toString(), model.getValueAt(indexRandSelectat, 5).toString(), model.getValueAt(indexRandSelectat, 6).toString(), model.getValueAt(indexRandSelectat, 7).toString(), model.getValueAt(indexRandSelectat, 8).toString(), model.getValueAt(indexRandSelectat, 9).toString(), (int) model.getValueAt(indexRandSelectat, 10), (int) model.getValueAt(indexRandSelectat, 11));
                 } catch (Exception e1) {
                     JOptionPane.showMessageDialog(null, "Selectați o înregistrare din tabel!");
                 }
